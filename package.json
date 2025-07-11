@@ -1,0 +1,33 @@
+{
+  "name": "bluefern-spa-website",
+  "version": "1.0.0",
+  "description": "Bluefern Spa website with modern design and luxury spa services",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve -s .",
+    "build": "echo 'Static site - no build required' && exit 0",
+    "dev": "serve -s . -p 3000"
+  },
+  "keywords": [
+    "spa",
+    "wellness",
+    "massage",
+    "facial",
+    "luxury",
+    "health",
+    "relaxation"
+  ],
+  "author": "Bluefern Spa",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Drewbalaban/bluefernspa.git"
+  },
+  "homepage": "https://github.com/Drewbalaban/bluefernspa#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+} 
