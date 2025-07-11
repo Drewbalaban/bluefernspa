@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Bluefern Spa | Massage, Facials & Body Treatments</title>
+    <meta name="description" content="Explore our full menu of spa services including massage therapy, advanced facials, body treatments, and medical spa services at Bluefern Spa.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="services-styles.css">
+    
+    <!-- Remove inline styles to prevent conflicts with services-styles.css -->
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="darker-logo-1.png" alt="Bluefern Spa">
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="services.html" class="nav-link active">Services</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-grid">
+                            <div class="dropdown-column">
+                                <h3>Massage Therapy</h3>
+                                <a href="#swedish-massage">Swedish Massage</a>
+                                <a href="#deep-tissue-massage">Deep Tissue</a>
+                                <a href="#hot-stone-massage">Hot Stone</a>
+                                <a href="#therapeutic-massage">Therapeutic</a>
+                                <a href="#massage">View All Massages</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h3>Facial Treatments</h3>
+                                <a href="#signature-facial">Signature Facial</a>
+                                <a href="#anti-aging-facial">Anti-Aging</a>
+                                <a href="#microdermabrasion">Microdermabrasion</a>
+                                <a href="#facials">Advanced Facials</a>
+                                <a href="#facials">View All Facials</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h3>Body & Wellness</h3>
+                                <a href="#body">Body Scrubs & Wraps</a>
+                                <a href="#body">Body Sculpting</a>
+                                <a href="#wellness">Salt Room Therapy</a>
+                                <a href="#wellness">Red Light Therapy</a>
+                                <a href="#wellness">Stretch Therapy</a>
+                                <a href="#body">View All Body Treatments</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h3>Beauty & Packages</h3>
+                                <a href="#beauty">Waxing Services</a>
+                                <a href="#beauty">Brow & Lash</a>
+                                <a href="#packages">Spa Packages</a>
+                                <a href="#packages">Gift Certificates</a>
+                                <a href="products.html">Société Products</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#specials" class="nav-link">Specials</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#locations" class="nav-link">Locations</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.thegiftcardcafe.com/cart/selectpac.php" class="nav-link egift-link">Buy eGift</a>
+                </li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner with Background Image -->
+    <section class="hero-banner">
+        <!-- Banner Content -->
+        <div class="hero-content">
+            <div class="hero-eyebrow">Bluefern Spa</div>
+            <h1 class="hero-title">Massage Therapy</h1>
+            <p class="hero-subtitle">Therapeutic healing through the power of touch</p>
+            <div class="hero-quote">Where tension melts away and wellness begins</div>
+        </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="service-categories">
+        <div class="container">
+            <div class="category-nav">
+                <button class="category-btn active" data-category="massage">Massage Therapy</button>
+                <button class="category-btn" data-category="facials">Facials</button>
+                <button class="category-btn" data-category="body">Body Treatments</button>
+                <button class="category-btn" data-category="wellness">Wellness Therapies</button>
+                <button class="category-btn" data-category="beauty">Beauty Services</button>
+                <button class="category-btn" data-category="packages">Spa Packages</button>
+            </div>
+
+            <!-- Massage Therapy -->
+            <div class="service-category active" id="massage">
+                <h2 class="category-title">Massage Therapy</h2>
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up" id="swedish-massage">
+                        <h3>Swedish Massage</h3>
+                        <p><strong>Increases flexibility of muscles and joints</strong><br>
+                        Deeply relaxes & reduces stress and tension<br>
+                        Boosts the immune system, improves circulation<br>
+                        Helps improve the emotional balance</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$110 | $155</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100" id="deep-tissue-massage">
+                        <h3>Deep Tissue Massage</h3>
+                        <p><strong>Reduces stress and muscle tension</strong><br>
+                        Relieves chronic back pain<br>
+                        The therapist uses direct pressure to relax the top layer of muscle in order to reach deeper muscle tissue.<br>
+                        Neuromuscular therapy (NMT) and myofascial release are just two of the techniques used for DT therapy</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$115 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200" id="therapeutic-massage">
+                        <h3>Therapeutic Massage</h3>
+                        <p><strong>Helps with conditions such as sciatica, whiplash, tennis elbow, carpal tunnel</strong><br>
+                        Reduces inflammation, acute and chronic pain<br>
+                        Helps improve circulation, lymphatic, and neurological functioning<br>
+                        Combines different techniques: deep tissue, stretching, myofascial release, aromatherapy<br>
+                        Speeds up healing process after sports injuries</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$120 | $165</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300" id="hot-stone-massage">
+                        <h3>Hot Stone Massage</h3>
+                        <p><strong>Very beneficial for people who suffer from: fibromyalgia and inflammation of the connective tissue</strong><br>
+                        Reduces chronic muscle pain<br>
+                        Helps improve circulation and reduces insomnia<br>
+                        The warmth of heated basalt stones helps release muscle tension and feels heavenly</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$125 | $170</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Ultimate Signature Massage</h3>
+                        <p><strong>Blends therapeutic massage with the natural anti-inflammatory properties of essential oils</strong><br>
+                        Reduces tension & muscle pain<br>
+                        Combo of Swedish, Deep Tissue, myofascial release, stretching, hot stones, reflexology for the feet<br>
+                        A truly amazing massage experience</p>
+                        <div class="service-details">
+                            <span class="duration">90 min/2 hr</span>
+                            <span class="price">$165 | $225</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Couples Massage</h3>
+                        <p><strong>This is a great way to experience a massage in tandem</strong><br>
+                        Includes your choice of a deep-tissue or swedish massage<br>
+                        Share this experience with someone you are close to: mother and daughter, couples, sisters, or best friends.<br>
+                        A memorable way to connect with someone & introduce them to relaxation.</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$240 | $330</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Pain Relief Massage</h3>
+                        <p><strong>Pain relief from arthritis and painful joints</strong><br>
+                        Helps with Back aches and neck pain<br>
+                        Beneficial for: fibromyalgia and inflammation<br>
+                        Alleviates bruising & circulation problems with arnica & Juniper oil</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$115 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Specialty Massages Divider -->
+                    <div class="specialty-divider">
+                        <div class="divider-line"></div>
+                        <span class="divider-text">Specialty Massages</span>
+                        <div class="divider-line"></div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300">
+                        <h3>Manual Lymphatic Drainage Massage</h3>
+                        <p><strong>Using very light pressure, gentle, rhythmic strokes to increase the flow of lymph</strong><br>
+                        Helps reduce inflammation after surgery<br>
+                        Detoxifies the body & stimulates the immune system<br>
+                        Best results in a series of treatment, usually 3 – 6 sessions.</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$120 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Aromatherapy Massage</h3>
+                        <p><strong>Using essential oils to promote healing & well-being</strong><br>
+                        Deeply relaxes & reduces stress, tension and pain<br>
+                        Improves circulation & calms the nervous system<br>
+                        Helps improve mood & emotional balance</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$120 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Sinus Relief Massage</h3>
+                        <p><strong>Helps reduce tenderness, headaches, congestion</strong><br>
+                        Reduces inflammation, swelling and puffiness around eye area<br>
+                        Increases circulation around the sinuses<br>
+                        Combines different techniques: lymphatic drainage, pressure point, aromatherapy</p>
+                        <div class="service-details">
+                            <span class="duration">30/60/90 min</span>
+                            <span class="price">$65 | $110 | $155</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Prenatal Massage</h3>
+                        <p><strong>Reduces stress, fatigue and relieves muscle and back pain</strong><br>
+                        Helps decrease swelling by improving lymph flow<br>
+                        Increases blood circulation, which provides more oxygen and nutrients<br>
+                        Improves posture and mobility<br>
+                        Have to be past 13 weeks into pregnancy</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$115 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300">
+                        <h3>Sports Massage</h3>
+                        <p><strong>Reduces soreness and helps speed up recovery</strong><br>
+                        Relieves muscle tension & pain<br>
+                        Can increase flexibility & prevent muscle pulls or tears<br>
+                        Ideal for athletes preparing for a sports event & assists in recovery after intensive exercise</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$120 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Sleep Therapy Massage</h3>
+                        <p><strong>Helps decrease anxiety and improve sleep quality, by triggering the release of serotonin</strong><br>
+                        Very relaxing Swedish massage techniques are used<br>
+                        Alleviates stress levels, improves mood and may also ease pain<br>
+                        We use blends of essential oils that help with insomnia, like lavender, vetiver, chamomile</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$120 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Reflexology or Foot Massage</h3>
+                        <p><strong>Helps to balance the whole body function</strong><br>
+                        Improves nerve function<br>
+                        Helps you feel less stressed, and more energized<br>
+                        Reduces emotional stress and physical pain caused by cancer</p>
+                        <div class="service-details">
+                            <span class="duration">30/60/90 min</span>
+                            <span class="price">$65 | $110 | $155</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Immune Boost Massage</h3>
+                        <p><strong>Tune up your immune system for cold and flu season</strong><br>
+                        Helps you feel more energized<br>
+                        Stimulates & boosts the body's ability to protect from illness<br>
+                        Includes the use of essential oils by Young Living<br>
+                        Promotes relaxation and increases circulation.</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$120 | $165</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300">
+                        <h3>C.B.D. Infusion Massage</h3>
+                        <p><strong>Alleviates Anxiety and Stress</strong><br>
+                        Helps Relieve Chronic Pain<br>
+                        Soothes & Improves Skin Conditions<br>
+                        Reduces Tension<br>
+                        Promotes relaxation and increases circulation.</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$130 | $175</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Massage Add-Ons Section -->
+                    <div class="massage-addons-section">
+                        <h3 class="addons-title">Enhance Your Experience</h3>
+                        <p class="addons-subtitle">Massage Add-Ons</p>
+                        <div class="addons-grid">
+                            <div class="addon-item">
+                                <h4>Salt Room Session</h4>
+                                <span class="addon-duration">30 min</span>
+                                <span class="addon-price">$40</span>
+                            </div>
+                            <div class="addon-item">
+                                <h4>Hot Stones</h4>
+                                <span class="addon-duration">Add-on</span>
+                                <span class="addon-price">$10</span>
+                            </div>
+                            <div class="addon-item">
+                                <h4>Aromatherapy Oils</h4>
+                                <span class="addon-duration">Add-on</span>
+                                <span class="addon-price">$20</span>
+                            </div>
+                            <div class="addon-item">
+                                <h4>Cupping</h4>
+                                <span class="addon-duration">Add-on</span>
+                                <span class="addon-price">$20</span>
+                            </div>
+                            <div class="addon-item">
+                                <h4>Back Scrub</h4>
+                                <span class="addon-duration">Add-on</span>
+                                <span class="addon-price">$25</span>
+                            </div>
+                            <div class="addon-item">
+                                <h4>Foot Reflexology</h4>
+                                <span class="addon-duration">30 min</span>
+                                <span class="addon-price">$55</span>
+                            </div>
+                            <div class="addon-item">
+                                <h4>Collagen Hand Treatment</h4>
+                                <span class="addon-duration">Add-on</span>
+                                <span class="addon-price">$25</span>
+                            </div>
+                            <div class="addon-item">
+                                <h4>Collagen Foot Treatment</h4>
+                                <span class="addon-duration">Add-on</span>
+                                <span class="addon-price">$35</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Facials -->
+            <div class="service-category" id="facials">
+                <h2 class="category-title">Facials</h2>
+                
+                <!-- Quick Access to Products -->
+                <div class="products-quick-access">
+                    <a href="products.html" class="products-btn">
+                        <span class="btn-icon">Products</span>
+                        <span class="btn-text">Professional Products We Use</span>
+                        <span class="btn-arrow">→</span>
+                    </a>
+                </div>
+                
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up" id="signature-facial">
+                        <h3>Signature Facial</h3>
+                        <p><strong>Customized treatment for your particular type of skin</strong><br>
+                        Includes skin analysis detoxifying steam, gentle cleansing, T-zone extractions and a custom mask for your skin type.<br>
+                        Clarifies hydrates & moisturizes, leaving the skin looking radiant<br>
+                        The gentle yet powerful exfoliating enzyme gives the complexion a healthy, glowing appearance</p>
+                        <div class="service-details">
+                            <span class="duration">60 min</span>
+                            <span class="price">$115</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Deep Pore Cleansing Facial</h3>
+                        <p><strong>A deeply detoxifying treatment for clearer, brighter skin</strong><br>
+                        Gentle natural extracts like chamomile, cucumber & tea tree oil, help reduce inflammation<br>
+                        Beneficial for oily, congested or hormonal skin<br>
+                        Includes extractions of blackheads and congested areas<br>
+                        Add millia (whitehead) extraction for $20</p>
+                        <div class="service-details">
+                            <span class="duration">60 min</span>
+                            <span class="price">$130</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Ultra Hydrating Facial</h3>
+                        <p><strong>Perfect treatment for dry, dehydrated and sensitive skin</strong><br>
+                        This cutting edge facial includes an uber-hydrating mask that plumps and rejuvenates the skin in just one session<br>
+                        Includes a layering of gentle serums with hyaluronic acid, plant extracts and vitamins<br>
+                        Highly recommended for repairing damaged skin barrier and improving the overall firmness</p>
+                        <div class="service-details">
+                            <span class="duration">60 min</span>
+                            <span class="price">$130</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300">
+                        <h3>Organic Soothing Facial</h3>
+                        <p><strong>Using only the finest organic and potent plant-based ingredients</strong><br>
+                        Calms & soothes dry, sensitive skin and rosacea skin<br>
+                        Helps to hydrate and firm tired-looking skin<br>
+                        Effectively reduces inflammation, greatly improving micro-circulation at the dermal level</p>
+                        <div class="service-details">
+                            <span class="duration">60 min</span>
+                            <span class="price">$135</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>The Back Acne Facial</h3>
+                        <p><strong>The back facial is beneficial for anyone who struggles with breakouts or clogged pores on the back</strong><br>
+                        This treatment includes cleansing, exfoliating, extractions, a customized mask, high-frequency to kill bacteria, and an infusion of medical-grade infusion of oxygen, green tea (for antioxidant protection) hyaluronic acid (for hydration), aloe (for soothing), and vitamin C (brightening)<br>
+                        Leaves your skin soft, hydrated, and moisturized<br>
+                        Removes a build-up of dirt, oil, keratin, and dead skin cells<br>
+                        ADD ON Microderm or Peel for $50</p>
+                        <div class="service-details">
+                            <span class="duration">75 min</span>
+                            <span class="price">$145</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Oh My Glow! Facial</h3>
+                        <p><strong>An advanced facial treatment with Oxygen Infusion & nourishing serums</strong><br>
+                        Customized for your skin type<br>
+                        Delivers immediate results, healthier, deeply hydrated skin<br>
+                        Stimulating and yet calming<br>
+                        The complexion will look radiantly firmer, smooth and with a rosy glow!</p>
+                        <div class="service-details">
+                            <span class="duration">75 min</span>
+                            <span class="price">$155</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200" id="anti-aging-facial">
+                        <h3>Radiance Anti-Aging Facial</h3>
+                        <p><strong>Tackle fine lines, wrinkles with the clinically proven, age-defying benefits of Triple Vitamin C & Peptide Collagen</strong><br>
+                        Hibiscus & Passionfruit enzymes Gently exfoliate and help to restore collagen and elastin.<br>
+                        Wonderful antioxidants impart the skin a healthy glow.<br>
+                        Hydrates and firms tired-looking skin</p>
+                        <div class="service-details">
+                            <span class="duration">75 min</span>
+                            <span class="price">$155</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300">
+                        <h3>Gentleman's Facial</h3>
+                        <p><strong>The ideal treatment for the man who wants to have healthy, glowing skin</strong><br>
+                        Will deeply hydrate the skin, exfoliate & cleanse the pores<br>
+                        Helps reduce redness, and relieve irritation due to shaving<br>
+                        Includes a relaxing face, neck and shoulders massage</p>
+                        <div class="service-details">
+                            <span class="duration">60 min</span>
+                            <span class="price">$115</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Express Enzyme Facial</h3>
+                        <p><strong>Get your glow on the go with this hydrating mini-facial</strong><br>
+                        Includes skin analysis, cleansing of the skin, enzyme exfoliation & a stimulating massage of the face and neck<br>
+                        Will increase hydration & leave your skin refreshed</p>
+                        <div class="service-details">
+                            <span class="duration">45 min</span>
+                            <span class="price">$85</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Teen Facial</h3>
+                        <p><strong>Invigorating and refreshing, caters specifically to teenage skin (up to 17 yrs old)</strong><br>
+                        Promotes a clear, glowing complexion & it will help to unclog the pores, reduce oil, and minimize the appearance of pores<br>
+                        Our skin care experts will provide helpful recommendations for a home skin care routine to maintain the clear skin<br>
+                        Deep Pore Cleansing Teen Facial – $110</p>
+                        <div class="service-details">
+                            <span class="duration">45 min</span>
+                            <span class="price">$85</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Advanced Facials Divider -->
+                <div class="specialty-divider">
+                    <div class="divider-line"></div>
+                    <span class="divider-text">Advanced Facials</span>
+                    <div class="divider-line"></div>
+                </div>
+                
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Société Oxigenation Medifacial</h3>
+                        <p><strong>An instant oxygen and hydration boost</strong><br>
+                        Creating a fresh, dewy complexion<br>
+                        Soothing dull, sensitive or inflamed skins<br>
+                        Designed to promote cell regeneration and increase oxygenation<br>
+                        Perfect for combating dullness and revitalizing the complexion<br>
+                        Leaves your skin looking refreshed and radiant<br>
+                        Especially beneficial during seasonal transitions when your skin needs extra care.</p>
+                        <div class="service-details">
+                            <span class="duration">60 min</span>
+                            <span class="price">$155</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100" id="microdermabrasion">
+                        <h3>Brightening Microderm Treatment</h3>
+                        <p><strong>Leaves the skin looking radiant, with less visible dark spots</strong><br>
+                        Exfoliates dead skin cells for softer, smoother skin<br>
+                        Includes Vitamin C treatment<br>
+                        Great for all skin types, especially mature or sun-damaged skin.<br>
+                        Utilizing Diamond Microdermabrasion System</p>
+                        <div class="service-details">
+                            <span class="duration">Basic 30 min | w/Facial 60 min</span>
+                            <span class="price">$95 | $155</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Rejuvenating Microderm w/ Facial</h3>
+                        <p><strong>More radiant, softer skin enhanced by a visibly smoother texture</strong><br>
+                        Helps erase lines, age spots and other imperfections<br>
+                        Reduces the appearance of scars, uneven skin tone, large pores<br>
+                        Improves mild non-inflammatory acne, whiteheads and blackheads<br>
+                        Boosts collagen & elastin production with BIO Peptide Gel Mask</p>
+                        <div class="service-details">
+                            <span class="duration">75 min</span>
+                            <span class="price">$185</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300">
+                        <h3>Microdermabrasion & Peel</h3>
+                        <p><strong>Deeply exfoliating without extended down time</strong><br>
+                        Brighten & tighten the skin<br>
+                        Smoothes acne scarring, evens out skin tone and reduces size of pores<br>
+                        Reduces sun damage and pigmentation<br>
+                        Non-invasive treatment allows for immediate results</p>
+                        <div class="service-details">
+                            <span class="duration">60 min</span>
+                            <span class="price">$200</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Ultimate Firm & Tighten Facial with RF</h3>
+                        <p><strong>Strengthens skin's texture and natural elasticity resulting in quick face lift (non–invasive)</strong><br>
+                        Gently stimulates & tones facial muscles of the jaws, cheeks, eyes, neck due to smooth contraction of muscle fibers<br>
+                        Reduces puffiness & dark circles around the eyes and accelerates collagen production<br>
+                        Layered serum application and a crystal collagen mask with Vitamin C</p>
+                        <div class="service-details">
+                            <span class="duration">75 min</span>
+                            <span class="price">$200</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>RF Firming Facial</h3>
+                        <p><strong>Tone and tighten your skin with our FIRM & TIGHTEN FACIAL that helps reduce wrinkles and skin laxity</strong><br>
+                        Non-invasive procedure - perfect restorative remedy for skin problems associated with aging<br>
+                        Firm up without a face-lift! Uses RF, ultrasonic, micro-current, or oxygen technologies<br>
+                        Customized skin-tightening treatment for every client based on their personal needs</p>
+                        <div class="service-details">
+                            <span class="duration">75 min</span>
+                            <span class="price">$200</span>
+                        </div>
+                        <div class="service-learn-more">
+                            <a href="rf-firming-facial.html" class="learn-more-btn">
+                                <span>Learn More</span>
+                                <i class="arrow-right">→</i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Microneedling</h3>
+                        <p><strong>Dermal Pen Micro-needling - Collagen Induction Therapy (CIT)</strong><br>
+                        Improves firmness & thickness of the dermis and epidermis<br>
+                        Reduces wrinkles, fine lines, and improves skin texture<br>
+                        Minimizes acne scars and reduces enlarged pores<br>
+                        Helps balance oil production and improves pigmentation<br>
+                        <em>Premium treatment includes stem cell add-on (+$50)</em></p>
+                        <div class="service-details">
+                            <span class="duration">Standard 20-30 min | Premium 90+ min</span>
+                            <span class="price">Contact for Pricing | $295</span>
+                        </div>
+                        <div class="service-learn-more">
+                            <a href="microneedling.html" class="learn-more-btn">
+                                <span>Learn More</span>
+                                <i class="arrow-right">→</i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300">
+                        <h3>Dermaplanning/Dermablading</h3>
+                        <p><strong>Removes dead skin and stimulates regeneration of new skin cells (manual technique)</strong><br>
+                        Hydrates and moisturizes deeper layers of skin<br>
+                        Smooths acne scarring, evens out skin tone and reduces size of pores<br>
+                        Removes superfluous facial hair (fuzz does not grow back thicker)</p>
+                        <div class="service-details">
+                            <span class="duration">Basic 30 min | w/Facial 60 min | with Peel</span>
+                            <span class="price">$95 | $155 | $200</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300">
+                        <h3>Age Defy Nano Infusion</h3>
+                        <p><strong>Nano-Needling goes by various names such as Microchanneling, Nano Infusion or Nano Exfoliation</strong><br>
+                        It is a non-invasive procedure that involves the use of a dermapen modality and nano-tips instead of needles. It uses very tiny cones formed of stainless steel that do not penetrate the skin, but do help with resurfacing and serum infusion.<br>
+                        This is an alternative treatment for clients who do not want any downtime or who may be contraindicated to microneedling. It can also improve skin texture, boost hydration as well as address signs of premature skin aging.<br>
+                        Diminish the appearance of lines and wrinkles<br>
+                        Brighten, tighten, lighten the complexion<br>
+                        Smooth & plump the appearance of skin</p>
+                        <div class="service-details">
+                            <span class="duration">60 min</span>
+                            <span class="price">$195</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Facial Add-Ons Section -->
+                <div class="massage-addons-section">
+                    <h3 class="addons-title">Enhance Your Experience</h3>
+                    <p class="addons-subtitle">Facial Add-Ons</p>
+                    <div class="addons-grid">
+                        <div class="addon-item">
+                            <h4>Peptide & Stem Cell Mask</h4>
+                            <span class="addon-duration">Add-on</span>
+                            <span class="addon-price">$35</span>
+                        </div>
+                        <div class="addon-item">
+                            <h4>LIFT & FIRM Eye Treatment</h4>
+                            <span class="addon-duration">Add-on</span>
+                            <span class="addon-price">$35</span>
+                        </div>
+                        <div class="addon-item">
+                            <h4>Deep Hydrating w/Hyaluronic</h4>
+                            <span class="addon-duration">Add-on</span>
+                            <span class="addon-price">$20</span>
+                        </div>
+                        <div class="addon-item">
+                            <h4>Microderm or Dermaplaning</h4>
+                            <span class="addon-duration">Add-on</span>
+                            <span class="addon-price">$50</span>
+                        </div>
+                        <div class="addon-item">
+                            <h4>Photon Light (anti-aging, acne, healing)</h4>
+                            <span class="addon-duration">Add-on</span>
+                            <span class="addon-price">$25</span>
+                        </div>
+                        <div class="addon-item">
+                            <h4>Decolte (upper chest) Anti-Aging Collagen</h4>
+                            <span class="addon-duration">Add-on</span>
+                            <span class="addon-price">$35</span>
+                        </div>
+                        <div class="addon-item">
+                            <h4>Dermal Peel Layer</h4>
+                            <span class="addon-duration">Add-on</span>
+                            <span class="addon-price">$50</span>
+                        </div>
+                        <div class="addon-item">
+                            <h4>Collagen Hand Therapy</h4>
+                            <span class="addon-duration">Add-on</span>
+                            <span class="addon-price">$25</span>
+                        </div>
+                        <div class="addon-item">
+                            <h4>RF Firming</h4>
+                            <span class="addon-duration">Add-on</span>
+                            <span class="addon-price">$50</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Body Treatments -->
+            <div class="service-category" id="body">
+                <h2 class="category-title">Body Treatments</h2>
+                
+                <!-- Luxurious Body Scrubs & Wraps -->
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Bright Radiance Citrus Body Scrub</h3>
+                        <p><strong>Fine-grain sea salt blended with shea butter and skin-softening oils</strong><br>
+                        Gently buffs away dryness replacing it with glowing skin that is soft to the touch<br>
+                        Using only natural and highly effective ingredients that are both pampering and nourishing<br>
+                        Stimulates circulation and gives your body a silky glow</p>
+                        <div class="service-details">
+                            <span class="duration">60 min</span>
+                            <span class="price">$120</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Organic Green Tea Body Scrub</h3>
+                        <p><strong>Green Tea is loaded with antioxidants and vitamins beneficial to our health</strong><br>
+                        Has antibacterial agents and helps regulate hormonal imbalances<br>
+                        Perfect to treat acne or inflammation on the skin<br>
+                        Exfoliates dead skin cells, improves complexion leaving skin healthy & glowing</p>
+                        <div class="service-details">
+                            <span class="duration">60 min</span>
+                            <span class="price">$120</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Champagne & Roses Salt Scrub</h3>
+                        <p><strong>Sloughs off dry, lifeless skin cells, promoting cellular turnover</strong><br>
+                        Helps to revitalize and restore the skin with antioxidant properties<br>
+                        Pamper and care for your skin with this elegant treatment<br>
+                        Features the true aroma of rose petals and effervescent champagne notes</p>
+                        <div class="service-details">
+                            <span class="duration">60 min</span>
+                            <span class="price">$120</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300">
+                        <h3>Deep Sea Detox Wrap</h3>
+                        <p><strong>Rich ingredients: Marine kelp, Blue-Green Algae, Aloe Vera, Vitamin E & A</strong><br>
+                        Excellent way to regenerate skin by removing dead skin and moisturizing<br>
+                        Eliminates toxins from the body and reduces cellulite<br>
+                        Improves body contour with antioxidants and fatty acids that improve elasticity</p>
+                        <div class="service-details">
+                            <span class="duration">75 min</span>
+                            <span class="price">$125</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Hydrating Honey & Aloe Wrap</h3>
+                        <p><strong>A nourishing cocoon designed to slim, tone, hydrate, cleanse & heal</strong><br>
+                        Fragranced with velvety cinnamon notes, sweet cloves & honey<br>
+                        Combines Aloe Vera, Vitamin E, Vitamin A, rosehip seed oil<br>
+                        Restores softness to rough, dry skin with hefty hydration</p>
+                        <div class="service-details">
+                            <span class="duration">75 min</span>
+                            <span class="price">$135</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- BioSlimming Body Contouring -->
+                <div class="specialty-divider">
+                    <div class="divider-line"></div>
+                    <span class="divider-text">BioSlimming Body Contouring</span>
+                    <div class="divider-line"></div>
+                </div>
+                
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>BioSlimming Upper Body Wrap</h3>
+                        <p><strong>European Body Wrap for abdomen, love handles, lower back & upper arms</strong><br>
+                        Slims, firms and tones dramatically reducing "orange peel" skin<br>
+                        Combines plant extracts, caffeine, essential oils with thermo-regulation<br>
+                        1 to 4 cm reduction around waist with first treatment<br>
+                        <em>10% OFF when you book both UPPER & LOWER</em></p>
+                        <div class="service-details">
+                            <span class="duration">60 min</span>
+                            <span class="price">$99</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>BioSlimming Lower Body Wrap</h3>
+                        <p><strong>Targets thighs and buttocks with immediate, visible results</strong><br>
+                        Fights fat deposits and stimulates lymphatic system<br>
+                        Eliminates toxins and induces fat burning below skin's surface<br>
+                        Improves appearance of varicose veins and stretch marks<br>
+                        <em>10% OFF when you book both UPPER & LOWER</em></p>
+                        <div class="service-details">
+                            <span class="duration">60 min</span>
+                            <span class="price">$99</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Advanced Body Sculpting -->
+                <div class="specialty-divider">
+                    <div class="divider-line"></div>
+                    <span class="divider-text">Advanced Body Sculpting</span>
+                    <div class="divider-line"></div>
+                </div>
+                
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Ultimate Tummy Redux</h3>
+                        <p><strong>Combination of Ultrasonic fat reduction, RF technology & Lymphatic stimulation</strong><br>
+                        Cellutec massage with French BioSlimming products<br>
+                        Infrared technology to penetrate ingredients<br>
+                        Targets tummy and side flanks for dramatic contouring</p>
+                        <div class="service-details">
+                            <span class="duration">60-90 min</span>
+                            <span class="price">Call for Pricing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Ultimate Cellulite Redux</h3>
+                        <p><strong>Ultrasonic fat reduction mainly targeting thighs</strong><br>
+                        RF technology with lymphatic stimulation Cellutec massage<br>
+                        French BioSlimming products with infrared penetration<br>
+                        Performed by highly skilled & experienced professionals</p>
+                        <div class="service-details">
+                            <span class="duration">60-90 min</span>
+                            <span class="price">Call for Pricing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Bum Bum Lift for Buttocks</h3>
+                        <p><strong>Specialized treatment for buttock lifting and contouring</strong><br>
+                        Non-invasive RF and ultrasonic technology<br>
+                        Tightens skin and improves tone without downtime<br>
+                        Perfect for post-pregnancy or sagging concerns</p>
+                        <div class="service-details">
+                            <span class="duration">60-90 min</span>
+                            <span class="price">Call for Pricing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300">
+                        <h3>Power Sculpt for Cellulite</h3>
+                        <p><strong>Advanced cellulite reduction treatment</strong><br>
+                        Combines multiple technologies for maximum results<br>
+                        Targets stubborn cellulite areas effectively<br>
+                        Safe, painless with virtually no side effects</p>
+                        <div class="service-details">
+                            <span class="duration">60-90 min</span>
+                            <span class="price">Call for Pricing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>ProForma Core Muscle Firming</h3>
+                        <p><strong>Muscle firming and core strengthening treatment</strong><br>
+                        Non-invasive technology to tone and firm muscles<br>
+                        Ideal for core strengthening and body contouring<br>
+                        Complements other sculpting treatments perfectly</p>
+                        <div class="service-details">
+                            <span class="duration">60-90 min</span>
+                            <span class="price">Call for Pricing</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- Wellness Therapies -->
+            <div class="service-category" id="wellness">
+                <h2 class="category-title">Wellness Therapies</h2>
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Salt Room Therapy</h3>
+                        <p><strong>Halotherapy for respiratory health, skin conditions & stress relief</strong><br>
+                        Beneficial for asthma, bronchitis, sinusitis, allergies, acne, psoriasis<br>
+                        Natural healing with pure rock salt and Himalayan salt bricks<br>
+                        Boosts immune system, reduces stress and increases energy<br>
+                        Adult & Child sessions available</p>
+                        <div class="service-details">
+                            <span class="duration">30 min/1 hr</span>
+                            <span class="price">$40 | $65</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Red Light Therapy</h3>
+                        <p><strong>Photobiomodulation for pain reduction, wound healing & anti-aging</strong><br>
+                        Stimulates mitochondrial function and ATP production<br>
+                        Improves collagen production, blood flow and muscle recovery<br>
+                        Reduces inflammation and enhances soft tissue repair<br>
+                        Adult & Child sessions available</p>
+                        <div class="service-details">
+                            <span class="duration">30 min/1 hr</span>
+                            <span class="price">$50 | $85</span>
+                        </div>
+                        
+                        <!-- Red Light Therapy Learn More Link -->
+                        <div class="service-learn-more">
+                            <a href="red-light-therapy.html" class="learn-more-link">
+                                Learn More About Red Light Therapy
+                                <i class="arrow-right">→</i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Stretch Therapy</h3>
+                        <p><strong>Active Isolated Stretching by trained flexology therapist</strong><br>
+                        Increases flexibility in tendons, ligaments & muscles<br>
+                        Improves range of motion and circulation<br>
+                        Speeds up detox, reduces injury risk and improves posture<br>
+                        Every session customized for your specific needs</p>
+                        <div class="service-details">
+                            <span class="duration">30/60/90 min</span>
+                            <span class="price">$65 | $100 | $150</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beauty Services -->
+            <div class="service-category" id="beauty">
+                <h2 class="category-title">Beauty Services</h2>
+                
+                <!-- Brow & Lash Services -->
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Eyebrow Waxing</h3>
+                        <p><strong>Professional eyebrow shaping and maintenance</strong><br>
+                        Using soft wax with Azulene extract for sensitive skin<br>
+                        Clean, precise results in a discreet, sanitary environment</p>
+                        <div class="service-details">
+                            <span class="duration">30 min</span>
+                            <span class="price">$20</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Eyebrow Design</h3>
+                        <p><strong>Custom eyebrow arching and design</strong><br>
+                        Professional shaping to complement your facial features<br>
+                        Creates perfectly defined, natural-looking brows</p>
+                        <div class="service-details">
+                            <span class="duration">45 min</span>
+                            <span class="price">$25</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Brow & Lash Tinting</h3>
+                        <p><strong>Accentuate your beautiful eyes with professional tinting</strong><br>
+                        Creates more contrast and dramatic effect<br>
+                        Perfect for matching new hair color or darkening light hair<br>
+                        Makes eyes appear more vibrant</p>
+                        <div class="service-details">
+                            <span class="duration">30-45 min</span>
+                            <span class="price">Brow $20 | Lash $45</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Facial Waxing -->
+                <div class="specialty-divider">
+                    <div class="divider-line"></div>
+                    <span class="divider-text">Facial Waxing</span>
+                    <div class="divider-line"></div>
+                </div>
+                
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Lip Wax</h3>
+                        <p><strong>Gentle hair removal for smooth, clean lips</strong><br>
+                        Quick, professional service using soft wax<br>
+                        Perfect for sensitive facial skin</p>
+                        <div class="service-details">
+                            <span class="duration">15 min</span>
+                            <span class="price">$12</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Chin Wax</h3>
+                        <p><strong>Professional chin hair removal</strong><br>
+                        Clean, precise results with minimal discomfort<br>
+                        Using anti-inflammatory soft wax</p>
+                        <div class="service-details">
+                            <span class="duration">15 min</span>
+                            <span class="price">$15</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Cheeks and Sideburns</h3>
+                        <p><strong>Complete facial hair removal for smooth skin</strong><br>
+                        Professional technique for sensitive areas<br>
+                        Long-lasting results with proper aftercare</p>
+                        <div class="service-details">
+                            <span class="duration">30 min</span>
+                            <span class="price">$20</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300">
+                        <h3>Full Face Wax</h3>
+                        <p><strong>Complete facial hair removal service</strong><br>
+                        Comprehensive treatment for all facial areas<br>
+                        Leaves skin smooth and hair-free for weeks</p>
+                        <div class="service-details">
+                            <span class="duration">60 min</span>
+                            <span class="price">$60</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Body Waxing -->
+                <div class="specialty-divider">
+                    <div class="divider-line"></div>
+                    <span class="divider-text">Body Waxing</span>
+                    <div class="divider-line"></div>
+                </div>
+                
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Bikini Line</h3>
+                        <p><strong>Professional bikini area hair removal</strong><br>
+                        Clean, comfortable environment with experienced technicians<br>
+                        Using premium soft wax for sensitive skin</p>
+                        <div class="service-details">
+                            <span class="duration">30 min</span>
+                            <span class="price">$35</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>French Bikini</h3>
+                        <p><strong>More comprehensive bikini area treatment</strong><br>
+                        Professional service in discreet, sanitary setting<br>
+                        Longer-lasting results than shaving</p>
+                        <div class="service-details">
+                            <span class="duration">45 min</span>
+                            <span class="price">$50</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Underarm Wax</h3>
+                        <p><strong>Quick, effective underarm hair removal</strong><br>
+                        Leaves skin smooth for weeks<br>
+                        Reduces ingrown hairs and razor bumps</p>
+                        <div class="service-details">
+                            <span class="duration">15 min</span>
+                            <span class="price">$26</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300">
+                        <h3>Full Leg Wax</h3>
+                        <p><strong>Complete leg hair removal service</strong><br>
+                        Professional technique for smooth, hair-free legs<br>
+                        Hair grows back less dense, finer and softer</p>
+                        <div class="service-details">
+                            <span class="duration">60 min</span>
+                            <span class="price">$90</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Half Leg Wax</h3>
+                        <p><strong>Lower or upper leg hair removal</strong><br>
+                        Perfect for targeted hair removal<br>
+                        Clean, professional results</p>
+                        <div class="service-details">
+                            <span class="duration">30 min</span>
+                            <span class="price">$55</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Full Arm Wax</h3>
+                        <p><strong>Complete arm hair removal</strong><br>
+                        Professional service for smooth, hair-free arms<br>
+                        Long-lasting results with proper care</p>
+                        <div class="service-details">
+                            <span class="duration">45 min</span>
+                            <span class="price">$60</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Half Arm Wax</h3>
+                        <p><strong>Forearm or upper arm hair removal</strong><br>
+                        Targeted treatment for specific areas<br>
+                        Clean, professional technique</p>
+                        <div class="service-details">
+                            <span class="duration">30 min</span>
+                            <span class="price">$40</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300">
+                        <h3>Back Wax for Men</h3>
+                        <p><strong>Professional back hair removal for men</strong><br>
+                        Comfortable, discreet service<br>
+                        Experienced technicians with proper sanitation</p>
+                        <div class="service-details">
+                            <span class="duration">45 min</span>
+                            <span class="price">$55</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Chest or Abdomen Wax</h3>
+                        <p><strong>Professional chest and abdomen hair removal</strong><br>
+                        Clean, comfortable environment<br>
+                        Reduces hair density over time</p>
+                        <div class="service-details">
+                            <span class="duration">30 min</span>
+                            <span class="price">$35</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spa Packages -->
+            <div class="service-category" id="packages">
+                <h2 class="category-title">Spa Packages</h2>
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Unwind & Refresh</h3>
+                        <p><strong>Perfect introduction to spa relaxation</strong><br>
+                        Express Enzyme Facial<br>
+                        Back, Neck & Shoulders Massage 30 Min.<br>
+                        Aromatherapy Steam Towel Treatment<br>
+                        Sugar Scrub Treatment for Feet</p>
+                        <div class="service-details">
+                            <span class="duration">Approx. 1.5 Hrs</span>
+                            <span class="price">$175</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Bluefern Combo</h3>
+                        <p><strong>Our signature spa experience</strong><br>
+                        Signature Facial<br>
+                        Deep Tissue Massage 60 Min.<br>
+                        Aromatherapy Steam Towel Treatment</p>
+                        <div class="service-details">
+                            <span class="duration">Approx. 2 Hrs</span>
+                            <span class="price">$225</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Royal Getaway</h3>
+                        <p><strong>Ultimate relaxation experience</strong><br>
+                        Ultimate Signature Massage 90 min.<br>
+                        Aromatherapy, Hot Stone, Foot reflexology included<br>
+                        Salt Room Session<br>
+                        Served with Tea & Chocolates</p>
+                        <div class="service-details">
+                            <span class="duration">Approx. 2.5 Hrs | For Couples</span>
+                            <span class="price">$225 | $470</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300">
+                        <h3>Mommy-To-Be Bliss</h3>
+                        <p><strong>Specially designed for expecting mothers</strong><br>
+                        Prenatal Massage 60 Min.<br>
+                        Aromatherapy Steam Towel Treatment<br>
+                        Express Enzyme Facial<br>
+                        Collagen Hand Treatment<br>
+                        Served with Tea & Chocolates</p>
+                        <div class="service-details">
+                            <span class="duration">2+ Hours</span>
+                            <span class="price">$245</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Fit for a King</h3>
+                        <p><strong>The ultimate gentleman's spa experience</strong><br>
+                        Gentleman Refreshing Facial<br>
+                        Deep Tissue Massage 60 Min.<br>
+                        Aromatherapy Steam Towel Treatment<br>
+                        Invigorating Back Scrub</p>
+                        <div class="service-details">
+                            <span class="duration">Approx. 2.5 Hrs</span>
+                            <span class="price">$255</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Renew & Restore</h3>
+                        <p><strong>Advanced facial and massage combination</strong><br>
+                        Signature HydroFacial<br>
+                        Swedish Tissue Massage 60 Min.<br>
+                        Aromatherapy Steam Towel Treatment<br>
+                        Salt Room Session (30min) or Red Light Therapy</p>
+                        <div class="service-details">
+                            <span class="duration">Approx. 2.5 Hrs</span>
+                            <span class="price">$310</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Relax & Indulge</h3>
+                        <p><strong>Full day of pampering and relaxation</strong><br>
+                        Organic Soothing Facial<br>
+                        Aromatherapy Massage 60 Min.<br>
+                        Aromatherapy Steam Towel Treatment<br>
+                        Bright Radiance Body Scrub<br>
+                        Served with Tea & Chocolates</p>
+                        <div class="service-details">
+                            <span class="duration">Approx. 4 Hrs</span>
+                            <span class="price">$385</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300">
+                        <h3>Enhance Romance</h3>
+                        <p><strong>Perfect couples retreat experience</strong><br>
+                        Aromatherapy Relaxation Massage 90 min. in couples room<br>
+                        Aromatherapy Steam Towel Treatment<br>
+                        Served with Tea & Chocolates</p>
+                        <div class="service-details">
+                            <span class="duration">Approx. 2 Hrs</span>
+                            <span class="price">$400</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Luxurious Escape</h3>
+                        <p><strong>The ultimate day spa experience</strong><br>
+                        Therapeutic Massage 60 min.<br>
+                        Aromatherapy Steam Towel Treatment<br>
+                        Radiance Anti-Aging Facial<br>
+                        Organic Green Tea Body Scrub<br>
+                        Salt Room Session (30min) or Red Light Therapy<br>
+                        Served with Lunch</p>
+                        <div class="service-details">
+                            <span class="duration">Approx. 4.5 to 5 Hrs</span>
+                            <span class="price">$475</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>The Gift That Keeps on Giving</h3>
+                        <p><strong>6 months of monthly spa services - incredible value!</strong><br>
+                        Choose one 90-minute service per month from:<br>
+                        Deep Tissue Massage 90 min, Pain Relief Massage 90 min, Aromatherapy Massage 90 min<br>
+                        Brightening Microderm Facial, Signature HydroFacial<br>
+                        Oh My Glow! Super Facial + Collagen for Hands<br>
+                        Organic Body Scrub + Back Massage 20 min</p>
+                        <div class="service-details">
+                            <span class="duration">6 Month Package</span>
+                            <span class="price">$864 <span style="text-decoration: line-through; opacity: 0.7;">$960</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking CTA -->
+    <section class="booking-cta">
+        <div class="container text-center">
+            <h2 class="cta-title">Ready to Book Your Treatment?</h2>
+            <p class="cta-text">Call us or book online to reserve your spa experience</p>
+            <div class="cta-buttons">
+                <a href="tel:7709040145" class="btn btn-primary">Call Suwanee</a>
+                <a href="tel:7706745974" class="btn btn-primary">Call Johns Creek</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as index) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4 class="footer-title">Bluefern Spa</h4>
+                    <p class="footer-description">
+                        Georgia's premier day spa offering luxury treatments and medical spa services in Suwanee and Johns Creek.
+                    </p>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="index.html#packages">Spa Packages</a></li>
+                        <li><a href="index.html#locations">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Contact</h5>
+                    <div class="footer-contact">
+                        <p><strong>Suwanee:</strong> 770-904-0145</p>
+                        <p><strong>Johns Creek:</strong> 770-674-5974</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bluefern Spa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="services-script.js"></script>
+</body>
+</html> 
