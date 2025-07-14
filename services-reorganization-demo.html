@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Reorganization Demo - Bluefern Spa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #f2f7f5 0%, #e8f2ee 100%);
+            color: #4A4A4A;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            color: #2C2C2C;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #7a9b8c;
+            font-style: italic;
+        }
+
+        /* Main Category Navigation */
+        .main-categories {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .main-category-btn {
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #a8c9be;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            color: #7a9b8c;
+        }
+
+        .main-category-btn:hover,
+        .main-category-btn.active {
+            background: #a8c9be;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(168, 201, 190, 0.3);
+        }
+
+        /* Sub-Category Navigation */
+        .sub-categories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .sub-category-btn {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid #d5eae5;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            color: #9bb5aa;
+        }
+
+        .sub-category-btn:hover,
+        .sub-category-btn.active {
+            background: #d5eae5;
+            color: #7a9b8c;
+            transform: translateY(-1px);
+        }
+
+        /* Service Grid */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e8f2ee;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-color: #a8c9be;
+        }
+
+        .service-card.expandable::after {
+            content: 'Learn More';
+            position: absolute;
+            bottom: 15px;
+            right: 25px;
+            font-size: 0.8rem;
+            color: #a8c9be;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card.expandable:hover::after {
+            opacity: 1;
+        }
+
+        .service-card.expanded {
+            grid-column: span 2;
+            z-index: 10;
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-description {
+            color: #4A4A4A;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .service-description.brief {
+            font-size: 0.95rem;
+            color: #6B6B6B;
+        }
+
+        .service-description.detailed {
+            display: none;
+            font-size: 1rem;
+            color: #4A4A4A;
+            line-height: 1.7;
+        }
+
+        .service-card.expanded .service-description.detailed {
+            display: block;
+        }
+
+        .service-card.expanded .service-description.brief {
+            display: none;
+        }
+
+        .service-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #e8f2ee;
+        }
+
+        .service-duration {
+            color: #7a9b8c;
+            font-size: 0.9rem;
+        }
+
+        .service-price {
+            color: #2C2C2C;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Expanded Card Styles */
+        .service-card.expanded {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fbfa 100%);
+            border: 2px solid #a8c9be;
+            box-shadow: 0 15px 40px rgba(168, 201, 190, 0.2);
+        }
+
+        .service-card.expanded .service-title {
+            color: #7a9b8c;
+            font-size: 1.6rem;
+        }
+
+        .service-benefits {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(168, 201, 190, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #a8c9be;
+        }
+
+        .service-benefits h4 {
+            color: #7a9b8c;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .service-benefits ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .service-benefits li {
+            padding: 5px 0;
+            color: #4A4A4A;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .service-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #a8c9be;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #9bb5aa;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .service-card.expanded .close-btn {
+            opacity: 1;
+        }
+
+        .close-btn:hover {
+            background: rgba(168, 201, 190, 0.2);
+            color: #7a9b8c;
+        }
+
+        /* Category Content */
+        .category-content {
+            display: none;
+        }
+
+        .category-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sub-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card.expanded {
+                grid-column: span 1;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Example Service Data */
+        .example-services {
+            font-style: italic;
+            color: #9bb5aa;
+            text-align: center;
+            padding: 20px;
+            background: rgba(168, 201, 190, 0.1);
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        /* Floating Animation */
+        .service-card {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .service-card:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .service-card:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .service-card:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .service-card:hover {
+            animation: none;
+        }
+
+        .service-card.expanded {
+            animation: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <h1 class="hero-title">Spa Services</h1>
+            <p class="hero-subtitle">Discover our comprehensive menu of therapeutic treatments</p>
+        </div>
+
+        <!-- Main Category Navigation -->
+        <div class="main-categories">
+            <button class="main-category-btn active" data-category="massage">Massage Therapy</button>
+            <button class="main-category-btn" data-category="skincare">Skincare & Facials</button>
+            <button class="main-category-btn" data-category="body">Body Treatments</button>
+            <button class="main-category-btn" data-category="wellness">Wellness Therapies</button>
+            <button class="main-category-btn" data-category="beauty">Beauty Services</button>
+            <button class="main-category-btn" data-category="packages">Spa Packages</button>
+        </div>
+
+        <!-- Massage Therapy Section -->
+        <div class="category-content active" id="massage">
+            <div class="sub-categories">
+                <button class="sub-category-btn active" data-sub="classic">Classic Massages</button>
+                <button class="sub-category-btn" data-sub="specialty">Specialty Massages</button>
+                <button class="sub-category-btn" data-sub="advanced">Advanced Massages</button>
+                <button class="sub-category-btn" data-sub="addons">Add-ons</button>
+            </div>
+
+            <!-- Classic Massages -->
+            <div class="sub-content active" id="classic">
+                <div class="service-grid">
+                    <div class="service-card expandable" data-service="swedish">
+                        <button class="close-btn">×</button>
+                        <h3 class="service-title">Swedish Massage</h3>
+                        <p class="service-description brief">Increases flexibility of muscles and joints, deeply relaxes & reduces stress and tension.</p>
+                        <div class="service-description detailed">
+                            <p><strong>Swedish massage is the foundation of all massage therapy.</strong> This classic technique uses long, flowing strokes to increase flexibility of muscles and joints while deeply relaxing the body and reducing stress and tension.</p>
+                            
+                            <div class="service-benefits">
+                                <h4>Key Benefits:</h4>
+                                <ul>
+                                    <li>Boosts the immune system and improves circulation</li>
+                                    <li>Helps improve emotional balance and mental clarity</li>
+                                    <li>Reduces muscle tension and promotes relaxation</li>
+                                    <li>Enhances flexibility and range of motion</li>
+                                    <li>Perfect for stress relief and general wellness</li>
+                                </ul>
+                            </div>
+                            
+                            <p><em>Our therapists customize each session to address your specific needs and preferences, ensuring the most therapeutic and relaxing experience possible.</em></p>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">60/90 min</span>
+                            <span class="service-price">$110 | $155</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card expandable" data-service="deep-tissue">
+                        <button class="close-btn">×</button>
+                        <h3 class="service-title">Deep Tissue Massage</h3>
+                        <p class="service-description brief">Reduces stress and muscle tension, relieves chronic back pain with targeted pressure.</p>
+                        <div class="service-description detailed">
+                            <p><strong>Deep tissue massage targets the deeper layers of muscles and connective tissue.</strong> The therapist uses direct pressure to relax the top layer of muscle in order to reach deeper muscle tissue, making it ideal for chronic pain and muscle tension.</p>
+                            
+                            <div class="service-benefits">
+                                <h4>Key Benefits:</h4>
+                                <ul>
+                                    <li>Relieves chronic back pain and muscle tension</li>
+                                    <li>Uses neuromuscular therapy (NMT) and myofascial release techniques</li>
+                                    <li>Improves posture and range of motion</li>
+                                    <li>Helps with sports injuries and repetitive strain</li>
+                                    <li>Reduces inflammation and promotes healing</li>
+                                </ul>
+                            </div>
+                            
+                            <p><em>This therapeutic massage is perfect for those with chronic pain, athletes, or anyone who carries tension in their muscles.</em></p>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">60/90 min</span>
+                            <span class="service-price">$115 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card expandable" data-service="hot-stone">
+                        <button class="close-btn">×</button>
+                        <h3 class="service-title">Hot Stone Massage</h3>
+                        <p class="service-description brief">Very beneficial for fibromyalgia and inflammation. Reduces chronic muscle pain.</p>
+                        <div class="service-description detailed">
+                            <p><strong>Hot stone massage combines the therapeutic benefits of massage with the healing properties of heated basalt stones.</strong> The warmth of the stones helps release muscle tension and feels heavenly, making it especially beneficial for those with fibromyalgia and inflammation of the connective tissue.</p>
+                            
+                            <div class="service-benefits">
+                                <h4>Key Benefits:</h4>
+                                <ul>
+                                    <li>Reduces chronic muscle pain and tension</li>
+                                    <li>Helps improve circulation and reduces insomnia</li>
+                                    <li>Beneficial for fibromyalgia and inflammation</li>
+                                    <li>Promotes deep relaxation and stress relief</li>
+                                    <li>Enhances the overall massage experience</li>
+                                </ul>
+                            </div>
+                            
+                            <p><em>The heated stones provide a unique therapeutic experience that combines the best of traditional massage with the healing power of heat therapy.</em></p>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">60/90 min</span>
+                            <span class="service-price">$125 | $170</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specialty Massages -->
+            <div class="sub-content" id="specialty">
+                <div class="service-grid">
+                    <div class="service-card expandable" data-service="lymphatic">
+                        <button class="close-btn">×</button>
+                        <h3 class="service-title">Manual Lymphatic Drainage</h3>
+                        <p class="service-description brief">Using very light pressure, gentle, rhythmic strokes to increase lymph flow.</p>
+                        <div class="service-description detailed">
+                            <p><strong>Manual Lymphatic Drainage is a gentle, therapeutic massage technique</strong> that uses very light pressure and rhythmic strokes to increase the flow of lymph throughout the body. This specialized treatment is particularly beneficial for post-surgical recovery and detoxification.</p>
+                            
+                            <div class="service-benefits">
+                                <h4>Key Benefits:</h4>
+                                <ul>
+                                    <li>Helps reduce inflammation after surgery</li>
+                                    <li>Detoxifies the body and stimulates the immune system</li>
+                                    <li>Reduces swelling and edema</li>
+                                    <li>Promotes healing and recovery</li>
+                                    <li>Best results in a series of treatments (3-6 sessions)</li>
+                                </ul>
+                            </div>
+                            
+                            <p><em>This gentle yet effective treatment is perfect for post-surgical recovery, reducing swelling, and supporting the body's natural detoxification processes.</em></p>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">60/90 min</span>
+                            <span class="service-price">$120 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card expandable" data-service="aromatherapy">
+                        <button class="close-btn">×</button>
+                        <h3 class="service-title">Aromatherapy Massage</h3>
+                        <p class="service-description brief">Using essential oils to promote healing & well-being, deeply relaxes & reduces stress.</p>
+                        <div class="service-description detailed">
+                            <p><strong>Aromatherapy massage combines the therapeutic benefits of massage with the healing properties of essential oils.</strong> Our carefully selected essential oils are chosen to address your specific needs, whether that's relaxation, energy, pain relief, or emotional balance.</p>
+                            
+                            <div class="service-benefits">
+                                <h4>Key Benefits:</h4>
+                                <ul>
+                                    <li>Deeply relaxes and reduces stress, tension and pain</li>
+                                    <li>Improves circulation and calms the nervous system</li>
+                                    <li>Helps improve mood and emotional balance</li>
+                                    <li>Enhances the overall massage experience</li>
+                                    <li>Provides both physical and emotional healing</li>
+                                </ul>
+                            </div>
+                            
+                            <p><em>Our aromatherapy massage uses only the highest quality essential oils, carefully selected and blended to create the perfect therapeutic experience for your needs.</em></p>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">60/90 min</span>
+                            <span class="service-price">$120 | $160</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Massages -->
+            <div class="sub-content" id="advanced">
+                <div class="service-grid">
+                    <div class="service-card expandable" data-service="ultimate-signature">
+                        <button class="close-btn">×</button>
+                        <h3 class="service-title">Ultimate Signature Massage</h3>
+                        <p class="service-description brief">Blends therapeutic massage with natural anti-inflammatory properties of essential oils.</p>
+                        <div class="service-description detailed">
+                            <p><strong>Our Ultimate Signature Massage is the pinnacle of therapeutic massage therapy.</strong> This comprehensive treatment blends multiple massage techniques with the natural anti-inflammatory properties of essential oils to create a truly transformative experience.</p>
+                            
+                            <div class="service-benefits">
+                                <h4>Treatment Includes:</h4>
+                                <ul>
+                                    <li>Swedish massage for relaxation and circulation</li>
+                                    <li>Deep tissue techniques for muscle tension</li>
+                                    <li>Myofascial release for connective tissue</li>
+                                    <li>Stretching for flexibility and range of motion</li>
+                                    <li>Hot stones for enhanced relaxation</li>
+                                    <li>Reflexology for the feet</li>
+                                    <li>Essential oils for therapeutic benefits</li>
+                                </ul>
+                            </div>
+                            
+                            <p><em>This is our most comprehensive massage treatment, designed to address all aspects of physical and emotional wellness in one session.</em></p>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">90 min/2 hr</span>
+                            <span class="service-price">$165 | $225</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add-ons -->
+            <div class="sub-content" id="addons">
+                <div class="example-services">
+                    <p>Add-ons would include: Salt Room Session, Hot Stones, Aromatherapy Oils, Cupping, Back Scrub, Foot Reflexology, Collagen Hand/Foot Treatment</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skincare & Facials Section -->
+        <div class="category-content" id="skincare">
+            <div class="sub-categories">
+                <button class="sub-category-btn active" data-sub="basic">Basic Facials</button>
+                <button class="sub-category-btn" data-sub="advanced-facials">Advanced Facials</button>
+                <button class="sub-category-btn" data-sub="specialty-facials">Specialty Facials</button>
+                <button class="sub-category-btn" data-sub="facial-addons">Add-ons</button>
+            </div>
+
+            <!-- Basic Facials -->
+            <div class="sub-content active" id="basic">
+                <div class="service-grid">
+                    <div class="service-card expandable" data-service="signature-facial">
+                        <button class="close-btn">×</button>
+                        <h3 class="service-title">Signature Facial</h3>
+                        <p class="service-description brief">Customized treatment for your particular type of skin with analysis and custom mask.</p>
+                        <div class="service-description detailed">
+                            <p><strong>Our Signature Facial is a customized treatment designed specifically for your skin type.</strong> This comprehensive facial includes skin analysis, detoxifying steam, gentle cleansing, T-zone extractions, and a custom mask tailored to your skin's unique needs.</p>
+                            
+                            <div class="service-benefits">
+                                <h4>Treatment Includes:</h4>
+                                <ul>
+                                    <li>Professional skin analysis and consultation</li>
+                                    <li>Detoxifying steam treatment</li>
+                                    <li>Gentle cleansing and exfoliation</li>
+                                    <li>T-zone extractions for clearer skin</li>
+                                    <li>Custom mask for your specific skin type</li>
+                                    <li>Moisturizing and protection application</li>
+                                </ul>
+                            </div>
+                            
+                            <p><em>The gentle yet powerful exfoliating enzyme gives your complexion a healthy, glowing appearance while clarifying, hydrating, and moisturizing your skin.</em></p>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">60 min</span>
+                            <span class="service-price">$115</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card expandable" data-service="deep-pore">
+                        <button class="close-btn">×</button>
+                        <h3 class="service-title">Deep Pore Cleansing Facial</h3>
+                        <p class="service-description brief">A deeply detoxifying treatment for clearer, brighter skin with extractions.</p>
+                        <div class="service-description detailed">
+                            <p><strong>Our Deep Pore Cleansing Facial is a powerful detoxifying treatment</strong> designed to clear congested pores and reveal brighter, healthier skin. This treatment uses gentle natural extracts like chamomile, cucumber, and tea tree oil to reduce inflammation and promote healing.</p>
+                            
+                            <div class="service-benefits">
+                                <h4>Perfect For:</h4>
+                                <ul>
+                                    <li>Oily, congested, or hormonal skin</li>
+                                    <li>Those struggling with blackheads and breakouts</li>
+                                    <li>Anyone wanting deeper pore cleansing</li>
+                                    <li>Skin that needs detoxification</li>
+                                </ul>
+                            </div>
+                            
+                            <p><em>Includes extractions of blackheads and congested areas. Add millia (whitehead) extraction for $20. This treatment leaves your skin feeling refreshed, clean, and noticeably clearer.</em></p>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">60 min</span>
+                            <span class="service-price">$130</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Facials -->
+            <div class="sub-content" id="advanced-facials">
+                <div class="service-grid">
+                    <div class="service-card expandable" data-service="rf-firming">
+                        <button class="close-btn">×</button>
+                        <h3 class="service-title">RF Firming Facial</h3>
+                        <p class="service-description brief">Tone and tighten your skin with our FIRM & TIGHTEN FACIAL that helps reduce wrinkles.</p>
+                        <div class="service-description detailed">
+                            <p><strong>Our RF Firming Facial uses advanced radio frequency technology</strong> to tone and tighten your skin, helping to reduce wrinkles and skin laxity. This non-invasive procedure is the perfect restorative remedy for skin problems associated with aging.</p>
+                            
+                            <div class="service-benefits">
+                                <h4>Technology Used:</h4>
+                                <ul>
+                                    <li>RF (Radio Frequency) technology</li>
+                                    <li>Ultrasonic technology</li>
+                                    <li>Micro-current technology</li>
+                                    <li>Oxygen infusion technology</li>
+                                </ul>
+                            </div>
+                            
+                            <p><em>Firm up without a face-lift! This customized skin-tightening treatment is tailored to every client based on their personal needs and skin concerns.</em></p>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">75 min</span>
+                            <span class="service-price">$200</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specialty Facials -->
+            <div class="sub-content" id="specialty-facials">
+                <div class="example-services">
+                    <p>Specialty Facials would include: Back Acne Facial, Teen Facial, Gentleman's Facial, Express Enzyme Facial</p>
+                </div>
+            </div>
+
+            <!-- Facial Add-ons -->
+            <div class="sub-content" id="facial-addons">
+                <div class="example-services">
+                    <p>Facial Add-ons would include: Peptide & Stem Cell Mask, LIFT & FIRM Eye Treatment, Deep Hydrating w/Hyaluronic, Microderm or Dermaplaning, Photon Light, Decolte Anti-Aging Collagen, Dermal Peel Layer, Collagen Hand Therapy, RF Firming</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Body Treatments Section -->
+        <div class="category-content" id="body">
+            <div class="sub-categories">
+                <button class="sub-category-btn active" data-sub="scrubs">Body Scrubs & Wraps</button>
+                <button class="sub-category-btn" data-sub="bioslimming">BioSlimming</button>
+                <button class="sub-category-btn" data-sub="sculpting">Body Sculpting</button>
+            </div>
+
+            <!-- Body Scrubs & Wraps -->
+            <div class="sub-content active" id="scrubs">
+                <div class="service-grid">
+                    <div class="service-card expandable" data-service="citrus-scrub">
+                        <button class="close-btn">×</button>
+                        <h3 class="service-title">Bright Radiance Citrus Body Scrub</h3>
+                        <p class="service-description brief">Fine-grain sea salt blended with shea butter and skin-softening oils for glowing skin.</p>
+                        <div class="service-description detailed">
+                            <p><strong>Our Bright Radiance Citrus Body Scrub</strong> uses fine-grain sea salt blended with shea butter and skin-softening oils to gently buff away dryness, replacing it with glowing skin that is soft to the touch.</p>
+                            
+                            <div class="service-benefits">
+                                <h4>Key Benefits:</h4>
+                                <ul>
+                                    <li>Gently exfoliates dead skin cells</li>
+                                    <li>Stimulates circulation for healthy glow</li>
+                                    <li>Moisturizes with shea butter and oils</li>
+                                    <li>Leaves skin silky smooth</li>
+                                    <li>Uses only natural and effective ingredients</li>
+                                </ul>
+                            </div>
+                            
+                            <p><em>This treatment uses only natural and highly effective ingredients that are both pampering and nourishing, giving your body a silky glow that lasts.</em></p>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">60 min</span>
+                            <span class="service-price">$120</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BioSlimming -->
+            <div class="sub-content" id="bioslimming">
+                <div class="example-services">
+                    <p>BioSlimming would include: Upper Body Wrap, Lower Body Wrap</p>
+                </div>
+            </div>
+
+            <!-- Body Sculpting -->
+            <div class="sub-content" id="sculpting">
+                <div class="example-services">
+                    <p>Body Sculpting would include: Ultimate Tummy Redux, Ultimate Cellulite Redux, Bum Bum Lift, Power Sculpt, ProForma Core Muscle Firming</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wellness Therapies Section -->
+        <div class="category-content" id="wellness">
+            <div class="service-grid">
+                <div class="service-card expandable" data-service="salt-room">
+                    <button class="close-btn">×</button>
+                    <h3 class="service-title">Salt Room Therapy</h3>
+                    <p class="service-description brief">Halotherapy for respiratory health, skin conditions & stress relief with pure rock salt.</p>
+                    <div class="service-description detailed">
+                        <p><strong>Salt Room Therapy (Halotherapy) is a natural healing treatment</strong> that uses pure rock salt and Himalayan salt bricks to create a therapeutic environment. This ancient therapy has been used for centuries to promote respiratory health and skin healing.</p>
+                        
+                        <div class="service-benefits">
+                            <h4>Beneficial For:</h4>
+                            <ul>
+                                <li>Asthma, bronchitis, and sinusitis</li>
+                                <li>Allergies and respiratory conditions</li>
+                                <li>Acne, psoriasis, and skin conditions</li>
+                                <li>Stress relief and relaxation</li>
+                                <li>Boosting immune system function</li>
+                            </ul>
+                        </div>
+                        
+                        <p><em>Our salt room features pure rock salt and Himalayan salt bricks, creating a natural healing environment that boosts your immune system, reduces stress, and increases energy. Adult & Child sessions available.</em></p>
+                    </div>
+                    <div class="service-details">
+                        <span class="service-duration">30 min/1 hr</span>
+                        <span class="service-price">$40 | $65</span>
+                    </div>
+                </div>
+                
+                <div class="service-card expandable" data-service="red-light">
+                    <button class="close-btn">×</button>
+                    <h3 class="service-title">Red Light Therapy</h3>
+                    <p class="service-description brief">Photobiomodulation for pain reduction, wound healing & anti-aging benefits.</p>
+                    <div class="service-description detailed">
+                        <p><strong>Red Light Therapy uses photobiomodulation technology</strong> to stimulate cellular function and promote natural healing processes. This non-invasive treatment harnesses the power of specific light wavelengths to provide therapeutic benefits.</p>
+                        
+                        <div class="service-benefits">
+                            <h4>Key Benefits:</h4>
+                            <ul>
+                                <li>Stimulates mitochondrial function and ATP production</li>
+                                <li>Improves collagen production and skin health</li>
+                                <li>Enhances blood flow and muscle recovery</li>
+                                <li>Reduces inflammation and pain</li>
+                                <li>Accelerates soft tissue repair</li>
+                            </ul>
+                        </div>
+                        
+                        <p><em>This advanced therapy is perfect for pain management, anti-aging, wound healing, and overall wellness. Adult & Child sessions available.</em></p>
+                    </div>
+                    <div class="service-details">
+                        <span class="service-duration">30 min/1 hr</span>
+                        <span class="service-price">$50 | $85</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Beauty Services Section -->
+        <div class="category-content" id="beauty">
+            <div class="sub-categories">
+                <button class="sub-category-btn active" data-sub="brow-lash">Brow & Lash</button>
+                <button class="sub-category-btn" data-sub="facial-waxing">Facial Waxing</button>
+                <button class="sub-category-btn" data-sub="body-waxing">Body Waxing</button>
+            </div>
+
+            <!-- Brow & Lash -->
+            <div class="sub-content active" id="brow-lash">
+                <div class="service-grid">
+                    <div class="service-card expandable" data-service="eyebrow-waxing">
+                        <button class="close-btn">×</button>
+                        <h3 class="service-title">Eyebrow Waxing</h3>
+                        <p class="service-description brief">Professional eyebrow shaping and maintenance using soft wax with Azulene extract.</p>
+                        <div class="service-description detailed">
+                            <p><strong>Professional eyebrow shaping and maintenance</strong> using soft wax with Azulene extract for sensitive skin. Our experienced technicians provide clean, precise results in a discreet, sanitary environment.</p>
+                            
+                            <div class="service-benefits">
+                                <h4>Service Includes:</h4>
+                                <ul>
+                                    <li>Professional consultation and shaping</li>
+                                    <li>Soft wax with Azulene extract for sensitive skin</li>
+                                    <li>Clean, precise results</li>
+                                    <li>Discreet, sanitary environment</li>
+                                    <li>Aftercare instructions</li>
+                                </ul>
+                            </div>
+                            
+                            <p><em>Perfect for maintaining well-groomed brows that frame your face beautifully. Our gentle wax formula is ideal for sensitive skin.</em></p>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">30 min</span>
+                            <span class="service-price">$20</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Facial Waxing -->
+            <div class="sub-content" id="facial-waxing">
+                <div class="example-services">
+                    <p>Facial Waxing would include: Lip Wax, Chin Wax, Cheeks and Sideburns, Full Face Wax</p>
+                </div>
+            </div>
+
+            <!-- Body Waxing -->
+            <div class="sub-content" id="body-waxing">
+                <div class="example-services">
+                    <p>Body Waxing would include: Bikini Line, French Bikini, Underarm Wax, Full/Half Leg Wax, Full/Half Arm Wax, Back Wax for Men, Chest or Abdomen Wax</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Spa Packages Section -->
+        <div class="category-content" id="packages">
+            <div class="sub-categories">
+                <button class="sub-category-btn active" data-sub="relaxation">Relaxation Packages</button>
+                <button class="sub-category-btn" data-sub="advanced-packages">Advanced Packages</button>
+                <button class="sub-category-btn" data-sub="couples-packages">Couples Packages</button>
+            </div>
+
+            <!-- Relaxation Packages -->
+            <div class="sub-content active" id="relaxation">
+                <div class="service-grid">
+                    <div class="service-card expandable" data-service="unwind-refresh">
+                        <button class="close-btn">×</button>
+                        <h3 class="service-title">Unwind & Refresh</h3>
+                        <p class="service-description brief">Perfect introduction to spa relaxation with facial, massage, and treatments.</p>
+                        <div class="service-description detailed">
+                            <p><strong>Our Unwind & Refresh package is the perfect introduction to spa relaxation.</strong> This comprehensive experience combines multiple treatments to provide a complete wellness experience in just 1.5 hours.</p>
+                            
+                            <div class="service-benefits">
+                                <h4>Package Includes:</h4>
+                                <ul>
+                                    <li>Express Enzyme Facial for skin renewal</li>
+                                    <li>Back, Neck & Shoulders Massage (30 min)</li>
+                                    <li>Aromatherapy Steam Towel Treatment</li>
+                                    <li>Sugar Scrub Treatment for Feet</li>
+                                    <li>Relaxing spa environment</li>
+                                </ul>
+                            </div>
+                            
+                            <p><em>This package is ideal for first-time spa visitors or anyone looking for a quick but comprehensive wellness experience. Perfect for busy schedules!</em></p>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">Approx. 1.5 Hrs</span>
+                            <span class="service-price">$175</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card expandable" data-service="bluefern-combo">
+                        <button class="close-btn">×</button>
+                        <h3 class="service-title">Bluefern Combo</h3>
+                        <p class="service-description brief">Our signature spa experience with facial, massage, and aromatherapy treatment.</p>
+                        <div class="service-description detailed">
+                            <p><strong>The Bluefern Combo is our signature spa experience</strong> that combines our most popular treatments into one comprehensive package. This 2-hour experience is perfect for those seeking deep relaxation and skin renewal.</p>
+                            
+                            <div class="service-benefits">
+                                <h4>Package Includes:</h4>
+                                <ul>
+                                    <li>Signature Facial (customized for your skin type)</li>
+                                    <li>Deep Tissue Massage (60 min)</li>
+                                    <li>Aromatherapy Steam Towel Treatment</li>
+                                    <li>Professional consultation</li>
+                                    <li>Relaxing spa environment</li>
+                                </ul>
+                            </div>
+                            
+                            <p><em>This is our most popular package, offering the perfect balance of therapeutic massage and skin care. Ideal for regular spa-goers and those seeking comprehensive wellness treatment.</em></p>
+                        </div>
+                        <div class="service-details">
+                            <span class="service-duration">Approx. 2 Hrs</span>
+                            <span class="service-price">$225</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Packages -->
+            <div class="sub-content" id="advanced-packages">
+                <div class="example-services">
+                    <p>Advanced Packages would include: Renew & Restore, Relax & Indulge, Luxurious Escape</p>
+                </div>
+            </div>
+
+            <!-- Couples Packages -->
+            <div class="sub-content" id="couples-packages">
+                <div class="example-services">
+                    <p>Couples Packages would include: Royal Getaway, Enhance Romance</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Main category navigation
+        document.querySelectorAll('.main-category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons and content
+                document.querySelectorAll('.main-category-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.category-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                btn.classList.add('active');
+                const category = btn.getAttribute('data-category');
+                document.getElementById(category).classList.add('active');
+                
+                // Reset sub-category to first option
+                const subBtns = document.querySelectorAll(`#${category} .sub-category-btn`);
+                const subContents = document.querySelectorAll(`#${category} .sub-content`);
+                subBtns.forEach(b => b.classList.remove('active'));
+                subContents.forEach(c => c.classList.remove('active'));
+                if (subBtns.length > 0) {
+                    subBtns[0].classList.add('active');
+                    subContents[0].classList.add('active');
+                }
+            });
+        });
+
+        // Sub-category navigation
+        document.querySelectorAll('.sub-category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const parent = btn.closest('.category-content');
+                const subBtns = parent.querySelectorAll('.sub-category-btn');
+                const subContents = parent.querySelectorAll('.sub-content');
+                
+                subBtns.forEach(b => b.classList.remove('active'));
+                subContents.forEach(c => c.classList.remove('active'));
+                
+                btn.classList.add('active');
+                const subCategory = btn.getAttribute('data-sub');
+                parent.querySelector(`#${subCategory}`).classList.add('active');
+            });
+        });
+
+        // Service card expansion
+        document.querySelectorAll('.service-card.expandable').forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Don't expand if clicking on close button
+                if (e.target.classList.contains('close-btn')) {
+                    return;
+                }
+                
+                // Close any other expanded cards
+                document.querySelectorAll('.service-card.expanded').forEach(expandedCard => {
+                    if (expandedCard !== card) {
+                        expandedCard.classList.remove('expanded');
+                    }
+                });
+                
+                // Toggle current card
+                card.classList.toggle('expanded');
+            });
+        });
+
+        // Close button functionality
+        document.querySelectorAll('.close-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent card click
+                const card = btn.closest('.service-card');
+                card.classList.remove('expanded');
+            });
+        });
+
+        // Close expanded cards when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.service-card')) {
+                document.querySelectorAll('.service-card.expanded').forEach(card => {
+                    card.classList.remove('expanded');
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

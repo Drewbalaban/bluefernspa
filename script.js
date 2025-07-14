@@ -260,7 +260,7 @@ window.addEventListener('scroll', () => {
             document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.remove('active');
         }
     });
-});
+}, 10000); // 10 seconds (match CSS transition)
 
 // ===== Smooth Page Transitions =====
 const pageTransition = () => {
@@ -391,6 +391,156 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Navigation functionality
 document.addEventListener('DOMContentLoaded', function() {
+    class HeroSlider {
+        constructor() {
+            this.slides = document.querySelectorAll('.slide');
+            this.currentSlide = 0;
+            this.slideInterval = null;
+            this.slideDuration = 10000; // 10 seconds per slide
+            this.transitionDuration = 1500; // 1.5 seconds for crossfade
+            this.isTransitioning = false;
+            
+            this.init();
+        }
+        
+        init() {
+            // Hide all slides except the first one
+            this.slides.forEach((slide, index) => {
+                if (index !== 0) {
+                    slide.style.opacity = '0';
+                    slide.style.visibility = 'hidden';
+                } else {
+                    slide.classList.add('active');
+                }
+            });
+            
+            // Set up navigation event listeners
+            this.setupNavigation();
+            
+            // Start the slideshow
+            this.startSlideshow();
+        }
+        
+        setupNavigation() {
+            // Arrow navigation
+            const prevBtn = document.getElementById('prevSlide');
+            const nextBtn = document.getElementById('nextSlide');
+            const dots = document.querySelectorAll('.dot');
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    this.resetSlideshow();
+                    this.prevSlide();
+                });
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    this.resetSlideshow();
+                    this.nextSlide();
+                });
+            }
+            
+            // Dot navigation
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const slideIndex = parseInt(dot.getAttribute('data-slide'));
+                    this.resetSlideshow();
+                    this.showSlide(slideIndex);
+                    this.updateDots(slideIndex);
+                });
+            });
+        }
+        
+        updateDots(activeIndex) {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                if (index === activeIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        prevSlide() {
+            const prevIndex = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+            this.showSlide(prevIndex);
+            this.updateDots(prevIndex);
+        }
+        
+        showSlide(index) {
+            if (this.isTransitioning || index === this.currentSlide) return;
+            this.isTransitioning = true;
+            
+            const currentSlide = this.slides[this.currentSlide];
+            const nextSlide = this.slides[index];
+            
+            // Prepare next slide
+            nextSlide.style.opacity = '0';
+            nextSlide.style.visibility = 'visible';
+            nextSlide.classList.add('active');
+            
+            // Force reflow
+            void nextSlide.offsetHeight;
+            
+            // Start the crossfade
+            nextSlide.style.transition = 'opacity 1.5s ease-in-out';
+            nextSlide.style.opacity = '1';
+            
+            // Fade out current slide
+            if (currentSlide) {
+                currentSlide.style.transition = 'opacity 1.5s ease-in-out';
+                currentSlide.style.opacity = '0';
+            }
+            
+            // After transition completes
+            setTimeout(() => {
+                if (currentSlide) {
+                    currentSlide.classList.remove('active');
+                    currentSlide.style.visibility = 'hidden';
+                }
+                this.currentSlide = index;
+                this.isTransitioning = false;
+            }, 1500); // Match this with the CSS transition duration
+        }
+        
+        nextSlide() {
+            const nextIndex = (this.currentSlide + 1) % this.slides.length;
+            this.showSlide(nextIndex);
+            this.updateDots(nextIndex);
+        }
+        
+        startSlideshow() {
+            if (!this.slideInterval) {
+                this.slideInterval = setInterval(() => this.nextSlide(), this.slideDuration);
+            }
+        }
+        
+        stopSlideshow() {
+            if (this.slideInterval) {
+                clearInterval(this.slideInterval);
+                this.slideInterval = null;
+            }
+        }
+        
+        resetSlideshow() {
+            this.stopSlideshow();
+            this.startSlideshow();
+        }
+        
+        toggleSlideshow() {
+            if (this.slideInterval) {
+                this.stopSlideshow();
+            } else {
+                this.startSlideshow();
+            }
+        }
+    }
+    
+    // Initialize the slider
+    const heroSlider = new HeroSlider();
+    
     const nav = document.querySelector('.nav');
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
@@ -483,63 +633,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// ===== Modern Services Banner Parallax =====
+// ===== Modern Services Banner =====
 const initBannerParallax = () => {
-    const bannerCards = document.querySelectorAll('.banner-card');
-    
-    if (bannerCards.length === 0) return;
-    
-    const handleScrollParallax = () => {
-        if (window.innerWidth <= 768) return; // Disable on mobile for performance
-        
-        const scrollTop = window.pageYOffset;
-        
-        bannerCards.forEach((card, index) => {
-            const rect = card.getBoundingClientRect();
-            const cardTop = rect.top + scrollTop;
-            const cardHeight = rect.height;
-            const windowHeight = window.innerHeight;
-            
-            // Check if card is in viewport
-            if (rect.top < windowHeight && rect.bottom > 0) {
-                const parallaxImage = card.querySelector('.parallax-image');
-                const bannerOverlay = card.querySelector('.banner-overlay');
-                
-                if (parallaxImage) {
-                    // Calculate parallax offset based on scroll position
-                    const speed = 0.3 + (index * 0.1); // Different speeds for each card
-                    const yPos = -(scrollTop - cardTop) * speed;
-                    
-                    // Apply parallax transform
-                    parallaxImage.style.transform = `translate(-10%, -10%) translateY(${yPos}px)`;
-                }
-                
-                // Enhance overlay effect based on scroll
-                if (bannerOverlay) {
-                    const scrollProgress = Math.max(0, Math.min(1, (windowHeight - rect.top) / windowHeight));
-                    const opacity = 0.7 + (scrollProgress * 0.1);
-                    bannerOverlay.style.background = bannerOverlay.style.background.replace(/rgba\(44, 44, 44, [0-9.]+\)/, `rgba(44, 44, 44, ${opacity})`);
-                }
-            }
-        });
-    };
-    
-    // Throttle scroll event for better performance
-    let ticking = false;
-    const throttledScrollHandler = () => {
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                handleScrollParallax();
-                ticking = false;
-            });
-            ticking = true;
-        }
-    };
-    
-    window.addEventListener('scroll', throttledScrollHandler);
-    
-    // Initial call
-    handleScrollParallax();
+    // Parallax functionality has been removed as requested
+    // This function is kept as a placeholder for any future banner initialization
+    return;
 };
 
 // ===== Enhanced Banner Card Interactions =====
@@ -547,7 +645,7 @@ const initBannerInteractions = () => {
     const bannerCards = document.querySelectorAll('.banner-card');
     
     bannerCards.forEach((card, index) => {
-        const parallaxImage = card.querySelector('.parallax-image');
+        const bannerImage = card.querySelector('.banner-image');
         const bannerContent = card.querySelector('.banner-content');
         const bannerOverlay = card.querySelector('.banner-overlay');
         
