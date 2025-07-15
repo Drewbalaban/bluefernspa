@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massage Therapy - Bluefern Spa | Therapeutic Healing</title>
+    <meta name="description" content="Experience therapeutic healing through the power of touch with our comprehensive massage therapy services at Bluefern Spa.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Massage Therapy Page Styles */
+        :root {
+            --primary-color: #d5eae5;
+            --secondary-color: #a8c9be;
+            --accent-color: #f2f7f5;
+            --light-sage: #e8f2ee;
+            --dark-sage: #9bb5aa;
+            --darker-sage: #7a9b8c;
+            --dark-color: #2C2C2C;
+            --light-color: #FAFAFA;
+            --text-color: #4A4A4A;
+            --border-color: #E5E5E5;
+            
+            --font-primary: 'Cormorant Garamond', serif;
+            --font-secondary: 'Montserrat', sans-serif;
+            
+            --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.08);
+            --shadow-md: 0 5px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            max-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+            background: url('openart-woman-getting-a-massage-on-a-massage-table-spa-setting-relaxing-warm_eFHksr9-_upscaled.png') center/cover;
+            overflow: hidden;
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 30px;
+            z-index: 2;
+            position: relative;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            /* Feathered edges that blend into background */
+            -webkit-mask: radial-gradient(ellipse 95% 90% at center, black 40%, rgba(0,0,0,0.8) 65%, rgba(0,0,0,0.3) 85%, transparent 100%);
+            mask: radial-gradient(ellipse 95% 90% at center, black 40%, rgba(0,0,0,0.8) 65%, rgba(0,0,0,0.3) 85%, transparent 100%);
+            /* Start invisible for elegant reveal */
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+        }
+
+        .hero-eyebrow {
+            font-family: var(--font-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #2C2C2C;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: #2C2C2C;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-primary);
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-weight: 300;
+            color: #2C2C2C;
+            margin-bottom: 2rem;
+            font-style: italic;
+            line-height: 1.4;
+            opacity: 0;
+            transform: translateY(30px);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .hero-quote {
+            font-family: var(--font-secondary);
+            font-size: 1.1rem;
+            color: #2C2C2C;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(30px);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            font-weight: 500;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: var(--light-sage);
+            padding: 20px 0;
+        }
+
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumb-nav {
+            font-family: var(--font-secondary);
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .breadcrumb-nav a {
+            color: var(--darker-sage);
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+
+        .breadcrumb-nav a:hover {
+            color: var(--dark-color);
+        }
+
+        /* Service Categories */
+        .service-categories {
+            padding: 80px 0;
+            background: var(--light-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: white;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-base);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .category-btn:hover {
+            border-color: var(--secondary-color);
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .category-btn.active {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* Service Category Content */
+        .service-category {
+            display: none;
+        }
+
+        .service-category.active {
+            display: block;
+        }
+
+        .category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
+            position: relative;
+            overflow: visible;
+            will-change: opacity, transform;
+            backface-visibility: hidden;
+            /* Start invisible for elegant reveal */
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            filter: none;
+        }
+
+        .service-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            filter: none;
+        }
+
+        .service-item:hover::before {
+            opacity: 1;
+        }
+
+        /* Enhanced hover effects for service items */
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(213, 234, 229, 0.1) 0%, 
+                rgba(168, 201, 190, 0.1) 50%, 
+                rgba(213, 234, 229, 0.1) 100%);
+            opacity: 0;
+            transition: var(--transition-base);
+            border-radius: 15px;
+            z-index: 1;
+        }
+
+        .service-item:hover::before {
+            opacity: 1;
+        }
+
+        /* Ensure content stays above the overlay */
+        .service-item > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-item.animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .service-item h3 {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            transition: var(--transition-base);
+        }
+
+        .service-item:hover h3 {
+            color: var(--darker-sage);
+            transform: translateY(-2px);
+        }
+
+        .service-item p {
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            transition: var(--transition-base);
+        }
+
+        .service-item:hover p {
+            color: var(--dark-color);
+        }
+
+        .service-item p strong {
+            color: var(--darker-sage);
+        }
+
+        .service-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            transition: var(--transition-base);
+        }
+
+        .duration {
+            font-family: var(--font-secondary);
+            font-size: 0.9rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--darker-sage);
+        }
+
+        /* Specialty Divider */
+        .specialty-divider {
+            display: none; /* Hidden since we're using tabs now */
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes heroFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes heroTextFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero animation classes */
+        .hero-content.animate-in {
+            animation: heroFadeIn 1s ease-out forwards;
+        }
+
+        .hero-eyebrow.animate-in {
+            animation: heroTextFadeIn 0.8s ease-out forwards;
+        }
+
+        .hero-title.animate-in {
+            animation: heroTextFadeIn 1s ease-out forwards;
+        }
+
+        .hero-subtitle.animate-in {
+            animation: heroTextFadeIn 1.2s ease-out forwards;
+        }
+
+        .hero-quote.animate-in {
+            animation: heroTextFadeIn 1.4s ease-out forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .category-nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .category-btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="darker-logo-1.png" alt="Bluefern Spa">
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#services" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#specials" class="nav-link">Specials</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#locations" class="nav-link">Locations</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.thegiftcardcafe.com/cart/selectpac.php" class="nav-link egift-link">Buy eGift</a>
+                </li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <div class="hero-eyebrow">Bluefern Spa</div>
+            <h1 class="hero-title">Massage Therapy</h1>
+            <p class="hero-subtitle">Therapeutic healing through the power of touch</p>
+            <div class="hero-quote">Where tension melts away and wellness begins</div>
+        </div>
+    </section>
+
+    <!-- Back to Services -->
+    <section class="breadcrumb">
+        <div class="breadcrumb-container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html#services">← Back to Our Services</a>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="service-categories">
+        <div class="container">
+            <div class="category-nav">
+                <button class="category-btn active" data-category="massages">Massages</button>
+                <button class="category-btn" data-category="specialty">Specialty Massages</button>
+            </div>
+
+            <!-- Regular Massages -->
+            <div class="service-category active" id="massages">
+                <h2 class="category-title">Massages</h2>
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Swedish Massage</h3>
+                        <p><strong>Increases flexibility of muscles and joints</strong><br>
+                        Deeply relaxes & reduces stress and tension<br>
+                        Boosts the immune system, improves circulation<br>
+                        Helps improve the emotional balance</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$110 | $155</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Deep Tissue Massage</h3>
+                        <p><strong>Reduces stress and muscle tension</strong><br>
+                        Relieves chronic back pain<br>
+                        The therapist uses direct pressure to relax the top layer of muscle in order to reach deeper muscle tissue.<br>
+                        Neuromuscular therapy (NMT) and myofascial release are just two of the techniques used for DT therapy</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$115 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Therapeutic Massage</h3>
+                        <p><strong>Helps with conditions such as sciatica, whiplash, tennis elbow, carpal tunnel</strong><br>
+                        Reduces inflammation, acute and chronic pain<br>
+                        Helps improve circulation, lymphatic, and neurological functioning<br>
+                        Combines different techniques: deep tissue, stretching, myofascial release, aromatherapy<br>
+                        Speeds up healing process after sports injuries</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$120 | $165</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300">
+                        <h3>Hot Stone Massage</h3>
+                        <p><strong>Very beneficial for people who suffer from: fibromyalgia and inflammation of the connective tissue</strong><br>
+                        Reduces chronic muscle pain<br>
+                        Helps improve circulation and reduces insomnia<br>
+                        The warmth of heated basalt stones helps release muscle tension and feels heavenly</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$125 | $170</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Ultimate Signature Massage</h3>
+                        <p><strong>Blends therapeutic massage with the natural anti-inflammatory properties of essential oils</strong><br>
+                        Reduces tension & muscle pain<br>
+                        Combo of Swedish, Deep Tissue, myofascial release, stretching, hot stones, reflexology for the feet<br>
+                        A truly amazing massage experience</p>
+                        <div class="service-details">
+                            <span class="duration">90 min/2 hr</span>
+                            <span class="price">$165 | $225</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Couples Massage</h3>
+                        <p><strong>This is a great way to experience a massage in tandem</strong><br>
+                        Includes your choice of a deep-tissue or swedish massage<br>
+                        Share this experience with someone you are close to: mother and daughter, couples, sisters, or best friends.<br>
+                        A memorable way to connect with someone & introduce them to relaxation.</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$240 | $330</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Pain Relief Massage</h3>
+                        <p><strong>Pain relief from arthritis and painful joints</strong><br>
+                        Helps with Back aches and neck pain<br>
+                        Beneficial for: fibromyalgia and inflammation<br>
+                        Alleviates bruising & circulation problems with arnica & Juniper oil</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$115 | $160</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specialty Massages -->
+            <div class="service-category" id="specialty">
+                <h2 class="category-title">Specialty Massages</h2>
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Manual Lymphatic Drainage Massage</h3>
+                        <p><strong>Using very light pressure, gentle, rhythmic strokes to increase the flow of lymph</strong><br>
+                        Helps reduce inflammation after surgery<br>
+                        Detoxifies the body & stimulates the immune system<br>
+                        Best results in a series of treatment, usually 3 – 6 sessions.</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$120 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Aromatherapy Massage</h3>
+                        <p><strong>Using essential oils to promote healing & well-being</strong><br>
+                        Deeply relaxes & reduces stress, tension and pain<br>
+                        Improves circulation & calms the nervous system<br>
+                        Helps improve mood & emotional balance</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$120 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="200">
+                        <h3>Sinus Relief Massage</h3>
+                        <p><strong>Helps reduce tenderness, headaches, congestion</strong><br>
+                        Reduces inflammation, swelling and puffiness around eye area<br>
+                        Increases circulation around the sinuses<br>
+                        Combines different techniques: lymphatic drainage, pressure point, aromatherapy</p>
+                        <div class="service-details">
+                            <span class="duration">30/60/90 min</span>
+                            <span class="price">$65 | $110 | $155</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="300">
+                        <h3>Prenatal Massage</h3>
+                        <p><strong>Reduces stress, fatigue and relieves muscle and back pain</strong><br>
+                        Helps decrease swelling by improving lymph flow<br>
+                        Specially designed for expecting mothers<br>
+                        Safe and comfortable positioning throughout pregnancy</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$120 | $165</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Reflexology</h3>
+                        <p><strong>Therapeutic foot massage targeting pressure points</strong><br>
+                        Promotes healing throughout the body<br>
+                        Reduces stress and improves circulation<br>
+                        Ancient healing technique for overall wellness</p>
+                        <div class="service-details">
+                            <span class="duration">30/60 min</span>
+                            <span class="price">$65 | $110</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up" data-delay="100">
+                        <h3>Cupping Therapy</h3>
+                        <p><strong>Ancient healing technique using suction cups</strong><br>
+                        Improves blood circulation and reduces muscle tension<br>
+                        Helps with pain relief and inflammation<br>
+                        Promotes healing and relaxation</p>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$130 | $175</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Massage Therapy Page Functionality
+        const initMassageTherapyPage = () => {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const serviceCategories = document.querySelectorAll('.service-category');
+
+            // Switch category function
+            const switchCategory = (targetCategory) => {
+                // Update active states
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                const targetButton = document.querySelector(`[data-category="${targetCategory}"]`);
+                if (targetButton) targetButton.classList.add('active');
+
+                serviceCategories.forEach(category => category.classList.remove('active'));
+                const targetCategoryElement = document.getElementById(targetCategory);
+                if (targetCategoryElement) targetCategoryElement.classList.add('active');
+
+                // Animate service items with staggered delays
+                const serviceItems = targetCategoryElement.querySelectorAll('.service-item');
+                serviceItems.forEach((item, index) => {
+                    // Reset animation state
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(30px) scale(0.98)';
+                    item.style.animation = 'none';
+                    
+                    // Trigger animation with staggered delay
+                    setTimeout(() => {
+                        item.style.animation = `fadeInUp 0.8s ease-out forwards`;
+                        item.style.animationDelay = `${index * 0.1}s`;
+                    }, 50);
+                });
+            };
+
+            // Event listeners
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const category = button.getAttribute('data-category');
+                    if (category) {
+                        switchCategory(category);
+                    }
+                });
+            });
+
+            // Initialize animations for default category
+            setTimeout(() => {
+                const defaultItems = document.querySelectorAll('#massages .service-item');
+                defaultItems.forEach((item, index) => {
+                    // Reset initial state
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(30px) scale(0.98)';
+                    
+                    // Trigger staggered animation
+                    setTimeout(() => {
+                        item.style.animation = `fadeInUp 0.8s ease-out forwards`;
+                        item.style.animationDelay = `${index * 0.1}s`;
+                    }, 100 + (index * 50));
+                });
+            }, 200);
+        };
+
+        // Initialize hero animations
+        const initHeroAnimations = () => {
+            const heroContent = document.querySelector('.hero-content');
+            const heroEyebrow = document.querySelector('.hero-eyebrow');
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            const heroQuote = document.querySelector('.hero-quote');
+
+            // Trigger hero animations with staggered delays
+            setTimeout(() => {
+                if (heroContent) heroContent.classList.add('animate-in');
+            }, 300);
+
+            setTimeout(() => {
+                if (heroEyebrow) heroEyebrow.classList.add('animate-in');
+            }, 600);
+
+            setTimeout(() => {
+                if (heroTitle) heroTitle.classList.add('animate-in');
+            }, 800);
+
+            setTimeout(() => {
+                if (heroSubtitle) heroSubtitle.classList.add('animate-in');
+            }, 1000);
+
+            setTimeout(() => {
+                if (heroQuote) heroQuote.classList.add('animate-in');
+            }, 1200);
+        };
+
+        // Initialize when ready
+        document.addEventListener('DOMContentLoaded', () => {
+            initMassageTherapyPage();
+            initHeroAnimations();
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html> 

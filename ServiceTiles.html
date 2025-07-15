@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Bluefern Spa | Elegant Design 2</title>
+    <meta name="description" content="Explore our full menu of spa services including massage therapy, advanced facials, body treatments, and medical spa services at Bluefern Spa.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Elegant Design 2 - Luxurious Card-Based */
+        :root {
+            --primary-color: #d5eae5;
+            --secondary-color: #a8c9be;
+            --accent-color: #f2f7f5;
+            --light-sage: #e8f2ee;
+            --dark-sage: #9bb5aa;
+            --darker-sage: #7a9b8c;
+            --dark-color: #2C2C2C;
+            --light-color: #FAFAFA;
+            --text-color: #4A4A4A;
+            --border-color: #E5E5E5;
+            
+            --font-primary: 'Cormorant Garamond', serif;
+            --font-secondary: 'Montserrat', sans-serif;
+            
+            --transition-base: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.08);
+            --shadow-md: 0 5px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 15px 50px rgba(0,0,0,0.2);
+        }
+
+
+
+        /* Services Grid Section - Luxurious */
+        .services-grid-section {
+            padding: 120px 0 150px 0;
+            margin-top: 80px;
+            background: var(--light-color);
+            position: relative;
+        }
+
+        .services-grid-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, var(--accent-color) 0%, var(--light-color) 50%, var(--accent-color) 100%);
+            opacity: 0.3;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 120px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 400;
+            color: var(--dark-color);
+            margin-bottom: 3rem;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-family: var(--font-secondary);
+            font-size: 1.1rem;
+            color: var(--text-color);
+            line-height: 1.9;
+            opacity: 0.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        /* Service Tile - Luxurious Card Design */
+        .service-tile {
+            position: relative;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-slow);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            height: 580px;
+            display: flex;
+            flex-direction: column;
+            /* Subtle inner shadow to enhance feathered effect */
+            background: linear-gradient(to bottom, #ffffff 0%, #ffffff 220px, #fafafa 100%);
+        }
+
+        .service-tile:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+
+
+        .tile-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: var(--transition-slow);
+            transform: scale(1);
+        }
+
+        /* Ensure consistent image sizing */
+        .tile-image-container {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+
+        /* Force consistent aspect ratio for all images */
+        .tile-image {
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            object-position: center;
+        }
+
+
+
+        .service-tile:hover .tile-image {
+            transform: scale(1.1);
+        }
+
+        .tile-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%);
+            opacity: 0;
+            transition: var(--transition-base);
+            z-index: 2;
+        }
+
+        .service-tile:hover .tile-overlay {
+            opacity: 1;
+        }
+
+
+
+        /* Content Section */
+        .tile-content {
+            padding: 30px 30px 35px 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            transition: var(--transition-base);
+            min-height: 360px;
+        }
+
+        .service-tile:hover .tile-content {
+            transform: translateY(-5px);
+        }
+
+        .tile-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            font-weight: 500;
+            color: var(--dark-color);
+            margin-bottom: 18px;
+            letter-spacing: -0.5px;
+        }
+
+        .tile-description {
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .tile-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            flex-grow: 0;
+        }
+
+        .tile-features li {
+            font-family: var(--font-secondary);
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+            opacity: 0.8;
+        }
+
+        .tile-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+        }
+
+
+
+        /* Background Images - All with consistent sizing */
+        .massage-bg { 
+            background-image: url('openart-woman-getting-a-massage-on-a-massage-table-spa-setting-relaxing-warm_eFHksr9-_upscaled.png'); 
+            background-size: cover;
+            background-position: center;
+        }
+        .facials-bg { 
+            background-image: url('shutterstock_352906862-680x453-980x370.jpg'); 
+            background-size: cover;
+            background-position: center;
+        }
+        .body-bg { 
+            background-image: url('man-woman-spa-980x370.jpg'); 
+            background-size: cover;
+            background-position: center;
+        }
+        .wellness-bg { 
+            background-image: url('Salt-Room-The-Salt-Room-Orlando.jpg'); 
+            background-size: cover;
+            background-position: center;
+        }
+        .beauty-bg { 
+            background-image: url('R.jpg'); 
+            background-size: cover;
+            background-position: center;
+        }
+        .packages-bg { 
+            background-image: url('massagetherapy1.webp'); 
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .service-tile {
+                height: 480px;
+            }
+            
+            .tile-image-container {
+                height: 200px;
+            }
+            
+            .tile-content {
+                padding: 25px;
+            }
+            
+            .tile-title {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 0 20px;
+            }
+            
+            .tile-service-name {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Ensure all tiles are visible and consistent */
+        .service-tile {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="darker-logo-1.png" alt="Bluefern Spa">
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services-elegant-design-2.html" class="nav-link active">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#specials" class="nav-link">Specials</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#locations" class="nav-link">Locations</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.thegiftcardcafe.com/cart/selectpac.php" class="nav-link egift-link">Buy eGift</a>
+                </li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Grid Section -->
+    <section class="services-grid-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Discover a thoughtfully curated collection of wellness treatments designed to restore, rejuvenate, and inspire your journey to complete well-being</p>
+            </div>
+            
+            <div class="services-grid">
+                <a href="massage-therapy-demo.html" class="service-tile">
+                    <div class="tile-image-container">
+                        <div class="tile-image massage-bg"></div>
+                        <div class="tile-overlay"></div>
+                    </div>
+                    <div class="tile-content">
+                        <h3 class="tile-title">Massage Therapy</h3>
+                        <p class="tile-description">Experience therapeutic touch designed to release tension and restore your body's natural harmony.</p>
+                        <ul class="tile-features">
+                            <li>Swedish & Deep Tissue Massage</li>
+                            <li>Hot Stone & Aromatherapy</li>
+                            <li>Specialized Therapeutic Treatments</li>
+                            <li>Couples Massage Experiences</li>
+                        </ul>
+                    </div>
+                </a>
+
+                <a href="facial-treatments-demo.html" class="service-tile">
+                    <div class="tile-image-container">
+                        <div class="tile-image facials-bg"></div>
+                        <div class="tile-overlay"></div>
+                    </div>
+                    <div class="tile-content">
+                        <h3 class="tile-title">Facial Treatments</h3>
+                        <p class="tile-description">Reveal your skin's natural luminosity with advanced treatments crafted for your unique skincare needs.</p>
+                        <ul class="tile-features">
+                            <li>Signature & Custom Facials</li>
+                            <li>Advanced Anti-Aging Treatments</li>
+                            <li>Medical-Grade Skincare</li>
+                            <li>Specialized Problem-Solving</li>
+                        </ul>
+                    </div>
+                </a>
+
+                <a href="body-treatments-demo.html" class="service-tile">
+                    <div class="tile-image-container">
+                        <div class="tile-image body-bg"></div>
+                        <div class="tile-overlay"></div>
+                    </div>
+                    <div class="tile-content">
+                        <h3 class="tile-title">Body Treatments</h3>
+                        <p class="tile-description">Indulge in luxurious treatments that nourish, detoxify, and rejuvenate your skin from head to toe.</p>
+                        <ul class="tile-features">
+                            <li>Exfoliating Body Scrubs</li>
+                            <li>Nourishing Body Wraps</li>
+                            <li>Detoxifying Treatments</li>
+                            <li>Body Contouring Services</li>
+                        </ul>
+                    </div>
+                </a>
+
+                <a href="wellness-therapies-demo.html" class="service-tile">
+                    <div class="tile-image-container">
+                        <div class="tile-image wellness-bg"></div>
+                        <div class="tile-overlay"></div>
+                    </div>
+                    <div class="tile-content">
+                        <h3 class="tile-title">Wellness Therapies</h3>
+                        <p class="tile-description">Explore holistic wellness approaches that integrate mind, body, and spirit for overall well-being.</p>
+                        <ul class="tile-features">
+                            <li>Himalayan Salt Room Therapy</li>
+                            <li>Red Light Healing Sessions</li>
+                            <li>Therapeutic Stretch Therapy</li>
+                            <li>Mindfulness & Meditation</li>
+                        </ul>
+                    </div>
+                </a>
+
+                <a href="beauty-services-demo.html" class="service-tile">
+                    <div class="tile-image-container">
+                        <div class="tile-image beauty-bg"></div>
+                        <div class="tile-overlay"></div>
+                    </div>
+                    <div class="tile-content">
+                        <h3 class="tile-title">Beauty Services</h3>
+                        <p class="tile-description">Enhance your natural beauty with professional services delivered with precision and artistry.</p>
+                        <ul class="tile-features">
+                            <li>Professional Waxing Services</li>
+                            <li>Brow & Lash Artistry</li>
+                            <li>Luxury Nail Treatments</li>
+                            <li>Special Event Makeup</li>
+                        </ul>
+                    </div>
+                </a>
+
+                <a href="spa-packages-demo.html" class="service-tile">
+                    <div class="tile-image-container">
+                        <div class="tile-image packages-bg"></div>
+                        <div class="tile-overlay"></div>
+                    </div>
+                    <div class="tile-content">
+                        <h3 class="tile-title">Spa Packages</h3>
+                        <p class="tile-description">Embark on comprehensive wellness journeys with thoughtfully curated spa packages for complete relaxation.</p>
+                        <ul class="tile-features">
+                            <li>Full-Day Spa Experiences</li>
+                            <li>Romantic Couples Retreats</li>
+                            <li>Bridal Party Packages</li>
+                            <li>Customizable Gift Experiences</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html> 
