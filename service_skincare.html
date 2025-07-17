@@ -1,0 +1,2413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Care - Bluefern Spa | Advanced Facial Treatments</title>
+    <meta name="description" content="Experience advanced skin care treatments and rejuvenating facials at Bluefern Spa. From signature facials to advanced treatments.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Skin Care Page Styles */
+        :root {
+            --primary-color: #d5eae5;
+            --secondary-color: #a8c9be;
+            --accent-color: #f2f7f5;
+            --light-sage: #e8f2ee;
+            --dark-sage: #9bb5aa;
+            --darker-sage: #7a9b8c;
+            --dark-color: #2C2C2C;
+            --light-color: #FAFAFA;
+            --text-color: #4A4A4A;
+            --border-color: #E5E5E5;
+            
+            --font-primary: 'Cormorant Garamond', serif;
+            --font-secondary: 'Montserrat', sans-serif;
+            
+            --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.08);
+            --shadow-md: 0 5px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Hero Banner - Layered Glass Variation */
+        .hero-banner {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            max-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+            background: url('openart-woman-getting-a-massage-on-a-massage-table-spa-setting-relaxing-warm_eFHksr9-_upscaled.png') center/cover;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 700px;
+            padding: 50px 50px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            /* Start invisible for elegant reveal */
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+        }
+
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent, rgba(255,255,255,0.05));
+            border-radius: 32px;
+            z-index: -1;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #000000;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero-title {
+            font-family: 'Tangerine', cursive;
+            font-size: clamp(4rem, 8vw, 7rem);
+            font-weight: 700;
+            color: #000000;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            transform: translateY(30px);
+            text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-subtitle {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #000000;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-quote {
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            color: #000000;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: var(--light-sage);
+            padding: 20px 0;
+        }
+
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumb-nav {
+            font-family: var(--font-secondary);
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .breadcrumb-nav a {
+            color: var(--darker-sage);
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+
+        .breadcrumb-nav a:hover {
+            color: var(--dark-color);
+        }
+
+        /* Service Categories */
+        .service-categories {
+            padding: 80px 0;
+            background: var(--light-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: white;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-base);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .category-btn:hover {
+            border-color: var(--secondary-color);
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .category-btn.active {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* Service Category Content */
+        .service-category {
+            display: none;
+        }
+
+        .service-category.active {
+            display: block;
+        }
+
+        .category-title {
+            font-family: 'Tangerine', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .service-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-item {
+            flex: 0 0 calc(33.333% - 1.33rem);
+            min-width: 300px;
+            max-width: 350px;
+        }
+
+        .service-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
+            position: relative;
+            overflow: visible;
+            will-change: opacity, transform;
+            backface-visibility: hidden;
+            /* Start invisible for elegant reveal */
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            filter: none;
+        }
+
+        .service-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            filter: none;
+        }
+
+        .service-item:hover::before {
+            opacity: 1;
+        }
+
+        /* Enhanced hover effects for service items */
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(213, 234, 229, 0.1) 0%, 
+                rgba(168, 201, 190, 0.1) 50%, 
+                rgba(213, 234, 229, 0.1) 100%);
+            opacity: 0;
+            transition: var(--transition-base);
+            border-radius: 15px;
+            z-index: 1;
+        }
+
+        .service-item:hover::before {
+            opacity: 1;
+        }
+
+        /* Ensure content stays above the overlay */
+        .service-item > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-item.animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .service-item h3 {
+            font-family: var(--font-primary);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            transition: var(--transition-base);
+        }
+
+        .service-item:hover h3 {
+            color: var(--darker-sage);
+            transform: translateY(-2px);
+        }
+
+        .service-item p {
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            transition: var(--transition-base);
+            position: relative;
+        }
+
+        /* Elegant bullet points for service descriptions */
+        .service-item p strong {
+            color: var(--darker-sage);
+            display: block;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        /* Remove the background image approach */
+        .service-item p {
+            padding-left: 0;
+        }
+
+        .service-item p strong {
+            padding-left: 0;
+            margin-left: 0;
+        }
+
+        /* Style the bullet lists */
+        .service-item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 1.5rem 0;
+        }
+
+        .service-item ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .service-item ul li::before {
+            content: '•';
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+            line-height: 1.6;
+        }
+
+        .service-item:hover p {
+            color: var(--dark-color);
+        }
+
+        .service-item p strong {
+            color: var(--darker-sage);
+        }
+
+        .service-details {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem 0 0.5rem 0;
+            border-top: 2px solid var(--light-sage);
+            transition: var(--transition-base);
+            position: relative;
+        }
+
+        .service-details::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+
+        .duration {
+            font-family: var(--font-secondary);
+            font-size: 0.85rem;
+            color: var(--text-color);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            position: relative;
+        }
+
+        .duration::before {
+            content: '⏱';
+            margin-right: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--darker-sage);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .price::before {
+            content: '';
+            position: absolute;
+            top: -0.3rem;
+            right: -0.5rem;
+            width: 0.3rem;
+            height: 0.3rem;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes heroFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes heroTextFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+                text-shadow: 0 6px 30px rgba(0, 0, 0, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        /* Hero animation classes */
+        .hero-content.animate-in {
+            animation: heroFadeIn 1s ease-out forwards;
+        }
+
+        .hero-eyebrow.animate-in {
+            animation: heroTextFadeIn 0.8s ease-out forwards;
+        }
+
+        .hero-title.animate-in {
+            animation: heroTextFadeIn 1s ease-out forwards;
+        }
+
+        .hero-subtitle.animate-in {
+            animation: heroTextFadeIn 1.2s ease-out forwards;
+        }
+
+        .hero-quote.animate-in {
+            animation: heroTextFadeIn 1.4s ease-out forwards;
+        }
+
+        /* HydroFacial section - 2 columns */
+        #hydrofacial .service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Advanced Skin Care section - 2 columns */
+        #advanced .service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Peel Subcategory Navigation */
+        .peel-sub-btn {
+            background: white;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-family: var(--font-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-base);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .peel-sub-btn:hover {
+            border-color: var(--secondary-color);
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .peel-sub-btn.active {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: white;
+        }
+
+        .peel-subcategory {
+            display: none;
+        }
+
+        .peel-subcategory.active {
+            display: block;
+        }
+
+        /* Add Ons section - smaller tiles */
+        #addons .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        #addons .service-item {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        #addons .service-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        #addons .service-item p {
+            display: none;
+        }
+
+        #addons .service-details {
+            padding-top: 0;
+            border-top: none;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        /* Remove animated progress bar from Add Ons */
+        #addons .service-details::before {
+            display: none;
+        }
+
+        #addons .duration {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Remove clock icon from Add Ons */
+        #addons .duration::before {
+            content: '';
+            margin-right: 0;
+        }
+
+        #addons .price {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        /* Learn More Button Styles */
+        .learn-more-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-family: var(--font-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-base);
+            margin-left: 15px;
+        }
+
+        .learn-more-btn:hover {
+            background: var(--darker-sage);
+            transform: translateY(-2px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .close:hover {
+            color: var(--darker-sage);
+        }
+
+        .modal-title {
+            font-family: 'Tangerine', cursive;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-subtitle {
+            font-family: var(--font-primary);
+            font-size: 1.3rem;
+            color: var(--darker-sage);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .modal-section {
+            margin-bottom: 30px;
+        }
+
+        .modal-section h3 {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .modal-section p {
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .modal-section ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: var(--text-color);
+            font-family: var(--font-secondary);
+        }
+
+        .modal-section ul li::before {
+            content: '•';
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .treatment-highlight {
+            background: var(--light-sage);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .treatment-highlight strong {
+            color: var(--darker-sage);
+            font-weight: 600;
+        }
+
+        .before-after-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .before-after-image {
+            margin-bottom: 15px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .image-caption {
+            font-family: var(--font-secondary);
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .service-item {
+                flex: 0 0 calc(50% - 1rem);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .peel-nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .peel-sub-btn {
+                width: 100%;
+                max-width: 250px;
+                text-align: center;
+            }
+            
+            .service-item {
+                flex: 0 0 100%;
+                max-width: 400px;
+            }
+            
+            #hydrofacial .service-grid,
+            #advanced .service-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                max-width: 400px;
+            }
+            
+            #addons .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                max-width: 400px;
+            }
+            
+            .category-nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .category-btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="darker-logo-1.png" alt="Bluefern Spa">
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="index.html#services" class="nav-link">Services</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-grid">
+                            <div class="dropdown-column">
+                                <h3>Massage Therapy</h3>
+                                <a href="service_massage.html#swedish-massage">Swedish Massage</a>
+                                <a href="service_massage.html#deep-tissue-massage">Deep Tissue</a>
+                                <a href="service_massage.html#hot-stone-massage">Hot Stone</a>
+                                <a href="service_massage.html#therapeutic-massage">Therapeutic</a>
+                                <a href="service_massage.html">View All Massages</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h3>Facial Treatments</h3>
+                                <a href="service_skincare.html#signature-facial">Signature Facial</a>
+                                <a href="service_skincare.html#anti-aging-facial">Anti-Aging</a>
+                                <a href="service_skincare.html#microdermabrasion">Microdermabrasion</a>
+                                <a href="service_skincare.html#facials">Advanced Facials</a>
+                                <a href="service_skincare.html">View All Facials</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h3>Body & Wellness</h3>
+                                <a href="services.html#body">Body Scrubs & Wraps</a>
+                                <a href="services.html#body">Body Sculpting</a>
+                                <a href="services.html#wellness">Salt Room Therapy</a>
+                                <a href="services.html#wellness">Red Light Therapy</a>
+                                <a href="services.html#wellness">Stretch Therapy</a>
+                                <a href="services.html#body">View All Body Treatments</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h3>Beauty & Packages</h3>
+                                <a href="services.html#beauty">Waxing Services</a>
+                                <a href="services.html#beauty">Brow & Lash</a>
+                                <a href="services.html#packages">Spa Packages</a>
+                                <a href="services.html#packages">Gift Certificates</a>
+                                <a href="products.html">Société Products</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#specials" class="nav-link">Specials</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.thegiftcardcafe.com/cart/selectpac.php" class="nav-link egift-link">Buy eGift</a>
+                </li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <div class="hero-eyebrow">Bluefern Spa</div>
+            <h1 class="hero-title">Skin Care</h1>
+            <p class="hero-subtitle">Advanced facial treatments for radiant, healthy skin</p>
+            <div class="hero-quote">Where beauty meets wellness and transformation begins</div>
+        </div>
+    </section>
+
+    <!-- Back to Services -->
+    <section class="breadcrumb">
+        <div class="breadcrumb-container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html#services">← Back to Our Services</a>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="service-categories">
+        <div class="container">
+            <div class="category-nav">
+                <button class="category-btn active" data-category="facials">Facials</button>
+                <button class="category-btn" data-category="microderm">Microderm & Dermaplaning</button>
+                <button class="category-btn" data-category="hydrofacial">HydroFacial</button>
+                <button class="category-btn" data-category="peels">Peels</button>
+                <button class="category-btn" data-category="advanced">Advanced Skin Care</button>
+                <button class="category-btn" data-category="addons">Add Ons</button>
+            </div>
+
+            <!-- Facials -->
+            <div class="service-category active" id="facials">
+                <h2 class="category-title">Facials</h2>
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Signature Facial</h3>
+                        <p><strong>Our classic facial for all skin types</strong></p>
+                        <ul>
+                            <li>Deep cleansing and exfoliation</li>
+                            <li>Customized mask treatment</li>
+                            <li>Moisturizing and protection</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$115</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Organic Soothing Facial</h3>
+                        <p><strong>Gentle treatment with organic ingredients</strong></p>
+                        <ul>
+                            <li>Calms sensitive and irritated skin</li>
+                            <li>Natural botanical extracts</li>
+                            <li>Anti-inflammatory properties</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$135</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Express Enzyme Facial</h3>
+                        <p><strong>Quick treatment for busy schedules</strong></p>
+                        <ul>
+                            <li>Enzyme exfoliation</li>
+                            <li>Deep cleansing</li>
+                            <li>Perfect for maintenance</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$85</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Radiance Anti-Aging</h3>
+                        <p><strong>Vitamin C and Collagen treatment</strong></p>
+                        <ul>
+                            <li>Brightens and firms skin</li>
+                            <li>Reduces fine lines and wrinkles</li>
+                            <li>Boosts collagen production</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$155</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Firm & Tighten Facial</h3>
+                        <p><strong>RF and EMF technology for lifting</strong></p>
+                        <ul>
+                            <li>Radio frequency treatment</li>
+                            <li>Electromagnetic field therapy</li>
+                            <li>Non-invasive skin tightening</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$200</span>
+                            <button class="learn-more-btn" onclick="openFirmTightenModal()">Learn More</button>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Deep Pore Cleansing</h3>
+                        <p><strong>Intensive cleansing for congested skin</strong></p>
+                        <ul>
+                            <li>Extraction and deep cleansing</li>
+                            <li>Purifying mask treatment</li>
+                            <li>Pore refinement</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$130</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Oh My Glow! Facial</h3>
+                        <p><strong>Intensive brightening treatment</strong></p>
+                        <ul>
+                            <li>Multi-step brightening process</li>
+                            <li>Vitamin C and brightening agents</li>
+                            <li>Instant radiance boost</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$155</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Ultra Hydrating Facial</h3>
+                        <p><strong>Intensive moisture treatment</strong></p>
+                        <ul>
+                            <li>Deep hydration therapy</li>
+                            <li>Hyaluronic acid infusion</li>
+                            <li>Long-lasting moisture</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$130</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Gentleman's Facial</h3>
+                        <p><strong>Specially designed for men's skin</strong></p>
+                        <ul>
+                            <li>Addresses men's specific skin concerns</li>
+                            <li>Shave preparation and aftercare</li>
+                            <li>Oil control and pore refinement</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$115</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Teen Facial</h3>
+                        <p><strong>Gentle treatment for young skin</strong></p>
+                        <ul>
+                            <li>Acne prevention and treatment</li>
+                            <li>Gentle exfoliation</li>
+                            <li>Oil control and education</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$85</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Teen Deep Pore Cleansing</h3>
+                        <p><strong>Intensive treatment for teen acne</strong></p>
+                        <ul>
+                            <li>Deep extraction and cleansing</li>
+                            <li>Acne-fighting ingredients</li>
+                            <li>Prevention and maintenance</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$110</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Back Acne Facial</h3>
+                        <p><strong>Specialized treatment for back acne</strong></p>
+                        <ul>
+                            <li>Deep cleansing of back area</li>
+                            <li>Acne treatment and prevention</li>
+                            <li>Exfoliation and healing</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$145</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Microderm & Dermaplaning -->
+            <div class="service-category" id="microderm">
+                <h2 class="category-title">Microderm & Dermaplaning</h2>
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Dermaplaning Facial</h3>
+                        <p><strong>Gentle exfoliation with precision blade</strong></p>
+                        <ul>
+                            <li>Removes dead skin cells and peach fuzz</li>
+                            <li>Improves product absorption</li>
+                            <li>Creates smooth, radiant skin</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$155</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Brightening Microderm</h3>
+                        <p><strong>Advanced exfoliation for brightening</strong></p>
+                        <ul>
+                            <li>Diamond-tip exfoliation</li>
+                            <li>Reduces hyperpigmentation</li>
+                            <li>Promotes cell turnover</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$155</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Rejuvenating Microderm</h3>
+                        <p><strong>Intensive treatment for aging skin</strong></p>
+                        <ul>
+                            <li>Deep exfoliation and renewal</li>
+                            <li>Stimulates collagen production</li>
+                            <li>Reduces fine lines and texture</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$185</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Microdermabrasion & Peel</h3>
+                        <p><strong>Combined treatment for maximum results</strong></p>
+                        <ul>
+                            <li>Microdermabrasion followed by chemical peel</li>
+                            <li>Intensive skin renewal</li>
+                            <li>Addresses multiple skin concerns</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$200</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Microderm & Deep Pore Cleansing</h3>
+                        <p><strong>Comprehensive treatment for congested skin</strong></p>
+                        <ul>
+                            <li>Exfoliation and deep cleansing</li>
+                            <li>Extraction and purification</li>
+                            <li>Pore refinement and clarity</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$175</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HydroFacial -->
+            <div class="service-category" id="hydrofacial">
+                <h2 class="category-title">HydroFacial</h2>
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Signature HydroFacial</h3>
+                        <p><strong>Our most popular HydroFacial treatment</strong></p>
+                        <ul>
+                            <li>Multi-step cleansing and exfoliation</li>
+                            <li>Hydration and nourishment</li>
+                            <li>Protection and enhancement</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Clarifying HydroFacial</h3>
+                        <p><strong>Targeted treatment for acne-prone skin</strong></p>
+                        <ul>
+                            <li>Deep cleansing and extraction</li>
+                            <li>Acne-fighting ingredients</li>
+                            <li>Calming and healing properties</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$189</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Revitalizing HydroFacial</h3>
+                        <p><strong>Anti-aging and rejuvenation treatment</strong></p>
+                        <ul>
+                            <li>Advanced anti-aging ingredients</li>
+                            <li>Collagen stimulation</li>
+                            <li>Firming and lifting effects</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$220</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>THE WORKS! HydroFacial</h3>
+                        <p><strong>Ultimate comprehensive treatment</strong></p>
+                        <ul>
+                            <li>All-inclusive facial experience</li>
+                            <li>Maximum benefits and results</li>
+                            <li>Premium ingredients and techniques</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$245</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- HydroFacial Information Section -->
+                <div class="hydrofacial-info" style="margin-top: 60px; padding: 40px; background: var(--light-sage); border-radius: 20px; text-align: center;">
+                    <h2 style="font-family: 'Tangerine', cursive; font-size: 3rem; font-weight: 700; color: var(--dark-color); margin-bottom: 20px;">What is the HydroFacial</h2>
+                    
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <button class="learn-more-btn" onclick="openHydroFacialModal()" style="background: var(--secondary-color); color: white; border: none; padding: 15px 30px; border-radius: 25px; font-family: var(--font-secondary); font-size: 1rem; font-weight: 500; cursor: pointer; transition: var(--transition-base);">
+                            Learn More About HydroFacial
+                        </button>
+                    </div>
+                    
+                    <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+                        <p style="font-family: var(--font-secondary); font-size: 1.1rem; line-height: 1.8; color: var(--text-color); margin-bottom: 30px;">
+                            The HydroFacial is a refreshing anti-aging treatment that works to deliver an immediate glow as well as long-term skin wellness. This procedure can be customized to deliver instant results without discomfort or downtime. This advanced skin treatment combines deep pore cleansing, exfoliation, extractions, and hydration all in one while also replenishing vital nutrients like:
+                        </p>
+                        
+                        <div style="margin-bottom: 30px;">
+                            <h3 style="font-family: var(--font-primary); font-size: 1.5rem; color: var(--dark-color); margin-bottom: 20px; font-weight: 600;">Key Ingredients</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="position: relative; padding-left: 20px; margin-bottom: 10px; line-height: 1.6; color: var(--text-color); font-family: var(--font-secondary);">
+                                    <span style="color: var(--secondary-color); font-weight: bold; font-size: 1.2rem; position: absolute; left: 0; top: 0;">•</span>
+                                    <strong>Antioxidants:</strong> key ingredients that help protect and repair skin
+                                </li>
+                                <li style="position: relative; padding-left: 20px; margin-bottom: 10px; line-height: 1.6; color: var(--text-color); font-family: var(--font-secondary);">
+                                    <span style="color: var(--secondary-color); font-weight: bold; font-size: 1.2rem; position: absolute; left: 0; top: 0;">•</span>
+                                    <strong>Peptides:</strong> amino acids that boost the production of collagen and elastin
+                                </li>
+                                <li style="position: relative; padding-left: 20px; margin-bottom: 10px; line-height: 1.6; color: var(--text-color); font-family: var(--font-secondary);">
+                                    <span style="color: var(--secondary-color); font-weight: bold; font-size: 1.2rem; position: absolute; left: 0; top: 0;">•</span>
+                                    <strong>Hyaluronic acid:</strong> a naturally occurring molecule in the body that binds moisture, responsible for plumping the skin
+                                </li>
+                                <li style="position: relative; padding-left: 20px; margin-bottom: 10px; line-height: 1.6; color: var(--text-color); font-family: var(--font-secondary);">
+                                    <span style="color: var(--secondary-color); font-weight: bold; font-size: 1.2rem; position: absolute; left: 0; top: 0;">•</span>
+                                    <strong>Alpha & Beta Hydroxy Acids:</strong> for skin resurfacing, anti-aging exfoliation
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-bottom: 30px;">
+                            <h3 style="font-family: var(--font-primary); font-size: 1.5rem; color: var(--dark-color); margin-bottom: 20px; font-weight: 600;">The HydroFacial can address the following concerns:</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="position: relative; padding-left: 20px; margin-bottom: 10px; line-height: 1.6; color: var(--text-color); font-family: var(--font-secondary);">
+                                    <span style="color: var(--secondary-color); font-weight: bold; font-size: 1.2rem; position: absolute; left: 0; top: 0;">•</span>
+                                    Fine lines and wrinkles
+                                </li>
+                                <li style="position: relative; padding-left: 20px; margin-bottom: 10px; line-height: 1.6; color: var(--text-color); font-family: var(--font-secondary);">
+                                    <span style="color: var(--secondary-color); font-weight: bold; font-size: 1.2rem; position: absolute; left: 0; top: 0;">•</span>
+                                    Elasticity & skin firmness
+                                </li>
+                                <li style="position: relative; padding-left: 20px; margin-bottom: 10px; line-height: 1.6; color: var(--text-color); font-family: var(--font-secondary);">
+                                    <span style="color: var(--secondary-color); font-weight: bold; font-size: 1.2rem; position: absolute; left: 0; top: 0;">•</span>
+                                    Improves skin texture
+                                </li>
+                                <li style="position: relative; padding-left: 20px; margin-bottom: 10px; line-height: 1.6; color: var(--text-color); font-family: var(--font-secondary);">
+                                    <span style="color: var(--secondary-color); font-weight: bold; font-size: 1.2rem; position: absolute; left: 0; top: 0;">•</span>
+                                    Hyperpigmentation/Photo damage
+                                </li>
+                                <li style="position: relative; padding-left: 20px; margin-bottom: 10px; line-height: 1.6; color: var(--text-color); font-family: var(--font-secondary);">
+                                    <span style="color: var(--secondary-color); font-weight: bold; font-size: 1.2rem; position: absolute; left: 0; top: 0;">•</span>
+                                    Oily/Congested skin
+                                </li>
+                                <li style="position: relative; padding-left: 20px; margin-bottom: 10px; line-height: 1.6; color: var(--text-color); font-family: var(--font-secondary);">
+                                    <span style="color: var(--secondary-color); font-weight: bold; font-size: 1.2rem; position: absolute; left: 0; top: 0;">•</span>
+                                    Enlarged pores
+                                </li>
+                                <li style="position: relative; padding-left: 20px; margin-bottom: 10px; line-height: 1.6; color: var(--text-color); font-family: var(--font-secondary);">
+                                    <span style="color: var(--secondary-color); font-weight: bold; font-size: 1.2rem; position: absolute; left: 0; top: 0;">•</span>
+                                    Advanced signs of aging
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <p style="font-family: var(--font-secondary); font-size: 1.1rem; line-height: 1.8; color: var(--text-color); margin-bottom: 20px;">
+                            The HydroFacial is suitable for all skin types and can be customized to meet your unique skin care needs.
+                        </p>
+                        
+                        <div style="background: white; padding: 25px; border-radius: 15px; border-left: 4px solid var(--secondary-color); margin-top: 30px;">
+                            <p style="font-family: var(--font-secondary); font-size: 1.1rem; line-height: 1.8; color: var(--text-color); margin: 0;">
+                                <strong style="color: var(--darker-sage);">Book a complimentary consultation;</strong> the aesthetician will analyze your skin and you can decide together which treatments will benefit you the most.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Peels -->
+            <div class="service-category" id="peels">
+                <h2 class="category-title">Peels</h2>
+                
+                <!-- Peel Subcategories -->
+                <div class="peel-subcategories" style="margin-bottom: 50px;">
+                    <div class="peel-nav" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
+                        <button class="peel-sub-btn active" data-peel="gentle">Gentle Peels</button>
+                        <button class="peel-sub-btn" data-peel="medium">Medium Peels</button>
+                        <button class="peel-sub-btn" data-peel="advanced">Advanced Corrective Peels</button>
+                    </div>
+
+                    <!-- Gentle Peels -->
+                    <div class="peel-subcategory active" id="gentle-peels">
+                        <h3 style="font-family: var(--font-primary); font-size: 1.8rem; font-weight: 700; color: var(--dark-color); text-align: center; margin-bottom: 40px;">Gentle Peels with Facial</h3>
+                        
+                        <div style="max-width: 800px; margin: 0 auto 50px auto; padding: 30px; background: var(--light-sage); border-radius: 15px; text-align: center;">
+                            <p style="font-family: var(--font-secondary); font-size: 1.1rem; line-height: 1.7; color: var(--text-color); margin-bottom: 20px;">
+                                <strong>Perfect for:</strong> First-time peel clients, sensitive skin, and those seeking gentle exfoliation with minimal downtime.
+                            </p>
+                            <p style="font-family: var(--font-secondary); font-size: 1rem; line-height: 1.6; color: var(--text-color); margin-bottom: 20px;">
+                                These mild chemical peels are combined with a facial treatment to provide gentle exfoliation, brightening, and skin renewal. 
+                                They're ideal for maintaining healthy skin, addressing minor concerns, and preparing your skin for more intensive treatments.
+                            </p>
+                            <button class="learn-more-btn" onclick="openGentlePeelsModal()" style="background: var(--secondary-color); color: white; border: none; padding: 12px 25px; border-radius: 25px; font-family: var(--font-secondary); font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: var(--transition-base);">
+                                View Treatment Examples
+                            </button>
+                        </div>
+                        
+                        <div class="service-grid">
+                            <div class="service-item animate-fade-up">
+                                <h3>Bright Skin Treatment</h3>
+                                <p><strong>Indications:</strong> Hyperpigmentation, Sun Damage, Acne Spots</p>
+                                <ul>
+                                    <li>Reduces Pigmentation</li>
+                                    <li>Eliminates Sun Damage</li>
+                                    <li>Reduces Inflammation caused by Acne</li>
+                                </ul>
+                                <div class="service-details">
+                                    <span class="price">$125+</span>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item animate-fade-up">
+                                <h3>Smooth Skin Treatment</h3>
+                                <p><strong>Indications:</strong> Fine lines, Wrinkles, Aging skin, Loss of elasticity</p>
+                                <ul>
+                                    <li>Reduces fine lines & wrinkles</li>
+                                    <li>Improves acne scarring</li>
+                                    <li>Boosts collagen production</li>
+                                    <li>Stimulates skin turn over; reduces pigmentation</li>
+                                </ul>
+                                <div class="service-details">
+                                    <span class="price">$125</span>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item animate-fade-up">
+                                <h3>HydraRadiance Treatment</h3>
+                                <p><strong>Indications:</strong> Dry skin, Rosacea, Aging, Acne scarring, Age spots</p>
+                                <ul>
+                                    <li>Reduces inflammation & redness</li>
+                                    <li>Enhances skin hydration</li>
+                                    <li>Boosts collagen & elastin production</li>
+                                    <li>Softens & refines skin texture</li>
+                                    <li>Brightens complexion</li>
+                                </ul>
+                                <div class="service-details">
+                                    <span class="price">$125</span>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item animate-fade-up">
+                                <h3>Clear Skin Acne Treatment</h3>
+                                <p><strong>Indications:</strong> Acne, Oily skin, Acne Scarring</p>
+                                <ul>
+                                    <li>Reduces oil production</li>
+                                    <li>Eliminates milia & blackheads</li>
+                                    <li>Minimizes large pores</li>
+                                    <li>Exfoliates & purifies the skin</li>
+                                </ul>
+                                <div class="service-details">
+                                    <span class="price">$125</span>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item animate-fade-up">
+                                <h3>Vitamin A & C Infusion (Organic)</h3>
+                                <p><strong>Indications:</strong> Fine lines, Acne, Rosacea and Hyperpigmentation</p>
+                                <ul>
+                                    <li>Increases collagen & elastin production</li>
+                                    <li>Evens out skin tone & texture</li>
+                                    <li>Reduces fine lines & wrinkles</li>
+                                    <li>Reduces inflammation</li>
+                                </ul>
+                                <div class="service-details">
+                                    <span class="price">$145+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Medium Peels -->
+                    <div class="peel-subcategory" id="medium-peels">
+                        <h3 style="font-family: var(--font-primary); font-size: 1.8rem; font-weight: 700; color: var(--dark-color); text-align: center; margin-bottom: 40px;">Medium Dermal Peels</h3>
+                        
+                        <div style="max-width: 800px; margin: 0 auto 50px auto; padding: 30px; background: var(--light-sage); border-radius: 15px; text-align: center;">
+                            <p style="font-family: var(--font-secondary); font-size: 1.1rem; line-height: 1.7; color: var(--text-color); margin-bottom: 20px;">
+                                <strong>Perfect for:</strong> Moderate skin concerns, experienced peel clients, and those seeking more dramatic results with minimal downtime.
+                            </p>
+                            <p style="font-family: var(--font-secondary); font-size: 1rem; line-height: 1.6; color: var(--text-color); margin-bottom: 20px;">
+                                These medium-strength peels penetrate deeper into the dermis to address more significant skin concerns like hyperpigmentation, 
+                                acne scarring, and signs of aging. They provide more dramatic results while still maintaining reasonable recovery times.
+                            </p>
+                            <button class="learn-more-btn" onclick="openMediumPeelsModal()" style="background: var(--secondary-color); color: white; border: none; padding: 12px 25px; border-radius: 25px; font-family: var(--font-secondary); font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: var(--transition-base);">
+                                View Treatment Examples
+                            </button>
+                        </div>
+                        
+                        <div class="service-grid">
+                            <div class="service-item animate-fade-up">
+                                <h3>Clarifying Peel</h3>
+                                <p><strong>Indications:</strong> Oily Skin, Acne, pigmentation, Hyperkeratosis (skin thickening), scarring</p>
+                                <ul>
+                                    <li>Clarifies oily, impure & breakout-prone skin</li>
+                                    <li>Helps reduce Cystic acne</li>
+                                    <li>Reduces redness, spots</li>
+                                </ul>
+                                <div class="service-details">
+                                    <span class="price">$145+</span>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item animate-fade-up">
+                                <h3>Lightening Peel</h3>
+                                <p><strong>Indications:</strong> Hyperpigmentation, Acne, Scarring, Aging Skin, Sun Damage</p>
+                                <ul>
+                                    <li>Reduces pigmentation</li>
+                                    <li>Anti-Aging & Firming</li>
+                                    <li>Can be used on body areas: hands, arms, back, decolte</li>
+                                </ul>
+                                <div class="service-details">
+                                    <span class="price">$145+</span>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item animate-fade-up">
+                                <h3>DNA Recovery Anti-aging Peel</h3>
+                                <p><strong>Indications:</strong> Aging Skin, Loss of elasticity, Rosacea, Age spots</p>
+                                <ul>
+                                    <li><strong>NO DOWN TIME</strong></li>
+                                    <li>Increases collagen & elastin production</li>
+                                    <li>Reduces fine lines and wrinkles</li>
+                                    <li>Gives skin a glowing, brighter complexion</li>
+                                    <li>Evens out skin tone & texture</li>
+                                    <li>Fights the effects of sun damage & pollution</li>
+                                </ul>
+                                <div class="service-details">
+                                    <span class="price">$145</span>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item animate-fade-up">
+                                <h3>Microdermabrasion & Peel</h3>
+                                <p><strong>Indications:</strong> Melasma, Hyperpigmentation, Actinic Keratosis, Sun Damage, Premature Aging, Acne Scarring</p>
+                                <ul>
+                                    <li>Maximizes benefits of Microdermabrasion</li>
+                                    <li>Reduces pigmentation</li>
+                                    <li>Stimulates collagen & elastin production</li>
+                                    <li>Can be used on body areas: hands, arms, back, decolte</li>
+                                </ul>
+                                <div class="service-details">
+                                    <span class="price">$180</span>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item animate-fade-up">
+                                <h3>Dermaplanning & Peel</h3>
+                                <p><strong>Indications:</strong> Aging skin, Pigmented /photo-damage, Sensitive skin, Rosacea</p>
+                                <ul>
+                                    <li>Reduces Pigmentation</li>
+                                    <li>Removes fine hair by dermablading</li>
+                                    <li>Enhances collagen & elastin production</li>
+                                    <li>Reduces fine lines & wrinkles</li>
+                                </ul>
+                                <div class="service-details">
+                                    <span class="price">$180</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Corrective Peels -->
+                    <div class="peel-subcategory" id="advanced-peels">
+                        <h3 style="font-family: var(--font-primary); font-size: 1.8rem; font-weight: 700; color: var(--dark-color); text-align: center; margin-bottom: 40px;">Advanced Corrective Peels</h3>
+                        
+                        <div style="max-width: 800px; margin: 0 auto 50px auto; padding: 30px; background: var(--light-sage); border-radius: 15px; text-align: center;">
+                            <p style="font-family: var(--font-secondary); font-size: 1.1rem; line-height: 1.7; color: var(--text-color); margin-bottom: 20px;">
+                                <strong>Perfect for:</strong> Severe skin concerns, experienced clients, and those seeking maximum results with professional supervision.
+                            </p>
+                            <p style="font-family: var(--font-secondary); font-size: 1rem; line-height: 1.6; color: var(--text-color); margin-bottom: 20px;">
+                                Our most intensive peel treatments designed to address severe hyperpigmentation, deep acne scarring, and advanced signs of aging. 
+                                These treatments require skin preparation and may have longer recovery times, but deliver the most dramatic and long-lasting results.
+                            </p>
+                            <button class="learn-more-btn" onclick="openAdvancedPeelsModal()" style="background: var(--secondary-color); color: white; border: none; padding: 12px 25px; border-radius: 25px; font-family: var(--font-secondary); font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: var(--transition-base);">
+                                View Treatment Examples
+                            </button>
+                        </div>
+                        
+                        <div class="service-grid">
+                            <div class="service-item animate-fade-up">
+                                <h3>Retinol Peel with Vitamin A & C</h3>
+                                <p><strong>Indications:</strong> Melasma, Hyperpigmentation, Actinic keratosis, Sun damage, Premature aging, Acne</p>
+                                <ul>
+                                    <li>Stimulates cell turnover & cell production</li>
+                                    <li>Enhances collagen & elastin production</li>
+                                    <li>Dramatically reduces fine lines & wrinkles</li>
+                                    <li>Intensive anti-aging treatment</li>
+                                    <li>Neck, decolte and other body areas can be treated as well</li>
+                                    <li>Skin care prep (at home for two weeks prior) protocol and after peel skin care products might be necessary</li>
+                                </ul>
+                                <div class="service-details">
+                                    <span class="price">$225</span>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item animate-fade-up">
+                                <h3>Flawless Skin Peel</h3>
+                                <p><strong>Indications:</strong> works just like Perfect Peel for Melasma, Hyperpigmentation, Aging, Sun Damage, Acne, Acne Scaring</p>
+                                <ul>
+                                    <li>Dramatically improves skin tone and texture</li>
+                                    <li>Clears Acne & reduces acne scars</li>
+                                    <li>Accelerates collagen growth and elastin production</li>
+                                    <li>Can treat all Fitzpatrik skin types (with prep)</li>
+                                    <li>Only peel that treats under eyes</li>
+                                    <li>Neck and decolte areas can be treated as well</li>
+                                </ul>
+                                <div class="service-details">
+                                    <span class="price">$300+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Skin Care -->
+            <div class="service-category" id="advanced">
+                <h2 class="category-title">Advanced Skin Care</h2>
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Microneedle Collagen Stimulation</h3>
+                        <p><strong>Advanced collagen induction therapy</strong></p>
+                        <ul>
+                            <li>Micro-needling for collagen production</li>
+                            <li>Reduces scars and fine lines</li>
+                            <li>Improves skin texture and tone</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$275+</span>
+                            <button class="learn-more-btn" onclick="openMicroneedlingModal()">Learn More</button>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Age Defy Nano-Infusion</h3>
+                        <p><strong>Advanced anti-aging treatment</strong></p>
+                        <ul>
+                            <li>Nano-technology delivery system</li>
+                            <li>Targeted anti-aging ingredients</li>
+                            <li>Deep penetration and results</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$220</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>PRX - T33 Face Treatment</h3>
+                        <p><strong>Revolutionary skin rejuvenation</strong></p>
+                        <ul>
+                            <li>Advanced peptide technology</li>
+                            <li>Non-invasive skin tightening</li>
+                            <li>Immediate and long-term results</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$325</span>
+                            <button class="learn-more-btn" onclick="openPRXModal()">Learn More</button>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>PRX - T33 Neck & Decolte Treatment</h3>
+                        <p><strong>Targeted treatment for neck and chest</strong></p>
+                        <ul>
+                            <li>Advanced peptide technology</li>
+                            <li>Firms and tightens neck area</li>
+                            <li>Reduces fine lines and texture</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$299</span>
+                            <button class="learn-more-btn" onclick="openPRXModal()">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Ons -->
+            <div class="service-category" id="addons">
+                <h2 class="category-title">Add Ons</h2>
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Peptide & Stem Cell Mask</h3>
+                        <p><strong>Advanced anti-aging treatment</strong><br>
+                        Stimulates collagen production<br>
+                        Promotes cellular regeneration<br>
+                        Reduces fine lines and wrinkles</p>
+                        <div class="service-details">
+                            <span class="duration">Add-on</span>
+                            <span class="price">$35</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>LIFT & FIRM Eye Treatment</h3>
+                        <p><strong>Targeted treatment for eye area</strong><br>
+                        Reduces puffiness and dark circles<br>
+                        Firms and tightens delicate skin<br>
+                        Specialized eye care technology</p>
+                        <div class="service-details">
+                            <span class="duration">Add-on</span>
+                            <span class="price">$35</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Deep Hydrating w/Hyaluronic</h3>
+                        <p><strong>Intensive moisture treatment</strong><br>
+                        Hyaluronic acid infusion<br>
+                        Long-lasting hydration<br>
+                        Plumps and smooths skin</p>
+                        <div class="service-details">
+                            <span class="duration">Add-on</span>
+                            <span class="price">$20</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Microderm or Dermaplaning</h3>
+                        <p><strong>Advanced exfoliation treatment</strong><br>
+                        Removes dead skin cells<br>
+                        Improves skin texture<br>
+                        Enhances product absorption</p>
+                        <div class="service-details">
+                            <span class="duration">Add-on</span>
+                            <span class="price">$50</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Photon Light</h3>
+                        <p><strong>Advanced LED light therapy</strong><br>
+                        Anti-aging, acne, and healing benefits<br>
+                        Promotes cellular regeneration<br>
+                        Reduces inflammation and redness</p>
+                        <div class="service-details">
+                            <span class="duration">Add-on</span>
+                            <span class="price">$25</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Decolte Anti-Aging Collagen</h3>
+                        <p><strong>Upper chest treatment</strong><br>
+                        Targets neck and décolleté area<br>
+                        Collagen stimulation<br>
+                        Firms and tightens skin</p>
+                        <div class="service-details">
+                            <span class="duration">Add-on</span>
+                            <span class="price">$35</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Dermal Peel Layer</h3>
+                        <p><strong>Chemical exfoliation treatment</strong><br>
+                        Removes damaged skin layers<br>
+                        Stimulates cell turnover<br>
+                        Improves skin texture and tone</p>
+                        <div class="service-details">
+                            <span class="duration">Add-on</span>
+                            <span class="price">$50</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Collagen Hand Therapy</h3>
+                        <p><strong>Specialized hand treatment</strong><br>
+                        Rejuvenates aging hands<br>
+                        Improves skin texture<br>
+                        Reduces age spots and lines</p>
+                        <div class="service-details">
+                            <span class="duration">Add-on</span>
+                            <span class="price">$25</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>RF Firming</h3>
+                        <p><strong>Radio frequency treatment</strong><br>
+                        Non-invasive skin tightening<br>
+                        Stimulates collagen production<br>
+                        Reduces fine lines and wrinkles</p>
+                        <div class="service-details">
+                            <span class="duration">Add-on</span>
+                            <span class="price">$50</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Firm & Tighten Modal -->
+    <div id="firmTightenModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeFirmTightenModal()">&times;</span>
+            <h2 class="modal-title">Firm & Tighten Facial</h2>
+            <p class="modal-subtitle">Radio Frequency & Ultrasonic Technology</p>
+            
+            <div class="modal-section">
+                <h3>About the Firm & Tighten Treatment</h3>
+                <div class="treatment-highlight">
+                    <p><strong>Approx. 75min. $200</strong></p>
+                </div>
+                <p>Tone and tighten your skin with our FIRM & TIGHTEN FACIAL that helps reduce wrinkles and skin laxity without the pain of Botox and the downtime of surgery. This non-invasive procedure is the perfect restorative remedy for skin problems associated with aging. Firm up without a face-lift! Treatments can use different technologies like RF, ultrasonic, micro-current, or oxygen, depending on your needs. The best part is that the esthetician customizes the skin-tightening face treatment for every client based on their personal needs.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Advantages & Indications</h3>
+                <ul>
+                    <li>Provides immediate firming and tightening</li>
+                    <li>An ideal treatment for anyone with mild loss of elasticity of skin on their face and neck</li>
+                    <li>Uses RF or Ultrasonic waves to trigger collagen and elastin production in the skin's deeper layers</li>
+                    <li>Results are instant & include smoother, tighter, more radiant skin</li>
+                    <li>Radio Frequency technology offers a non-invasive, pain-free treatment</li>
+                    <li>Used to reduce and improve wrinkles, and generally improve the tone and texture on the skin</li>
+                    <li>RF and ULTRASONIC can be used also on areas of the body for saggy skin & stretch marks</li>
+                    <li>Virtually no downtime</li>
+                    <li>Can be done before an event</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>How Does It Work?</h3>
+                <p>The radio frequency energy penetrates the skin layers to selectively heat the skin tissue where the collagen fibres are embedded. The local heating causes an immediate contraction of the collagen fibres. Fat cells drain, then shrink, while those all important fibroblast cells (part of our connective tissue), are stimulated to produce new collagen and elastic fibres. The effect is tighter, smoother, younger looking skin with a visible 'lift'.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>What Is the Treatment Like?</h3>
+                <p>The treatment itself is surprisingly relaxing. Each area on your body is treated for 20-30 minutes. All that's required is to show your therapist your problem areas and lie back on the treatment bed. The technique is considered relaxing to some.</p>
+                <p><strong>Are there any side effects?</strong> You can expect some occasional redness that is usually gone within 30 minutes post-treatment.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>When Can I Expect to See Results?</h3>
+                <p>Most clients will be able to notice immediate results in the tightness of their skin. More results continue to emerge in the days following the treatment. Skin is remarkably smoother and muscle tone is more visible too.</p>
+                <p>Normally, multiple sessions are required. Usually, once per week or every other week until you've had about 4-8 treatments in total. Our professional staff at Bluefern Spa will provide you a plan in advance, so you will know what to expect. Packages of treatments are available.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Treatment Results</h3>
+                <div class="before-after-container">
+                    <div class="before-after-image">
+                        <img src="radio-frequency-results.png" alt="Radio Frequency Firm & Tighten Facial Before and After Results" style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    </div>
+                    <p class="image-caption">*Individual results may vary. This image shows typical results from our Firm & Tighten Facial treatment.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRX-T33 Modal -->
+    <div id="prxModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePRXModal()">&times;</span>
+            <h2 class="modal-title">PRX-T33® Biorejuvenation</h2>
+            <p class="modal-subtitle">Revolutionary Non-Injectable Bio-Revitalizer</p>
+            
+            <div class="modal-section">
+                <h3>About the PRX-T33® Procedure</h3>
+                <p>PRX-T33 is a non-injectable bio-revitalizer that induces dermal bio-stimulation which goes deep within the tissue without harming the epidermis (top layer of skin). It provides all the benefits of a high percentage TCA peel but without the associated side effects such as discomfort, peeling and downtime. The treatment provides immediate hydration, firmness and tightening.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Indications</h3>
+                <ul>
+                    <li>Skin smoothing for lines and wrinkles</li>
+                    <li>Skin tightening</li>
+                    <li>Loss of firmness of face, neck and chest</li>
+                    <li>Post-Inflammatory spots after acne</li>
+                    <li>Atrophic scars</li>
+                    <li>Stretch marks</li>
+                    <li>Melasma</li>
+                    <li>Hyperpigmentation</li>
+                    <li>Photodamage</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Advantages of the PRX-T33®</h3>
+                <ul>
+                    <li>For men, women and teens</li>
+                    <li>No needles</li>
+                    <li>Virtually painless</li>
+                    <li>No peeling, only mild flaking</li>
+                    <li>No downtime</li>
+                    <li>Can be used year long - even summer (no photosensitivity)</li>
+                    <li>15-30 minute procedure</li>
+                    <li>Provides immediate firming and tightening</li>
+                    <li>Great before an event</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>How It Works</h3>
+                <div class="treatment-highlight">
+                    <p><strong>Trichloroacetic acid 33%:</strong> It stimulates the growth of fibroblasts in the skin for collagen regeneration, at the same time it has an anti-inflammatory effect, effectively cleans pores from accumulated cutaneous fat, debris of cosmetics and micro particles of dirt, destroys pathogenic bacteria that cause acne formation, and increases the elasticity of the dermis.</p>
+                </div>
+                <div class="treatment-highlight">
+                    <p><strong>Hydrogen peroxide:</strong> It has a strong antiseptic effect on the treated area of the skin. Upon contact with the epidermis, hydrogen peroxide promotes the release of a huge amount of oxygen, which mechanically cleans the skin surface from all types of contaminants. In addition, hydrogen peroxide fills skin cells with pure oxygen which increases the sensitivity of receptors.</p>
+                </div>
+                <div class="treatment-highlight">
+                    <p><strong>Kojic acid:</strong> The main purpose of this component is to brighten the treated area of the face. The chemical composition of this acid suppresses the production of melanin. Formerly, it was used to eliminate pigmentation, freckles, to remove traces of post-acne, chickenpox, small scars and cicatrices. This way a long and painful procedure turned into a quick and painless one.</p>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>How Many Treatments Are Needed</h3>
+                <div class="treatment-highlight">
+                    <p><strong>We offer 4 treatments for $1250 and includes FREE skin care products valued at $260</strong></p>
+                </div>
+                <ul>
+                    <li>One treatment every 7-10 days works best</li>
+                    <li>Best results are achieved after 3-5 treatments depending upon skin condition and desired outcome</li>
+                    <li>Call us to book a free consultation</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Effects of the PRX-T33® Procedure</h3>
+                <ul>
+                    <li>Firming and toning of the deep dermis layer (the face will have a more precise contour)</li>
+                    <li>Normalization of the sebaceous glands and significant reduction in pore size</li>
+                    <li>There is a slight pull-up effect (lifting) and overall rejuvenating effect</li>
+                    <li>Enhancing the effect of injection procedures</li>
+                    <li>A significant reduction in all types of pigmentation and freckles</li>
+                    <li>Treatment of photoaging</li>
+                    <li>Evens out texture and skin complexion</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>PRX-T33® for Body</h3>
+                <p>While chemical peels are commonly used on the skin of the face, PRX-T33 has been developed for use on any problematic area.</p>
+                <p>It works wonders on the appearance of stretch marks, so a popular option is to receive a peel on the stomach or thighs. From mothers who are looking to repair the effects of pregnancy on the skin to those who have been left with stretch marks after weight loss, this is an amazing solution. Many use PRX-T33 for lifting the skin of the chest and neck, where aging often leaves the skin bunching and sagging. There are even reports of significant improvement to the appearance of the hands, reducing sun spots and smoothing wrinkles that often make the hands appear aged.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Contraindications to the PRX-T33® Procedure</h3>
+                <ul>
+                    <li>Pregnancy and lactation</li>
+                    <li>Allergy to its components</li>
+                    <li>Damage to the facial skin, fresh wounds, pustules</li>
+                    <li>Infectious and viral diseases, especially if accompanied with cutaneous manifestations (herpes, for example)</li>
+                    <li>High sensitivity of the skin</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>What to Expect During the PRX-T33®</h3>
+                <ul>
+                    <li>During the procedure, you may feel tingling or stinging; sensations should be tolerable – this is normal</li>
+                    <li>After the PRX-T33® procedure, a slight pink hue may occur. It will disappear in about half an hour</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>How Many Procedures of the PRX-T33® Are Required?</h3>
+                <ul>
+                    <li><strong>For skin tightening:</strong> 1 session every 7 days, 4 sessions</li>
+                    <li><strong>For signs of photoaging:</strong> 1 session every 7 days, 4 sessions</li>
+                    <li><strong>For pigmentation (chloasma):</strong> 1 session every 20 days until the pigmentation disappears</li>
+                    <li><strong>For atrophic (indented) scars:</strong> spot treatment of scars until the skin is completely smooth. The number of procedures depends on the severity of the scars</li>
+                    <li><strong>For stretch marks:</strong> 1 session every 7 days for 4-10 weeks</li>
+                    <li><strong>For acne:</strong> 1 session every 7 days, 5-6 sessions</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- HydroFacial Modal -->
+    <div id="hydroFacialModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeHydroFacialModal()">&times;</span>
+            <h2 class="modal-title">What is the HydroFacial</h2>
+            
+            <div class="modal-section">
+                <p>The HydroFacial is a refreshing anti-aging treatment that works to deliver an immediate glow as well as long-term skin wellness. This procedure can be customized to deliver instant results without discomfort or downtime. This advanced skin treatment combines deep pore cleansing, exfoliation, extractions, and hydration all in one while also replenishing vital nutrients like:</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Key Ingredients</h3>
+                <ul>
+                    <li><strong>Antioxidants:</strong> key ingredients that help protect and repair skin</li>
+                    <li><strong>Peptides:</strong> amino acids that boost the production of collagen and elastin</li>
+                    <li><strong>Hyaluronic acid:</strong> a naturally occurring molecule in the body that binds moisture, responsible for plumping the skin</li>
+                    <li><strong>Alpha & Beta Hydroxy Acids:</strong> for skin resurfacing, anti-aging exfoliation</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>The HydroFacial can address the following concerns:</h3>
+                <ul>
+                    <li>Fine lines and wrinkles</li>
+                    <li>Elasticity & skin firmness</li>
+                    <li>Improves skin texture</li>
+                    <li>Hyperpigmentation/Photo damage</li>
+                    <li>Oily/Congested skin</li>
+                    <li>Enlarged pores</li>
+                    <li>Advanced signs of aging</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <p>The HydroFacial is suitable for all skin types and can be customized to meet your unique skin care needs.</p>
+                <div class="treatment-highlight">
+                    <p><strong>Book a complimentary consultation;</strong> the aesthetician will analyze your skin and you can decide together which treatments will benefit you the most.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Microneedling Modal -->
+    <div id="microneedlingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeMicroneedlingModal()">&times;</span>
+            <h2 class="modal-title">Microneedle Collagen Stimulation</h2>
+            <p class="modal-subtitle">Advanced Collagen Induction Therapy (CIT)</p>
+            
+            <div class="modal-section">
+                <h3>How does the Dermal Pen Microneedling Work?</h3>
+                <p>Micro-needling is a form of Collagen Induction Therapy(CIT). The Dermal Pen micro-needling provides unparalleled response via a fractional delivery of needles creating micro-injuries into the epidermis and dermis. These micro-injuries to the skin encourage and harness the power of the body's ability to repair the skin.</p>
+                <p>The first phase begins with the release of the epidermal growth factors and the further cascade of fibroblast chemotaxis, fibroblast proliferation and matrix production. This proliferation of the body's tissue continues to release growth factors from fibroblasts, keratinocytes and monocytes.</p>
+                <p>The second phase of wound healing involves deposition of collagen III, IV and I, elastin, proteoglycans, and GAGs (Glycosaminoglycans). The last phase results in tissue remodeling where the skins vascular matrix matures and skin tightening. The body's ability to heal itself is at the heart of this amazing process.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>What are the effects of Micro-needling on the skin?</h3>
+                <ul>
+                    <li>It improves the firmness & thickness of the dermis as well as the epidermis</li>
+                    <li>Improves skin texture, reduces wrinkles and fine lines (including the area around the eyes)</li>
+                    <li>It also has a positive effect on hyper-pigmentation as well as on hypo-pigmentation. An improved blood supply (neo-angiogenesis) will harmonize and blend the pigmentation with the adjacent skin</li>
+                    <li>Disfiguring scars, especially acne scars, will be improved and minimized. New collagen fibers can elevate the depressed scar tissue</li>
+                    <li>Reduces and tightens enlarged pores</li>
+                    <li>Helps balance oil production on skin</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>How is it performed?</h3>
+                <p>The skin is cleaned and numbed with the appropriate anesthetic cream. The treatment involves rolling a hand held device that is covered with numerous tiny closely-spaced needles many times back and forth along the affected skin region. The skin is thoroughly needled in such a way, that each skin part is needled about 15 to 20 times.</p>
+                <p>As the device rolls along the skin, these needles penetrate the upper layers of skin to a depth of up to 2mm (depending on the needle length used) producing thousands of tiny puncture marks or micro-medical needle-channels in the skin. Each channel goes no deeper than the skin layer and will be approximately 0.1mm in width. An even pattern of petechiae(minute hemorrhagic spots, of pinpoint to pinhead size, in the skin) after the procedure is the best indication that the procedure has been done effectively.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>How long does the treatment take?</h3>
+                <p>In general the whole procedure takes between 20-30 minutes depending on the area treated.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Does it hurt?</h3>
+                <p>A numbing cream on the skin is used before the treatment in order to render the procedure painless. Nonetheless, some pressure sensations will still be felt, although this should not be painful.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>What is the down time after a treatment?</h3>
+                <p>Recovery after this treatment depends on the length and density of the needles of the rollers used. The skin will be pink or red in appearance for 24-48 hours, much like a sunburn with some minor bleeding and very occasionally some mild bruising. The skin may also feel warm, tight and itchy for a short while.</p>
+                <p>Generally the inflammatory reaction of the skin is overall usually short and fades significantly after a couple of days on average, depending on the skin colour of the individual. Patients with a more sensitive skin type or older patients may take upwards of one week to fully recover.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Are there any side effects or risks from this procedure?</h3>
+                <p>Side effects and risks are minimal with this type of treatment and typically include minor flaking or dryness of the skin, with some mild scab formation in rare circumstances. Infections are extremely rare. Since the tiny pricking channels close within minutes, and provided the procedure is done under clinical conditions, post-op infections are very unlikely.</p>
+                <p>Small white skin spots(milia) may also form on the skin which can be treated if these are persistent. As this is a non ablative treatment hyperpigmentation or darkening of the skin area treated is highly unlikely but can very rarely occur. This is usually temporary and subsides after the first couple of months. Suitable make-up will be able to conceal this if necessary.</p>
+                <p>If you have a history of cold sores, then this could possibly flare up after the treatment. Please advice us accordingly since we may need to prescribe appropriate anti-viral medication prior to treatment.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>What should I do after the treatment?</h3>
+                <p>Post treatment advice may include:</p>
+                <ul>
+                    <li>Using tepid water to cleanse the face for the first 48 hours following treatment and drying the area gently without rubbing</li>
+                    <li>Ensuring that your hands are always clean when touching the area treated to avoid any infections</li>
+                    <li>Avoid applying make-up products for the first 12 hours following treatment other than some mineral based make-up products</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>When will I see the results of the treatment?</h3>
+                <p>It can take between 6- 8 weeks before visible signs of skin regeneration are seen and the process will continue to evolve over the ensuing months providing a gradual improvement. Although a single treatment can provide a noticeable result, ideally however a series of 2-3 treatments spaced about 6 -8weeks apart, is recommended to achieve optimal results.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>How often can I do treatments with Micro-needling?</h3>
+                <p>As often as required, but with a minimum separation time of 6 to 8 weeks between treatments.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Who should not undergo this procedure?</h3>
+                <p>It is not suitable for patients who:</p>
+                <ul>
+                    <li>Have used Accutane (isotretinoin) within the last 3 months</li>
+                    <li>Have open wounds, cuts or abrasions on the skin</li>
+                    <li>Have had radiation treatment to the skin within the last year</li>
+                    <li>Have any kind of current skin infection, condition, herpes simplex in the area to be treated</li>
+                    <li>Are pregnant or are breast feeding</li>
+                    <li>Have any history of keloid or hypertrophic scars or poor wound healing</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gentle Peels Modal -->
+    <div id="gentlePeelsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeGentlePeelsModal()">&times;</span>
+            <h2 class="modal-title">Gentle Peels with Facial</h2>
+            <p class="modal-subtitle">Mild Chemical Exfoliation for All Skin Types</p>
+            
+            <div class="modal-section">
+                <h3>About Gentle Peels</h3>
+                <p>Our gentle peels are perfect for first-time peel clients and those with sensitive skin. These treatments combine mild chemical exfoliation with a complete facial to provide gentle yet effective skin renewal.</p>
+            </div>
+
+                        <div class="modal-section">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li>Minimal to no downtime</li>
+                    <li>Suitable for all skin types</li>
+                    <li>Gentle exfoliation and brightening</li>
+                    <li>Combined with relaxing facial treatment</li>
+                    <li>Ideal for maintenance and prevention</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Treatment Images</h3>
+                <div class="before-after-container">
+                    <div class="before-after-image">
+                        <img src="gentlepeel.png" alt="Gentle Peels Before and After Results" style="width: 80%; max-width: 500px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; object-fit: contain;">
+                    </div>
+                    <p class="image-caption">*Individual results may vary. This image shows typical results from our Gentle Peels treatment.</p>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>Recommended Frequency</h3>
+                <p>Gentle peels can be performed every 2-4 weeks for optimal results. They're perfect for maintaining healthy skin and can be used year-round.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Medium Peels Modal -->
+    <div id="mediumPeelsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeMediumPeelsModal()">&times;</span>
+            <h2 class="modal-title">Medium Dermal Peels</h2>
+            <p class="modal-subtitle">Advanced Treatment for Moderate Skin Concerns</p>
+            
+            <div class="modal-section">
+                <h3>About Medium Peels</h3>
+                <p>Medium-strength peels penetrate deeper into the dermis to address more significant skin concerns. These treatments provide dramatic results while maintaining reasonable recovery times.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li>3-7 days of recovery time</li>
+                    <li>More dramatic results than gentle peels</li>
+                    <li>Addresses deeper skin concerns</li>
+                    <li>May require skin preparation</li>
+                    <li>Ideal for experienced peel clients</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Treatment Images</h3>
+                <div class="before-after-container">
+                    <div class="before-after-image">
+                        <img src="mediumpeel.png" alt="Medium Peels Before and After Results" style="width: 80%; max-width: 500px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; object-fit: contain;">
+                    </div>
+                    <p class="image-caption">*Individual results may vary. This image shows typical results from our Medium Peels treatment.</p>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>Recommended Frequency</h3>
+                <p>Medium peels are typically performed every 4-6 weeks. A series of 3-6 treatments is recommended for optimal results.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Advanced Peels Modal -->
+    <div id="advancedPeelsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAdvancedPeelsModal()">&times;</span>
+            <h2 class="modal-title">Advanced Corrective Peels</h2>
+            <p class="modal-subtitle">Maximum Results for Severe Skin Concerns</p>
+            
+            <div class="modal-section">
+                <h3>About Advanced Peels</h3>
+                <p>Our most intensive peel treatments designed to address severe hyperpigmentation, deep acne scarring, and advanced signs of aging. These treatments require professional supervision and skin preparation.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li>7-14 days of recovery time</li>
+                    <li>Maximum dramatic results</li>
+                    <li>Requires skin preparation protocol</li>
+                    <li>Professional supervision required</li>
+                    <li>Long-lasting results</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Treatment Images</h3>
+                <div class="before-after-container">
+                    <div class="before-after-image">
+                        <img src="advancedpeel.png" alt="Advanced Peels Before and After Results" style="width: 80%; max-width: 500px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; object-fit: contain;">
+                    </div>
+                    <p class="image-caption">*Individual results may vary. This image shows typical results from our Advanced Peels treatment.</p>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>Recommended Frequency</h3>
+                <p>Advanced peels are typically performed every 6-8 weeks. A series of 2-4 treatments is usually sufficient for maximum results.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Important Notes</h3>
+                <div class="treatment-highlight">
+                    <p><strong>Skin Preparation:</strong> Advanced peels require a 2-week skin preparation protocol using specific products to ensure optimal results and safety.</p>
+                </div>
+                <div class="treatment-highlight">
+                    <p><strong>Consultation Required:</strong> A thorough consultation and skin analysis is mandatory before any advanced peel treatment.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Skin Care Page Functionality
+        const initSkinCarePage = () => {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const serviceCategories = document.querySelectorAll('.service-category');
+
+            // Switch category function
+            const switchCategory = (targetCategory) => {
+                // Update active states
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                const targetButton = document.querySelector(`[data-category="${targetCategory}"]`);
+                if (targetButton) targetButton.classList.add('active');
+
+                serviceCategories.forEach(category => category.classList.remove('active'));
+                const targetCategoryElement = document.getElementById(targetCategory);
+                if (targetCategoryElement) targetCategoryElement.classList.add('active');
+
+                // Animate service items with staggered delays
+                const serviceItems = targetCategoryElement.querySelectorAll('.service-item');
+                serviceItems.forEach((item, index) => {
+                    // Reset animation state
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(30px) scale(0.98)';
+                    item.style.animation = 'none';
+                    
+                    // Trigger animation with staggered delay
+                    setTimeout(() => {
+                        item.style.animation = `fadeInUp 0.8s ease-out forwards`;
+                        item.style.animationDelay = `${index * 0.1}s`;
+                    }, 50);
+                });
+            };
+
+            // Peel subcategory functionality
+            const initPeelSubcategories = () => {
+                const peelSubButtons = document.querySelectorAll('.peel-sub-btn');
+                const peelSubcategories = document.querySelectorAll('.peel-subcategory');
+
+                const switchPeelSubcategory = (targetPeel) => {
+                    // Update active states
+                    peelSubButtons.forEach(btn => btn.classList.remove('active'));
+                    const targetButton = document.querySelector(`[data-peel="${targetPeel}"]`);
+                    if (targetButton) targetButton.classList.add('active');
+
+                    peelSubcategories.forEach(subcategory => subcategory.classList.remove('active'));
+                    const targetSubcategory = document.getElementById(`${targetPeel}-peels`);
+                    if (targetSubcategory) targetSubcategory.classList.add('active');
+
+                    // Animate service items with staggered delays
+                    const serviceItems = targetSubcategory.querySelectorAll('.service-item');
+                    serviceItems.forEach((item, index) => {
+                        // Reset animation state
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(30px) scale(0.98)';
+                        item.style.animation = 'none';
+                        
+                        // Trigger animation with staggered delay
+                        setTimeout(() => {
+                            item.style.animation = `fadeInUp 0.8s ease-out forwards`;
+                            item.style.animationDelay = `${index * 0.1}s`;
+                        }, 50);
+                    });
+                };
+
+                // Event listeners for peel subcategories
+                peelSubButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const peelType = button.getAttribute('data-peel');
+                        if (peelType) {
+                            switchPeelSubcategory(peelType);
+                        }
+                    });
+                });
+            };
+
+            // Initialize peel subcategories
+            initPeelSubcategories();
+
+            // Event listeners
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const category = button.getAttribute('data-category');
+                    if (category) {
+                        switchCategory(category);
+                    }
+                });
+            });
+
+            // Initialize animations for default category
+            setTimeout(() => {
+                const defaultItems = document.querySelectorAll('#facials .service-item');
+                defaultItems.forEach((item, index) => {
+                    // Reset initial state
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(30px) scale(0.98)';
+                    
+                    // Trigger staggered animation
+                    setTimeout(() => {
+                        item.style.animation = `fadeInUp 0.8s ease-out forwards`;
+                        item.style.animationDelay = `${index * 0.1}s`;
+                    }, 100 + (index * 50));
+                });
+            }, 200);
+        };
+
+        // Initialize hero animations
+        const initHeroAnimations = () => {
+            const heroContent = document.querySelector('.hero-content');
+            const heroEyebrow = document.querySelector('.hero-eyebrow');
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            const heroQuote = document.querySelector('.hero-quote');
+
+            // Trigger hero animations with staggered delays
+            setTimeout(() => {
+                if (heroContent) heroContent.classList.add('animate-in');
+            }, 300);
+
+            setTimeout(() => {
+                if (heroEyebrow) heroEyebrow.classList.add('animate-in');
+            }, 600);
+
+            setTimeout(() => {
+                if (heroTitle) heroTitle.classList.add('animate-in');
+            }, 800);
+
+            setTimeout(() => {
+                if (heroSubtitle) heroSubtitle.classList.add('animate-in');
+            }, 1000);
+
+            setTimeout(() => {
+                if (heroQuote) heroQuote.classList.add('animate-in');
+            }, 1200);
+        };
+
+        // Initialize when ready
+        document.addEventListener('DOMContentLoaded', () => {
+            initSkinCarePage();
+            initHeroAnimations();
+        });
+
+        // Modal Functions
+        function openFirmTightenModal() {
+            document.getElementById('firmTightenModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeFirmTightenModal() {
+            document.getElementById('firmTightenModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('firmTightenModal');
+            if (event.target === modal) {
+                closeFirmTightenModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeFirmTightenModal();
+                closePRXModal();
+                closeHydroFacialModal();
+                closeMicroneedlingModal();
+                closeGentlePeelsModal();
+                closeMediumPeelsModal();
+                closeAdvancedPeelsModal();
+            }
+        });
+
+        // PRX Modal Functions
+        function openPRXModal() {
+            document.getElementById('prxModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closePRXModal() {
+            document.getElementById('prxModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close PRX modal when clicking outside of it
+        window.onclick = function(event) {
+            const firmModal = document.getElementById('firmTightenModal');
+            const prxModal = document.getElementById('prxModal');
+            const hydroFacialModal = document.getElementById('hydroFacialModal');
+            const microneedlingModal = document.getElementById('microneedlingModal');
+            const gentlePeelsModal = document.getElementById('gentlePeelsModal');
+            const mediumPeelsModal = document.getElementById('mediumPeelsModal');
+            const advancedPeelsModal = document.getElementById('advancedPeelsModal');
+            if (event.target === firmModal) {
+                closeFirmTightenModal();
+            }
+            if (event.target === prxModal) {
+                closePRXModal();
+            }
+            if (event.target === hydroFacialModal) {
+                closeHydroFacialModal();
+            }
+            if (event.target === microneedlingModal) {
+                closeMicroneedlingModal();
+            }
+            if (event.target === gentlePeelsModal) {
+                closeGentlePeelsModal();
+            }
+            if (event.target === mediumPeelsModal) {
+                closeMediumPeelsModal();
+            }
+            if (event.target === advancedPeelsModal) {
+                closeAdvancedPeelsModal();
+            }
+        }
+
+        // HydroFacial Modal Functions
+        function openHydroFacialModal() {
+            document.getElementById('hydroFacialModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeHydroFacialModal() {
+            document.getElementById('hydroFacialModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Microneedling Modal Functions
+        function openMicroneedlingModal() {
+            document.getElementById('microneedlingModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeMicroneedlingModal() {
+            document.getElementById('microneedlingModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Gentle Peels Modal Functions
+        function openGentlePeelsModal() {
+            document.getElementById('gentlePeelsModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeGentlePeelsModal() {
+            document.getElementById('gentlePeelsModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Medium Peels Modal Functions
+        function openMediumPeelsModal() {
+            document.getElementById('mediumPeelsModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeMediumPeelsModal() {
+            document.getElementById('mediumPeelsModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Advanced Peels Modal Functions
+        function openAdvancedPeelsModal() {
+            document.getElementById('advancedPeelsModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeAdvancedPeelsModal() {
+            document.getElementById('advancedPeelsModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html> 

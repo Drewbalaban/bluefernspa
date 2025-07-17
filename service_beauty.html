@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Services - Bluefern Spa | Professional Waxing & Beauty Treatments</title>
+    <meta name="description" content="Experience professional beauty services at Bluefern Spa. From waxing to lash & brow treatments, we provide sanitary, comfortable, and beautiful results.">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Beauty Services Page Styles */
+        :root {
+            --primary-color: #d5eae5;
+            --secondary-color: #a8c9be;
+            --accent-color: #f2f7f5;
+            --light-sage: #e8f2ee;
+            --dark-sage: #9bb5aa;
+            --darker-sage: #7a9b8c;
+            --dark-color: #2C2C2C;
+            --light-color: #FAFAFA;
+            --text-color: #4A4A4A;
+            --border-color: #E5E5E5;
+            --font-primary: 'Cormorant Garamond', serif;
+            --font-secondary: 'Montserrat', sans-serif;
+            --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.08);
+            --shadow-md: 0 5px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+        }
+        /* Hero Banner - Layered Glass Variation */
+        .hero-banner {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            max-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+            background: url('lashbrow.jpg') center/cover;
+            overflow: hidden;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 700px;
+            padding: 50px 50px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.06), inset 0px 0px rgba(255, 255, 255,0.2);
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+        }
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) transparent, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%);
+            border-radius: 32px;
+            z-index: -1;
+        }
+        .hero-eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #000000;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .hero-title {
+            font-family: 'Tangerine', cursive;
+            font-size: clamp(4rem, 7vw, 5rem);
+            font-weight: 700;
+            color: #000000;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            transform: translateY(30px);
+            text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+        }
+        .hero-subtitle {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #000000;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .hero-quote {
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            color: #000000;
+            font-weight: 400;
+            letter-spacing: 0.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        /* Breadcrumb */
+        .breadcrumb {
+            background: var(--light-sage);
+            padding: 20px;
+        }
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .breadcrumb-nav {
+            font-family: var(--font-secondary);
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+        .breadcrumb-nav a {
+            color: var(--darker-sage);
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+        .breadcrumb-nav a:hover {
+            color: var(--dark-color);
+        }
+        /* Service Categories */
+        .service-categories {
+            padding: 80px;
+            background: var(--light-color);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+        .category-btn {
+            background: white;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-base);
+            text-decoration: none;
+            display: inline-block;
+        }
+        .category-btn:hover {
+            border-color: var(--secondary-color);
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        .category-btn.active {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: white;
+        }
+        /* Service Category Content */
+        .service-category {
+            display: none;
+        }
+        .service-category.active {
+            display: block;
+        }
+        .category-title {
+            font-family: 'Tangerine', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .service-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: stretch;
+        }
+        .service-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
+            position: relative;
+            overflow: visible;
+            will-change: opacity, transform;
+            backface-visibility: hidden;
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            filter: none;
+            flex: 0 0 calc(33.333% - 1.33rem);
+            max-width: 350px;
+            min-height: 340px;
+            display: flex;
+            flex-direction: column;
+            justify-content: stretch;
+        }
+        .service-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            filter: none;
+        }
+        .service-item:hover::before {
+            opacity: 1;
+        }
+        /* Enhanced hover effects for service items */
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(213, 234, 229, 0.1) 50%, rgba(213, 234, 229, 0) 50%, rgba(213, 234, 229, 0) 100%);
+            opacity: 0;
+            transition: var(--transition-base);
+            border-radius: 15px;
+            z-index: 1;
+        }
+        .service-item:hover::before {
+            opacity: 1;
+        }
+        /* Ensure content stays above the overlay */
+        .service-item > * {
+            position: relative;
+            z-index: 2;
+        }
+        .service-item.animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .service-item h3 {
+            font-family: var(--font-primary);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            transition: var(--transition-base);
+        }
+        .service-item:hover h3 {
+            color: var(--darker-sage);
+            transform: translateY(-2px);
+        }
+        .service-item p {
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            transition: var(--transition-base);
+            position: relative;
+        }
+        /* Elegant bullet points for service descriptions */
+        .service-item p strong {
+            color: var(--darker-sage);
+            display: block;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+        /* Remove the background image approach */
+        .service-item p {
+            padding-left: 0;
+        }
+        .service-item p strong {
+            padding-left: 0;
+            margin-left: 0;
+        }
+        /* Style the bullet lists */
+        .service-item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0;
+        }
+        .service-item ul li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        .service-item ul li::before {
+            content: '•';
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+            line-height: 1.6;
+        }
+        .service-item:hover p {
+            color: var(--dark-color);
+        }
+        .service-item p strong {
+            color: var(--darker-sage);
+        }
+        .service-details {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem 0;
+            border-top: 2px solid var(--light-sage);
+            transition: var(--transition-base);
+            position: relative;
+        }
+        .service-details::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+        .duration {
+            font-family: var(--font-secondary);
+            font-size: 0.85rem;
+            color: var(--text-color);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            position: relative;
+        }
+        .duration::before {
+            content: '⏱';
+            margin-right: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--darker-sage);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .price::before {
+            content: '';
+            position: absolute;
+            top: -0.3rem;
+            right: -0.5rem;
+            width: 0.3rem;
+            height: 0.3rem;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+        /* Animations */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        @keyframes heroFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        @keyframes heroTextFadeIn {
+            0% {
+                opacity: 0;
+                text-shadow: 0 6px 30px rgba(0, 0, 0, 0);
+            }
+            100% {
+                opacity: 1;
+                text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+            }
+        }
+        /* Hero animation classes */
+        .hero-content.animate-in {
+            animation: heroFadeIn 1s ease-out forwards;
+        }
+        .hero-eyebrow.animate-in {
+            animation: heroTextFadeIn 0.8s ease-out forwards;
+        }
+        .hero-title.animate-in {
+            animation: heroTextFadeIn 1s ease-out forwards;
+        }
+        .hero-subtitle.animate-in {
+            animation: heroTextFadeIn 1.2s ease-out forwards;
+        }
+        .hero-quote.animate-in {
+            animation: heroTextFadeIn 1.4s ease-out forwards;
+        }
+        /* Learn More Button Styles */
+        .learn-more-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-family: var(--font-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-base);
+            margin-left: 15px;
+        }
+        .learn-more-btn:hover {
+            background: var(--darker-sage);
+            transform: translateY(-2px);
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+        .close:hover {
+            color: var(--darker-sage);
+        }
+        .modal-title {
+            font-family: 'Tangerine', cursive;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .modal-subtitle {
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            color: var(--darker-sage);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .modal-section {
+            margin-bottom: 30px;
+        }
+        .modal-section h3 {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .modal-section p {
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+        .modal-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 15px;
+        }
+        .modal-section ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: var(--text-color);
+            font-family: var(--font-secondary);
+        }
+        .modal-section ul li::before {
+            content: '•';
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .treatment-highlight {
+            background: var(--light-sage);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+            border-left: 4px solid var(--secondary-color);
+        }
+        .treatment-highlight strong {
+            color: var(--darker-sage);
+            font-weight: 600;
+        }
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .service-item {
+                flex: 0 0 calc(50% - 1rem);
+                max-width: 400px;
+            }
+        }
+        @media (max-width: 768px) {
+            .service-item,
+            #lashbrow .service-grid .service-item {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .category-nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            .category-btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+        /* Lash & Brow grid: 2 cards per row on desktop */
+        #lashbrow .service-grid .service-item {
+            flex: 0 0 calc(50% - 1rem);
+            max-width: 400px;
+        }
+        @media (max-width: 768px) {
+            #lashbrow .service-grid .service-item {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+        /* Waxing grid: 3 cards per row on desktop, 2 on tablet, 1 on mobile */
+        #waxing .service-grid {
+            gap: 1.5rem;
+        }
+        .subcategory-title {
+            flex: 0 0 100%;
+            width: 100%;
+            font-family: var(--font-secondary);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--darker-sage);
+            margin: 2.5rem 0 1rem 0;
+            text-align: left;
+            letter-spacing: 1px;
+        }
+        #waxing .service-grid .service-item {
+            flex: 0 0 calc(33.333% - 1.5rem);
+            max-width: 100%;
+            min-width: 0;
+        }
+        @media (max-width: 1024px) {
+            #waxing .service-grid .service-item {
+                flex: 0 0 50%;
+            }
+        }
+        @media (max-width: 768px) {
+            #waxing .service-grid .service-item {
+                flex: 0 0 100%;
+            }
+        }
+        #waxing .subtab-nav {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .subtab-btn {
+            background: white;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-base);
+            text-decoration: none;
+            display: inline-block;
+        }
+        .subtab-btn:hover {
+            border-color: var(--secondary-color);
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        .subtab-btn.active {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: white;
+        }
+        .waxing-subcat {
+            display: none;
+            width: 100%;
+        }
+        .waxing-subcat.active {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            align-items: stretch;
+        }
+        .waxing-subcat.active .service-item {
+            flex: 0 0 calc(33.333% - 1.33rem);
+            max-width: 350px;
+            min-width: 300px;
+            margin-bottom: 0;
+        }
+        @media (max-width: 1024px) {
+            .waxing-subcat.active .service-item {
+                flex: 0 0 50%;
+                max-width: 400px;
+            }
+        }
+        @media (max-width: 768px) {
+            .waxing-subcat.active .service-item {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+        .subcategory-title { display: none; }
+        
+        /* Remove broken flex from #browsface */
+        /* Ensure brows and face subcategory displays 3 cards per row */
+        #browsface .service-item {
+            flex: 0 0 calc(33.333% - 1.33rem);
+            max-width: 350px;
+            min-width: 300px;
+            margin-bottom: 0;
+        }
+        @media (max-width: 1024px) {
+            #browsface .service-item {
+                flex: 0 0 50%;
+                max-width: 400px;
+            }
+        }
+        @media (max-width: 768px) {
+            #browsface .service-item {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+        /* Bikini & Body subcategory: 2 cards per row on desktop/tablet, 1 on mobile */
+        #bikinibody.waxing-subcat.active .service-item {
+            flex: 0 0 48%;
+            max-width: 400px;
+        }
+        @media (max-width: 768px) {
+            #bikinibody.waxing-subcat.active .service-item {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="darker-logo-1.png" alt="Bluefern Spa">
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="index.html#services" class="nav-link">Services</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-grid">
+                            <div class="dropdown-column">
+                                <h3>Massage Therapy</h3>
+                                <a href="service_massage.html#swedish-massage">Swedish Massage</a>
+                                <a href="service_massage.html#deep-tissue-massage">Deep Tissue</a>
+                                <a href="service_massage.html#hot-stone-massage">Hot Stone</a>
+                                <a href="service_massage.html#therapeutic-massage">Therapeutic</a>
+                                <a href="service_massage.html">View All Massages</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h3>Facial Treatments</h3>
+                                <a href="service_skincare.html#signature-facial">Signature Facial</a>
+                                <a href="service_skincare.html#anti-aging-facial">Anti-Aging</a>
+                                <a href="service_skincare.html#microdermabrasion">Microdermabrasion</a>
+                                <a href="service_skincare.html#facials">Advanced Facials</a>
+                                <a href="service_skincare.html">View All Facials</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h3>Body & Wellness</h3>
+                                <a href="services.html#body">Body Scrubs & Wraps</a>
+                                <a href="services.html#body">Body Sculpting</a>
+                                <a href="services.html#wellness">Salt Room Therapy</a>
+                                <a href="services.html#wellness">Red Light Therapy</a>
+                                <a href="services.html#wellness">Stretch Therapy</a>
+                                <a href="services.html#body">View All Body Treatments</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h3>Beauty & Packages</h3>
+                                <a href="service_beauty.html#waxing">Waxing Services</a>
+                                <a href="service_beauty.html#lashbrow">Brow & Lash</a>
+                                <a href="services.html#packages">Spa Packages</a>
+                                <a href="services.html#packages">Gift Certificates</a>
+                                <a href="products.html">Société Products</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#specials" class="nav-link">Specials</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.thegiftcardcafe.com/cart/selectpac.php" class="nav-link egift-link">Buy eGift</a>
+                </li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <div class="hero-eyebrow">Bluefern Spa</div>
+            <h1 class="hero-title">Beauty Services</h1>
+            <p class="hero-subtitle">Professional waxing, lash & brow treatments, and skin tag removal</p>
+        </div>
+    </section>
+
+    <!-- Back to Services -->
+    <section class="breadcrumb">
+        <div class="breadcrumb-container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html#services">← Back to Our Services</a>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="service-categories">
+        <div class="container">
+            <div class="category-nav">
+                <button class="category-btn active" data-category="lashbrow">Lash & Brow</button>
+                <button class="category-btn" data-category="waxing">Waxing</button>
+                <button class="category-btn" data-category="skintag">Skin Tag Removal</button>
+            </div>
+
+            <!-- Lash & Brow -->
+            <div class="service-category active" id="lashbrow">
+                <h2 class="category-title">Lash & Brow</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem auto; font-family: var(--font-secondary); font-size: 1.1rem; line-height: 1.7; color: var(--text-color);">
+                    A brilliant way to highlight your eyes and enhance your natural beauty, eyebrow and lash tinting adds depth and definition for a striking, more dramatic look. This simple treatment colors your lashes and brows to complement a new hair color or to darken fair hairs that might otherwise blend into your skin tone. Instantly, your eyes appear brighter, your features more defined, and your overall look beautifully refreshed.
+                </p>
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Brow Tint</h3>
+                        <p><strong>Professional eyebrow tinting</strong></p>
+                        <ul>
+                            <li>Enhances natural brow color</li>
+                            <li>Long-lasting results</li>
+                            <li>Perfect for sparse brows</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$20</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Lash Tint</h3>
+                        <p><strong>Professional lash tinting</strong></p>
+                        <ul>
+                            <li>Darkens natural lashes</li>
+                            <li>No mascara needed</li>
+                            <li>Waterproof and long-lasting</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$45</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Brow Wax</h3>
+                        <p><strong>Professional eyebrow waxing</strong></p>
+                        <ul>
+                            <li>Precise brow shaping</li>
+                            <li>Removes unwanted hair</li>
+                            <li>Clean, defined brows</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$20</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Brow Arching & Design</h3>
+                        <p><strong>Professional brow design and waxing</strong></p>
+                        <ul>
+                            <li>Custom brow shaping</li>
+                            <li>Professional arch design</li>
+                            <li>Perfect for your face shape</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$25</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Waxing -->
+            <div class="service-category" id="waxing">
+                <h2 class="category-title">Waxing</h2>
+                <!-- Standalone Waxing Modal Trigger Button -->
+                <div style="text-align:center; margin-bottom: 2.5rem;">
+                    <button class="learn-more-btn" onclick="openWaxingModal()">Why Should You Wax?</button>
+                </div>
+                <!-- Sub-tab Navigation -->
+                <div class="subtab-nav">
+                    <button class="subtab-btn active" data-subcat="browsface">Brows & Face</button>
+                    <button class="subtab-btn" data-subcat="arms">Arms</button>
+                    <button class="subtab-btn" data-subcat="legs">Legs</button>
+                    <button class="subtab-btn" data-subcat="bikinibody">Bikini & Body</button>
+                </div>
+                <div class="service-grid">
+                    <div class="waxing-subcat active" id="browsface" style="flex-wrap: wrap; width: 100%;">
+                        <div class="service-item animate-fade-up">
+                            <h3>Eyebrow Waxing</h3>
+                            <p><strong>Professional eyebrow waxing</strong></p>
+                            <ul>
+                                <li>Precise brow shaping</li>
+                                <li>Removes unwanted hair</li>
+                                <li>Clean, defined brows</li>
+                            </ul>
+                            <div class="service-details">
+                                <span class="price">$20</span>
+                            </div>
+                        </div>
+                        <div class="service-item animate-fade-up">
+                            <h3>Eyebrow Design</h3>
+                            <p><strong>Professional brow design and waxing</strong></p>
+                            <ul>
+                                <li>Custom brow shaping</li>
+                                <li>Professional arch design</li>
+                                <li>Perfect for your face shape</li>
+                            </ul>
+                            <div class="service-details">
+                                <span class="price">$25</span>
+                            </div>
+                        </div>
+                        <div class="service-item animate-fade-up">
+                            <h3>Lip Wax</h3>
+                            <p><strong>Professional lip waxing</strong></p>
+                            <ul>
+                                <li>Removes upper lip hair</li>
+                                <li>Quick and effective</li>
+                                <li>Smooth results</li>
+                            </ul>
+                            <div class="service-details">
+                                <span class="price">$12</span>
+                            </div>
+                        </div>
+                        <div class="service-item animate-fade-up">
+                            <h3>Cheeks and Sideburns</h3>
+                            <p><strong>Professional cheek and sideburn waxing</strong></p>
+                            <ul>
+                                <li>Removes facial hair</li>
+                                <li>Clean, smooth skin</li>
+                                <li>Professional results</li>
+                            </ul>
+                            <div class="service-details">
+                                <span class="price">$20</span>
+                            </div>
+                        </div>
+                        <div class="service-item animate-fade-up">
+                            <h3>Full Face Wax</h3>
+                            <p><strong>Complete facial waxing</strong></p>
+                            <ul>
+                                <li>Comprehensive facial hair removal</li>
+                                <li>Includes all facial areas</li>
+                                <li>Smooth, hair-free face</li>
+                            </ul>
+                            <div class="service-details">
+                                <span class="price">$60</span>
+                            </div>
+                        </div>
+                        <div class="service-item animate-fade-up">
+                            <h3>Chin Wax</h3>
+                            <p><strong>Professional chin waxing</strong></p>
+                            <ul>
+                                <li>Removes chin hair</li>
+                                <li>Quick and effective</li>
+                                <li>Smooth results</li>
+                            </ul>
+                            <div class="service-details">
+                                <span class="price">$15</span>
+                            </div>
+                        </div>
+                        <div class="service-item animate-fade-up">
+                            <h3>Neck Wax</h3>
+                            <p><strong>Professional neck waxing</strong></p>
+                            <ul>
+                                <li>Removes neck hair</li>
+                                <li>Smooth neck area</li>
+                                <li>Professional results</li>
+                            </ul>
+                            <div class="service-details">
+                                <span class="price">$15</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="waxing-subcat" id="arms" style="flex-wrap: wrap; width: 100%;">
+                        <div class="service-item animate-fade-up">
+                            <h3>Full Arm Wax</h3>
+                            <p><strong>Complete arm waxing</strong></p>
+                            <ul>
+                                <li>Removes all arm hair</li>
+                                <li>Smooth, hair-free arms</li>
+                                <li>Professional results</li>
+                            </ul>
+                            <div class="service-details">
+                                <span class="price">$60</span>
+                            </div>
+                        </div>
+                        <div class="service-item animate-fade-up">
+                            <h3>Half Arm Wax</h3>
+                            <p><strong>Lower arm waxing</strong></p>
+                            <ul>
+                                <li>Removes lower arm hair</li>
+                                <li>From elbow to wrist</li>
+                                <li>Smooth results</li>
+                            </ul>
+                            <div class="service-details">
+                                <span class="price">$40</span>
+                            </div>
+                        </div>
+                        <div class="service-item animate-fade-up">
+                            <h3>Underarm Wax</h3>
+                            <p><strong>Professional underarm waxing</strong></p>
+                            <ul>
+                                <li>Removes underarm hair</li>
+                                <li>Smooth, clean results</li>
+                                <li>Long-lasting</li>
+                            </ul>
+                            <div class="service-details">
+                                <span class="price">$26</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="waxing-subcat" id="legs" style="flex-wrap: wrap; width: 100%;">
+                        <div class="service-item animate-fade-up">
+                            <h3>Full Leg Wax</h3>
+                            <p><strong>Complete leg waxing</strong></p>
+                            <ul>
+                                <li>Removes all leg hair</li>
+                                <li>Smooth, hair-free legs</li>
+                                <li>Long-lasting results</li>
+                            </ul>
+                            <div class="service-details">
+                                <span class="price">$90</span>
+                            </div>
+                        </div>
+                        <div class="service-item animate-fade-up">
+                            <h3>Half Leg Wax</h3>
+                            <p><strong>Lower leg waxing</strong></p>
+                            <ul>
+                                <li>Removes lower leg hair</li>
+                                <li>From knee to ankle</li>
+                                <li>Smooth results</li>
+                            </ul>
+                            <div class="service-details">
+                                <span class="price">$55</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="waxing-subcat" id="bikinibody" style="flex-wrap: wrap; width: 100%;">
+                        <div class="service-item animate-fade-up">
+                            <h3>Bikini Line</h3>
+                            <p><strong>Professional bikini line waxing</strong></p>
+                            <ul>
+                                <li>Removes bikini line hair</li>
+                                <li>Clean, smooth results</li>
+                                <li>Perfect for swimwear</li>
+                            </ul>
+                            <div class="service-details">
+                                <span class="price">$35</span>
+                            </div>
+                        </div>
+                        <div class="service-item animate-fade-up">
+                            <h3>French Bikini</h3>
+                            <p><strong>Professional French bikini waxing</strong></p>
+                            <ul>
+                                <li>Extended bikini area</li>
+                                <li>Clean, smooth results</li>
+                                <li>Professional service</li>
+                            </ul>
+                            <div class="service-details">
+                                <span class="price">$50</span>
+                            </div>
+                        </div>
+                        <div class="service-item animate-fade-up">
+                            <h3>Chest or Abdomen Wax</h3>
+                            <p><strong>Professional chest or abdomen waxing</strong></p>
+                            <ul>
+                                <li>Removes chest/abdomen hair</li>
+                                <li>Smooth, clean results</li>
+                                <li>Professional service</li>
+                            </ul>
+                            <div class="service-details">
+                                <span class="price">$35</span>
+                            </div>
+                        </div>
+                        <div class="service-item animate-fade-up">
+                            <h3>Back Wax for Men</h3>
+                            <p><strong>Professional back waxing for men</strong></p>
+                            <ul>
+                                <li>Removes back hair</li>
+                                <li>Smooth, clean results</li>
+                                <li>Professional service</li>
+                            </ul>
+                            <div class="service-details">
+                                <span class="price">$55</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skin Tag Removal -->
+            <div class="service-category" id="skintag">
+                <h2 class="category-title">Skin Tag Removal</h2>
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Skin Tag Removal</h3>
+                        <p><strong>Professional skin tag removal</strong></p>
+                        <ul>
+                            <li>Safe and effective removal</li>
+                            <li>Professional consultation</li>
+                            <li>Minimal discomfort</li>
+                            <li>Quick recovery time</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">Contact for Pricing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waxing Modal -->
+    <div id="waxingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeWaxingModal()">&times;</span>
+            <h2 class="modal-title">Why Should You Wax?</h2>
+            <p class="modal-subtitle">Professional, Sanitary, and Beautiful Results</p>
+            
+            <div class="modal-section">
+                <p>Waxing leaves your skin smooth for weeks, thus creating cleaner and more sanitary areas all over your body. Waxing along with exfoliating can help reduce ingrown hairs and eliminate razor bumps. When you wax, your hair grows back less dense, finer and softer.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Why wax at Bluefern Spa?</h3>
+                <ul>
+                    <li>Our set-up is very discreet, comfortable and sanitary. The technicians wear gloves & mask during the entire service. Sticks, tools and all equipment used are disposable or sanitized and sterilized. Our wax is not reusable.</li>
+                    <li>We do not double-dip waxing sticks. Our waxing sticks are dipped once into sterile wax, applied to the skin and then discarded.</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>About Hair Growth</h3>
+                <ul>
+                    <li>Hair grows in 3 stages and it can take up to 4 waxing treatments before all of the hair is on the same growth cycle.</li>
+                    <li>Waxing may last from one to six weeks. The more you wax the longer it may last. However, if your last hair removal was shaving, your first wax post shaving will not last as long. It's best not to shave in between wax appointments!</li>
+                    <li>Your rate of hair growth is unique to you, can be anywhere from ten days to three weeks. We recommend waxing every 3 to 4 weeks. In order to keep the hair coming in at a reduced rate, its best not to go past six weeks before your next session.</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>After Your Visit</h3>
+                <p>Now that your skin is so smooth, there are just a few things to keep in mind. The skin is sensitive and needs protection, especially for a day or two after your waxing. If you have any questions or concerns, please ask your technician during your appointment or call us at any time afterwards.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Do's and Don'ts</h3>
+                <ul>
+                    <li>Always use sunblock after waxing.</li>
+                    <li>Do not apply deodorant to newly waxed underarms</li>
+                    <li>Do not use products containing alcohol or perfume after facial waxing.</li>
+                    <li>Do not exercise for 24 hours after a bikini wax, brazilian, chest, or back wax.</li>
+                    <li>Do not wear anything tight on the area just waxed.</li>
+                    <li>Do not apply any product on the area that has been waxed (other than sunblock or mineral makeup).</li>
+                    <li>Do not shower or bathe with very hot water for 24 hours after waxing (or until the redness subsides).</li>
+                    <li>We recommend waiting at least 48 hours before exfoliating areas that have been waxed.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Beauty Services Page Functionality
+        const initBeautyServicesPage = () => {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const serviceCategories = document.querySelectorAll('.service-category');
+
+            // Switch category function
+            const switchCategory = (targetCategory) => {
+                // Update active states
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                const targetButton = document.querySelector(`[data-category=${targetCategory}]`);
+                if (targetButton) targetButton.classList.add('active');
+
+                serviceCategories.forEach(category => category.classList.remove('active'));
+                const targetCategoryElement = document.getElementById(targetCategory);
+                if (targetCategoryElement) targetCategoryElement.classList.add('active');
+
+                // Animate service items with staggered delays
+                const serviceItems = targetCategoryElement.querySelectorAll('.service-item');
+                serviceItems.forEach((item, index) => {
+                    // Reset animation state
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(30px) scale(0.98)';
+                    item.style.animation = 'none';
+                    
+                    // Trigger animation with staggered delay
+                    setTimeout(() => {
+                        item.style.animation = `fadeInUp 0.8s ease-out forwards`;
+                        item.style.animationDelay = `${index * 0.1}s`;
+                    }, 50);
+                });
+            };
+
+            // Event listeners
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', e => {
+                    e.preventDefault();
+                    const category = button.getAttribute('data-category');
+                    if (category) {
+                        switchCategory(category);
+                    }
+                });
+            });
+
+            // Initialize animations for default category
+            setTimeout(() => {
+                const defaultItems = document.querySelectorAll('#lashbrow .service-item');
+                defaultItems.forEach((item, index) => {
+                    // Reset initial state
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(30px) scale(0.98)';
+                    
+                    // Trigger staggered animation
+                    setTimeout(() => {
+                        item.style.animation = `fadeInUp 0.8s ease-out forwards`;
+                        item.style.animationDelay = `${index * 0.1}s`;
+                    }, 100 + (index * 50));
+                });
+            }, 200);
+        };
+
+        // Initialize hero animations
+        const initHeroAnimations = () => {
+            const heroContent = document.querySelector('.hero-content');
+            const heroEyebrow = document.querySelector('.hero-eyebrow');
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            const heroQuote = document.querySelector('.hero-quote');
+
+            // Trigger hero animations with staggered delays
+            setTimeout(() => {
+                if (heroContent) heroContent.classList.add('animate-in');
+            }, 300);
+            setTimeout(() => {
+                if (heroEyebrow) heroEyebrow.classList.add('animate-in');
+            }, 600);
+            setTimeout(() => {
+                if (heroTitle) heroTitle.classList.add('animate-in');
+            }, 800);
+            setTimeout(() => {
+                if (heroSubtitle) heroSubtitle.classList.add('animate-in');
+            }, 1000);
+        };
+
+        // Initialize when ready
+        document.addEventListener('DOMContentLoaded', () => {
+            initBeautyServicesPage();
+            initHeroAnimations();
+        });
+
+        // Waxing Sub-tab Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const subtabButtons = document.querySelectorAll('#waxing .subtab-btn');
+            const subcats = document.querySelectorAll('#waxing .waxing-subcat');
+            subtabButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active from all buttons
+                    subtabButtons.forEach(b => b.classList.remove('active'));
+                    // Hide all subcats
+                    subcats.forEach(sc => sc.classList.remove('active'));
+                    // Activate clicked button and corresponding subcat
+                    btn.classList.add('active');
+                    const subcatId = btn.getAttribute('data-subcat');
+                    const subcatDiv = document.getElementById(subcatId);
+                    if (subcatDiv) subcatDiv.classList.add('active');
+                });
+            });
+        });
+
+        // Modal Functions
+        function openWaxingModal() {
+            document.getElementById('waxingModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeWaxingModal() {
+            document.getElementById('waxingModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('waxingModal');
+            if (event.target === modal) {
+                closeWaxingModal();
+            }
+        };
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeWaxingModal();
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html> 

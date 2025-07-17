@@ -9,7 +9,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
@@ -36,7 +36,7 @@
             --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
         }
 
-        /* Hero Banner */
+        /* Hero Banner - Layered Glass Variation */
         .hero-banner {
             position: relative;
             height: 70vh;
@@ -50,83 +50,82 @@
             overflow: hidden;
         }
 
-        .hero-banner::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.2);
-            z-index: 1;
-        }
+
 
         .hero-content {
-            text-align: center;
-            max-width: 800px;
-            padding: 0 30px;
-            z-index: 2;
             position: relative;
-            padding: 60px 40px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            /* Feathered edges that blend into background */
-            -webkit-mask: radial-gradient(ellipse 95% 90% at center, black 40%, rgba(0,0,0,0.8) 65%, rgba(0,0,0,0.3) 85%, transparent 100%);
-            mask: radial-gradient(ellipse 95% 90% at center, black 40%, rgba(0,0,0,0.8) 65%, rgba(0,0,0,0.3) 85%, transparent 100%);
+            z-index: 2;
+            text-align: center;
+            max-width: 700px;
+            padding: 50px 50px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
             /* Start invisible for elegant reveal */
             opacity: 0;
             transform: translateY(30px) scale(0.98);
         }
 
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent, rgba(255,255,255,0.05));
+            border-radius: 32px;
+            z-index: -1;
+        }
+
         .hero-eyebrow {
-            font-family: var(--font-secondary);
-            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
             font-weight: 500;
-            color: #2C2C2C;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
+            color: #000000;
             margin-bottom: 1rem;
             opacity: 0;
             transform: translateY(20px);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
 
         .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-family: 'Tangerine', cursive;
+            font-size: clamp(4rem, 8vw, 7rem);
             font-weight: 700;
-            color: #2C2C2C;
-            line-height: 1.2;
+            color: #000000;
+            line-height: 1.1;
             margin-bottom: 1rem;
+            letter-spacing: -0.02em;
             opacity: 0;
             transform: translateY(30px);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
         }
 
         .hero-subtitle {
-            font-family: var(--font-primary);
-            font-size: clamp(1.3rem, 3vw, 1.8rem);
-            font-weight: 300;
-            color: #2C2C2C;
-            margin-bottom: 2rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.4rem;
             font-style: italic;
+            color: #000000;
+            margin-bottom: 1.5rem;
             line-height: 1.4;
             opacity: 0;
             transform: translateY(30px);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
 
         .hero-quote {
             font-family: var(--font-secondary);
-            font-size: 1.1rem;
-            color: #2C2C2C;
-            line-height: 1.6;
+            font-size: 1rem;
+            color: #000000;
+            font-weight: 400;
+            letter-spacing: 0.5px;
             opacity: 0;
             transform: translateY(30px);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-            font-weight: 500;
         }
 
         /* Breadcrumb */
@@ -214,9 +213,9 @@
         }
 
         .category-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 600;
+            font-family: 'Tangerine', cursive;
+            font-size: 4rem;
+            font-weight: 700;
             color: var(--dark-color);
             text-align: center;
             margin-bottom: 50px;
@@ -288,7 +287,8 @@
 
         .service-item h3 {
             font-family: var(--font-primary);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
             margin-bottom: 1rem;
             color: var(--dark-color);
             transition: var(--transition-base);
@@ -304,6 +304,51 @@
             line-height: 1.8;
             margin-bottom: 1.5rem;
             transition: var(--transition-base);
+            position: relative;
+        }
+
+        /* Elegant bullet points for service descriptions */
+        .service-item p strong {
+            color: var(--darker-sage);
+            display: block;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        /* Remove the background image approach */
+        .service-item p {
+            padding-left: 0;
+        }
+
+        .service-item p strong {
+            padding-left: 0;
+            margin-left: 0;
+        }
+
+        /* Style the bullet lists */
+        .service-item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 1.5rem 0;
+        }
+
+        .service-item ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .service-item ul li::before {
+            content: '•';
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+            line-height: 1.6;
         }
 
         .service-item:hover p {
@@ -318,23 +363,70 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border-color);
+            padding: 1.5rem 0 0.5rem 0;
+            border-top: 2px solid var(--light-sage);
             transition: var(--transition-base);
+            position: relative;
+        }
+
+        .service-details::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+
+        /* Remove animated progress bar from Add Ons */
+        #addons .service-details::before {
+            display: none;
         }
 
         .duration {
             font-family: var(--font-secondary);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-color);
             font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            position: relative;
+        }
+
+        .duration::before {
+            content: '⏱';
+            margin-right: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Remove clock icon from Add Ons */
+        #addons .duration::before {
+            content: '';
+            margin-right: 0;
         }
 
         .price {
             font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 1.3rem;
+            font-weight: 700;
             color: var(--darker-sage);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .price::before {
+            content: '';
+            position: absolute;
+            top: -0.3rem;
+            right: -0.5rem;
+            width: 0.3rem;
+            height: 0.3rem;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            opacity: 0.6;
         }
 
         /* Specialty Divider */
@@ -369,10 +461,12 @@
             0% {
                 opacity: 0;
                 transform: translateY(30px);
+                text-shadow: 0 6px 30px rgba(0, 0, 0, 0);
             }
             100% {
                 opacity: 1;
                 transform: translateY(0);
+                text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
             }
         }
 
@@ -397,11 +491,63 @@
             animation: heroTextFadeIn 1.4s ease-out forwards;
         }
 
+        /* Add Ons section - smaller tiles */
+        #addons .service-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        #addons .service-item {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        #addons .service-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        #addons .service-item p {
+            display: none;
+        }
+
+        #addons .service-details {
+            padding-top: 0;
+            border-top: none;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        #addons .duration {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        #addons .price {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        /* Stretch Therapy section - center single card */
+        #stretch .service-grid {
+            justify-content: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .service-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
+            }
+            
+            #addons .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                max-width: 400px;
             }
             
             .category-nav {
@@ -427,16 +573,50 @@
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="index.html#home" class="nav-link">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item dropdown">
                     <a href="index.html#services" class="nav-link">Services</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-grid">
+                            <div class="dropdown-column">
+                                <h3>Massage Therapy</h3>
+                                <a href="service_massage.html#swedish-massage">Swedish Massage</a>
+                                <a href="service_massage.html#deep-tissue-massage">Deep Tissue</a>
+                                <a href="service_massage.html#hot-stone-massage">Hot Stone</a>
+                                <a href="service_massage.html#therapeutic-massage">Therapeutic</a>
+                                <a href="service_massage.html">View All Massages</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h3>Facial Treatments</h3>
+                                <a href="services.html#signature-facial">Signature Facial</a>
+                                <a href="services.html#anti-aging-facial">Anti-Aging</a>
+                                <a href="services.html#microdermabrasion">Microdermabrasion</a>
+                                <a href="services.html#facials">Advanced Facials</a>
+                                <a href="services.html#facials">View All Facials</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h3>Body & Wellness</h3>
+                                <a href="services.html#body">Body Scrubs & Wraps</a>
+                                <a href="services.html#body">Body Sculpting</a>
+                                <a href="services.html#wellness">Salt Room Therapy</a>
+                                <a href="services.html#wellness">Red Light Therapy</a>
+                                <a href="services.html#wellness">Stretch Therapy</a>
+                                <a href="services.html#body">View All Body Treatments</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h3>Beauty & Packages</h3>
+                                <a href="services.html#beauty">Waxing Services</a>
+                                <a href="services.html#beauty">Brow & Lash</a>
+                                <a href="services.html#packages">Spa Packages</a>
+                                <a href="services.html#packages">Gift Certificates</a>
+                                <a href="products.html">Société Products</a>
+                            </div>
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a href="index.html#specials" class="nav-link">Specials</a>
-                </li>
-                <li class="nav-item">
-                    <a href="index.html#locations" class="nav-link">Locations</a>
                 </li>
                 <li class="nav-item">
                     <a href="contact.html" class="nav-link">Contact</a>
@@ -452,6 +632,8 @@
             </div>
         </div>
     </nav>
+
+
 
     <!-- Hero Banner -->
     <section class="hero-banner">
@@ -476,57 +658,52 @@
     <section class="service-categories">
         <div class="container">
             <div class="category-nav">
-                <button class="category-btn active" data-category="massages">Massages</button>
-                <button class="category-btn" data-category="specialty">Specialty Massages</button>
+                <button class="category-btn active" data-category="massages">Massage</button>
+                <button class="category-btn" data-category="specialty">Specialty Massage</button>
+                <button class="category-btn" data-category="stretch">Stretch Therapy</button>
+                <button class="category-btn" data-category="addons">Add Ons</button>
             </div>
 
             <!-- Regular Massages -->
             <div class="service-category active" id="massages">
-                <h2 class="category-title">Massages</h2>
+                <h2 class="category-title">Massage</h2>
                 <div class="service-grid">
                     <div class="service-item animate-fade-up">
-                        <h3>Swedish Massage</h3>
-                        <p><strong>Increases flexibility of muscles and joints</strong><br>
-                        Deeply relaxes & reduces stress and tension<br>
-                        Boosts the immune system, improves circulation<br>
-                        Helps improve the emotional balance</p>
+                        <h3>Deep Tissue</h3>
+                        <p><strong>Reduces stress and muscle tension</strong></p>
+                        <ul>
+                            <li>Relieves chronic back pain</li>
+                            <li>The therapist uses direct pressure to relax the top layer of muscle in order to reach deeper muscle tissue.</li>
+                            <li>Neuromuscular therapy (NMT) and myofascial release are just two of the techniques used for DT therapy</li>
+                        </ul>
                         <div class="service-details">
-                            <span class="duration">60/90 min</span>
-                            <span class="price">$110 | $155</span>
+                            <span class="duration">30/60/90 min</span>
+                            <span class="price">$70 | $115 | $160</span>
                         </div>
                     </div>
                     
-                    <div class="service-item animate-fade-up" data-delay="100">
-                        <h3>Deep Tissue Massage</h3>
-                        <p><strong>Reduces stress and muscle tension</strong><br>
-                        Relieves chronic back pain<br>
-                        The therapist uses direct pressure to relax the top layer of muscle in order to reach deeper muscle tissue.<br>
-                        Neuromuscular therapy (NMT) and myofascial release are just two of the techniques used for DT therapy</p>
+                    <div class="service-item animate-fade-up">
+                        <h3>Swedish</h3>
+                        <p><strong>Increases flexibility of muscles and joints</strong></p>
+                        <ul>
+                            <li>Deeply relaxes & reduces stress and tension</li>
+                            <li>Boosts the immune system, improves circulation</li>
+                            <li>Helps improve the emotional balance</li>
+                        </ul>
                         <div class="service-details">
-                            <span class="duration">60/90 min</span>
-                            <span class="price">$115 | $160</span>
+                            <span class="duration">30/60/90 min</span>
+                            <span class="price">$70 | $110 | $155</span>
                         </div>
                     </div>
                     
-                    <div class="service-item animate-fade-up" data-delay="200">
-                        <h3>Therapeutic Massage</h3>
-                        <p><strong>Helps with conditions such as sciatica, whiplash, tennis elbow, carpal tunnel</strong><br>
-                        Reduces inflammation, acute and chronic pain<br>
-                        Helps improve circulation, lymphatic, and neurological functioning<br>
-                        Combines different techniques: deep tissue, stretching, myofascial release, aromatherapy<br>
-                        Speeds up healing process after sports injuries</p>
-                        <div class="service-details">
-                            <span class="duration">60/90 min</span>
-                            <span class="price">$120 | $165</span>
-                        </div>
-                    </div>
-                    
-                    <div class="service-item animate-fade-up" data-delay="300">
-                        <h3>Hot Stone Massage</h3>
-                        <p><strong>Very beneficial for people who suffer from: fibromyalgia and inflammation of the connective tissue</strong><br>
-                        Reduces chronic muscle pain<br>
-                        Helps improve circulation and reduces insomnia<br>
-                        The warmth of heated basalt stones helps release muscle tension and feels heavenly</p>
+                    <div class="service-item animate-fade-up">
+                        <h3>Hot Stone</h3>
+                        <p><strong>Very beneficial for people who suffer from: fibromyalgia and inflammation of the connective tissue</strong></p>
+                        <ul>
+                            <li>Reduces chronic muscle pain</li>
+                            <li>Helps improve circulation and reduces insomnia</li>
+                            <li>The warmth of heated basalt stones helps release muscle tension and feels heavenly</li>
+                        </ul>
                         <div class="service-details">
                             <span class="duration">60/90 min</span>
                             <span class="price">$125 | $170</span>
@@ -534,89 +711,42 @@
                     </div>
                     
                     <div class="service-item animate-fade-up">
-                        <h3>Ultimate Signature Massage</h3>
-                        <p><strong>Blends therapeutic massage with the natural anti-inflammatory properties of essential oils</strong><br>
-                        Reduces tension & muscle pain<br>
-                        Combo of Swedish, Deep Tissue, myofascial release, stretching, hot stones, reflexology for the feet<br>
-                        A truly amazing massage experience</p>
+                        <h3>Prenatal</h3>
+                        <p><strong>Reduces stress, fatigue and relieves muscle and back pain</strong></p>
+                        <ul>
+                            <li>Helps decrease swelling by improving lymph flow</li>
+                            <li>Specially designed for expecting mothers</li>
+                            <li>Safe and comfortable positioning throughout pregnancy</li>
+                        </ul>
                         <div class="service-details">
-                            <span class="duration">90 min/2 hr</span>
-                            <span class="price">$165 | $225</span>
+                            <span class="duration">30/60/90 min</span>
+                            <span class="price">$70 | $115 | $160</span>
                         </div>
                     </div>
                     
-                    <div class="service-item animate-fade-up" data-delay="100">
-                        <h3>Couples Massage</h3>
-                        <p><strong>This is a great way to experience a massage in tandem</strong><br>
-                        Includes your choice of a deep-tissue or swedish massage<br>
-                        Share this experience with someone you are close to: mother and daughter, couples, sisters, or best friends.<br>
-                        A memorable way to connect with someone & introduce them to relaxation.</p>
+                    <div class="service-item animate-fade-up">
+                        <h3>Couples</h3>
+                        <p><strong>This is a great way to experience a massage in tandem</strong></p>
+                        <ul>
+                            <li>Includes your choice of a deep-tissue or swedish massage</li>
+                            <li>Share this experience with someone you are close to: mother and daughter, couples, sisters, or best friends.</li>
+                            <li>A memorable way to connect with someone & introduce them to relaxation.</li>
+                        </ul>
                         <div class="service-details">
                             <span class="duration">60/90 min</span>
                             <span class="price">$240 | $330</span>
                         </div>
                     </div>
                     
-                    <div class="service-item animate-fade-up" data-delay="200">
-                        <h3>Pain Relief Massage</h3>
-                        <p><strong>Pain relief from arthritis and painful joints</strong><br>
-                        Helps with Back aches and neck pain<br>
-                        Beneficial for: fibromyalgia and inflammation<br>
-                        Alleviates bruising & circulation problems with arnica & Juniper oil</p>
-                        <div class="service-details">
-                            <span class="duration">60/90 min</span>
-                            <span class="price">$115 | $160</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Specialty Massages -->
-            <div class="service-category" id="specialty">
-                <h2 class="category-title">Specialty Massages</h2>
-                <div class="service-grid">
                     <div class="service-item animate-fade-up">
-                        <h3>Manual Lymphatic Drainage Massage</h3>
-                        <p><strong>Using very light pressure, gentle, rhythmic strokes to increase the flow of lymph</strong><br>
-                        Helps reduce inflammation after surgery<br>
-                        Detoxifies the body & stimulates the immune system<br>
-                        Best results in a series of treatment, usually 3 – 6 sessions.</p>
-                        <div class="service-details">
-                            <span class="duration">60/90 min</span>
-                            <span class="price">$120 | $160</span>
-                        </div>
-                    </div>
-                    
-                    <div class="service-item animate-fade-up" data-delay="100">
-                        <h3>Aromatherapy Massage</h3>
-                        <p><strong>Using essential oils to promote healing & well-being</strong><br>
-                        Deeply relaxes & reduces stress, tension and pain<br>
-                        Improves circulation & calms the nervous system<br>
-                        Helps improve mood & emotional balance</p>
-                        <div class="service-details">
-                            <span class="duration">60/90 min</span>
-                            <span class="price">$120 | $160</span>
-                        </div>
-                    </div>
-                    
-                    <div class="service-item animate-fade-up" data-delay="200">
-                        <h3>Sinus Relief Massage</h3>
-                        <p><strong>Helps reduce tenderness, headaches, congestion</strong><br>
-                        Reduces inflammation, swelling and puffiness around eye area<br>
-                        Increases circulation around the sinuses<br>
-                        Combines different techniques: lymphatic drainage, pressure point, aromatherapy</p>
-                        <div class="service-details">
-                            <span class="duration">30/60/90 min</span>
-                            <span class="price">$65 | $110 | $155</span>
-                        </div>
-                    </div>
-                    
-                    <div class="service-item animate-fade-up" data-delay="300">
-                        <h3>Prenatal Massage</h3>
-                        <p><strong>Reduces stress, fatigue and relieves muscle and back pain</strong><br>
-                        Helps decrease swelling by improving lymph flow<br>
-                        Specially designed for expecting mothers<br>
-                        Safe and comfortable positioning throughout pregnancy</p>
+                        <h3>Therapeutic</h3>
+                        <p><strong>Helps with conditions such as sciatica, whiplash, tennis elbow, carpal tunnel</strong></p>
+                        <ul>
+                            <li>Reduces inflammation, acute and chronic pain</li>
+                            <li>Helps improve circulation, lymphatic, and neurological functioning</li>
+                            <li>Combines different techniques: deep tissue, stretching, myofascial release, aromatherapy</li>
+                            <li>Speeds up healing process after sports injuries</li>
+                        </ul>
                         <div class="service-details">
                             <span class="duration">60/90 min</span>
                             <span class="price">$120 | $165</span>
@@ -625,25 +755,329 @@
                     
                     <div class="service-item animate-fade-up">
                         <h3>Reflexology</h3>
-                        <p><strong>Therapeutic foot massage targeting pressure points</strong><br>
-                        Promotes healing throughout the body<br>
-                        Reduces stress and improves circulation<br>
-                        Ancient healing technique for overall wellness</p>
+                        <p><strong>Therapeutic foot massage targeting pressure points</strong></p>
+                        <ul>
+                            <li>Promotes healing throughout the body</li>
+                            <li>Reduces stress and improves circulation</li>
+                            <li>Ancient healing technique for overall wellness</li>
+                        </ul>
                         <div class="service-details">
-                            <span class="duration">30/60 min</span>
-                            <span class="price">$65 | $110</span>
+                            <span class="duration">30/60/90 min</span>
+                            <span class="price">$65 | $110 | $155</span>
                         </div>
                     </div>
                     
-                    <div class="service-item animate-fade-up" data-delay="100">
-                        <h3>Cupping Therapy</h3>
-                        <p><strong>Ancient healing technique using suction cups</strong><br>
-                        Improves blood circulation and reduces muscle tension<br>
-                        Helps with pain relief and inflammation<br>
-                        Promotes healing and relaxation</p>
+                    <div class="service-item animate-fade-up">
+                        <h3>Sinus Relief</h3>
+                        <p><strong>Helps reduce tenderness, headaches, congestion</strong></p>
+                        <ul>
+                            <li>Reduces inflammation, swelling and puffiness around eye area</li>
+                            <li>Increases circulation around the sinuses</li>
+                            <li>Combines different techniques: lymphatic drainage, pressure point, aromatherapy</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="duration">30/60/90 min</span>
+                            <span class="price">$65 | $110 | $155</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Pain Relief</h3>
+                        <p><strong>Pain relief from arthritis and painful joints</strong></p>
+                        <ul>
+                            <li>Helps with Back aches and neck pain</li>
+                            <li>Beneficial for: fibromyalgia and inflammation</li>
+                            <li>Alleviates bruising & circulation problems with arnica & Juniper oil</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="duration">30/60/90 min</span>
+                            <span class="price">$70 | $115 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Wellness</h3>
+                        <p><strong>A comprehensive wellness-focused massage therapy</strong></p>
+                        <ul>
+                            <li>Combines multiple techniques for overall well-being</li>
+                            <li>Promotes relaxation and stress relief</li>
+                            <li>Customized to your specific wellness needs</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="duration">30/60/90 min</span>
+                            <span class="price">$75 | $130 | $170</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specialty Massages -->
+            <div class="service-category" id="specialty">
+                <h2 class="category-title">Specialty Massage</h2>
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Manual Lymphatic Drainage</h3>
+                        <p><strong>Using very light pressure, gentle, rhythmic strokes to increase the flow of lymph</strong></p>
+                        <ul>
+                            <li>Helps reduce inflammation after surgery</li>
+                            <li>Detoxifies the body & stimulates the immune system</li>
+                            <li>Best results in a series of treatment, usually 3 – 6 sessions.</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$120 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Aromatherapy</h3>
+                        <p><strong>Using essential oils to promote healing & well-being</strong></p>
+                        <ul>
+                            <li>Deeply relaxes & reduces stress, tension and pain</li>
+                            <li>Improves circulation & calms the nervous system</li>
+                            <li>Helps improve mood & emotional balance</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$120 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>CBD Oil</h3>
+                        <p><strong>Incorporates high-quality CBD oil for enhanced therapeutic benefits</strong></p>
+                        <ul>
+                            <li>Helps reduce inflammation and chronic pain</li>
+                            <li>Promotes deep relaxation and stress relief</li>
+                            <li>Natural anti-inflammatory properties enhance healing</li>
+                        </ul>
                         <div class="service-details">
                             <span class="duration">60/90 min</span>
                             <span class="price">$130 | $175</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Sports</h3>
+                        <p><strong>Designed for athletes and active individuals</strong></p>
+                        <ul>
+                            <li>Helps prevent injuries and enhances performance</li>
+                            <li>Focuses on muscle groups used in specific sports</li>
+                            <li>Aids in recovery and reduces muscle soreness</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$120 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Lymphatic Drainage</h3>
+                        <p><strong>Gentle technique to stimulate lymphatic system</strong></p>
+                        <ul>
+                            <li>Helps reduce swelling and detoxify the body</li>
+                            <li>Boosts immune system function</li>
+                            <li>Promotes healing and reduces inflammation</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$120 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Immune Boost</h3>
+                        <p><strong>Specially designed to support immune system health</strong></p>
+                        <ul>
+                            <li>Combines aromatherapy with therapeutic techniques</li>
+                            <li>Helps improve circulation and lymphatic flow</li>
+                            <li>Promotes overall wellness and vitality</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$120 | $165</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Myofascial Stretching</h3>
+                        <p><strong>Focuses on releasing tension in the fascia</strong></p>
+                        <ul>
+                            <li>Improves flexibility and range of motion</li>
+                            <li>Helps alleviate chronic pain patterns</li>
+                            <li>Combines massage with targeted stretching techniques</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$120 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Sleep Therapy</h3>
+                        <p><strong>Designed to promote deep, restful sleep</strong></p>
+                        <ul>
+                            <li>Uses calming techniques and aromatherapy</li>
+                            <li>Helps reduce stress and anxiety</li>
+                            <li>Promotes relaxation for better sleep quality</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$120 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Sinus Relief</h3>
+                        <p><strong>Helps reduce tenderness, headaches, congestion</strong></p>
+                        <ul>
+                            <li>Reduces inflammation, swelling and puffiness around eye area</li>
+                            <li>Increases circulation around the sinuses</li>
+                            <li>Combines different techniques: lymphatic drainage, pressure point, aromatherapy</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="duration">30/60/90 min</span>
+                            <span class="price">$65 | $110 | $155</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Prenatal</h3>
+                        <p><strong>Reduces stress, fatigue and relieves muscle and back pain</strong></p>
+                        <ul>
+                            <li>Helps decrease swelling by improving lymph flow</li>
+                            <li>Specially designed for expecting mothers</li>
+                            <li>Safe and comfortable positioning throughout pregnancy</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="duration">30/60/90 min</span>
+                            <span class="price">$70 | $115 | $160</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Reflexology</h3>
+                        <p><strong>Therapeutic foot massage targeting pressure points</strong></p>
+                        <ul>
+                            <li>Promotes healing throughout the body</li>
+                            <li>Reduces stress and improves circulation</li>
+                            <li>Ancient healing technique for overall wellness</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="duration">30/60/90 min</span>
+                            <span class="price">$65 | $110 | $155</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Wellness</h3>
+                        <p><strong>A comprehensive wellness-focused massage therapy</strong></p>
+                        <ul>
+                            <li>Combines multiple techniques for overall well-being</li>
+                            <li>Promotes relaxation and stress relief</li>
+                            <li>Customized to your specific wellness needs</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="duration">30/60/90 min</span>
+                            <span class="price">$75 | $130 | $170</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stretch Therapy -->
+            <div class="service-category" id="stretch">
+                <h2 class="category-title">Stretch Therapy</h2>
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Assisted Stretching</h3>
+                        <p><strong>Professional therapist assists with targeted stretches</strong></p>
+                        <ul>
+                            <li>Improves flexibility and range of motion</li>
+                            <li>Helps prevent injuries and reduces muscle tension</li>
+                            <li>Customized to your specific needs and limitations</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="duration">60/90 min</span>
+                            <span class="price">$110 | $155</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Ons -->
+            <div class="service-category" id="addons">
+                <h2 class="category-title">Add Ons</h2>
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Hot Stones/area</h3>
+                        <p><strong>Add heated basalt stones to any massage</strong><br>
+                        Enhances muscle relaxation and circulation<br>
+                        Provides deeper therapeutic benefits<br>
+                        Perfect complement to any massage service</p>
+                        <div class="service-details">
+                            <span class="duration">Add-on</span>
+                            <span class="price">$10</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Aromatherapy</h3>
+                        <p><strong>Essential oils to enhance your massage experience</strong><br>
+                        Choose from calming, energizing, or therapeutic blends<br>
+                        Promotes emotional balance and well-being<br>
+                        Natural healing benefits through scent therapy</p>
+                        <div class="service-details">
+                            <span class="duration">Add-on</span>
+                            <span class="price">$20</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Cupping</h3>
+                        <p><strong>Ancient healing technique using suction cups</strong><br>
+                        Improves blood circulation and reduces muscle tension<br>
+                        Helps with pain relief and inflammation<br>
+                        Promotes healing and tissue recovery</p>
+                        <div class="service-details">
+                            <span class="duration">Add-on</span>
+                            <span class="price">$20</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Foot Reflexology (20min.)</h3>
+                        <p><strong>Targeted foot massage focusing on pressure points</strong><br>
+                        Promotes healing throughout the body<br>
+                        Reduces stress and improves circulation<br>
+                        Perfect addition to any massage service</p>
+                        <div class="service-details">
+                            <span class="duration">20 min</span>
+                            <span class="price">$35</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Red Light Therapy</h3>
+                        <p><strong>Advanced LED light therapy for healing</strong><br>
+                        Promotes cellular regeneration and healing<br>
+                        Reduces inflammation and pain<br>
+                        Enhances skin health and muscle recovery</p>
+                        <div class="service-details">
+                            <span class="duration">Add-on</span>
+                            <span class="price">$40</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>CBD Oil</h3>
+                        <p><strong>Premium CBD oil application</strong><br>
+                        Natural anti-inflammatory properties<br>
+                        Enhances pain relief and relaxation<br>
+                        Promotes deeper therapeutic benefits</p>
+                        <div class="service-details">
+                            <span class="duration">Add-on</span>
+                            <span class="price">$20</span>
                         </div>
                     </div>
                 </div>

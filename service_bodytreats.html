@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Treatments - Bluefern Spa | Scrubs, Wraps & Body Sculpting</title>
+    <meta name="description" content="Experience luxurious body treatments at Bluefern Spa. From invigorating body scrubs to advanced Brazilian body sculpting treatments.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Body Treatments Page Styles */
+        :root {
+            --primary-color: #d5eae5;
+            --secondary-color: #a8c9be;
+            --accent-color: #f2f7f5;
+            --light-sage: #e8f2ee;
+            --dark-sage: #9bb5aa;
+            --darker-sage: #7a9b8c;
+            --dark-color: #2C2C2C;
+            --light-color: #FAFAFA;
+            --text-color: #4A4A4A;
+            --border-color: #E5E5E5;
+            
+            --font-primary: 'Cormorant Garamond', serif;
+            --font-secondary: 'Montserrat', sans-serif;
+            
+            --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.08);
+            --shadow-md: 0 5px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Hero Banner - Layered Glass Variation */
+        .hero-banner {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            max-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+            background: url('hero_bodytreats.png') center/cover;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 700px;
+            padding: 50px 50px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            /* Start invisible for elegant reveal */
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+        }
+
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent, rgba(255,255,255,0.05));
+            border-radius: 32px;
+            z-index: -1;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #000000;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero-title {
+            font-family: 'Tangerine', cursive;
+            font-size: clamp(4rem, 8vw, 7rem);
+            font-weight: 700;
+            color: #000000;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            transform: translateY(30px);
+            text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-subtitle {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #000000;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-quote {
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            color: #000000;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: var(--light-sage);
+            padding: 20px 0;
+        }
+
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumb-nav {
+            font-family: var(--font-secondary);
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .breadcrumb-nav a {
+            color: var(--darker-sage);
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+
+        .breadcrumb-nav a:hover {
+            color: var(--dark-color);
+        }
+
+        /* Service Categories */
+        .service-categories {
+            padding: 80px 0;
+            background: var(--light-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: white;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-base);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .category-btn:hover {
+            border-color: var(--secondary-color);
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .category-btn.active {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* Service Category Content */
+        .service-category {
+            display: none;
+        }
+
+        .service-category.active {
+            display: block;
+        }
+
+        .category-title {
+            font-family: 'Tangerine', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .service-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-item {
+            flex: 0 0 calc(33.333% - 1.33rem);
+            min-width: 300px;
+            max-width: 350px;
+        }
+
+        /* Special styling for bioslimming cards - more landscape */
+        #sculpting .service-item {
+            flex: 0 0 calc(50% - 1rem);
+            min-width: 400px;
+            max-width: 500px;
+            padding: 1.5rem;
+        }
+
+        #sculpting .service-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        #sculpting .service-item p {
+            margin-bottom: 1rem;
+        }
+
+        #sculpting .service-item ul {
+            margin: 0.3rem 0 1rem 0;
+        }
+
+        #sculpting .service-item ul li {
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        #sculpting .service-details {
+            padding: 1rem 0 0.5rem 0;
+        }
+
+        /* Shorter cards for scrubs and wraps */
+        #scrubs .service-item {
+            padding: 1.5rem;
+        }
+
+        #scrubs .service-item h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        #scrubs .service-item p {
+            margin-bottom: 1rem;
+        }
+
+        #scrubs .service-item ul {
+            margin: 0.3rem 0 1rem 0;
+        }
+
+        #scrubs .service-item ul li {
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        #scrubs .service-details {
+            padding: 1rem 0 0.5rem 0;
+        }
+
+        .service-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
+            position: relative;
+            overflow: visible;
+            will-change: opacity, transform;
+            backface-visibility: hidden;
+            /* Start invisible for elegant reveal */
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            filter: none;
+        }
+
+        .service-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            filter: none;
+        }
+
+        .service-item:hover::before {
+            opacity: 1;
+        }
+
+        /* Enhanced hover effects for service items */
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(213, 234, 229, 0.1) 0%, 
+                rgba(168, 201, 190, 0.1) 50%, 
+                rgba(213, 234, 229, 0.1) 100%);
+            opacity: 0;
+            transition: var(--transition-base);
+            border-radius: 15px;
+            z-index: 1;
+        }
+
+        .service-item:hover::before {
+            opacity: 1;
+        }
+
+        /* Ensure content stays above the overlay */
+        .service-item > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-item.animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .service-item h3 {
+            font-family: var(--font-primary);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            transition: var(--transition-base);
+        }
+
+        .service-item:hover h3 {
+            color: var(--darker-sage);
+            transform: translateY(-2px);
+        }
+
+        .service-item p {
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            transition: var(--transition-base);
+            position: relative;
+        }
+
+        /* Elegant bullet points for service descriptions */
+        .service-item p strong {
+            color: var(--darker-sage);
+            display: block;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        /* Remove the background image approach */
+        .service-item p {
+            padding-left: 0;
+        }
+
+        .service-item p strong {
+            padding-left: 0;
+            margin-left: 0;
+        }
+
+        /* Style the bullet lists */
+        .service-item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 1.5rem 0;
+        }
+
+        .service-item ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .service-item ul li::before {
+            content: '•';
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+            line-height: 1.6;
+        }
+
+        .service-item:hover p {
+            color: var(--dark-color);
+        }
+
+        .service-item p strong {
+            color: var(--darker-sage);
+        }
+
+        .service-details {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem 0 0.5rem 0;
+            border-top: 2px solid var(--light-sage);
+            transition: var(--transition-base);
+            position: relative;
+        }
+
+        .service-details::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+
+        .duration {
+            font-family: var(--font-secondary);
+            font-size: 0.85rem;
+            color: var(--text-color);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            position: relative;
+        }
+
+        .duration::before {
+            content: '⏱';
+            margin-right: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--darker-sage);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .price::before {
+            content: '';
+            position: absolute;
+            top: -0.3rem;
+            right: -0.5rem;
+            width: 0.3rem;
+            height: 0.3rem;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        /* Bioslimming Subcategory Navigation */
+        .bioslimming-sub-btn {
+            background: white;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-family: var(--font-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-base);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .bioslimming-sub-btn:hover {
+            border-color: var(--secondary-color);
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .bioslimming-sub-btn.active {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: white;
+        }
+
+        .bioslimming-subcategory {
+            display: none;
+        }
+
+        .bioslimming-subcategory.active {
+            display: block;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes heroFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes heroTextFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+                text-shadow: 0 6px 30px rgba(0, 0, 0, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        /* Hero animation classes */
+        .hero-content.animate-in {
+            animation: heroFadeIn 1s ease-out forwards;
+        }
+
+        .hero-eyebrow.animate-in {
+            animation: heroTextFadeIn 0.8s ease-out forwards;
+        }
+
+        .hero-title.animate-in {
+            animation: heroTextFadeIn 1s ease-out forwards;
+        }
+
+        .hero-subtitle.animate-in {
+            animation: heroTextFadeIn 1.2s ease-out forwards;
+        }
+
+        .hero-quote.animate-in {
+            animation: heroTextFadeIn 1.4s ease-out forwards;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .close:hover {
+            color: var(--darker-sage);
+        }
+
+        .modal-title {
+            font-family: 'Tangerine', cursive;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-subtitle {
+            font-family: var(--font-primary);
+            font-size: 1.3rem;
+            color: var(--darker-sage);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .modal-section {
+            margin-bottom: 30px;
+        }
+
+        .modal-section h3 {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .modal-section p {
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        .treatment-highlight {
+            background: var(--light-sage);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .treatment-highlight strong {
+            color: var(--darker-sage);
+            font-weight: 600;
+        }
+
+        /* Learn More Button Styles */
+        .learn-more-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-family: var(--font-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-base);
+            margin-left: 15px;
+        }
+
+        .learn-more-btn:hover {
+            background: var(--darker-sage);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .service-item {
+                flex: 0 0 calc(50% - 1rem);
+            }
+            
+            #sculpting .service-item {
+                flex: 0 0 calc(50% - 1rem);
+                min-width: 350px;
+                max-width: 450px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .bioslimming-nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .bioslimming-sub-btn {
+                width: 100%;
+                max-width: 250px;
+                text-align: center;
+            }
+            
+            .service-item {
+                flex: 0 0 100%;
+                max-width: 400px;
+            }
+            
+            #sculpting .service-item {
+                flex: 0 0 100%;
+                max-width: 500px;
+                min-width: 300px;
+            }
+            
+            .category-nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .category-btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="darker-logo-1.png" alt="Bluefern Spa">
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="index.html#services" class="nav-link">Services</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-grid">
+                            <div class="dropdown-column">
+                                <h3>Massage Therapy</h3>
+                                <a href="service_massage.html#swedish-massage">Swedish Massage</a>
+                                <a href="service_massage.html#deep-tissue-massage">Deep Tissue</a>
+                                <a href="service_massage.html#hot-stone-massage">Hot Stone</a>
+                                <a href="service_massage.html#therapeutic-massage">Therapeutic</a>
+                                <a href="service_massage.html">View All Massages</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h3>Facial Treatments</h3>
+                                <a href="service_skincare.html#signature-facial">Signature Facial</a>
+                                <a href="service_skincare.html#anti-aging-facial">Anti-Aging</a>
+                                <a href="service_skincare.html#microdermabrasion">Microdermabrasion</a>
+                                <a href="service_skincare.html#facials">Advanced Facials</a>
+                                <a href="service_skincare.html">View All Facials</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h3>Body & Wellness</h3>
+                                <a href="service_bodytreats.html#scrubs">Body Scrubs & Wraps</a>
+                                <a href="service_bodytreats.html#sculpting">Body Sculpting</a>
+                                <a href="services.html#wellness">Salt Room Therapy</a>
+                                <a href="services.html#wellness">Red Light Therapy</a>
+                                <a href="services.html#wellness">Stretch Therapy</a>
+                                <a href="service_bodytreats.html">View All Body Treatments</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h3>Beauty & Packages</h3>
+                                <a href="services.html#beauty">Waxing Services</a>
+                                <a href="services.html#beauty">Brow & Lash</a>
+                                <a href="services.html#packages">Spa Packages</a>
+                                <a href="services.html#packages">Gift Certificates</a>
+                                <a href="products.html">Société Products</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#specials" class="nav-link">Specials</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.thegiftcardcafe.com/cart/selectpac.php" class="nav-link egift-link">Buy eGift</a>
+                </li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <div class="hero-eyebrow">Bluefern Spa</div>
+            <h1 class="hero-title">Body Treatments</h1>
+            <p class="hero-subtitle">Luxurious scrubs, wraps, and advanced body sculpting</p>
+            <div class="hero-quote">Where beauty meets wellness and transformation begins</div>
+        </div>
+    </section>
+
+    <!-- Back to Services -->
+    <section class="breadcrumb">
+        <div class="breadcrumb-container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html#services">← Back to Our Services</a>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="service-categories">
+        <div class="container">
+            <div class="category-nav">
+                <button class="category-btn active" data-category="scrubs">Scrubs & Wraps</button>
+                <button class="category-btn" data-category="sculpting">Brazilian Body Sculpting</button>
+            </div>
+
+            <!-- Scrubs & Wraps -->
+            <div class="service-category active" id="scrubs">
+                <h2 class="category-title">Scrubs & Wraps</h2>
+                <div class="service-grid">
+                    <div class="service-item animate-fade-up">
+                        <h3>Bright Radiance Citrus Body Scrub</h3>
+                        <p><strong>Fine-grain sea salt blended with shea butter and nourishing oils</strong></p>
+                        <ul>
+                            <li>Gently buffs away dryness</li>
+                            <li>Replaces with glowing, soft skin</li>
+                            <li>Enveloped in fabulous scent</li>
+                            <li>Natural and highly effective ingredients</li>
+                            <li>Stimulates circulation</li>
+                            <li>Gives your body a silky glow</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$120</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Organic Green Tea Body Scrub</h3>
+                        <p><strong>Loaded with antioxidants and vitamins for healthy skin</strong></p>
+                        <ul>
+                            <li>Green tea with antibacterial agents</li>
+                            <li>Helps regulate hormonal imbalances</li>
+                            <li>Perfect for treating acne or inflammation</li>
+                            <li>Exfoliates dead skin cells</li>
+                            <li>Improves complexion</li>
+                            <li>Leaves skin looking healthy & glowing</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$120</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Champagne & Roses Salt Scrub</h3>
+                        <p><strong>Elegant treatment with true aroma of rose petals</strong></p>
+                        <ul>
+                            <li>Sloughs off dry, lifeless skin cells</li>
+                            <li>Promotes cellular turnover</li>
+                            <li>Generates more youthful-looking skin</li>
+                            <li>Revitalizes and restores skin</li>
+                            <li>Antioxidant properties</li>
+                            <li>Features effervescent champagne note</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$120</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Deep Sea Detox Wrap</h3>
+                        <p><strong>Rich ingredients for skin regeneration and detoxification</strong></p>
+                        <ul>
+                            <li>Marine kelp, Klamath Blue-Green Algae</li>
+                            <li>Aloe Vera, Vitamin E, Vitamin A</li>
+                            <li>Rosehip seed oil and lavender</li>
+                            <li>Removes dead skin and moisturizes</li>
+                            <li>Eliminates toxins from the body</li>
+                            <li>Reduces cellulite, improves body contour</li>
+                            <li>Antioxidants and fatty acids for elasticity</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$125</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item animate-fade-up">
+                        <h3>Hydrating Honey & Aloe Wrap</h3>
+                        <p><strong>Nourishing cocoon for slimming and toning</strong></p>
+                        <ul>
+                            <li>Designed to slim and tone your body</li>
+                            <li>Hydrates, cleanses & heals skin</li>
+                            <li>Relaxes and soothes muscles</li>
+                            <li>Fragranced with velvety cinnamon notes</li>
+                            <li>Sweet cloves & honey combination</li>
+                            <li>Aloe Vera, Vitamin E, Vitamin A, rosehip seed oil</li>
+                            <li>Smooths dry skin & moisturizes</li>
+                            <li>Eliminates toxins and improves body contour</li>
+                            <li>Restores softness to rough, dry skin areas</li>
+                        </ul>
+                        <div class="service-details">
+                            <span class="price">$135</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- What to Expect Section -->
+                <div style="margin-top: 60px; padding: 40px; background: var(--light-sage); border-radius: 20px; text-align: center;">
+                                        <h2 style="font-family: 'Tangerine', cursive; font-size: 3rem; font-weight: 700; color: var(--dark-color); margin-bottom: 20px;">What to Expect from a Wrap</h2>
+                    
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <button class="learn-more-btn" onclick="openWrapExpectationsModal()" style="background: var(--secondary-color); color: white; border: none; padding: 15px 30px; border-radius: 25px; font-family: var(--font-secondary); font-size: 1rem; font-weight: 500; cursor: pointer; transition: var(--transition-base);">
+                            Learn More About Body Wraps
+                        </button>
+                    </div>
+                    
+                    <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+                        <p style="font-family: var(--font-secondary); font-size: 1.1rem; line-height: 1.8; color: var(--text-color); margin-bottom: 30px;">
+                            Body wraps are a luxurious and therapeutic treatment that combines exfoliation, detoxification, and deep hydration. Our wraps are designed to leave your skin feeling soft, smooth, and rejuvenated while helping to eliminate toxins and improve body contour.
+                        </p>
+                        
+                        <div style="background: white; padding: 25px; border-radius: 15px; border-left: 4px solid var(--secondary-color); margin-top: 30px;">
+                            <p style="font-family: var(--font-secondary); font-size: 1.1rem; line-height: 1.8; color: var(--text-color); margin: 0;">
+                                <strong style="color: var(--darker-sage);">Book a consultation;</strong> our therapists will guide you through the process and help you choose the perfect wrap treatment for your needs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brazilian Body Sculpting -->
+            <div class="service-category" id="sculpting">
+                <h2 class="category-title">Brazilian Body Sculpting</h2>
+                
+                <!-- Bioslimming Subcategories -->
+                <div class="bioslimming-subcategories" style="margin-bottom: 50px;">
+                    <div class="bioslimming-nav" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
+                        <button class="bioslimming-sub-btn active" data-bioslimming="upper">Upper Body Wrap</button>
+                        <button class="bioslimming-sub-btn" data-bioslimming="lower">Lower Body Wrap</button>
+                    </div>
+
+                    <!-- Upper Body Wrap -->
+                    <div class="bioslimming-subcategory active" id="upper-body">
+                        <h3 style="font-family: var(--font-primary); font-size: 1.8rem; font-weight: 700; color: var(--dark-color); text-align: center; margin-bottom: 40px;">Bioslimming Upper Body Wrap</h3>
+                        
+                        <div style="max-width: 800px; margin: 0 auto 50px auto; padding: 30px; background: var(--light-sage); border-radius: 15px; text-align: center;">
+                            <p style="font-family: var(--font-secondary); font-size: 1.1rem; line-height: 1.7; color: var(--text-color); margin-bottom: 20px;">
+                                <strong>Target Areas:</strong> Abdomen, love handles & lower back, upper arms
+                            </p>
+                            <p style="font-family: var(--font-secondary); font-size: 1rem; line-height: 1.6; color: var(--text-color); margin-bottom: 20px;">
+                                Advanced body sculpting treatment designed to target stubborn fat deposits in the upper body. 
+                                This innovative treatment helps contour and tone while promoting lymphatic drainage and detoxification.
+                            </p>
+                        </div>
+                        
+                        <div class="service-grid">
+                            <div class="service-item animate-fade-up">
+                                <h3>Upper Body Bioslimming</h3>
+                                <p><strong>Targeted treatment for upper body areas</strong></p>
+                                <ul>
+                                    <li>Abdomen contouring</li>
+                                    <li>Love handles reduction</li>
+                                    <li>Lower back sculpting</li>
+                                    <li>Upper arms toning</li>
+                                    <li>Advanced fat reduction technology</li>
+                                    <li>Promotes lymphatic drainage</li>
+                                </ul>
+                                <div class="service-details">
+                                    <span class="price">$99</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Bioslimming Information Section -->
+                        <div style="margin-top: 60px; padding: 40px; background: var(--light-sage); border-radius: 20px; text-align: center;">
+                            <h2 style="font-family: 'Tangerine', cursive; font-size: 3rem; font-weight: 700; color: var(--dark-color); margin-bottom: 20px;">Learn More About Bioslimming</h2>
+                            
+                            <div style="text-align: center; margin-bottom: 30px;">
+                                <button class="learn-more-btn" onclick="openBioslimmingDescriptionModal()" style="background: var(--secondary-color); color: white; border: none; padding: 15px 30px; border-radius: 25px; font-family: var(--font-secondary); font-size: 1rem; font-weight: 500; cursor: pointer; transition: var(--transition-base); margin-right: 15px;">
+                                    Treatment Details
+                                </button>
+                                <button class="learn-more-btn" onclick="openBioslimmingExpectationsModal()" style="background: var(--secondary-color); color: white; border: none; padding: 15px 30px; border-radius: 25px; font-family: var(--font-secondary); font-size: 1rem; font-weight: 500; cursor: pointer; transition: var(--transition-base); margin-right: 15px;">
+                                    What to Expect
+                                </button>
+                                <button class="learn-more-btn" onclick="openBioslimmingFAQModal()" style="background: var(--secondary-color); color: white; border: none; padding: 15px 30px; border-radius: 25px; font-family: var(--font-secondary); font-size: 1rem; font-weight: 500; cursor: pointer; transition: var(--transition-base);">
+                                    FAQ
+                                </button>
+                            </div>
+                            
+                            <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+                                <p style="font-family: var(--font-secondary); font-size: 1.1rem; line-height: 1.8; color: var(--text-color); margin-bottom: 30px;">
+                                    Bioslimming is a revolutionary body contouring treatment that combines advanced technology with natural ingredients to deliver dramatic results. This non-compression, bandage-free treatment targets cellulite, reduces fat deposits, and improves skin texture.
+                                </p>
+                                
+                                <div style="background: white; padding: 25px; border-radius: 15px; border-left: 4px solid var(--secondary-color); margin-top: 30px;">
+                                    <p style="font-family: var(--font-secondary); font-size: 1.1rem; line-height: 1.8; color: var(--text-color); margin: 0;">
+                                        <strong style="color: var(--darker-sage);">Book a consultation;</strong> our therapists will assess your needs and create a personalized treatment plan for optimal results.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lower Body Wrap -->
+                    <div class="bioslimming-subcategory" id="lower-body">
+                        <h3 style="font-family: var(--font-primary); font-size: 1.8rem; font-weight: 700; color: var(--dark-color); text-align: center; margin-bottom: 40px;">Bioslimming Lower Body Wrap</h3>
+                        
+                        <div style="max-width: 800px; margin: 0 auto 50px auto; padding: 30px; background: var(--light-sage); border-radius: 15px; text-align: center;">
+                            <p style="font-family: var(--font-secondary); font-size: 1.1rem; line-height: 1.7; color: var(--text-color); margin-bottom: 20px;">
+                                <strong>Target Areas:</strong> Thighs and buttocks
+                            </p>
+                            <p style="font-family: var(--font-secondary); font-size: 1rem; line-height: 1.6; color: var(--text-color); margin-bottom: 20px;">
+                                Specialized treatment focusing on the lower body to sculpt and tone thighs and buttocks. 
+                                This treatment helps reduce cellulite, improve skin texture, and enhance overall body contour.
+                            </p>
+                        </div>
+                        
+                        <div class="service-grid">
+                            <div class="service-item animate-fade-up">
+                                <h3>Lower Body Bioslimming</h3>
+                                <p><strong>Comprehensive lower body sculpting</strong></p>
+                                <ul>
+                                    <li>Thigh contouring and toning</li>
+                                    <li>Buttocks sculpting</li>
+                                    <li>Cellulite reduction</li>
+                                    <li>Skin texture improvement</li>
+                                    <li>Body contour enhancement</li>
+                                    <li>Advanced fat reduction technology</li>
+                                </ul>
+                                <div class="service-details">
+                                    <span class="price">$99</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Expect from a Wrap Modal -->
+    <div id="wrapExpectationsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeWrapExpectationsModal()">&times;</span>
+            <h2 class="modal-title">What to Expect from a Wrap</h2>
+            <p class="modal-subtitle">Your Complete Guide to Body Wrap Treatments</p>
+            
+            <div class="modal-section">
+                <h3>Before Your Treatment</h3>
+                <p>You'll undress or change into the provided disposable underwear – in privacy. Our spa therapists are great at respecting their clients' modesty, so you will be covered for the duration of the session.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Skin Preparation</h3>
+                <p>Next, you will be treated with a gentle dry exfoliation or scrub to slough away any dead skin cells. This prepares your skin to better absorb the therapeutic benefits of the wrap treatment.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Application Process</h3>
+                <p>Once your skin has been prepped, your therapist will apply a therapeutic body mask to your torso, and your arms and legs. The content of the mask used depends on the treatment you have chosen.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>The Wrap Experience</h3>
+                <p>After applying the mask to most of your body, your therapist will swaddle you in a plastic sheet, and a thermal blanket, then leave you to rest for around 20 to 30 minutes. If you're having a detox or slimming wrap, the process might be a bit different.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>During the Treatment</h3>
+                <p>The heat of the wrap will relax your muscles, open your pores and encourage sweating. To keep you comfortable, you might have a cold compress placed gently on your forehead or you'll be offered a relaxing scalp massage while you're wrapped in your body cocoon.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Completion & Aftercare</h3>
+                <p>When you're freed from your cocoon, the therapist will cleanse & scrub away any remaining wrap lotion with hot towels and then will massage gently a moisturizing body cream into your newly baby-soft skin.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Important Note</h3>
+                <div class="treatment-highlight">
+                    <p><strong>Please let the therapist know from the start if you suffer from claustrophobia.</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bioslimming Description Modal -->
+    <div id="bioslimmingDescriptionModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBioslimmingDescriptionModal()">&times;</span>
+            <h2 class="modal-title">Bioslimming Professional Treatment</h2>
+            <p class="modal-subtitle">Advanced Body Contouring & Cellulite Reduction</p>
+            
+            <div class="modal-section">
+                <h3>Benefits and Results</h3>
+                <ul>
+                    <li>Slims, firms and tones</li>
+                    <li>Dramatically reduces the appearance of "orange peel" skin</li>
+                    <li>The unique formulation combines a multitude of plant extracts, caffeine, essential oils</li>
+                    <li>Helps burn fat via thermo-regulation with algae extract & plant based thermo agents (hot and cold)</li>
+                    <li>Fights fat deposits</li>
+                    <li>Stimulates lymphatic system & eliminates toxins</li>
+                    <li>Induces lipolysis/fat burning in the layer below the skin's surface</li>
+                    <li>Improves appearance of varicose veins, stretch marks, prevents spider veins</li>
+                    <li>Improves circulation and metabolism</li>
+                    <li>Speeds up consumption of calories</li>
+                    <li>Reduces the feeling of "Heavy" legs</li>
+                    <li>1 to 4 cm reduction around the waist and thighs with first treatment</li>
+                    <li>Fabulous long lasting results with multiple treatments</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>About Bioslimming</h3>
+                <p>Considered by professionals to be one of the most effective high-end body contouring treatments available, the Bioslimming Wrap is extremely effective at producing visible, instant and more importantly, long lasting results from your very FIRST treatment.</p>
+                
+                <div class="treatment-highlight">
+                    <p><strong>NO FUSS, NO MESS, NO DOWNTIME</strong></p>
+                    <p><strong>NON-COMPRESSION, BANDAGE-FREE CONTOURING WRAP</strong></p>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>How It Works</h3>
+                <p>A combination of the strongest professional products available, the Bioslimming Wrap is packed full of essential oils, plant and algae extracts, and caffeine resulting in a wide range of additional therapeutic benefits which includes improving the appearance of varicose veins and stretch marks. Bioslimming uniquely uses both hot and cold thermo agents.</p>
+                <p>The resulting effect stimulates the draw of fluid into the capillaries and the absorption of fatty acids and subsequent transport of fat causes the "orange peel" appearance to disappear. The thermo agents stimulate fat burning therefore reducing adipose tissue, and they also stimulate the lymphatic system.</p>
+                
+                <div class="treatment-highlight">
+                    <p><strong>98% of women saw dramatic improvement of "orange peel" skin with a reduction of cellulite in just two weeks. 100% of women observed a decrease of 1 to 4 cm around their waist.</strong></p>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>In-Spa Treatment</h3>
+                <p><strong>A TWO STAGE PROCESS FOR SLIMMER HIPS, THIGHS, ARMS AND STOMACH:</strong></p>
+                <p><strong>STAGE 1</strong> - Detox Base, Active Slim Gel & Active Slim Cream products are massaged into the skin, the treated areas are then covered with plastic wrap and the client lies comfortably and relaxes for 30 minutes in an infrared blanket.</p>
+                <p><strong>STAGE 2</strong> - Plastic wrap is removed and then Ultra Slim Effect is massaged vigorously into the areas being treated.</p>
+                <p>The products have been scientifically formulated to produce exceptional results due to the active ingredients acting upon the tissues.</p>
+                <p><strong>6-10 weekly sessions are recommended. Monthly maintenance sessions can be done thereafter.</strong></p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Pre-Treatment Prep</h3>
+                <ul>
+                    <li>Shower before your session, and do not apply lotion, creams or sunscreen</li>
+                    <li>Eat a good meal and be well hydrated, but stop eating two hours before your session</li>
+                    <li>Wear a 2-piece bathing suit or similar type of top and bottom that you don't mind getting soiled with product during the treatment. Bring a clean set of undergarments to put on after your session</li>
+                    <li>If you are pregnant, nursing or have high blood pressure, you cannot receive this treatment</li>
+                    <li>You should also not receive this treatment if you have allergies to algae, caffeine and/or the following essential oils: orange, cedarwood, lavender</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Post Treatment Home Care</h3>
+                <ul>
+                    <li>Wait at least 4 hours after your treatment to shower. If you have very sensitive skin, then you should shower 2 hours after your session</li>
+                    <li>Drink plenty of water after your session, but refrain from eating for 4 hours so that you do not reintroduce toxins to your skin cells that have just been detoxified</li>
+                    <li>Avoid sun exposure and tanning beds following your treatment</li>
+                    <li>Use the Cellufirm Contouring Serum and Cellufirm Crème twice per day on the days that you do not have treatments</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- What to Expect from Bioslimming Modal -->
+    <div id="bioslimmingExpectationsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBioslimmingExpectationsModal()">&times;</span>
+            <h2 class="modal-title">What to Expect from Bioslimming</h2>
+            <p class="modal-subtitle">Your Complete Guide to Bioslimming Treatment</p>
+            
+            <div class="modal-section">
+                <h3>Before Your Treatment</h3>
+                <p>You'll undress or change into the provided disposable underwear – in privacy. Our spa therapists are great at respecting their clients' modesty, so you will be covered for the duration of the session.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Skin Preparation</h3>
+                <p>Next, you will be treated with a gentle dry exfoliation or scrub to slough away any dead skin cells. This prepares your skin to better absorb the therapeutic benefits of the bioslimming treatment.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Application Process</h3>
+                <p>Once your skin has been prepped, your therapist will apply the specialized bioslimming products to your targeted areas. The content and application method depends on the specific treatment areas you have chosen.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>The Bioslimming Experience</h3>
+                <p>After applying the bioslimming products to your targeted areas, your therapist will cover the treated areas with plastic wrap and you'll lie comfortably and relax for 30 minutes in an infrared blanket. This allows the active ingredients to penetrate deeply into the skin.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>During the Treatment</h3>
+                <p>The heat from the infrared blanket will relax your muscles, open your pores and encourage the absorption of the active ingredients. The combination of heat and the specialized products stimulates fat burning and lymphatic drainage.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Completion & Aftercare</h3>
+                <p>When the wrap is removed, the therapist will massage the Ultra Slim Effect product vigorously into the treated areas. This final step ensures maximum absorption and effectiveness of the treatment.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Important Notes</h3>
+                <div class="treatment-highlight">
+                    <p><strong>Please let the therapist know from the start if you suffer from claustrophobia.</strong></p>
+                    <p><strong>If you are pregnant, nursing or have high blood pressure, you cannot receive this treatment.</strong></p>
+                    <p><strong>You should also not receive this treatment if you have allergies to algae, caffeine and/or the following essential oils: orange, cedarwood, lavender.</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bioslimming FAQ Modal -->
+    <div id="bioslimmingFAQModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBioslimmingFAQModal()">&times;</span>
+            <h2 class="modal-title">Bioslimming FAQ</h2>
+            <p class="modal-subtitle">Frequently Asked Questions</p>
+            
+            <div class="modal-section">
+                <h3>How Does Bioslimming Work?</h3>
+                <p>Bioslimming is a unique formula which combines 4 different products creams/gels. Each product is packed full of plant extracts, pure essential oils, algae extracts, caffeine and thermo agents both hot & cold. The ingredients have been scientifically proven to act on toning, firming, cellulite and fat.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>How Long Does A Bioslimming Wrap Treatment Take And How Often Can I Do It?</h3>
+                <p>Bioslimming is an hour treatment. We advise 1 or 2 Bioslimming Wrap/week. To achieve maximum results we recommend 10 sessions within 6-8 weeks, if this is combined with the use of the Bioslimming Trio at home between salon treatments optimum results can be achieved.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>How Much Can I Expect to Lose?</h3>
+                <p>It depends upon your body type. Most clients average inch loss of 1-4cm (1 to 2.5 inches) per measured area. Many clients have Bioslimming Wrap Treatment for skin tightening and to reduce dramatically the appearance of cellulite. The results are amazing! You feel lighter, your skin is dramatically smoother and tighter!</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>How Long Will The Results Last?</h3>
+                <p>Bioslimming has been scientifically proven to reduce fatty deposits and reduce the appearance of cellulite in less than 4 weeks and results can be maintained indefinitely, more so if you follow a healthy eating and exercise regime. If you gain weight the inches will return. Clients get such a boost in morale following Bioslimming treatments that many find themselves more inclined to engage in a healthier more active lifestyle.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Will I Lose Weight With Bioslimming?</h3>
+                <p>Yes you can lose weight using Bioslimming. This is due to the fact that Bioslimming works differently from other inch loss wraps as it is fat that is removed as opposed to just toxins and as such many clients lose 1-2lbs following first treatment and many losing an average of 7lbs following a course of 6 treatments.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Will I Be Wrapped From Head To Toe In Bandages?</h3>
+                <p>No, Bioslimming does not rely on compression and clay to produce results. Instead it consists of gel/creams which are vigorously massaged onto the targeted areas such as hourglass – knee to below bust area- the area is then loosely covered with biofilm to ensure enhanced penetration of the products into the skin. All the benefits of Bioslimming are derived from the active ingredients and the way they work in synergy with one another.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Is Bioslimming Just Like All The Other Wraps On The Market?</h3>
+                <p>Bioslimming wrap is an absolute revolution in body wraps. It contains a high concentration of active ingredients. Bioslimming wrap is not based on "compression" and is not based on temporary water loss. The inch loss you get from our process are PERMANENT as long as you don't gain weight. It is an "all in one wrap" – Detoxing, Slimming, Firming, Toning, Inch Loss, Combats Cellulite, Reduces Appearance of Stretch Marks and much more.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>I Am Keen To Continue The Slimming Process Between Treatments – What Can I Do?</h3>
+                <p>Bioslimming Trio is a homecare kit which is designed to enhance, accelerate and maintain the spa treatment you could use this a few times per week or between treatments. Although Bioslimming will give great results on its own you can further enhance the results by following a healthy eating and exercise regime.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>How Does It Reduce The Appearance Of Cellulite?</h3>
+                <p><strong>The Benefits of the High Concentration of Caffeine</strong></p>
+                <p>When Caffeine is applied to the affected areas it increases the metabolism, helps increase blood flow and facilitates the swift burning of fat in the adjoining areas. Caffeine also plays a part in the fat burning process itself, this action is reinforced when combines with lavender essential oil, bladderwrack (algae) and ivy extracts.</p>
+                
+                <p><strong>High Concentration Of Active Ingredients For Micro-circulation Below The Surface</strong></p>
+                <p>Cellulite reduction and toning requires also an increase in micro-circulation below the surface of the skin which in turn leads to restoring the health of the connective tissue (reducing the pulling down) and decreasing the fluid retention and shrinking the fat cells (reducing the pushing up). When applied and massaged into the skin a mix of active ingredients such as cedarwood, eucalyptus, rosemary essential oils and horse chestnut extract will help to target the micro-circulation and increase lymphatic drainage (excess fluid) and help shrink fat cells. Those key ingredients are very important because cellulite generally accumulates in areas with poor circulation and they help soften and break down cellulite through increased circulation and by reducing water retention.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Body Treatments Page Functionality
+        const initBodyTreatmentsPage = () => {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const serviceCategories = document.querySelectorAll('.service-category');
+
+            // Switch category function
+            const switchCategory = (targetCategory) => {
+                // Update active states
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                const targetButton = document.querySelector(`[data-category="${targetCategory}"]`);
+                if (targetButton) targetButton.classList.add('active');
+
+                serviceCategories.forEach(category => category.classList.remove('active'));
+                const targetCategoryElement = document.getElementById(targetCategory);
+                if (targetCategoryElement) targetCategoryElement.classList.add('active');
+
+                // Animate service items with staggered delays
+                const serviceItems = targetCategoryElement.querySelectorAll('.service-item');
+                serviceItems.forEach((item, index) => {
+                    // Reset animation state
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(30px) scale(0.98)';
+                    item.style.animation = 'none';
+                    
+                    // Trigger animation with staggered delay
+                    setTimeout(() => {
+                        item.style.animation = `fadeInUp 0.8s ease-out forwards`;
+                        item.style.animationDelay = `${index * 0.1}s`;
+                    }, 50);
+                });
+            };
+
+            // Bioslimming subcategory functionality
+            const initBioslimmingSubcategories = () => {
+                const bioslimmingSubButtons = document.querySelectorAll('.bioslimming-sub-btn');
+                const bioslimmingSubcategories = document.querySelectorAll('.bioslimming-subcategory');
+
+                const switchBioslimmingSubcategory = (targetBioslimming) => {
+                    // Update active states
+                    bioslimmingSubButtons.forEach(btn => btn.classList.remove('active'));
+                    const targetButton = document.querySelector(`[data-bioslimming="${targetBioslimming}"]`);
+                    if (targetButton) targetButton.classList.add('active');
+
+                    bioslimmingSubcategories.forEach(subcategory => subcategory.classList.remove('active'));
+                    const targetSubcategory = document.getElementById(`${targetBioslimming}-body`);
+                    if (targetSubcategory) targetSubcategory.classList.add('active');
+
+                    // Animate service items with staggered delays
+                    const serviceItems = targetSubcategory.querySelectorAll('.service-item');
+                    serviceItems.forEach((item, index) => {
+                        // Reset animation state
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(30px) scale(0.98)';
+                        item.style.animation = 'none';
+                        
+                        // Trigger animation with staggered delay
+                        setTimeout(() => {
+                            item.style.animation = `fadeInUp 0.8s ease-out forwards`;
+                            item.style.animationDelay = `${index * 0.1}s`;
+                        }, 50);
+                    });
+                };
+
+                // Event listeners for bioslimming subcategories
+                bioslimmingSubButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const bioslimmingType = button.getAttribute('data-bioslimming');
+                        if (bioslimmingType) {
+                            switchBioslimmingSubcategory(bioslimmingType);
+                        }
+                    });
+                });
+            };
+
+            // Initialize bioslimming subcategories
+            initBioslimmingSubcategories();
+
+            // Event listeners
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const category = button.getAttribute('data-category');
+                    if (category) {
+                        switchCategory(category);
+                    }
+                });
+            });
+
+            // Initialize animations for default category
+            setTimeout(() => {
+                const defaultItems = document.querySelectorAll('#scrubs .service-item');
+                defaultItems.forEach((item, index) => {
+                    // Reset initial state
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(30px) scale(0.98)';
+                    
+                    // Trigger staggered animation
+                    setTimeout(() => {
+                        item.style.animation = `fadeInUp 0.8s ease-out forwards`;
+                        item.style.animationDelay = `${index * 0.1}s`;
+                    }, 100 + (index * 50));
+                });
+            }, 200);
+        };
+
+        // Initialize hero animations
+        const initHeroAnimations = () => {
+            const heroContent = document.querySelector('.hero-content');
+            const heroEyebrow = document.querySelector('.hero-eyebrow');
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            const heroQuote = document.querySelector('.hero-quote');
+
+            // Trigger hero animations with staggered delays
+            setTimeout(() => {
+                if (heroContent) heroContent.classList.add('animate-in');
+            }, 300);
+
+            setTimeout(() => {
+                if (heroEyebrow) heroEyebrow.classList.add('animate-in');
+            }, 600);
+
+            setTimeout(() => {
+                if (heroTitle) heroTitle.classList.add('animate-in');
+            }, 800);
+
+            setTimeout(() => {
+                if (heroSubtitle) heroSubtitle.classList.add('animate-in');
+            }, 1000);
+
+            setTimeout(() => {
+                if (heroQuote) heroQuote.classList.add('animate-in');
+            }, 1200);
+        };
+
+        // Initialize when ready
+        document.addEventListener('DOMContentLoaded', () => {
+            initBodyTreatmentsPage();
+            initHeroAnimations();
+        });
+
+        // Wrap Expectations Modal Functions
+        function openWrapExpectationsModal() {
+            document.getElementById('wrapExpectationsModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeWrapExpectationsModal() {
+            document.getElementById('wrapExpectationsModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const wrapModal = document.getElementById('wrapExpectationsModal');
+            if (event.target === wrapModal) {
+                closeWrapExpectationsModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeWrapExpectationsModal();
+                closeBioslimmingDescriptionModal();
+                closeBioslimmingExpectationsModal();
+                closeBioslimmingFAQModal();
+            }
+        });
+
+        // Bioslimming Description Modal Functions
+        function openBioslimmingDescriptionModal() {
+            document.getElementById('bioslimmingDescriptionModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeBioslimmingDescriptionModal() {
+            document.getElementById('bioslimmingDescriptionModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Bioslimming Expectations Modal Functions
+        function openBioslimmingExpectationsModal() {
+            document.getElementById('bioslimmingExpectationsModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeBioslimmingExpectationsModal() {
+            document.getElementById('bioslimmingExpectationsModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Bioslimming FAQ Modal Functions
+        function openBioslimmingFAQModal() {
+            document.getElementById('bioslimmingFAQModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeBioslimmingFAQModal() {
+            document.getElementById('bioslimmingFAQModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modals when clicking outside of them
+        window.onclick = function(event) {
+            const wrapModal = document.getElementById('wrapExpectationsModal');
+            const bioslimmingDescModal = document.getElementById('bioslimmingDescriptionModal');
+            const bioslimmingExpectationsModal = document.getElementById('bioslimmingExpectationsModal');
+            const bioslimmingFAQModal = document.getElementById('bioslimmingFAQModal');
+            
+            if (event.target === wrapModal) {
+                closeWrapExpectationsModal();
+            }
+            if (event.target === bioslimmingDescModal) {
+                closeBioslimmingDescriptionModal();
+            }
+            if (event.target === bioslimmingExpectationsModal) {
+                closeBioslimmingExpectationsModal();
+            }
+            if (event.target === bioslimmingFAQModal) {
+                closeBioslimmingFAQModal();
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html> 
