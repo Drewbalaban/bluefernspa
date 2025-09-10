@@ -185,21 +185,26 @@
             font-size: 1rem;
             font-weight: 500;
             cursor: pointer;
-            transition: var(--transition-base);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             text-decoration: none;
             display: inline-block;
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
         .category-btn:hover {
             border-color: var(--secondary-color);
             background: var(--accent-color);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
         .category-btn.active {
             background: var(--secondary-color);
             border-color: var(--secondary-color);
             color: white;
+            transform: translateY(0);
+            box-shadow: 0 5px 15px rgba(168, 201, 190, 0.3);
         }
 
         /* Service Category Content */
