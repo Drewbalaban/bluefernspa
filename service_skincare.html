@@ -125,32 +125,31 @@
             transform: translateY(30px);
         }
 
-        /* Breadcrumb */
-        .breadcrumb {
-            background: var(--light-sage);
+        /* Back to Services Button */
+        .back-to-services {
+            text-align: center;
             padding: 20px 0;
         }
 
-        .breadcrumb-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .breadcrumb-nav {
+        .back-to-services-btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
             font-family: var(--font-secondary);
             font-size: 0.9rem;
-            color: var(--text-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
-        .breadcrumb-nav a {
-            color: var(--darker-sage);
-            text-decoration: none;
-            transition: var(--transition-base);
-        }
-
-        .breadcrumb-nav a:hover {
-            color: var(--dark-color);
+        .back-to-services-btn:hover {
+            background: var(--darker-sage);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         /* Service Categories */
@@ -881,12 +880,8 @@
     </section>
 
     <!-- Back to Services -->
-    <section class="breadcrumb">
-        <div class="breadcrumb-container">
-            <nav class="breadcrumb-nav">
-                <a href="index.html#services">← Back to Our Services</a>
-            </nav>
-        </div>
+    <section class="back-to-services">
+        <a href="index.html#services" class="back-to-services-btn">← Back to Our Services</a>
     </section>
 
     <!-- Service Categories -->
