@@ -100,8 +100,28 @@ const smoothScroll = withErrorHandling((targetId) => {
         behavior: 'smooth'
     });
     
+    // Update browser history for back button functionality
+    if (targetId !== '#home') {
+        history.pushState({ section: targetId }, '', targetId);
+    } else {
+        history.pushState({ section: 'home' }, '', window.location.pathname);
+    }
+    
     // Focus management
     setTimeout(() => target.focus(), 500);
+});
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', (e) => {
+    const targetId = e.state?.section || '#home';
+    const target = document.querySelector(targetId);
+    if (target) {
+        const offsetTop = target.offsetTop - 80;
+        window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+        });
+    }
 });
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -540,6 +560,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize the slider
     const heroSlider = new HeroSlider();
+    
+    // Debug: Check if slider elements exist
+    console.log('Slider slides found:', document.querySelectorAll('.slide').length);
+    console.log('Slider dots found:', document.querySelectorAll('.dot').length);
+    console.log('Prev button found:', document.getElementById('prevSlide'));
+    console.log('Next button found:', document.getElementById('nextSlide'));
     
     const nav = document.querySelector('.nav');
     const navToggle = document.querySelector('.nav-toggle');

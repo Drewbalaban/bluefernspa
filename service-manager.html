@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluefern Spa - Service Manager</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #d5eae5 0%, #f2f7f5 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #7a9b8c 0%, #a8c9be 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e8f2ee;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #666;
+        }
+        
+        .tab.active {
+            background: white;
+            color: #7a9b8c;
+            border-bottom: 3px solid #7a9b8c;
+        }
+        
+        .tab:hover {
+            background: #e8f2ee;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .manager-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .manager-panel {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #e8f2ee;
+        }
+        
+        .manager-panel h3 {
+            color: #7a9b8c;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+        }
+        
+        .manager-panel h3 i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        /* Drag and Drop Styles */
+        .draggable-list {
+            min-height: 400px;
+        }
+        
+        .draggable-item {
+            background: white;
+            border: 2px solid #d5eae5;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            cursor: move;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .draggable-item:hover {
+            border-color: #7a9b8c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .draggable-item.dragging {
+            opacity: 0.5;
+            transform: rotate(2deg) scale(1.02);
+            z-index: 1000;
+        }
+        
+        .drag-handle {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: #a8c9be;
+            cursor: move;
+            font-size: 1.2rem;
+        }
+        
+        .edit-btn {
+            position: absolute;
+            top: 15px;
+            right: 50px;
+            background: #a8c9be;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .edit-btn:hover {
+            background: #7a9b8c;
+            transform: scale(1.1);
+        }
+        
+        .delete-btn {
+            position: absolute;
+            top: 15px;
+            right: 90px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .delete-btn:hover {
+            background: #c82333;
+            transform: scale(1.1);
+        }
+        
+        /* Service/Special Card Styles */
+        .item-title {
+            color: #7a9b8c;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            padding-right: 120px;
+        }
+        
+        .item-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            padding-right: 120px;
+        }
+        
+        .item-details {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-right: 120px;
+        }
+        
+        .item-detail {
+            background: #e8f2ee;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #7a9b8c;
+            font-weight: 500;
+        }
+        
+        .item-price {
+            background: linear-gradient(135deg, #a8c9be 0%, #7a9b8c 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        
+        .item-original-price {
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-left: 10px;
+        }
+        
+        /* Buttons */
+        .btn {
+            background: linear-gradient(135deg, #a8c9be 0%, #7a9b8c 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+        }
+        
+        .btn-large {
+            padding: 15px 30px;
+            font-size: 18px;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 3% auto;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8f2ee;
+        }
+        
+        .modal-header h2 {
+            color: #7a9b8c;
+            font-size: 1.8rem;
+        }
+        
+        .close {
+            color: #aaa;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close:hover {
+            color: #7a9b8c;
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #4a4a4a;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #a8c9be;
+            box-shadow: 0 0 0 3px rgba(168, 201, 190, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        /* Status Messages */
+        .status-message {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: none;
+        }
+        
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        /* Instructions Panel */
+        .instructions {
+            background: linear-gradient(135deg, #e8f2ee 0%, #f2f7f5 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .instructions h4 {
+            color: #7a9b8c;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .instructions h4 i {
+            margin-right: 10px;
+        }
+        
+        .instructions ul {
+            color: #666;
+            line-height: 1.8;
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .manager-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                padding: 15px;
+            }
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Drop Zone */
+        .drop-zone {
+            border: 2px dashed #a8c9be;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            color: #7a9b8c;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .drop-zone.drag-over {
+            border-color: #7a9b8c;
+            background: rgba(168, 201, 190, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌿 Bluefern Spa Service Manager</h1>
+            <p>Drag, drop, and edit your services, specials, and packages with ease</p>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" data-tab="specials">
+                <i class="fas fa-star"></i> Specials & Offers
+            </button>
+            <button class="tab" data-tab="services">
+                <i class="fas fa-spa"></i> Services
+            </button>
+            <button class="tab" data-tab="packages">
+                <i class="fas fa-gift"></i> Spa Packages
+            </button>
+        </div>
+        
+        <div class="content">
+            <!-- Status Message -->
+            <div id="status-message" class="status-message"></div>
+            
+            <!-- Specials Tab -->
+            <div id="specials" class="tab-content active">
+                <div class="instructions">
+                    <h4><i class="fas fa-info-circle"></i> How to Manage Specials</h4>
+                    <ul>
+                        <li><strong>Drag & Drop:</strong> Click and drag the grip handle to reorder specials</li>
+                        <li><strong>Edit:</strong> Click the edit button to modify any special offer</li>
+                        <li><strong>Add New:</strong> Click "Add New Special" to create a new offer</li>
+                        <li><strong>Delete:</strong> Click the red delete button to remove a special</li>
+                        <li><strong>Save:</strong> Changes are saved automatically when you edit</li>
+                    </ul>
+                </div>
+                
+                <div class="manager-grid">
+                    <div class="manager-panel">
+                        <h3><i class="fas fa-grip-vertical"></i> Current Specials</h3>
+                        <div id="specials-container" class="draggable-list">
+                            <!-- Specials will be loaded here -->
+                        </div>
+                        <button class="btn btn-success btn-large" onclick="addNewItem('special')">
+                            <i class="fas fa-plus"></i> Add New Special
+                        </button>
+                    </div>
+                    
+                    <div class="manager-panel">
+                        <h3><i class="fas fa-chart-line"></i> Specials Stats</h3>
+                        <div class="stat-item">
+                            <strong>Total Specials:</strong> <span id="specials-count">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>Average Price:</strong> <span id="specials-avg-price">$0</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>Last Updated:</strong> <span id="specials-last-updated">Never</span>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <h4 style="color: #7a9b8c; margin-bottom: 15px;">Quick Actions</h4>
+                            <button class="btn btn-secondary" onclick="exportData('specials')">
+                                <i class="fas fa-download"></i> Export Specials
+                            </button>
+                            <button class="btn btn-secondary" onclick="importData('specials')">
+                                <i class="fas fa-upload"></i> Import Specials
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Services Tab -->
+            <div id="services" class="tab-content">
+                <div class="instructions">
+                    <h4><i class="fas fa-info-circle"></i> How to Manage Services</h4>
+                    <ul>
+                        <li><strong>Drag & Drop:</strong> Reorder services by dragging them</li>
+                        <li><strong>Edit:</strong> Click edit to modify service details, prices, and descriptions</li>
+                        <li><strong>Add New:</strong> Create new services with custom pricing and durations</li>
+                        <li><strong>Categories:</strong> Organize services by type (Massage, Facial, etc.)</li>
+                    </ul>
+                </div>
+                
+                <div class="manager-grid">
+                    <div class="manager-panel">
+                        <h3><i class="fas fa-grip-vertical"></i> Current Services</h3>
+                        <div id="services-container" class="draggable-list">
+                            <!-- Services will be loaded here -->
+                        </div>
+                        <button class="btn btn-success btn-large" onclick="addNewItem('service')">
+                            <i class="fas fa-plus"></i> Add New Service
+                        </button>
+                    </div>
+                    
+                    <div class="manager-panel">
+                        <h3><i class="fas fa-chart-line"></i> Services Stats</h3>
+                        <div class="stat-item">
+                            <strong>Total Services:</strong> <span id="services-count">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>Categories:</strong> <span id="services-categories">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>Price Range:</strong> <span id="services-price-range">$0 - $0</span>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <h4 style="color: #7a9b8c; margin-bottom: 15px;">Quick Actions</h4>
+                            <button class="btn btn-secondary" onclick="exportData('services')">
+                                <i class="fas fa-download"></i> Export Services
+                            </button>
+                            <button class="btn btn-secondary" onclick="importData('services')">
+                                <i class="fas fa-upload"></i> Import Services
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Packages Tab -->
+            <div id="packages" class="tab-content">
+                <div class="instructions">
+                    <h4><i class="fas fa-info-circle"></i> How to Manage Spa Packages</h4>
+                    <ul>
+                        <li><strong>Drag & Drop:</strong> Reorder packages to highlight your best offers</li>
+                        <li><strong>Edit:</strong> Modify package contents, pricing, and descriptions</li>
+                        <li><strong>Add New:</strong> Create comprehensive spa packages with multiple services</li>
+                        <li><strong>Value:</strong> Show savings and package benefits clearly</li>
+                    </ul>
+                </div>
+                
+                <div class="manager-grid">
+                    <div class="manager-panel">
+                        <h3><i class="fas fa-grip-vertical"></i> Current Packages</h3>
+                        <div id="packages-container" class="draggable-list">
+                            <!-- Packages will be loaded here -->
+                        </div>
+                        <button class="btn btn-success btn-large" onclick="addNewItem('package')">
+                            <i class="fas fa-plus"></i> Add New Package
+                        </button>
+                    </div>
+                    
+                    <div class="manager-panel">
+                        <h3><i class="fas fa-chart-line"></i> Packages Stats</h3>
+                        <div class="stat-item">
+                            <strong>Total Packages:</strong> <span id="packages-count">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>Average Value:</strong> <span id="packages-avg-value">$0</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>Best Seller:</strong> <span id="packages-best-seller">None</span>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <h4 style="color: #7a9b8c; margin-bottom: 15px;">Quick Actions</h4>
+                            <button class="btn btn-secondary" onclick="exportData('packages')">
+                                <i class="fas fa-download"></i> Export Packages
+                            </button>
+                            <button class="btn btn-secondary" onclick="importData('packages')">
+                                <i class="fas fa-upload"></i> Import Packages
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Edit Item</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <form id="editForm">
+                <div class="form-group">
+                    <label>Name/Title</label>
+                    <input type="text" id="editName" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="editDescription" required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="text" id="editPrice" placeholder="$99" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Original Price (optional)</label>
+                        <input type="text" id="editOriginalPrice" placeholder="$120">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Duration</label>
+                        <input type="text" id="editDuration" placeholder="60 minutes" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="editCategory">
+                            <option value="massage">Massage Therapy</option>
+                            <option value="facial">Facial Treatments</option>
+                            <option value="body">Body Treatments</option>
+                            <option value="wellness">Wellness Therapy</option>
+                            <option value="beauty">Beauty Services</option>
+                            <option value="package">Spa Package</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Features/Benefits (one per line)</label>
+                    <textarea id="editFeatures" placeholder="Feature 1&#10;Feature 2&#10;Feature 3"></textarea>
+                </div>
+                <div style="text-align: right; margin-top: 25px;">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="btn btn-success">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="client-config.js"></script>
+    <script>
+        // Global variables
+        let currentData = {
+            specials: [],
+            services: [],
+            packages: []
+        };
+        let currentEditingIndex = -1;
+        let currentEditingType = '';
+        
+        // Initialize the service manager
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeManager();
+        });
+        
+        function initializeManager() {
+            // Load current data
+            loadCurrentData();
+            
+            // Setup tabs
+            setupTabs();
+            
+            // Setup drag and drop
+            setupDragAndDrop();
+            
+            // Show first tab
+            showTab('specials');
+        }
+        
+        // Load current data from config
+        function loadCurrentData() {
+            try {
+                // Load specials
+                currentData.specials = CLIENT_CONFIG.specials ? [...CLIENT_CONFIG.specials] : [
+                    {
+                        name: "Couples Massage Experience",
+                        description: "Side-by-side relaxation with aromatherapy and hot stones",
+                        price: "$299",
+                        originalPrice: "$350",
+                        duration: "90 minutes",
+                        category: "package",
+                        features: ["Side-by-side massage", "Aromatherapy", "Hot stones", "Romantic setting"]
+                    },
+                    {
+                        name: "Salt Room + Facial Combo",
+                        description: "Detoxifying salt therapy followed by rejuvenating facial",
+                        price: "$179",
+                        originalPrice: "$220",
+                        duration: "75 minutes",
+                        category: "wellness",
+                        features: ["Salt room therapy", "Signature facial", "Deep cleansing", "Moisturizing treatment"]
+                    },
+                    {
+                        name: "Microneedling Series",
+                        description: "3-session package for radiant, youthful skin",
+                        price: "$450",
+                        originalPrice: "$550",
+                        duration: "3 sessions",
+                        category: "facial",
+                        features: ["3 microneedling sessions", "Collagen stimulation", "Skin rejuvenation", "Professional consultation"]
+                    }
+                ];
+                
+                // Load services (sample data)
+                currentData.services = [
+                    {
+                        name: "Swedish Massage",
+                        description: "Classic relaxation massage using long strokes and kneading",
+                        price: "$70",
+                        originalPrice: "",
+                        duration: "30 minutes",
+                        category: "massage",
+                        features: ["Relaxation", "Stress relief", "Improved circulation", "Muscle tension relief"]
+                    },
+                    {
+                        name: "Deep Tissue Massage",
+                        description: "Therapeutic massage targeting deeper muscle layers",
+                        price: "$115",
+                        originalPrice: "",
+                        duration: "60 minutes",
+                        category: "massage",
+                        features: ["Chronic pain relief", "Muscle tension", "Improved mobility", "Therapeutic pressure"]
+                    },
+                    {
+                        name: "Signature Facial",
+                        description: "Customized facial treatment for your skin type",
+                        price: "$125",
+                        originalPrice: "",
+                        duration: "60 minutes",
+                        category: "facial",
+                        features: ["Skin analysis", "Deep cleansing", "Exfoliation", "Moisturizing mask"]
+                    }
+                ];
+                
+                // Load packages (sample data)
+                currentData.packages = [
+                    {
+                        name: "Luxurious Escape",
+                        description: "The ultimate day spa experience with multiple treatments",
+                        price: "$475",
+                        originalPrice: "$550",
+                        duration: "4.5 hours",
+                        category: "package",
+                        features: ["Therapeutic Massage 60 min", "Radiance Anti-Aging Facial", "Organic Green Tea Body Scrub", "Salt Room Session", "Lunch included"]
+                    },
+                    {
+                        name: "The Gift That Keeps on Giving",
+                        description: "6 months of monthly spa services - incredible value!",
+                        price: "$864",
+                        originalPrice: "$960",
+                        duration: "6 months",
+                        category: "package",
+                        features: ["6 months of services", "Choose from multiple treatments", "Flexible scheduling", "Incredible savings"]
+                    }
+                ];
+                
+                // Render all tabs
+                renderTab('specials');
+                renderTab('services');
+                renderTab('packages');
+                
+                showStatus('Data loaded successfully!', 'success');
+            } catch (error) {
+                showStatus('Error loading data: ' + error.message, 'error');
+            }
+        }
+        
+        // Setup tabs
+        function setupTabs() {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    showTab(tabName);
+                    
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        }
+        
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Show selected tab
+            const targetContent = document.getElementById(tabName);
+            if (targetContent) {
+                targetContent.classList.add('active');
+                targetContent.classList.add('fade-in');
+            }
+            
+            // Render the tab content
+            renderTab(tabName);
+        }
+        
+        function renderTab(tabName) {
+            const container = document.getElementById(tabName + '-container');
+            if (!container) return;
+            
+            const items = currentData[tabName] || [];
+            container.innerHTML = '';
+            
+            items.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'draggable-item';
+                itemDiv.setAttribute('data-index', index);
+                itemDiv.setAttribute('data-type', tabName);
+                
+                const features = item.features ? item.features.join(', ') : '';
+                
+                itemDiv.innerHTML = `
+                    <div class="drag-handle">
+                        <i class="fas fa-grip-vertical"></i>
+                    </div>
+                    <button class="edit-btn" onclick="editItem('${tabName}', ${index})">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="delete-btn" onclick="deleteItem('${tabName}', ${index})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                    <div class="item-title">${item.name}</div>
+                    <div class="item-description">${item.description}</div>
+                    <div class="item-details">
+                        <div class="item-detail">${item.duration}</div>
+                        <div class="item-detail">${item.category}</div>
+                        ${features ? `<div class="item-detail">${features}</div>` : ''}
+                    </div>
+                    <div class="item-price">
+                        ${item.price}
+                        ${item.originalPrice ? `<span class="item-original-price">${item.originalPrice}</span>` : ''}
+                    </div>
+                `;
+                
+                container.appendChild(itemDiv);
+            });
+            
+            // Update stats
+            updateStats(tabName);
+            
+            // Re-setup drag and drop
+            setupDragAndDrop();
+        }
+        
+        function updateStats(tabName) {
+            const items = currentData[tabName] || [];
+            const count = items.length;
+            
+            // Update count
+            const countElement = document.getElementById(tabName + '-count');
+            if (countElement) countElement.textContent = count;
+            
+            // Update other stats based on tab
+            if (tabName === 'specials') {
+                const avgPrice = items.length > 0 ? 
+                    items.reduce((sum, item) => {
+                        const price = parseFloat(item.price.replace('$', ''));
+                        return sum + price;
+                    }, 0) / items.length : 0;
+                document.getElementById('specials-avg-price').textContent = `$${avgPrice.toFixed(0)}`;
+                document.getElementById('specials-last-updated').textContent = new Date().toLocaleDateString();
+            } else if (tabName === 'services') {
+                const categories = [...new Set(items.map(item => item.category))];
+                document.getElementById('services-categories').textContent = categories.length;
+                
+                const prices = items.map(item => parseFloat(item.price.replace('$', '')));
+                const minPrice = Math.min(...prices);
+                const maxPrice = Math.max(...prices);
+                document.getElementById('services-price-range').textContent = `$${minPrice} - $${maxPrice}`;
+            } else if (tabName === 'packages') {
+                const avgValue = items.length > 0 ? 
+                    items.reduce((sum, item) => {
+                        const price = parseFloat(item.price.replace('$', ''));
+                        return sum + price;
+                    }, 0) / items.length : 0;
+                document.getElementById('packages-avg-value').textContent = `$${avgValue.toFixed(0)}`;
+                
+                const bestSeller = items.length > 0 ? items[0].name : 'None';
+                document.getElementById('packages-best-seller').textContent = bestSeller;
+            }
+        }
+        
+        // Setup drag and drop functionality
+        function setupDragAndDrop() {
+            const containers = document.querySelectorAll('.draggable-list');
+            
+            containers.forEach(container => {
+                const items = container.querySelectorAll('.draggable-item');
+                
+                items.forEach(item => {
+                    item.draggable = true;
+                    
+                    item.addEventListener('dragstart', function(e) {
+                        this.classList.add('dragging');
+                        e.dataTransfer.setData('text/plain', JSON.stringify({
+                            index: this.getAttribute('data-index'),
+                            type: this.getAttribute('data-type')
+                        }));
+                    });
+                    
+                    item.addEventListener('dragend', function() {
+                        this.classList.remove('dragging');
+                    });
+                    
+                    item.addEventListener('dragover', function(e) {
+                        e.preventDefault();
+                    });
+                    
+                    item.addEventListener('drop', function(e) {
+                        e.preventDefault();
+                        const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+                        const draggedIndex = parseInt(data.index);
+                        const draggedType = data.type;
+                        const targetIndex = parseInt(this.getAttribute('data-index'));
+                        const targetType = this.getAttribute('data-type');
+                        
+                        if (draggedType === targetType && draggedIndex !== targetIndex) {
+                            // Reorder the array
+                            const draggedItem = currentData[draggedType][draggedIndex];
+                            currentData[draggedType].splice(draggedIndex, 1);
+                            currentData[draggedType].splice(targetIndex, 0, draggedItem);
+                            
+                            // Re-render the items
+                            renderTab(draggedType);
+                            showStatus('Items reordered successfully!', 'success');
+                        }
+                    });
+                });
+            });
+        }
+        
+        // Add new item
+        function addNewItem(type) {
+            const newItem = {
+                name: `New ${type.charAt(0).toUpperCase() + type.slice(1)}`,
+                description: `Describe your ${type} here`,
+                price: '$99',
+                originalPrice: '',
+                duration: '60 minutes',
+                category: type === 'service' ? 'massage' : 'package',
+                features: []
+            };
+            
+            currentData[type].push(newItem);
+            renderTab(type);
+            editItem(type, currentData[type].length - 1);
+            showStatus(`New ${type} added!`, 'success');
+        }
+        
+        // Edit item
+        function editItem(type, index) {
+            const item = currentData[type][index];
+            if (!item) return;
+            
+            currentEditingIndex = index;
+            currentEditingType = type;
+            
+            // Populate modal
+            document.getElementById('modal-title').textContent = `Edit ${type.charAt(0).toUpperCase() + type.slice(1)}`;
+            document.getElementById('editName').value = item.name;
+            document.getElementById('editDescription').value = item.description;
+            document.getElementById('editPrice').value = item.price;
+            document.getElementById('editOriginalPrice').value = item.originalPrice || '';
+            document.getElementById('editDuration').value = item.duration;
+            document.getElementById('editCategory').value = item.category;
+            document.getElementById('editFeatures').value = item.features ? item.features.join('\n') : '';
+            
+            // Show modal
+            document.getElementById('editModal').style.display = 'block';
+        }
+        
+        // Delete item
+        function deleteItem(type, index) {
+            if (confirm(`Are you sure you want to delete this ${type}?`)) {
+                currentData[type].splice(index, 1);
+                renderTab(type);
+                showStatus(`${type.charAt(0).toUpperCase() + type.slice(1)} deleted!`, 'success');
+            }
+        }
+        
+        // Save item changes
+        document.getElementById('editForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (currentEditingIndex >= 0 && currentEditingType) {
+                const features = document.getElementById('editFeatures').value
+                    .split('\n')
+                    .map(f => f.trim())
+                    .filter(f => f);
+                
+                currentData[currentEditingType][currentEditingIndex] = {
+                    name: document.getElementById('editName').value,
+                    description: document.getElementById('editDescription').value,
+                    price: document.getElementById('editPrice').value,
+                    originalPrice: document.getElementById('editOriginalPrice').value,
+                    duration: document.getElementById('editDuration').value,
+                    category: document.getElementById('editCategory').value,
+                    features: features
+                };
+                
+                renderTab(currentEditingType);
+                closeModal();
+                showStatus(`${currentEditingType.charAt(0).toUpperCase() + currentEditingType.slice(1)} updated successfully!`, 'success');
+            }
+        });
+        
+        // Close modal
+        function closeModal() {
+            document.getElementById('editModal').style.display = 'none';
+            currentEditingIndex = -1;
+            currentEditingType = '';
+        }
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('editModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Export data
+        function exportData(type) {
+            try {
+                const data = currentData[type];
+                const dataStr = JSON.stringify(data, null, 2);
+                const dataBlob = new Blob([dataStr], {type: 'application/json'});
+                const url = URL.createObjectURL(dataBlob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `${type}.json`;
+                link.click();
+                URL.revokeObjectURL(url);
+                
+                showStatus(`${type.charAt(0).toUpperCase() + type.slice(1)} exported successfully!`, 'success');
+            } catch (error) {
+                showStatus('Error exporting data: ' + error.message, 'error');
+            }
+        }
+        
+        // Import data
+        function importData(type) {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        try {
+                            const data = JSON.parse(e.target.result);
+                            currentData[type] = data;
+                            renderTab(type);
+                            showStatus(`${type.charAt(0).toUpperCase() + type.slice(1)} imported successfully!`, 'success');
+                        } catch (error) {
+                            showStatus('Error importing data: ' + error.message, 'error');
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            };
+            input.click();
+        }
+        
+        // Show status message
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('status-message');
+            statusDiv.textContent = message;
+            statusDiv.className = `status-message status-${type}`;
+            statusDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

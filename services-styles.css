@@ -2372,3 +2372,279 @@ html {
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
+/* Pricing Table Styles */
+.pricing-section {
+    margin-bottom: 60px;
+}
+
+.pricing-title {
+    font-family: var(--font-primary);
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--dark-color);
+    text-align: center;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+}
+
+.pricing-subtitle {
+    font-family: var(--font-secondary);
+    font-size: 1.1rem;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+.pricing-table-container {
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+}
+
+.pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-family: var(--font-secondary);
+}
+
+.pricing-header {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.pricing-header th {
+    padding: 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    border: none;
+}
+
+.pricing-header th:first-child {
+    text-align: left;
+}
+
+.pricing-row {
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition-base);
+}
+
+.pricing-row:hover {
+    background: var(--accent-color);
+}
+
+.pricing-row:last-child {
+    border-bottom: none;
+}
+
+.pricing-row td {
+    padding: 1rem;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    text-align: center;
+    vertical-align: middle;
+}
+
+.pricing-row td:first-child {
+    text-align: left;
+    font-weight: 500;
+}
+
+.price-cell {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.price-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.current-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.original-price {
+    font-size: 0.85rem;
+    color: #888;
+    text-decoration: line-through;
+    font-weight: 400;
+}
+
+.savings-badge {
+    background: var(--secondary-color);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.family-badge {
+    background: #e8a5a5;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.package-row {
+    background: rgba(168, 201, 190, 0.05);
+}
+
+.package-row:hover {
+    background: rgba(168, 201, 190, 0.1);
+}
+
+.family-row {
+    background: rgba(232, 165, 165, 0.05);
+}
+
+.family-row:hover {
+    background: rgba(232, 165, 165, 0.1);
+}
+
+/* Responsive Design for Pricing Table */
+@media (max-width: 768px) {
+    .pricing-table-container {
+        margin: 0 10px;
+    }
+    
+    .pricing-table {
+        display: block;
+    }
+    
+    .pricing-header {
+        display: none;
+    }
+    
+    .pricing-table tbody {
+        display: block;
+    }
+    
+    .pricing-row {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        background: white;
+    }
+    
+    .pricing-row td {
+        display: block;
+        padding: 0.75rem;
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .pricing-row td:first-child {
+        text-align: center;
+        font-weight: 600;
+        background: var(--accent-color);
+        border-radius: 8px 8px 0 0;
+    }
+    
+    .pricing-row td:last-child {
+        border-bottom: none;
+        border-radius: 0 0 8px 8px;
+    }
+    
+    .price-display {
+        flex-direction: row;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+}
+
+/* Therapy Description Styles */
+.therapy-description {
+    margin-top: 60px;
+    padding: 40px 0;
+}
+
+.description-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.description-title {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+.description-intro {
+    font-family: var(--font-secondary);
+    font-size: 1.1rem;
+    color: var(--text-color);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.description-content h4 {
+    font-family: var(--font-primary);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--dark-color);
+    margin: 2rem 0 1rem 0;
+    letter-spacing: -0.3px;
+}
+
+.description-content p {
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.description-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.description-content li {
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 0.75rem;
+    position: relative;
+    padding-left: 1.5rem;
+    opacity: 0.9;
+}
+
+.description-content li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 6px;
+    height: 6px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+}
+

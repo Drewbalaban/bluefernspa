@@ -46,6 +46,16 @@
             margin-top: 80px;
             background: url('Salt-Room-The-Salt-Room-Orlando.jpg') center/cover;
             overflow: hidden;
+            transition: background-image 0.8s ease-in-out;
+        }
+
+        /* Hero Banner Image Variations */
+        .hero-banner.saltroom-bg {
+            background: url('Salt-Room-The-Salt-Room-Orlando.jpg') center/cover;
+        }
+
+        .hero-banner.redlight-bg {
+            background: url('Red-Light-for-Pain-Management.jpg') center/cover;
         }
 
         .hero-content {
@@ -843,6 +853,142 @@
             background: rgba(255, 107, 107, 0.08);
         }
 
+        /* Table-based Pricing Styles (for Red Light Therapy) */
+        .pricing-table-container {
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            border: 1px solid rgba(168, 201, 190, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            max-width: 1000px;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-primary);
+        }
+
+        .pricing-table th {
+            background: linear-gradient(135deg, var(--darker-sage) 0%, var(--secondary-color) 100%);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            padding: 1.2rem 1rem;
+            text-align: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .pricing-table th:last-child {
+            border-right: none;
+        }
+
+        .pricing-table td {
+            padding: 1.2rem 1rem;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            border-right: 1px solid rgba(168, 201, 190, 0.1);
+            border-bottom: 1px solid rgba(168, 201, 190, 0.15);
+            line-height: 1.4;
+        }
+
+        .pricing-table td:last-child {
+            border-right: none;
+        }
+
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pricing-table tr:hover {
+            background: rgba(213, 234, 229, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-table td:first-child {
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .pricing-table .price-cell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .pricing-table .price-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .pricing-table .current-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--darker-sage);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .pricing-table .original-price {
+            font-family: var(--font-secondary);
+            font-size: 0.8rem;
+            color: #888;
+            text-decoration: line-through;
+            font-weight: 500;
+        }
+
+        .pricing-table .savings-badge {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--darker-sage) 100%);
+            color: white;
+            font-family: var(--font-secondary);
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.4rem 0.8rem;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(168, 201, 190, 0.3);
+            white-space: nowrap;
+        }
+
+        .pricing-table .family-badge {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+            color: white;
+            font-family: var(--font-secondary);
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.4rem 0.8rem;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+            white-space: nowrap;
+        }
+
+        .pricing-table .package-row {
+            background: rgba(213, 234, 229, 0.05);
+        }
+
+        .pricing-table .package-row:hover {
+            background: rgba(213, 234, 229, 0.15);
+        }
+
+        .pricing-table .family-row {
+            background: rgba(255, 107, 107, 0.03);
+        }
+
+        .pricing-table .family-row:hover {
+            background: rgba(255, 107, 107, 0.08);
+        }
+
         /* Responsive adjustments for smaller screens */
         @media (max-width: 768px) {
             .pricing-header {
@@ -865,6 +1011,31 @@
                 text-align: center;
                 font-weight: 700;
                 background: rgba(213, 234, 229, 0.1);
+            }
+
+            /* Table responsive styles */
+            .pricing-table-container {
+                overflow-x: auto;
+            }
+
+            .pricing-table {
+                min-width: 600px;
+            }
+
+            .pricing-table th,
+            .pricing-table td {
+                padding: 0.8rem 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .pricing-table .current-price {
+                font-size: 1.2rem;
+            }
+
+            .pricing-table .savings-badge,
+            .pricing-table .family-badge {
+                font-size: 0.6rem;
+                padding: 0.3rem 0.6rem;
             }
         }
 
@@ -1143,7 +1314,7 @@
         </div>
     </nav>
     <!-- Hero Banner -->
-    <section class="hero-banner">
+    <section class="hero-banner saltroom-bg">
         <div class="hero-content">
             <div class="hero-eyebrow">Bluefern Spa</div>
             <h1 class="hero-title">Wellness Therapy</h1>
@@ -1171,19 +1342,6 @@
             <!-- Salt Room Therapy Tab -->
             <div class="service-category active" id="saltroom">
                 <h2 class="category-title">Salt Room Therapy</h2>
-                
-                <!-- Hero Image Section -->
-                <div class="salt-room-hero">
-                    <div class="hero-image-container">
-                        <img src="salt1.png" alt="Elegant Salt Room Therapy Environment" class="hero-image">
-                        <div class="hero-overlay">
-                            <div class="hero-content">
-                                <h3>Experience the Healing Power of Halotherapy</h3>
-                                <p>Step into our therapeutic salt room and breathe in the natural healing properties of salt</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 
                 <div class="pricing-section">
                     <h3 class="pricing-title">Pricing</h3>
@@ -1295,10 +1453,20 @@
                                 </div>
                             </div>
                             
-                            <div class="treatment-info">
-                                <div class="treatment-image-section">
-                                    <img src="salt2.png" alt="Relaxing Salt Room Experience" class="treatment-image">
+                            <!-- Salt Room Hero Image -->
+                            <div class="salt-room-hero" style="margin-bottom: 3rem;">
+                                <div class="hero-image-container">
+                                    <img src="salt2.png" alt="Relaxing Salt Room Experience" class="hero-image">
+                                    <div class="hero-overlay">
+                                        <div class="hero-content">
+                                            <h3>Experience the Healing Power of Halotherapy</h3>
+                                            <p>Step into our therapeutic salt room and breathe in the natural healing properties of salt</p>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+                            
+                            <div class="treatment-info">
                                 <h4>How Does It Work?</h4>
                                 <p>Our Salt Room utilizes state-of-the-art technology to reproduce the atmosphere of a natural salt cave. The air is ionized and infused with a low concentration dry salt aerosol. During your session, you can relax in our zero-gravity chairs while enjoying soft music and a stress-free atmosphere.</p>
                                 
@@ -1312,58 +1480,140 @@
             <!-- Red Light Therapy Tab -->
             <div class="service-category" id="redlight">
                 <h2 class="category-title">Red Light Therapy</h2>
-                <div class="service-grid">
-                    <div class="service-item animate-fade-up">
-                        <h3>Individual Sessions</h3>
-                        <p><strong>Experience the power of photobiomodulation</strong></p>
-                        <ul>
-                            <li>30 Minute Session - Targeted treatment for specific areas</li>
-                            <li>60 Minute Session - Full body rejuvenation experience</li>
-                        </ul>
-                        <div class="service-details">
-                            <span class="duration">30 min</span>
-                            <span class="price">$50</span>
-                        </div>
-                        <div class="service-details">
-                            <span class="duration">60 min</span>
-                            <span class="price">$85</span>
-                        </div>
-                    </div>
+                
+                <!-- Pricing Section -->
+                <div class="pricing-section">
+                    <h3 class="pricing-title">Pricing</h3>
+                    <p class="pricing-subtitle">Experience the healing power of photobiomodulation with our comprehensive pricing options</p>
                     
-                    <div class="service-item animate-fade-up">
-                        <h3>Transformation Packages</h3>
-                        <p><strong>Commit to your transformation with our packages</strong></p>
-                        <ul>
-                            <li>10 Sessions - 30 minutes each</li>
-                            <li>6 Sessions - 60 minutes each</li>
-                            <li>Save up to 20% with package pricing</li>
-                        </ul>
-                        <div class="service-details">
-                            <span class="duration">10 x 30 min</span>
-                            <span class="price">$400</span>
-                            <span style="color: #888; font-size: 0.9rem; text-decoration: line-through; margin-left: 10px;">$500</span>
-                        </div>
-                        <div class="service-details">
-                            <span class="duration">6 x 60 min</span>
-                            <span class="price">$459</span>
-                            <span style="color: #888; font-size: 0.9rem; text-decoration: line-through; margin-left: 10px;">$510</span>
-                        </div>
+                    <div class="pricing-table-container">
+                        <table class="pricing-table">
+                            <thead>
+                                <tr class="pricing-header">
+                                    <th>SERVICE</th>
+                                    <th>DURATION</th>
+                                    <th>PRICE</th>
+                                    <th>SAVINGS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="pricing-row">
+                                    <td>30 min. Red Light Session</td>
+                                    <td>30 min</td>
+                                    <td class="price-cell">$50</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr class="pricing-row">
+                                    <td>1 Hour Red Light Session</td>
+                                    <td>60 min</td>
+                                    <td class="price-cell">$85</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr class="pricing-row package-row">
+                                    <td>10 Sessions Package – 30min. each</td>
+                                    <td>10 x 30 min</td>
+                                    <td class="price-cell">
+                                        <div class="price-display">
+                                            <span class="current-price">$400</span>
+                                            <span class="original-price">$500</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="savings-badge">SAVE $100</span>
+                                    </td>
+                                </tr>
+                                <tr class="pricing-row package-row">
+                                    <td>6 Sessions Package – 1 Hour each</td>
+                                    <td>6 x 60 min</td>
+                                    <td class="price-cell">
+                                        <div class="price-display">
+                                            <span class="current-price">$459</span>
+                                            <span class="original-price">$510</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="savings-badge">SAVE $51</span>
+                                    </td>
+                                </tr>
+                                <tr class="pricing-row family-row">
+                                    <td>Adult & Child 30min. Session</td>
+                                    <td>30 min</td>
+                                    <td class="price-cell">$75</td>
+                                    <td>
+                                        <span class="family-badge">FAMILY SPECIAL</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    
-                    <div class="service-item animate-fade-up">
-                        <h3>Family Wellness</h3>
-                        <p><strong>Share the healing experience with your loved ones</strong></p>
-                        <ul>
-                            <li>Adult & Child Session - 30 minutes</li>
-                            <li>Perfect for family wellness bonding</li>
-                            <li>Safe and effective for all ages</li>
-                        </ul>
-                        <div class="service-details">
-                            <span class="duration">30 min</span>
-                            <span class="price">$75</span>
+                </div>
+                
+                <!-- Description Section -->
+                <div class="therapy-description">
+                    <div class="description-content">
+                        <h3 class="description-title">What is Red Light Therapy?</h3>
+                        <p class="description-intro">Red Light Therapy (RLT), also known as photobiomodulation, is a treatment that uses low-power lasers, light-emitting diodes, or other light sources to emit red light directly into the body. Studies have shown that different frequencies of light have different biological effects. Although it may not feel like anything is happening, these specific wavelengths of red light penetrate cells and create a positive change in the body.</p>
+                        
+                        <div class="benefits-grid">
+                            <div class="benefit-section">
+                                <h4>Skin & Anti-Aging Benefits</h4>
+                                <p>Red Light Therapy is particularly effective for skin health and anti-aging:</p>
+                                <ul>
+                                    <li>Improved natural collagen production</li>
+                                    <li>Enhanced skin tone and texture</li>
+                                    <li>Reduced fine lines and wrinkles</li>
+                                    <li>Accelerated wound healing</li>
+                                    <li>Reduced skin inflammation</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="benefit-section">
+                                <h4>Recovery & Performance</h4>
+                                <p>RLT supports athletic performance and recovery:</p>
+                                <ul>
+                                    <li>Enhanced muscle recovery</li>
+                                    <li>Reduced muscle soreness</li>
+                                    <li>Improved blood circulation</li>
+                                    <li>Increased energy production</li>
+                                    <li>Faster tissue repair</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="benefit-section">
+                                <h4>Pain & Inflammation</h4>
+                                <p>Red Light Therapy provides natural pain relief:</p>
+                                <ul>
+                                    <li>Reduced chronic pain</li>
+                                    <li>Decreased inflammation</li>
+                                    <li>Arthritis symptom relief</li>
+                                    <li>Joint mobility improvement</li>
+                                    <li>Natural pain management</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="service-details">
-                            <button class="learn-more-btn" onclick="openRedLightModal()">Learn More About Red Light Therapy</button>
+                        
+                        <!-- Red Light Therapy Hero Image -->
+                        <div class="red-light-hero" style="margin-bottom: 3rem;">
+                            <div class="hero-image-container">
+                                <img src="R.jpg" alt="Red Light Therapy Treatment Session" class="hero-image">
+                                <div class="hero-overlay">
+                                    <div class="hero-content">
+                                        <h3>Experience the Power of Photobiomodulation</h3>
+                                        <p>Relax and rejuvenate with our advanced Red Light Therapy treatment</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="treatment-info">
+                            <h4>How Does Red Light Therapy Work?</h4>
+                            <p>Red Light Therapy uses low levels of red or near-infrared light to help power your cells and promote healing and energy. The low wavelength red light produced by our Red Light Therapy machines can be absorbed by the mitochondria in your body, which are responsible for many important processes in your day to day health, healing abilities, and energy production.</p>
+                            
+                            <h4>Safe & Non-Invasive Treatment</h4>
+                            <p>Red Light Therapy uses very low levels of heat that do not hurt or burn the skin. Unlike tanning booths, RLT won't expose skin to damaging UV rays. The treatment is completely safe and can be an effective tool when used consistently and under the direction of medical guidance.</p>
+                            
+                            <h4>Red Light Therapy vs. Infrared Sauna</h4>
+                            <p>RLT differs from sauna health benefits because they do not work the same or use the same wavelengths of light. Infrared saunas use near-infrared light or far-infrared light to heat the body, which impacts health by increasing heart rate, perspiration, and heat shock proteins. Red Light Therapy is designed to stimulate mitochondrial function and ATP production, essentially feeding the cells so they function better.</p>
                         </div>
                     </div>
                 </div>
@@ -1420,6 +1670,20 @@
                 serviceCategories.forEach(category => category.classList.remove('active'));
                 const targetCategoryElement = document.getElementById(targetCategory);
                 if (targetCategoryElement) targetCategoryElement.classList.add('active');
+
+                // Update hero banner background
+                const heroBanner = document.querySelector('.hero-banner');
+                if (heroBanner) {
+                    // Remove existing background classes
+                    heroBanner.classList.remove('saltroom-bg', 'redlight-bg');
+                    
+                    // Add new background class based on category
+                    if (targetCategory === 'saltroom') {
+                        heroBanner.classList.add('saltroom-bg');
+                    } else if (targetCategory === 'redlight') {
+                        heroBanner.classList.add('redlight-bg');
+                    }
+                }
 
                 // Animate service items with staggered delays
                 const serviceItems = targetCategoryElement.querySelectorAll('.service-item');

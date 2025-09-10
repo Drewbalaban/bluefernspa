@@ -1,11 +1,40 @@
-# Netlify redirects for SPA routing
-/*    /index.html   200
+# SEO Migration Redirects - Preserve Link Equity
+# OLD bluefernspa.com URLs → NEW bluefernspa.com URLs
 
-# Specific redirects for services
-/services/*   /services.html   200
-/contact/*    /contact.html    200
-/products/*   /products.html   200
+# Main pages
+/old-homepage / 301
+/old-about / 301
 
-# Handle common 404s
-/favicon.ico  /favicon.ico  200
-/robots.txt   /robots.txt   200 
+# Service pages - IMPORTANT: Update these with actual old URLs
+/services/massage /massage-therapy/ 301
+/services/facials /facial-treatments/ 301
+/services/body-treatments /body-treatments/ 301
+/services/wellness /wellness-therapy/ 301
+/services/beauty /beauty-services/ 301
+/services/packages /spa-packages/ 301
+
+# Individual massage type redirects to anchor sections
+/services/massage/swedish-massage /massage-therapy/#swedish-massage 301
+/services/massage/deep-tissue /massage-therapy/#deep-tissue-massage 301
+/services/massage/hot-stone /massage-therapy/#hot-stone-massage 301
+/services/massage/therapeutic /massage-therapy/#therapeutic-massage 301
+/services/massage/swedish /massage-therapy/#swedish-massage 301
+/services/massage/deep-tissue-massage /massage-therapy/#deep-tissue-massage 301
+/services/massage/hot-stone-massage /massage-therapy/#hot-stone-massage 301
+/services/massage/therapeutic-massage /massage-therapy/#therapeutic-massage 301
+
+# Specific treatment pages
+/massage /massage-therapy/ 301
+/facials /facial-treatments/ 301
+/body-treatments /body-treatments/ 301
+/wellness /wellness-therapy/ 301
+/beauty /beauty-services/ 301
+/packages /spa-packages/ 301
+
+# Contact and other pages
+/contact-us /contact/ 301
+/about-us / 301
+/locations /contact/ 301
+
+# Catch-all for any missed pages
+/* / 301

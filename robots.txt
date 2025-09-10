@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://bluefernspa.com/sitemap.xml
+
+# Disallow admin and service manager pages
+Disallow: /admin.html
+Disallow: /service-manager.html
+
+# Allow all other pages
+Allow: /services/
+Allow: /contact/
+Allow: /products/
