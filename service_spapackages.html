@@ -253,20 +253,13 @@
         }
 
         .service-grid {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 2rem;
-            justify-content: center;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
         }
         
-        .service-item {
-            flex: 0 0 calc(33.333% - 1.33rem);
-            min-width: 300px;
-            max-width: 350px;
-        }
-
         .service-item {
             background: white;
             border-radius: 15px;
@@ -281,6 +274,9 @@
             opacity: 0;
             transform: translateY(30px) scale(0.98);
             filter: none;
+            display: flex;
+            align-items: center;
+            min-height: 180px;
         }
 
         .service-item:hover {
@@ -325,11 +321,23 @@
             animation: fadeInUp 0.8s ease-out forwards;
         }
 
+        .service-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .service-main-content {
+            flex: 1;
+        }
+
         .service-item h3 {
             font-family: var(--font-primary);
             font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             color: var(--dark-color);
             transition: var(--transition-base);
         }
@@ -341,8 +349,8 @@
 
         .service-item p {
             color: var(--text-color);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
             transition: var(--transition-base);
             position: relative;
         }
@@ -351,44 +359,38 @@
         .service-item p strong {
             color: var(--darker-sage);
             display: block;
-            margin-bottom: 0.8rem;
-            font-size: 1.1rem;
-        }
-
-        /* Remove the background image approach */
-        .service-item p {
-            padding-left: 0;
-        }
-
-        .service-item p strong {
-            padding-left: 0;
-            margin-left: 0;
+            margin-bottom: 0.6rem;
+            font-size: 1rem;
         }
 
         /* Style the bullet lists */
         .service-item ul {
             list-style: none;
             padding: 0;
-            margin: 0.5rem 0 1.5rem 0;
+            margin: 0.5rem 0 1rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.3rem 1rem;
         }
 
         .service-item ul li {
             position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.6;
+            padding-left: 1.2rem;
+            margin-bottom: 0.3rem;
+            line-height: 1.4;
             color: var(--text-color);
+            font-size: 0.9rem;
         }
 
         .service-item ul li::before {
             content: '•';
             color: var(--secondary-color);
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1rem;
             position: absolute;
             left: 0;
             top: 0;
-            line-height: 1.6;
+            line-height: 1.4;
         }
 
         .service-item:hover p {
@@ -401,12 +403,13 @@
 
         .service-details {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 0 0.5rem 0;
+            padding: 1rem 0 0 0;
             border-top: 2px solid var(--light-sage);
             transition: var(--transition-base);
             position: relative;
+            margin-top: auto;
         }
 
         .service-details::before {
@@ -421,7 +424,7 @@
 
         .duration {
             font-family: var(--font-secondary);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-color);
             font-weight: 500;
             text-transform: uppercase;
@@ -432,14 +435,14 @@
 
         .duration::before {
             content: '⏱';
-            margin-right: 0.5rem;
-            font-size: 0.9rem;
+            margin-right: 0.4rem;
+            font-size: 0.8rem;
             opacity: 0.7;
         }
 
         .price {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--darker-sage);
             text-shadow: 0 1px 2px rgba(0,0,0,0.05);
@@ -459,16 +462,23 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 1024px) {
-            .service-item {
-                flex: 0 0 calc(50% - 1rem);
-            }
-        }
-        
         @media (max-width: 768px) {
             .service-item {
-                flex: 0 0 100%;
-                max-width: 400px;
+                flex-direction: column;
+                align-items: flex-start;
+                min-height: auto;
+                padding: 1.5rem;
+            }
+            
+            .service-item ul {
+                grid-template-columns: 1fr;
+                gap: 0.3rem;
+            }
+            
+            .service-details {
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 1rem;
             }
             
             .category-nav {
@@ -568,160 +578,200 @@
             <div class="service-category active" id="packages">
                 <div class="service-grid">
                     <div class="service-item animate-fade-up">
-                        <h3>Bluefern Combo</h3>
-                        <p><strong>Perfect introduction to our signature services</strong></p>
-                        <ul>
-                            <li>Signature Facial</li>
-                            <li>Deep Tissue Massage 60 Min.</li>
-                            <li>Aromatherapy Steam Towel Treatment</li>
-                        </ul>
-                        <div class="service-details">
-                            <span class="duration">Approx. 2 Hrs</span>
-                            <span class="price">$225</span>
+                        <div class="service-content">
+                            <div class="service-main-content">
+                                <h3>Bluefern Combo</h3>
+                                <p><strong>Perfect introduction to our signature services</strong></p>
+                                <ul>
+                                    <li>Signature Facial</li>
+                                    <li>Deep Tissue Massage 60 Min.</li>
+                                    <li>Aromatherapy Steam Towel Treatment</li>
+                                </ul>
+                            </div>
+                            <div class="service-details">
+                                <span class="duration">Approx. 2 Hrs</span>
+                                <span class="price">$225</span>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="service-item animate-fade-up">
-                        <h3>Relax & Indulge</h3>
-                        <p><strong>Comprehensive spa experience for ultimate relaxation</strong></p>
-                        <ul>
-                            <li>Organic Soothing Facial</li>
-                            <li>Aromatherapy Massage 60 Min.</li>
-                            <li>Aromatherapy Steam Towel Treatment</li>
-                            <li>Bright Radiance Body Scrub</li>
-                            <li>Served with Tea & Chocolates</li>
-                        </ul>
-                        <div class="service-details">
-                            <span class="duration">Approx. 4 Hrs</span>
-                            <span class="price">$385</span>
+                        <div class="service-content">
+                            <div class="service-main-content">
+                                <h3>Relax & Indulge</h3>
+                                <p><strong>Comprehensive spa experience for ultimate relaxation</strong></p>
+                                <ul>
+                                    <li>Organic Soothing Facial</li>
+                                    <li>Aromatherapy Massage 60 Min.</li>
+                                    <li>Aromatherapy Steam Towel Treatment</li>
+                                    <li>Bright Radiance Body Scrub</li>
+                                    <li>Served with Tea & Chocolates</li>
+                                </ul>
+                            </div>
+                            <div class="service-details">
+                                <span class="duration">Approx. 4 Hrs</span>
+                                <span class="price">$385</span>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="service-item animate-fade-up">
-                        <h3>Royal Getaway</h3>
-                        <p><strong>Ultimate relaxation with premium services</strong></p>
-                        <ul>
-                            <li>Ultimate Signature Massage 90 min.</li>
-                            <li>Aromatherapy, Hot Stone, Foot reflexology included</li>
-                            <li>Salt Room Session</li>
-                            <li>Served with Tea & Chocolates</li>
-                        </ul>
-                        <div class="service-details">
-                            <span class="duration">Approx. 2.5 Hrs</span>
-                            <span class="price">$225 | For Couples -$470</span>
+                        <div class="service-content">
+                            <div class="service-main-content">
+                                <h3>Royal Getaway</h3>
+                                <p><strong>Ultimate relaxation with premium services</strong></p>
+                                <ul>
+                                    <li>Ultimate Signature Massage 90 min.</li>
+                                    <li>Aromatherapy, Hot Stone, Foot reflexology included</li>
+                                    <li>Salt Room Session</li>
+                                    <li>Served with Tea & Chocolates</li>
+                                </ul>
+                            </div>
+                            <div class="service-details">
+                                <span class="duration">Approx. 2.5 Hrs</span>
+                                <span class="price">$225 | For Couples -$470</span>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="service-item animate-fade-up">
-                        <h3>Enhance Romance</h3>
-                        <p><strong>Perfect couples experience in our private room</strong></p>
-                        <ul>
-                            <li>Aromatherapy Relaxation Massage 90 min. in couples room</li>
-                            <li>Aromatherapy Steam Towel Treatment</li>
-                            <li>Served with Tea & Chocolates</li>
-                        </ul>
-                        <div class="service-details">
-                            <span class="duration">Approx. 2 Hrs</span>
-                            <span class="price">$400</span>
+                        <div class="service-content">
+                            <div class="service-main-content">
+                                <h3>Enhance Romance</h3>
+                                <p><strong>Perfect couples experience in our private room</strong></p>
+                                <ul>
+                                    <li>Aromatherapy Relaxation Massage 90 min. in couples room</li>
+                                    <li>Aromatherapy Steam Towel Treatment</li>
+                                    <li>Served with Tea & Chocolates</li>
+                                </ul>
+                            </div>
+                            <div class="service-details">
+                                <span class="duration">Approx. 2 Hrs</span>
+                                <span class="price">$400</span>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="service-item animate-fade-up">
-                        <h3>Luxurious Escape</h3>
-                        <p><strong>Full-day luxury spa experience with lunch</strong></p>
-                        <ul>
-                            <li>Therapeutic Massage 60 min.</li>
-                            <li>Aromatherapy Steam Towel Treatment</li>
-                            <li>Radiance Anti-Aging Facial</li>
-                            <li>Organic Green Tea Body Scrub</li>
-                            <li>Salt Room Session (30min) or Red Light Therapy</li>
-                            <li>Served with Lunch</li>
-                        </ul>
-                        <div class="service-details">
-                            <span class="duration">Approx. 4.5 to 5 Hrs</span>
-                            <span class="price">$475</span>
+                        <div class="service-content">
+                            <div class="service-main-content">
+                                <h3>Luxurious Escape</h3>
+                                <p><strong>Full-day luxury spa experience with lunch</strong></p>
+                                <ul>
+                                    <li>Therapeutic Massage 60 min.</li>
+                                    <li>Aromatherapy Steam Towel Treatment</li>
+                                    <li>Radiance Anti-Aging Facial</li>
+                                    <li>Organic Green Tea Body Scrub</li>
+                                    <li>Salt Room Session (30min) or Red Light Therapy</li>
+                                    <li>Served with Lunch</li>
+                                </ul>
+                            </div>
+                            <div class="service-details">
+                                <span class="duration">Approx. 4.5 to 5 Hrs</span>
+                                <span class="price">$475</span>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="service-item animate-fade-up">
-                        <h3>Renew & Restore</h3>
-                        <p><strong>Advanced treatments for skin and body renewal</strong></p>
-                        <ul>
-                            <li>Signature HydroFacial</li>
-                            <li>Swedish Tissue Massage 60 Min.</li>
-                            <li>Aromatherapy Steam Towel Treatment</li>
-                            <li>Salt Room Session(30min) or Red Light Therapy</li>
-                        </ul>
-                        <div class="service-details">
-                            <span class="duration">Approx. 2.5 Hrs</span>
-                            <span class="price">$310</span>
+                        <div class="service-content">
+                            <div class="service-main-content">
+                                <h3>Renew & Restore</h3>
+                                <p><strong>Advanced treatments for skin and body renewal</strong></p>
+                                <ul>
+                                    <li>Signature HydroFacial</li>
+                                    <li>Swedish Tissue Massage 60 Min.</li>
+                                    <li>Aromatherapy Steam Towel Treatment</li>
+                                    <li>Salt Room Session(30min) or Red Light Therapy</li>
+                                </ul>
+                            </div>
+                            <div class="service-details">
+                                <span class="duration">Approx. 2.5 Hrs</span>
+                                <span class="price">$310</span>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="service-item animate-fade-up">
-                        <h3>Fit for a King</h3>
-                        <p><strong>Specialized treatment designed for men</strong></p>
-                        <ul>
-                            <li>Gentleman Refreshing Facial</li>
-                            <li>Deep Tissue Massage 60 Min.</li>
-                            <li>Aromatherapy Steam Towel Treatment</li>
-                            <li>Invigorating Back Scrub</li>
-                        </ul>
-                        <div class="service-details">
-                            <span class="duration">Approx. 2.5 Hrs</span>
-                            <span class="price">$255</span>
+                        <div class="service-content">
+                            <div class="service-main-content">
+                                <h3>Fit for a King</h3>
+                                <p><strong>Specialized treatment designed for men</strong></p>
+                                <ul>
+                                    <li>Gentleman Refreshing Facial</li>
+                                    <li>Deep Tissue Massage 60 Min.</li>
+                                    <li>Aromatherapy Steam Towel Treatment</li>
+                                    <li>Invigorating Back Scrub</li>
+                                </ul>
+                            </div>
+                            <div class="service-details">
+                                <span class="duration">Approx. 2.5 Hrs</span>
+                                <span class="price">$255</span>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="service-item animate-fade-up">
-                        <h3>Unwind & Refresh</h3>
-                        <p><strong>Quick escape for busy schedules</strong></p>
-                        <ul>
-                            <li>Express Enzyme Facial</li>
-                            <li>Back, Neck & Shoulders Massage 30 Min.</li>
-                            <li>Aromatherapy Steam Towel Treatment</li>
-                            <li>Sugar Scrub Treatment for Feet</li>
-                        </ul>
-                        <div class="service-details">
-                            <span class="duration">Approx. 1.5 Hrs</span>
-                            <span class="price">$175</span>
+                        <div class="service-content">
+                            <div class="service-main-content">
+                                <h3>Unwind & Refresh</h3>
+                                <p><strong>Quick escape for busy schedules</strong></p>
+                                <ul>
+                                    <li>Express Enzyme Facial</li>
+                                    <li>Back, Neck & Shoulders Massage 30 Min.</li>
+                                    <li>Aromatherapy Steam Towel Treatment</li>
+                                    <li>Sugar Scrub Treatment for Feet</li>
+                                </ul>
+                            </div>
+                            <div class="service-details">
+                                <span class="duration">Approx. 1.5 Hrs</span>
+                                <span class="price">$175</span>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="service-item animate-fade-up">
-                        <h3>Mommy-to-Be Bliss</h3>
-                        <p><strong>Specialized care for expecting mothers</strong></p>
-                        <ul>
-                            <li>Prenatal Massage 60 Min.</li>
-                            <li>Aromatherapy Steam Towel Treatment</li>
-                            <li>Express Enzyme Facial</li>
-                            <li>Collagen Hand Treatment</li>
-                            <li>Served with Tea & Chocolates</li>
-                        </ul>
-                        <div class="service-details">
-                            <span class="duration">2+ Hours</span>
-                            <span class="price">$245</span>
+                        <div class="service-content">
+                            <div class="service-main-content">
+                                <h3>Mommy-to-Be Bliss</h3>
+                                <p><strong>Specialized care for expecting mothers</strong></p>
+                                <ul>
+                                    <li>Prenatal Massage 60 Min.</li>
+                                    <li>Aromatherapy Steam Towel Treatment</li>
+                                    <li>Express Enzyme Facial</li>
+                                    <li>Collagen Hand Treatment</li>
+                                    <li>Served with Tea & Chocolates</li>
+                                </ul>
+                            </div>
+                            <div class="service-details">
+                                <span class="duration">2+ Hours</span>
+                                <span class="price">$245</span>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="service-item animate-fade-up">
-                        <h3>The Gift That Keeps on Giving</h3>
-                        <p><strong>6 months of premium services - valued at $960</strong></p>
-                        <ul>
-                            <li>Includes 6 months of services – valued $160 each</li>
-                            <li>One service of their choice per month</li>
-                            <li>90 min Services to choose from:</li>
-                            <li>Deep Tissue Massage 90 min</li>
-                            <li>Pain Relief Massage 90 min</li>
-                            <li>Aromatherapy Massage 90 min</li>
-                            <li>Brightening Microderm Facial</li>
-                            <li>Signature HydroFacial</li>
-                            <li>Oh My Glow! Super Facial + Collagen for Hands</li>
-                            <li>Organic Body Scrub + Back Massage 20 min</li>
-                        </ul>
-                        <div class="service-details">
-                            <span class="duration">6 Months</span>
-                            <span class="price">$864 (reg.$960)</span>
+                        <div class="service-content">
+                            <div class="service-main-content">
+                                <h3>The Gift That Keeps on Giving</h3>
+                                <p><strong>6 months of premium services - valued at $960</strong></p>
+                                <ul>
+                                    <li>Includes 6 months of services – valued $160 each</li>
+                                    <li>One service of their choice per month</li>
+                                    <li>90 min Services to choose from:</li>
+                                    <li>Deep Tissue Massage 90 min</li>
+                                    <li>Pain Relief Massage 90 min</li>
+                                    <li>Aromatherapy Massage 90 min</li>
+                                    <li>Brightening Microderm Facial</li>
+                                    <li>Signature HydroFacial</li>
+                                    <li>Oh My Glow! Super Facial + Collagen for Hands</li>
+                                    <li>Organic Body Scrub + Back Massage 20 min</li>
+                                </ul>
+                            </div>
+                            <div class="service-details">
+                                <span class="duration">6 Months</span>
+                                <span class="price">$864 (reg.$960)</span>
+                            </div>
                         </div>
                     </div>
                 </div>
