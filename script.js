@@ -284,7 +284,7 @@ window.addEventListener('scroll', () => {
 
 // ===== Smooth Page Transitions =====
 const pageTransition = () => {
-    const links = document.querySelectorAll('a:not([href^="#"])');
+    const links = document.querySelectorAll('a:not([href^="#"]):not([href="products.html"])');
     
     links.forEach(link => {
         link.addEventListener('click', function(e) {

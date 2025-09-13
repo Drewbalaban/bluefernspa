@@ -37,10 +37,10 @@ const navigationHTML = `<!-- Navigation Component -->
                 <a href="index.html#specials" class="nav-link">Specials</a>
             </li>
             <li class="nav-item">
-                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="products.html" class="nav-link">Products</a>
             </li>
             <li class="nav-item">
-                <a href="https://www.thegiftcardcafe.com/cart/selectpac.php" class="nav-link egift-link">Buy eGift</a>
+                <a href="https://bluefernspa.com/spa-gift-card/" class="nav-link nav-egift">Buy eGift</a>
             </li>
         </ul>
         <div class="nav-toggle">

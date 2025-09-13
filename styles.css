@@ -189,7 +189,7 @@ a {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--primary-color);
+    background: #20B2AA;
     transition: var(--transition-base);
 }
 
@@ -199,7 +199,7 @@ a {
 }
 
 .nav-link:hover {
-    color: var(--primary-color);
+    color: black;
 }
 
 /* Dropdown Menu */
@@ -445,7 +445,7 @@ a {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--primary-color);
+    background: #20B2AA;
     transition: var(--transition-base);
 }
 
@@ -3085,7 +3085,7 @@ a {
 
 /* ===== Active Navigation Link ===== */
 .nav-link.active {
-    color: var(--secondary-color);
+    color: black;
 }
 
 .nav-link.active::after {
@@ -4077,6 +4077,7 @@ a {
     border-radius: 25px;
     padding: 0.75rem 1.5rem;
     margin-left: 0.5rem;
+    margin-right: 0.5rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -4088,6 +4089,9 @@ a {
     z-index: 2;
     isolation: isolate;
     contain: layout style paint;
+    /* Prevent bleeding into adjacent elements */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 /* Sword Shimmer Effect for Navigation eGift Button */
@@ -4140,41 +4144,9 @@ a {
     display: none;
 }
 
-/* Complete isolation for Contact nav item */
-.nav-item:has(.nav-link[href="contact.html"]) {
-    position: relative !important;
-    isolation: isolate !important;
-    contain: layout style paint !important;
-    z-index: 100 !important;
-    background: white !important;
-    border-radius: 4px !important;
-    margin: 0 4px !important;
-    padding: 0 8px !important;
-}
+/* Products tab now uses standard nav-link hover effect */
 
-/* Ensure Contact link is clean and appears above everything */
-.nav-link[href="contact.html"] {
-    color: var(--text-color) !important;
-    text-shadow: none !important;
-    background: transparent !important;
-    filter: none !important;
-    backdrop-filter: none !important;
-    position: relative !important;
-    z-index: 101 !important;
-    isolation: isolate !important;
-    contain: layout style paint !important;
-    overflow: visible !important;
-    mix-blend-mode: normal !important;
-    transform: none !important;
-}
 
-.nav-link[href="contact.html"]::before,
-.nav-link[href="contact.html"]::after {
-    display: none !important;
-    content: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-}
 
 /* Additional protection for all nav-links from shimmer bleed */
 .nav-item {
@@ -4183,17 +4155,6 @@ a {
     contain: layout style;
 }
 
-/* Fallback for browsers that don't support :has() */
-.nav-item:nth-child(4) {
-    position: relative !important;
-    isolation: isolate !important;
-    contain: layout style paint !important;
-    z-index: 100 !important;
-    background: white !important;
-    border-radius: 4px !important;
-    margin: 0 4px !important;
-    padding: 0 8px !important;
-}
 
 /* Mobile responsive for nav eGift button */
 @media (max-width: 768px) {
