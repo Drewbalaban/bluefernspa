@@ -4112,7 +4112,7 @@ a {
     box-shadow: 0 4px 12px rgba(32, 178, 170, 0.2);
     transform: translateY(0);
     position: relative;
-    /* CRITICAL: Hide any overflow from shimmer */
+    /* Hide any overflow */
     overflow: hidden;
     z-index: 2;
     /* Professional containment approach */
@@ -4145,15 +4145,13 @@ a {
     box-shadow: 0 4px 12px rgba(32, 178, 170, 0.2);
 }
 
-/* Removed conflicting rule that was hiding the shimmer effect */
-
 /* Shimmer effect completely removed */
 
 /* Products tab now uses standard nav-link hover effect */
 
 
 
-/* Additional protection for all nav-links from shimmer bleed */
+/* Additional protection for all nav-links */
 .nav-item {
     position: relative;
     isolation: isolate;
