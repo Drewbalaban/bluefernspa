@@ -4113,11 +4113,15 @@ a {
     position: relative;
     overflow: hidden;
     z-index: 2;
+    /* Professional containment approach */
     isolation: isolate;
     contain: layout style paint;
-    /* Prevent bleeding into adjacent elements */
+    clip-path: inset(0);
+    /* Prevent any effects from bleeding */
     transform: translateZ(0);
     will-change: transform;
+    /* Create new stacking context */
+    filter: none;
 }
 
 /* Background layer eGift button specific styling */
@@ -4147,7 +4151,11 @@ a {
     z-index: 1;
     border-radius: 25px;
     pointer-events: none;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    /* Remove external glow - use contained effect instead */
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3);
+    /* Hard containment */
+    overflow: hidden;
+    contain: layout style paint;
 }
 
 .nav-link.nav-egift:hover::before,
@@ -4161,7 +4169,8 @@ a {
         rgba(255, 255, 255, 0.4),
         transparent
     );
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+    /* Contained hover glow */
+    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.5);
 }
 
 .nav-link.nav-egift:hover,
