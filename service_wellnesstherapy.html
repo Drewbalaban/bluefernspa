@@ -1788,6 +1788,37 @@
         document.addEventListener('DOMContentLoaded', () => {
             initWellnessTherapyPage();
             initHeroAnimations();
+            
+            // Handle URL hash to automatically switch to the correct tab
+            const hash = window.location.hash;
+            if (hash) {
+                const targetCategory = hash.substring(1); // Remove the # symbol
+                if (targetCategory && document.getElementById(targetCategory)) {
+                    // Switch to the target category
+                    const categoryButtons = document.querySelectorAll('.category-btn');
+                    const serviceCategories = document.querySelectorAll('.service-category');
+                    
+                    // Update active states
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    const targetButton = document.querySelector(`[data-category=${targetCategory}]`);
+                    if (targetButton) targetButton.classList.add('active');
+
+                    serviceCategories.forEach(category => category.classList.remove('active'));
+                    const targetCategoryElement = document.getElementById(targetCategory);
+                    if (targetCategoryElement) targetCategoryElement.classList.add('active');
+
+                    // Update hero banner background
+                    const heroBanner = document.querySelector('.hero-banner');
+                    if (heroBanner) {
+                        heroBanner.classList.remove('saltroom-bg', 'redlight-bg');
+                        if (targetCategory === 'saltroom') {
+                            heroBanner.classList.add('saltroom-bg');
+                        } else if (targetCategory === 'redlight') {
+                            heroBanner.classList.add('redlight-bg');
+                        }
+                    }
+                }
+            }
         });
 
         // Modal Functions

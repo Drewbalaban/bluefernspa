@@ -793,14 +793,14 @@
     <section class="service-categories">
         <div class="container">
             <div class="category-nav">
-                <button class="category-btn active" data-category="lashbrow">Lash & Brow</button>
+                <button class="category-btn active" data-category="lashbrow">Tinting</button>
                 <button class="category-btn" data-category="waxing">Waxing</button>
-                <button class="category-btn" data-category="skintag">Skin Tag Removal</button>
+                <button class="category-btn" data-category="skintag">Blemish Removal</button>
             </div>
 
-            <!-- Lash & Brow -->
+            <!-- Tinting -->
             <div class="service-category active" id="lashbrow">
-                <h2 class="category-title">Lash & Brow</h2>
+                <h2 class="category-title">Tinting</h2>
                 <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem auto; font-family: var(--font-secondary); font-size: 1.1rem; line-height: 1.7; color: var(--text-color);">
                     A brilliant way to highlight your eyes and enhance your natural beauty, eyebrow and lash tinting adds depth and definition for a striking, more dramatic look. This simple treatment colors your lashes and brows to complement a new hair color or to darken fair hairs that might otherwise blend into your skin tone. Instantly, your eyes appear brighter, your features more defined, and your overall look beautifully refreshed.
                 </p>
@@ -1077,9 +1077,9 @@
                 </div>
             </div>
 
-            <!-- Skin Tag Removal -->
+            <!-- Blemish Removal -->
             <div class="service-category" id="skintag">
-                <h2 class="category-title">Skin Tag Removal</h2>
+                <h2 class="category-title">Blemish Removal</h2>
                 <div class="service-grid">
                     <div class="service-item animate-fade-up">
                         <h3>Skin Tag Removal</h3>
@@ -1236,6 +1236,41 @@
         document.addEventListener('DOMContentLoaded', () => {
             initBeautyServicesPage();
             initHeroAnimations();
+            
+            // Handle URL hash to automatically switch to the correct tab
+            const hash = window.location.hash;
+            if (hash) {
+                const targetCategory = hash.substring(1); // Remove the # symbol
+                if (targetCategory && document.getElementById(targetCategory)) {
+                    // Switch to the target category
+                    const categoryButtons = document.querySelectorAll('.category-btn');
+                    const serviceCategories = document.querySelectorAll('.service-category');
+                    
+                    // Update active states
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    const targetButton = document.querySelector(`[data-category=${targetCategory}]`);
+                    if (targetButton) targetButton.classList.add('active');
+
+                    serviceCategories.forEach(category => category.classList.remove('active'));
+                    const targetCategoryElement = document.getElementById(targetCategory);
+                    if (targetCategoryElement) targetCategoryElement.classList.add('active');
+
+                    // Animate service items with staggered delays
+                    const serviceItems = targetCategoryElement.querySelectorAll('.service-item');
+                    serviceItems.forEach((item, index) => {
+                        // Reset animation state
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(30px) scale(0.98)';
+                        item.style.animation = 'none';
+                        
+                        // Trigger animation with staggered delay
+                        setTimeout(() => {
+                            item.style.animation = `fadeInUp 0.8s ease-out forwards`;
+                            item.style.animationDelay = `${index * 0.1}s`;
+                        }, 50);
+                    });
+                }
+            }
         });
 
         // Waxing Sub-tab Functionality
