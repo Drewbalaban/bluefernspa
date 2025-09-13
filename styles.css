@@ -4178,10 +4178,10 @@ a {
     position: relative;
     overflow: hidden;
     z-index: 1;
-    /* Complete containment */
+    /* Enhanced containment to prevent bleed */
     isolation: isolate;
     contain: layout style paint;
-    clip-path: inset(0);
+    clip-path: inset(0 round 25px);
     transform: translateZ(0);
     will-change: transform;
     /* Match nav-link baseline alignment */
@@ -4211,8 +4211,8 @@ a {
     pointer-events: none;
     border-radius: 25px;
     animation: nav-shimmer 3s ease-in-out infinite;
-    /* Ensure shimmer is contained within button */
-    clip-path: inset(0);
+    /* Enhanced containment to prevent bleed */
+    clip-path: inset(0 round 25px);
     contain: layout style paint;
     overflow: hidden;
     isolation: isolate;
@@ -4265,7 +4265,7 @@ a {
         rgba(255, 255, 255, 0.1),
         transparent
     );
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    /* Removed box-shadow to prevent bleed outside button boundaries */
 }
 
 @keyframes blade-glint {
