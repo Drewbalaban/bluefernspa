@@ -4112,11 +4112,13 @@ a {
     box-shadow: 0 4px 12px rgba(32, 178, 170, 0.2);
     transform: translateY(0);
     position: relative;
+    /* CRITICAL: Hide any overflow from shimmer */
     overflow: hidden;
     z-index: 2;
     /* Professional containment approach */
     isolation: isolate;
     contain: layout style paint;
+    /* Clip everything to button boundaries */
     clip-path: inset(0);
     /* Prevent any effects from bleeding */
     transform: translateZ(0);
@@ -4131,7 +4133,7 @@ a {
     margin-right: 0;
 }
 
-/* Sword Shimmer Effect for Navigation eGift Button - NO GLOW VERSION */
+/* Sword Shimmer Effect for Navigation eGift Button - CONTAINED VERSION */
 .nav-link.nav-egift::before,
 .nav-link.nav-egift-bg::before {
     content: '';
@@ -4154,9 +4156,13 @@ a {
     pointer-events: none;
     /* NO GLOW - just the shimmer gradient */
     box-shadow: none;
-    /* Hard containment */
+    /* Hard containment - prevent shimmer from bleeding */
     overflow: hidden;
     contain: layout style paint;
+    /* Clip the shimmer to button boundaries */
+    clip-path: inset(0);
+    /* Ensure shimmer stays within button */
+    transform: translateZ(0);
 }
 
 .nav-link.nav-egift:hover::before,
