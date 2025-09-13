@@ -4108,7 +4108,8 @@ a {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    /* Use same subtle shadow as hover state */
+    box-shadow: 0 4px 12px rgba(32, 178, 170, 0.2);
     transform: translateY(0);
     position: relative;
     overflow: hidden;
