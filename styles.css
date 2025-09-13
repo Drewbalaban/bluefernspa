@@ -4147,6 +4147,12 @@ a {
 
 /* Shimmer effect completely removed */
 
+/* Remove progress bar underline for eGift button */
+.nav-link.nav-egift::after,
+.nav-link.nav-egift-bg::after {
+    display: none;
+}
+
 /* Products tab now uses standard nav-link hover effect */
 
 
