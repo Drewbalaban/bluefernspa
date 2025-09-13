@@ -4128,8 +4128,8 @@ a {
 }
 
 /* Contained Shimmer Effect for Navigation eGift Button */
-.nav-link.nav-egift::before,
-.nav-link.nav-egift-bg::before {
+.nav-item .nav-link.nav-egift::before,
+.nav-item .nav-link.nav-egift-bg::before {
     content: '';
     position: absolute;
     top: 0;
@@ -4152,6 +4152,8 @@ a {
     /* Ensure shimmer is contained within button */
     clip-path: inset(0);
     contain: layout style paint;
+    /* Override any other ::before content */
+    display: block !important;
 }
 
 @keyframes nav-shimmer {
@@ -4180,8 +4182,8 @@ a {
 }
 
 /* Enhanced shimmer on hover */
-.nav-link.nav-egift:hover::before,
-.nav-link.nav-egift-bg:hover::before {
+.nav-item .nav-link.nav-egift:hover::before,
+.nav-item .nav-link.nav-egift-bg:hover::before {
     animation: nav-shimmer-fast 0.8s ease-in-out;
     background: linear-gradient(
         90deg,
@@ -4196,6 +4198,12 @@ a {
 @keyframes nav-shimmer-fast {
     0% { left: -100%; }
     100% { left: 100%; }
+}
+
+/* Ensure Products button doesn't get shimmer effect */
+.nav-item .nav-link[href="products.html"]::before {
+    display: none !important;
+    content: none !important;
 }
 
 /* Shimmer effect completely removed */
