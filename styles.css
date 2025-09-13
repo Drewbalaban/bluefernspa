@@ -131,6 +131,8 @@ a {
     align-items: center;
     position: relative;
     z-index: 50;
+    /* Ensure proper spacing for eGift button */
+    gap: 20px;
 }
 
 /* Background Layer for eGift Button */
@@ -4147,6 +4149,8 @@ a {
     /* Match nav-menu positioning */
     margin: 0;
     padding: 0;
+    /* Add proper spacing from nav-menu */
+    margin-left: 40px;
 }
 
 /* Dedicated eGift Button Styling */
