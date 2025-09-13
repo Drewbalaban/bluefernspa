@@ -5,6 +5,12 @@
 const navigationHTML = `<!-- Navigation Component -->
 <nav class="nav">
     <div class="nav-container">
+        <!-- Background Layer - eGift Button -->
+        <div class="nav-bg-layer">
+            <a href="https://bluefernspa.com/spa-gift-card/" class="nav-link nav-egift nav-egift-bg">Buy eGift</a>
+        </div>
+        
+        <!-- Foreground Layer - Main Navigation -->
         <div class="nav-logo">
             <img src="darker-logo-1.png" alt="Bluefern Spa">
         </div>
@@ -38,9 +44,6 @@ const navigationHTML = `<!-- Navigation Component -->
             </li>
             <li class="nav-item">
                 <a href="products.html" class="nav-link">Products</a>
-            </li>
-            <li class="nav-item">
-                <a href="https://bluefernspa.com/spa-gift-card/" class="nav-link nav-egift">Buy eGift</a>
             </li>
         </ul>
         <div class="nav-toggle">
