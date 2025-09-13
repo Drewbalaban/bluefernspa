@@ -2,24 +2,19 @@
 // This script loads the shared navigation into all pages
 
 // Embedded navigation HTML to avoid fetch issues
-const navigationHTML = `<!-- Navigation Component -->
+const navigationHTML = `<!-- Navigation -->
 <nav class="nav">
     <div class="nav-container">
-        <!-- Background Layer - eGift Button -->
-        <div class="nav-bg-layer">
-            <a href="https://bluefernspa.com/spa-gift-card/" class="nav-link nav-egift nav-egift-bg">Buy eGift</a>
-        </div>
-        
-        <!-- Foreground Layer - Main Navigation -->
         <div class="nav-logo">
             <img src="darker-logo-1.png" alt="Bluefern Spa">
         </div>
-        <ul class="nav-menu">
+        <div class="nav-menu-wrapper">
+            <ul class="nav-menu">
             <li class="nav-item">
                 <a href="index.html" class="nav-link">Home</a>
             </li>
             <li class="nav-item dropdown">
-                <a href="services.html" class="nav-link">Services</a>
+                <a href="#services" class="nav-link">Services</a>
                 <div class="dropdown-content">
                     <div class="dropdown-grid">
                         <div class="dropdown-column">
@@ -29,23 +24,29 @@ const navigationHTML = `<!-- Navigation Component -->
                         </div>
                         <div class="dropdown-column">
                             <a href="service_beauty.html#waxing">Waxing</a>
-                            <a href="service_beauty.html#tinting">Tinting</a>
-                            <a href="service_skincare.html#blemish-removal">Blemish Removal</a>
+                            <a href="service_beauty.html#lashbrow">Tinting</a>
+                            <a href="service_beauty.html#skintag">Blemish Removal</a>
                         </div>
                         <div class="dropdown-column">
                             <a href="service_wellnesstherapy.html#salt-room">Salt Room</a>
-                            <a href="red-light-therapy.html">Red Light</a>
+                            <a href="service_wellnesstherapy.html#redlight">Red Light</a>
                         </div>
                     </div>
                 </div>
             </li>
             <li class="nav-item">
-                <a href="index.html#specials" class="nav-link">Specials</a>
+                <a href="#specials" class="nav-link">Specials</a>
             </li>
             <li class="nav-item">
                 <a href="service_spapackages.html" class="nav-link">Spa Packages</a>
             </li>
-        </ul>
+            </ul>
+        </div>
+        
+        <!-- Dedicated eGift Button Container -->
+        <div class="nav-egift-container">
+            <a href="https://bluefernspa.com/spa-gift-card/" class="egift-button">Buy eGift</a>
+        </div>
         <div class="nav-toggle">
             <span></span>
             <span></span>
@@ -66,6 +67,11 @@ function loadNavigation() {
             
             // Re-initialize navigation functionality after loading
             initializeNavigation();
+            
+            // Initialize page-specific functionality with a longer delay to ensure page JS has run
+            setTimeout(() => {
+                initializePageSpecific();
+            }, 500);
             
             // Remove the temporary placeholder class
             document.body.classList.remove('nav-loading');
@@ -153,6 +159,65 @@ function setActiveNavLink() {
             link.classList.add('active');
         }
     });
+}
+
+function initializePageSpecific() {
+    // Check if we're on service_beauty.html and initialize its functionality
+    if (window.location.pathname.includes('service_beauty.html')) {
+        // Call the page-specific initialization function if it exists
+        if (typeof initBeautyServicesPage === 'function') {
+            initBeautyServicesPage();
+        }
+        if (typeof initHeroAnimations === 'function') {
+            initHeroAnimations();
+        }
+        
+        // Dispatch a custom event to trigger the page's hash handling
+        const hashEvent = new CustomEvent('navigationLoaded', {
+            detail: { hash: window.location.hash }
+        });
+        document.dispatchEvent(hashEvent);
+        
+        console.log('Dispatched navigationLoaded event with hash:', window.location.hash);
+    }
+    
+    // Check if we're on service_skincare.html and initialize its functionality
+    if (window.location.pathname.includes('service_skincare.html')) {
+        // Call the page-specific initialization function if it exists
+        if (typeof initSkinCarePage === 'function') {
+            initSkinCarePage();
+        }
+        if (typeof initHeroAnimations === 'function') {
+            initHeroAnimations();
+        }
+        
+        // Dispatch a custom event to trigger the page's hash handling
+        const hashEvent = new CustomEvent('navigationLoaded', {
+            detail: { hash: window.location.hash }
+        });
+        document.dispatchEvent(hashEvent);
+        
+        console.log('Dispatched navigationLoaded event for skin care page with hash:', window.location.hash);
+    }
+    
+    // Check if we're on service_bodytreats.html and initialize its functionality
+    if (window.location.pathname.includes('service_bodytreats.html')) {
+        // Call the page-specific initialization function if it exists
+        if (typeof initBodyTreatmentsPage === 'function') {
+            initBodyTreatmentsPage();
+        }
+        if (typeof initHeroAnimations === 'function') {
+            initHeroAnimations();
+        }
+        
+        // Dispatch a custom event to trigger the page's functionality
+        const hashEvent = new CustomEvent('navigationLoaded', {
+            detail: { hash: window.location.hash }
+        });
+        document.dispatchEvent(hashEvent);
+        
+        console.log('Dispatched navigationLoaded event for body treatments page with hash:', window.location.hash);
+    }
 }
 
 // Load navigation when DOM is ready

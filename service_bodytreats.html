@@ -751,73 +751,7 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img src="darker-logo-1.png" alt="Bluefern Spa">
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="index.html#services" class="nav-link">Services</a>
-                    <div class="dropdown-content">
-                        <div class="dropdown-grid">
-                            <div class="dropdown-column">
-                                <h3>Massage Therapy</h3>
-                                <a href="service_massage.html#swedish-massage">Swedish Massage</a>
-                                <a href="service_massage.html#deep-tissue-massage">Deep Tissue</a>
-                                <a href="service_massage.html#hot-stone-massage">Hot Stone</a>
-                                <a href="service_massage.html#therapeutic-massage">Therapeutic</a>
-                                <a href="service_massage.html">View All Massages</a>
-                            </div>
-                            <div class="dropdown-column">
-                                <h3>Facial Treatments</h3>
-                                <a href="service_skincare.html#signature-facial">Signature Facial</a>
-                                <a href="service_skincare.html#anti-aging-facial">Anti-Aging</a>
-                                <a href="service_skincare.html#microdermabrasion">Microdermabrasion</a>
-                                <a href="service_skincare.html#facials">Advanced Facials</a>
-                                <a href="service_skincare.html">View All Facials</a>
-                            </div>
-                            <div class="dropdown-column">
-                                <h3>Body & Wellness</h3>
-                                <a href="service_bodytreats.html#scrubs">Body Scrubs & Wraps</a>
-                                <a href="service_bodytreats.html#sculpting">Body Sculpting</a>
-                                <a href="services.html#wellness">Salt Room Therapy</a>
-                                <a href="services.html#wellness">Red Light Therapy</a>
-                                <a href="services.html#wellness">Stretch Therapy</a>
-                                <a href="service_bodytreats.html">View All Body Treatments</a>
-                            </div>
-                            <div class="dropdown-column">
-                                <h3>Beauty & Packages</h3>
-                                <a href="services.html#beauty">Waxing Services</a>
-                                <a href="services.html#beauty">Brow & Lash</a>
-                                <a href="services.html#packages">Spa Packages</a>
-                                <a href="services.html#packages">Gift Certificates</a>
-                                <a href="products.html">Société Products</a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="index.html#specials" class="nav-link">Specials</a>
-                </li>
-                <li class="nav-item">
-                    <a href="contact.html" class="nav-link">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://bluefernspa.com/spa-gift-card/" class="nav-link egift-link">Buy eGift</a>
-                </li>
-            </ul>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+    <!-- Navigation will be loaded by navigation-loader.js -->
 
     <!-- Hero Banner -->
     <section class="hero-banner">
@@ -1437,6 +1371,13 @@
             initBodyTreatmentsPage();
             initHeroAnimations();
         });
+        
+        // Listen for navigation loaded event from navigation-loader.js
+        document.addEventListener('navigationLoaded', (event) => {
+            console.log('Received navigationLoaded event for body treatments page:', event.detail);
+            // Re-initialize the page functionality after navigation loads
+            initBodyTreatmentsPage();
+        });
 
         // Wrap Expectations Modal Functions
         function openWrapExpectationsModal() {
@@ -1521,6 +1462,7 @@
             }
         }
     </script>
+    <script src="navigation-loader.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 
