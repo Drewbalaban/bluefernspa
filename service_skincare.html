@@ -295,7 +295,9 @@
         }
 
         .service-item.animate-fade-up {
-            animation: fadeInUp 0.8s ease-out forwards;
+            /* Animation will be handled by JavaScript */
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
         }
 
         .service-item h3 {
