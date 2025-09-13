@@ -4135,12 +4135,18 @@ a {
 .nav-egift-container {
     position: absolute;
     right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0;
+    bottom: 0;
     z-index: 100;
     /* Complete isolation */
     isolation: isolate;
     contain: layout style paint;
+    /* Ensure it aligns with nav items */
+    display: flex;
+    align-items: center;
+    /* Match nav-menu positioning */
+    margin: 0;
+    padding: 0;
 }
 
 /* Dedicated eGift Button Styling */
@@ -4150,6 +4156,8 @@ a {
     border: 1px solid #20B2AA;
     border-radius: 25px;
     padding: 0.75rem 1.5rem;
+    font-family: var(--font-secondary);
+    font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -4165,6 +4173,10 @@ a {
     clip-path: inset(0);
     transform: translateZ(0);
     will-change: transform;
+    /* Match nav-link baseline alignment */
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
 }
 
 /* Contained Shimmer Effect for Dedicated eGift Button */
