@@ -4130,7 +4130,7 @@ a {
     margin-right: 0;
 }
 
-/* Sword Shimmer Effect for Navigation eGift Button */
+/* Sword Shimmer Effect for Navigation eGift Button - NO GLOW VERSION */
 .nav-link.nav-egift::before,
 .nav-link.nav-egift-bg::before {
     content: '';
@@ -4151,8 +4151,8 @@ a {
     z-index: 1;
     border-radius: 25px;
     pointer-events: none;
-    /* Remove external glow - use contained effect instead */
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3);
+    /* NO GLOW - just the shimmer gradient */
+    box-shadow: none;
     /* Hard containment */
     overflow: hidden;
     contain: layout style paint;
@@ -4169,8 +4169,8 @@ a {
         rgba(255, 255, 255, 0.4),
         transparent
     );
-    /* Contained hover glow */
-    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.5);
+    /* NO GLOW on hover either */
+    box-shadow: none;
 }
 
 .nav-link.nav-egift:hover,
@@ -4179,7 +4179,8 @@ a {
     color: white;
     border-color: #20B2AA;
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(32, 178, 170, 0.3);
+    /* NO EXTERNAL GLOW - just subtle shadow */
+    box-shadow: 0 4px 12px rgba(32, 178, 170, 0.2);
 }
 
 /* Removed conflicting rule that was hiding the shimmer effect */
