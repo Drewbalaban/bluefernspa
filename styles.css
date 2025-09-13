@@ -4156,6 +4156,32 @@ a {
     display: block !important;
 }
 
+/* More specific targeting for eGift button only */
+.nav-item:last-child .nav-link.nav-egift::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: left 0.6s ease;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 25px;
+    animation: nav-shimmer 3s ease-in-out infinite;
+    clip-path: inset(0);
+    contain: layout style paint;
+    display: block !important;
+}
+
 @keyframes nav-shimmer {
     0% { left: -100%; }
     20% { left: -100%; }
@@ -4195,15 +4221,31 @@ a {
     );
 }
 
+/* More specific hover targeting for eGift button only */
+.nav-item:last-child .nav-link.nav-egift:hover::before {
+    animation: nav-shimmer-fast 0.8s ease-in-out;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+}
+
 @keyframes nav-shimmer-fast {
     0% { left: -100%; }
     100% { left: 100%; }
 }
 
 /* Ensure Products button doesn't get shimmer effect */
-.nav-item .nav-link[href="products.html"]::before {
+.nav-item .nav-link[href="products.html"]::before,
+.nav-item:nth-last-child(2) .nav-link::before {
     display: none !important;
     content: none !important;
+    animation: none !important;
+    background: none !important;
 }
 
 /* Shimmer effect completely removed */
