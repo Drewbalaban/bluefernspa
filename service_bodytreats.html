@@ -1329,11 +1329,11 @@
                     item.style.opacity = '0';
                     item.style.transform = 'translateY(30px) scale(0.98)';
                     
-                    // Trigger staggered animation
+                    // Trigger staggered animation with consistent timing
                     setTimeout(() => {
                         item.style.animation = `fadeInUp 0.8s ease-out forwards`;
                         item.style.animationDelay = `${index * 0.1}s`;
-                    }, 100 + (index * 50));
+                    }, 50);
                 });
             }, 200);
         };

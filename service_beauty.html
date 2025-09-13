@@ -1102,7 +1102,16 @@
                 if (targetCategoryElement) targetCategoryElement.classList.add('active');
 
                 // Animate service items with staggered delays
-                const serviceItems = targetCategoryElement.querySelectorAll('.service-item');
+                let serviceItems;
+                if (targetCategory === 'waxing') {
+                    // For waxing, only animate items in the active sub-category
+                    const activeSubcat = targetCategoryElement.querySelector('.waxing-subcat.active');
+                    serviceItems = activeSubcat ? activeSubcat.querySelectorAll('.service-item') : [];
+                } else {
+                    // For other categories, animate all service items
+                    serviceItems = targetCategoryElement.querySelectorAll('.service-item');
+                }
+                
                 serviceItems.forEach((item, index) => {
                     // Reset animation state
                     item.style.opacity = '0';
@@ -1136,11 +1145,11 @@
                     item.style.opacity = '0';
                     item.style.transform = 'translateY(30px) scale(0.98)';
                     
-                    // Trigger staggered animation
+                    // Trigger staggered animation with consistent timing
                     setTimeout(() => {
                         item.style.animation = `fadeInUp 0.8s ease-out forwards`;
                         item.style.animationDelay = `${index * 0.1}s`;
-                    }, 100 + (index * 50));
+                    }, 50);
                 });
             }, 200);
         };
@@ -1172,6 +1181,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             initBeautyServicesPage();
             initHeroAnimations();
+            initWaxingSubTabs();
             
         // Function to handle hash navigation
         const handleHashNavigation = (hash) => {
@@ -1192,7 +1202,16 @@
                     if (targetCategoryElement) targetCategoryElement.classList.add('active');
 
                     // Animate service items with staggered delays
-                    const serviceItems = targetCategoryElement.querySelectorAll('.service-item');
+                    let serviceItems;
+                    if (targetCategory === 'waxing') {
+                        // For waxing, only animate items in the active sub-category
+                        const activeSubcat = targetCategoryElement.querySelector('.waxing-subcat.active');
+                        serviceItems = activeSubcat ? activeSubcat.querySelectorAll('.service-item') : [];
+                    } else {
+                        // For other categories, animate all service items
+                        serviceItems = targetCategoryElement.querySelectorAll('.service-item');
+                    }
+                    
                     serviceItems.forEach((item, index) => {
                         // Reset animation state
                         item.style.opacity = '0';
@@ -1219,11 +1238,12 @@
         document.addEventListener('navigationLoaded', (event) => {
             console.log('Received navigationLoaded event:', event.detail);
             handleHashNavigation(event.detail.hash);
+            initWaxingSubTabs(); // Re-initialize waxing sub-tabs after navigation loads
         });
         });
 
         // Waxing Sub-tab Functionality
-        document.addEventListener('DOMContentLoaded', () => {
+        const initWaxingSubTabs = () => {
             const subtabButtons = document.querySelectorAll('#waxing .subtab-btn');
             const subcats = document.querySelectorAll('#waxing .waxing-subcat');
             subtabButtons.forEach(btn => {
@@ -1236,10 +1256,27 @@
                     btn.classList.add('active');
                     const subcatId = btn.getAttribute('data-subcat');
                     const subcatDiv = document.getElementById(subcatId);
-                    if (subcatDiv) subcatDiv.classList.add('active');
+                    if (subcatDiv) {
+                        subcatDiv.classList.add('active');
+                        
+                        // Animate service items with consistent timing
+                        const serviceItems = subcatDiv.querySelectorAll('.service-item');
+                        serviceItems.forEach((item, index) => {
+                            // Reset animation state
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateY(30px) scale(0.98)';
+                            item.style.animation = 'none';
+                            
+                            // Trigger animation with consistent timing
+                            setTimeout(() => {
+                                item.style.animation = `fadeInUp 0.8s ease-out forwards`;
+                                item.style.animationDelay = `${index * 0.1}s`;
+                            }, 50);
+                        });
+                    }
                 });
             });
-        });
+        };
 
         // Modal Functions
         function openWaxingModal() {
