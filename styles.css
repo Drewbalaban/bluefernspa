@@ -126,8 +126,8 @@ a {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px var(--container-padding);
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     position: relative;
     z-index: 50;
@@ -180,6 +180,12 @@ a {
 
 .nav.scrolled .nav-logo img {
     height: 85px;
+}
+
+.nav-menu-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-menu {
