@@ -55,16 +55,17 @@
             text-align: center;
             max-width: 700px;
             padding: 50px 50px;
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 30px;
             box-shadow: 
                 0 30px 80px rgba(0, 0, 0, 0.06),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
             /* Start invisible for elegant reveal */
-            opacity: 0;
-            transform: translateY(30px) scale(0.98);
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
 
         .hero-content::before {
@@ -87,8 +88,8 @@
             text-transform: uppercase;
             color: #000000;
             margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(20px);
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .hero-title {
@@ -99,8 +100,8 @@
             line-height: 1.1;
             margin-bottom: 1rem;
             letter-spacing: -0.02em;
-            opacity: 0;
-            transform: translateY(30px);
+            opacity: 1;
+            transform: translateY(0);
             text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
         }
 
@@ -111,8 +112,8 @@
             color: #000000;
             margin-bottom: 1.5rem;
             line-height: 1.4;
-            opacity: 0;
-            transform: translateY(30px);
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .hero-quote {
@@ -121,8 +122,8 @@
             color: #000000;
             font-weight: 400;
             letter-spacing: 0.5px;
-            opacity: 0;
-            transform: translateY(30px);
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Breadcrumb */
@@ -917,38 +918,84 @@
 
         // Initialize hero animations
         const initHeroAnimations = () => {
+            // First, set initial states
             const heroContent = document.querySelector('.hero-content');
             const heroEyebrow = document.querySelector('.hero-eyebrow');
             const heroTitle = document.querySelector('.hero-title');
             const heroSubtitle = document.querySelector('.hero-subtitle');
             const heroQuote = document.querySelector('.hero-quote');
 
+            // Reset to initial animation state
+            if (heroContent) {
+                heroContent.style.opacity = '0';
+                heroContent.style.transform = 'translateY(30px) scale(0.98)';
+            }
+            if (heroEyebrow) {
+                heroEyebrow.style.opacity = '0';
+                heroEyebrow.style.transform = 'translateY(20px)';
+            }
+            if (heroTitle) {
+                heroTitle.style.opacity = '0';
+                heroTitle.style.transform = 'translateY(30px)';
+            }
+            if (heroSubtitle) {
+                heroSubtitle.style.opacity = '0';
+                heroSubtitle.style.transform = 'translateY(30px)';
+            }
+            if (heroQuote) {
+                heroQuote.style.opacity = '0';
+                heroQuote.style.transform = 'translateY(30px)';
+            }
+
             // Trigger hero animations with staggered delays
             setTimeout(() => {
-                if (heroContent) heroContent.classList.add('animate-in');
+                if (heroContent) {
+                    heroContent.style.transition = 'all 1s ease-out';
+                    heroContent.style.opacity = '1';
+                    heroContent.style.transform = 'translateY(0) scale(1)';
+                }
             }, 300);
 
             setTimeout(() => {
-                if (heroEyebrow) heroEyebrow.classList.add('animate-in');
+                if (heroEyebrow) {
+                    heroEyebrow.style.transition = 'all 0.8s ease-out';
+                    heroEyebrow.style.opacity = '1';
+                    heroEyebrow.style.transform = 'translateY(0)';
+                }
             }, 600);
 
             setTimeout(() => {
-                if (heroTitle) heroTitle.classList.add('animate-in');
+                if (heroTitle) {
+                    heroTitle.style.transition = 'all 1s ease-out';
+                    heroTitle.style.opacity = '1';
+                    heroTitle.style.transform = 'translateY(0)';
+                }
             }, 800);
 
             setTimeout(() => {
-                if (heroSubtitle) heroSubtitle.classList.add('animate-in');
+                if (heroSubtitle) {
+                    heroSubtitle.style.transition = 'all 1.2s ease-out';
+                    heroSubtitle.style.opacity = '1';
+                    heroSubtitle.style.transform = 'translateY(0)';
+                }
             }, 1000);
 
             setTimeout(() => {
-                if (heroQuote) heroQuote.classList.add('animate-in');
+                if (heroQuote) {
+                    heroQuote.style.transition = 'all 1.4s ease-out';
+                    heroQuote.style.opacity = '1';
+                    heroQuote.style.transform = 'translateY(0)';
+                }
             }, 1200);
         };
 
         // Initialize when ready
         document.addEventListener('DOMContentLoaded', () => {
             initSpaPackagesPage();
-            initHeroAnimations();
+            // Small delay to ensure page is fully loaded
+            setTimeout(() => {
+                initHeroAnimations();
+            }, 100);
         });
     </script>
     <script src="navigation-loader.js"></script>
