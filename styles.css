@@ -142,6 +142,10 @@ a {
     bottom: 0;
     z-index: -10;
     pointer-events: none;
+    /* Ensure proper containment */
+    overflow: hidden;
+    isolation: isolate;
+    contain: layout style paint;
 }
 
 .nav-bg-layer .nav-egift-bg {
@@ -4127,9 +4131,8 @@ a {
     filter: none;
 }
 
-/* Contained Shimmer Effect for Navigation eGift Button */
-.nav-item .nav-link.nav-egift::before,
-.nav-item .nav-link.nav-egift-bg::before {
+/* Contained Shimmer Effect for Navigation eGift Button - Background Layer Only */
+.nav-bg-layer .nav-link.nav-egift-bg::before {
     content: '';
     position: absolute;
     top: 0;
@@ -4154,32 +4157,9 @@ a {
     contain: layout style paint;
     /* Override any other ::before content */
     display: block !important;
-}
-
-/* More specific targeting for eGift button only */
-.nav-item:last-child .nav-link.nav-egift::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        rgba(255, 255, 255, 0.8),
-        rgba(255, 255, 255, 0.3),
-        transparent
-    );
-    transition: left 0.6s ease;
-    z-index: 1;
-    pointer-events: none;
-    border-radius: 25px;
-    animation: nav-shimmer 3s ease-in-out infinite;
-    clip-path: inset(0);
-    contain: layout style paint;
-    display: block !important;
+    /* Additional containment */
+    overflow: hidden;
+    isolation: isolate;
 }
 
 @keyframes nav-shimmer {
@@ -4207,22 +4187,8 @@ a {
     box-shadow: 0 4px 12px rgba(32, 178, 170, 0.2);
 }
 
-/* Enhanced shimmer on hover */
-.nav-item .nav-link.nav-egift:hover::before,
-.nav-item .nav-link.nav-egift-bg:hover::before {
-    animation: nav-shimmer-fast 0.8s ease-in-out;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.4),
-        rgba(255, 255, 255, 1),
-        rgba(255, 255, 255, 0.4),
-        transparent
-    );
-}
-
-/* More specific hover targeting for eGift button only */
-.nav-item:last-child .nav-link.nav-egift:hover::before {
+/* Enhanced shimmer on hover - Background Layer Only */
+.nav-bg-layer .nav-link.nav-egift-bg:hover::before {
     animation: nav-shimmer-fast 0.8s ease-in-out;
     background: linear-gradient(
         90deg,
@@ -4239,13 +4205,16 @@ a {
     100% { left: 100%; }
 }
 
-/* Ensure Products button doesn't get shimmer effect */
+/* Ensure main navigation buttons don't get shimmer effect */
+.nav-menu .nav-item .nav-link::before,
 .nav-item .nav-link[href="products.html"]::before,
-.nav-item:nth-last-child(2) .nav-link::before {
+.nav-item .nav-link[href="index.html"]::before,
+.nav-item .nav-link[href="index.html#specials"]::before {
     display: none !important;
     content: none !important;
     animation: none !important;
     background: none !important;
+    pointer-events: none !important;
 }
 
 /* Shimmer effect completely removed */
