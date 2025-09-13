@@ -352,17 +352,15 @@
             color: #20B2AA;
         }
 
-        /* Dramatic drop shadow for Fit for a King title */
+        /* Lifting drop shadow for Fit for a King title - only on hover */
         .service-item:nth-child(7) h3 {
-            text-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 
-                         0 4px 8px rgba(0, 0, 0, 0.2),
-                         0 2px 4px rgba(0, 0, 0, 0.1);
+            text-shadow: none;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .service-item:nth-child(7):hover h3 {
-            text-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), 
-                         0 6px 12px rgba(0, 0, 0, 0.3),
-                         0 3px 6px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), 
+                         0 3px 6px rgba(0, 0, 0, 0.1);
         }
 
 
