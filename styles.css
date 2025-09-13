@@ -4131,9 +4131,44 @@ a {
     filter: none;
 }
 
-/* Contained Shimmer Effect for Navigation eGift Button */
-.nav-bg-layer .nav-link.nav-egift-bg::before,
-.nav-menu .nav-item .nav-link.nav-egift::before {
+/* Dedicated eGift Button Container */
+.nav-egift-container {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    /* Complete isolation */
+    isolation: isolate;
+    contain: layout style paint;
+}
+
+/* Dedicated eGift Button Styling */
+.egift-button {
+    background: white;
+    color: black;
+    border: 1px solid #20B2AA;
+    border-radius: 25px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 4px 12px rgba(32, 178, 170, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    /* Complete containment */
+    isolation: isolate;
+    contain: layout style paint;
+    clip-path: inset(0);
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Contained Shimmer Effect for Dedicated eGift Button */
+.egift-button::before {
     content: '';
     position: absolute;
     top: 0;
@@ -4156,9 +4191,6 @@ a {
     /* Ensure shimmer is contained within button */
     clip-path: inset(0);
     contain: layout style paint;
-    /* Override any other ::before content */
-    display: block !important;
-    /* Additional containment */
     overflow: hidden;
     isolation: isolate;
 }
@@ -4188,9 +4220,17 @@ a {
     box-shadow: 0 4px 12px rgba(32, 178, 170, 0.2);
 }
 
-/* Enhanced shimmer on hover */
-.nav-bg-layer .nav-link.nav-egift-bg:hover::before,
-.nav-menu .nav-item .nav-link.nav-egift:hover::before {
+/* eGift Button Hover State */
+.egift-button:hover {
+    background: #20B2AA;
+    color: white;
+    border-color: #20B2AA;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(32, 178, 170, 0.2);
+}
+
+/* Enhanced shimmer on hover for dedicated eGift button */
+.egift-button:hover::before {
     animation: nav-shimmer-fast 0.8s ease-in-out;
     background: linear-gradient(
         90deg,
@@ -4207,17 +4247,7 @@ a {
     100% { left: 100%; }
 }
 
-/* Ensure non-eGift navigation buttons don't get shimmer effect */
-.nav-menu .nav-item .nav-link:not(.nav-egift)::before,
-.nav-item .nav-link[href="products.html"]::before,
-.nav-item .nav-link[href="index.html"]::before,
-.nav-item .nav-link[href="index.html#specials"]::before {
-    display: none !important;
-    content: none !important;
-    animation: none !important;
-    background: none !important;
-    pointer-events: none !important;
-}
+/* Clean up - no longer needed since eGift button is isolated */
 
 /* Shimmer effect completely removed */
 
@@ -4239,23 +4269,18 @@ a {
 }
 
 
-/* Mobile responsive for nav eGift button */
+/* Mobile responsive for dedicated eGift button */
 @media (max-width: 768px) {
-    .nav-link.nav-egift,
-    .nav-link.nav-egift-bg {
-        margin-left: 0;
-        margin-top: 0.5rem;
-        display: inline-block;
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
-    }
-    
-    /* Adjust background layer positioning on mobile */
-    .nav-bg-layer .nav-egift-bg {
+    .nav-egift-container {
         right: 15px;
         position: fixed;
         top: 20px;
         transform: none;
+    }
+    
+    .egift-button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
     }
 }
 
