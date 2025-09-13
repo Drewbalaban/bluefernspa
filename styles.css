@@ -4251,22 +4251,37 @@ a {
     box-shadow: 0 4px 12px rgba(32, 178, 170, 0.2);
 }
 
-/* Enhanced shimmer on hover for dedicated eGift button */
+/* Enhanced shimmer on hover for dedicated eGift button - Blade Glint Effect */
 .egift-button:hover::before {
-    animation: nav-shimmer-fast 0.8s ease-in-out;
+    animation: blade-glint 0.3s ease-out;
     background: linear-gradient(
         90deg,
         transparent,
-        rgba(255, 255, 255, 0.4),
+        rgba(255, 255, 255, 0.2),
         rgba(255, 255, 255, 1),
-        rgba(255, 255, 255, 0.4),
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0.2),
         transparent
     );
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
 }
 
-@keyframes nav-shimmer-fast {
-    0% { left: -100%; }
-    100% { left: 100%; }
+@keyframes blade-glint {
+    0% { 
+        left: -100%; 
+        opacity: 0;
+    }
+    10% { 
+        opacity: 1;
+    }
+    90% { 
+        opacity: 1;
+    }
+    100% { 
+        left: 100%; 
+        opacity: 0;
+    }
 }
 
 /* Clean up - no longer needed since eGift button is isolated */
