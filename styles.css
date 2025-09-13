@@ -4253,7 +4253,7 @@ a {
 
 /* Enhanced shimmer on hover for dedicated eGift button - Blade Glint Effect */
 .egift-button:hover::before {
-    animation: blade-glint 0.3s ease-out;
+    animation: blade-glint 0.6s ease-out;
     background: linear-gradient(
         90deg,
         transparent,
@@ -4272,10 +4272,10 @@ a {
         left: -100%; 
         opacity: 0;
     }
-    10% { 
+    15% { 
         opacity: 1;
     }
-    90% { 
+    85% { 
         opacity: 1;
     }
     100% { 
