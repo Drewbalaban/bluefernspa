@@ -45,16 +45,6 @@
             justify-content: center;
             background: url('Salt-Room-The-Salt-Room-Orlando.jpg') center/cover;
             overflow: hidden;
-            transition: background-image 0.8s ease-in-out;
-        }
-
-        /* Hero Banner Image Variations */
-        .hero-banner.saltroom-bg {
-            background: url('Salt-Room-The-Salt-Room-Orlando.jpg') center/cover;
-        }
-
-        .hero-banner.redlight-bg {
-            background: url('Red-Light-for-Pain-Management.jpg') center/cover;
         }
 
         .hero-content {
@@ -73,6 +63,7 @@
             /* Start invisible for elegant reveal */
             opacity: 0;
             transform: translateY(30px) scale(0.98);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
         .hero-content::before {
@@ -1726,32 +1717,51 @@
 
         // Initialize hero animations
         const initHeroAnimations = () => {
-            const heroContent = document.querySelector('.hero-content');
-            const heroEyebrow = document.querySelector('.hero-eyebrow');
-            const heroTitle = document.querySelector('.hero-title');
-            const heroSubtitle = document.querySelector('.hero-subtitle');
-            const heroQuote = document.querySelector('.hero-quote');
+            try {
+                const heroContent = document.querySelector('.hero-content');
+                const heroEyebrow = document.querySelector('.hero-eyebrow');
+                const heroTitle = document.querySelector('.hero-title');
+                const heroSubtitle = document.querySelector('.hero-subtitle');
+                const heroQuote = document.querySelector('.hero-quote');
 
-            // Trigger hero animations with staggered delays
-            setTimeout(() => {
-                if (heroContent) heroContent.classList.add('animate-in');
-            }, 300);
 
-            setTimeout(() => {
-                if (heroEyebrow) heroEyebrow.classList.add('animate-in');
-            }, 600);
+                // Fallback: make sure hero is visible even if animation fails
+                setTimeout(() => {
+                    if (heroContent) {
+                        heroContent.style.opacity = '1';
+                        heroContent.style.transform = 'translateY(0) scale(1)';
+                    }
+                }, 2000);
 
-            setTimeout(() => {
-                if (heroTitle) heroTitle.classList.add('animate-in');
-            }, 800);
+                // Trigger hero animations with staggered delays
+                setTimeout(() => {
+                    if (heroContent) heroContent.classList.add('animate-in');
+                }, 300);
 
-            setTimeout(() => {
-                if (heroSubtitle) heroSubtitle.classList.add('animate-in');
-            }, 1000);
+                setTimeout(() => {
+                    if (heroEyebrow) heroEyebrow.classList.add('animate-in');
+                }, 600);
 
-            setTimeout(() => {
-                if (heroQuote) heroQuote.classList.add('animate-in');
-            }, 1200);
+                setTimeout(() => {
+                    if (heroTitle) heroTitle.classList.add('animate-in');
+                }, 800);
+
+                setTimeout(() => {
+                    if (heroSubtitle) heroSubtitle.classList.add('animate-in');
+                }, 1000);
+
+                setTimeout(() => {
+                    if (heroQuote) heroQuote.classList.add('animate-in');
+                }, 1200);
+            } catch (error) {
+                console.error('Error initializing hero animations:', error);
+                // Fallback: make hero visible immediately
+                const heroContent = document.querySelector('.hero-content');
+                if (heroContent) {
+                    heroContent.style.opacity = '1';
+                    heroContent.style.transform = 'translateY(0) scale(1)';
+                }
+            }
         };
 
         // Initialize when ready
