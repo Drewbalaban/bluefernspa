@@ -1642,8 +1642,6 @@
         const initWellnessTherapyPage = () => {
             const categoryButtons = document.querySelectorAll('.category-btn');
             const serviceCategories = document.querySelectorAll('.service-category');
-            console.log('Found category buttons:', categoryButtons.length); // Debug
-            console.log('Found service categories:', serviceCategories.length); // Debug
 
             // Switch category function
             const switchCategory = (targetCategory) => {
@@ -1692,7 +1690,6 @@
                     item.style.animationDelay = `${index * 0.05}s`;
                 }, 30);
             });
-            };
 
             // Event listeners
             categoryButtons.forEach(button => {
