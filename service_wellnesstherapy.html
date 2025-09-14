@@ -1642,9 +1642,12 @@
         const initWellnessTherapyPage = () => {
             const categoryButtons = document.querySelectorAll('.category-btn');
             const serviceCategories = document.querySelectorAll('.service-category');
+            console.log('Found category buttons:', categoryButtons.length); // Debug
+            console.log('Found service categories:', serviceCategories.length); // Debug
 
             // Switch category function
             const switchCategory = (targetCategory) => {
+                console.log('Switching to category:', targetCategory); // Debug
                 // Update active states
                 categoryButtons.forEach(btn => btn.classList.remove('active'));
                 const targetButton = document.querySelector(`[data-category="${targetCategory}"]`);
@@ -1696,6 +1699,7 @@
                 button.addEventListener('click', (e) => {
                     e.preventDefault();
                     const category = button.getAttribute('data-category');
+                    console.log('Button clicked, category:', category); // Debug
                     if (category) {
                         switchCategory(category);
                     }
@@ -1758,6 +1762,7 @@
 
         // Initialize when ready
         document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded, initializing...'); // Debug
             initWellnessTherapyPage();
             initHeroAnimations();
             
