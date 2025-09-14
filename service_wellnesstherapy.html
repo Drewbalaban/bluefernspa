@@ -1670,7 +1670,14 @@
 
             // Animate service items with staggered delays
             const serviceItems = targetCategoryElement.querySelectorAll('.service-item');
-            serviceItems.forEach((item, index) => {
+            const benefitSections = targetCategoryElement.querySelectorAll('.benefit-section');
+            const heroImageContainers = targetCategoryElement.querySelectorAll('.hero-image-container');
+            const treatmentInfo = targetCategoryElement.querySelectorAll('.treatment-info');
+            
+            // Combine all animatable elements
+            const allAnimatableElements = [...serviceItems, ...benefitSections, ...heroImageContainers, ...treatmentInfo];
+            
+            allAnimatableElements.forEach((item, index) => {
                 // Reset animation state
                 item.style.opacity = '0';
                 item.style.transform = 'translateY(30px) scale(0.98)';
@@ -1697,8 +1704,15 @@
 
             // Initialize animations for default category
             setTimeout(() => {
-                const defaultItems = document.querySelectorAll('#saltroom .service-item');
-                defaultItems.forEach((item, index) => {
+                const defaultServiceItems = document.querySelectorAll('#saltroom .service-item');
+                const defaultBenefitSections = document.querySelectorAll('#saltroom .benefit-section');
+                const defaultHeroImageContainers = document.querySelectorAll('#saltroom .hero-image-container');
+                const defaultTreatmentInfo = document.querySelectorAll('#saltroom .treatment-info');
+                
+                // Combine all animatable elements for default category
+                const defaultAnimatableElements = [...defaultServiceItems, ...defaultBenefitSections, ...defaultHeroImageContainers, ...defaultTreatmentInfo];
+                
+                defaultAnimatableElements.forEach((item, index) => {
                     // Reset initial state
                     item.style.opacity = '0';
                     item.style.transform = 'translateY(30px) scale(0.98)';
