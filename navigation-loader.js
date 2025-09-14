@@ -35,7 +35,7 @@ const navigationHTML = `<!-- Navigation -->
                 </div>
             </li>
             <li class="nav-item">
-                <a href="#specials" class="nav-link">Specials</a>
+                <a href="specials.html" class="nav-link">Specials</a>
             </li>
             <li class="nav-item">
                 <a href="service_spapackages.html" class="nav-link">Spa Packages</a>
@@ -78,21 +78,9 @@ function loadNavigation() {
             
             console.log('Navigation loaded successfully');
         } else {
-            console.log('Navigation comment not found, trying fallback method');
-            // Fallback: look for existing nav element or create one
-            let navElement = document.querySelector('nav.nav');
-            if (!navElement) {
-                // If no nav element exists, create one at the beginning of body
-                navElement = document.createElement('nav');
-                navElement.className = 'nav';
-                document.body.insertBefore(navElement, document.body.firstChild);
-            }
-            
-            // Replace the content with the shared navigation
-            navElement.outerHTML = navigationHTML;
-            
-            // Re-initialize navigation functionality after loading
-            initializeNavigation();
+            console.log('Navigation comment not found - this page likely has its own navigation');
+            // Don't interfere with pages that have their own navigation (like index.html)
+            return;
         }
     } catch (error) {
         console.error('Error loading navigation:', error);
@@ -155,7 +143,7 @@ function setActiveNavLink() {
         const linkHref = link.getAttribute('href');
         if (linkHref === currentPage || 
             (currentPage === 'index.html' && linkHref === '#home') ||
-            (currentPage === 'services.html' && linkHref === 'services.html')) {
+            (currentPage === 'index.html' && linkHref === 'index.html')) {
             link.classList.add('active');
         }
     });

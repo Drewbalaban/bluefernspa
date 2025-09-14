@@ -100,28 +100,16 @@ const smoothScroll = withErrorHandling((targetId) => {
         behavior: 'smooth'
     });
     
-    // Update browser history for back button functionality
-    if (targetId !== '#home') {
-        history.pushState({ section: targetId }, '', targetId);
-    } else {
-        history.pushState({ section: 'home' }, '', window.location.pathname);
-    }
+    // Don't manipulate browser history - let it work naturally
     
     // Focus management
     setTimeout(() => target.focus(), 500);
 });
 
-// Handle browser back/forward buttons
+// Handle browser back/forward buttons - simplified since we're not manipulating history
 window.addEventListener('popstate', (e) => {
-    const targetId = e.state?.section || '#home';
-    const target = document.querySelector(targetId);
-    if (target) {
-        const offsetTop = target.offsetTop - 80;
-        window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-        });
-    }
+    // Let the browser handle navigation naturally
+    // No need to interfere with normal page navigation
 });
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -289,14 +277,15 @@ const pageTransition = () => {
     links.forEach(link => {
         link.addEventListener('click', function(e) {
             if (this.hostname === window.location.hostname) {
-                e.preventDefault();
-                const href = this.href;
+                // Don't prevent default - let browser handle navigation naturally
+                // Just add a subtle fade effect without interfering with history
+                document.body.style.transition = 'opacity 0.3s ease-out';
+                document.body.style.opacity = '0.8';
                 
-                document.body.style.opacity = '0';
-                
+                // Reset opacity after a brief moment to avoid interfering with page load
                 setTimeout(() => {
-                    window.location.href = href;
-                }, 500);
+                    document.body.style.opacity = '1';
+                }, 200);
             }
         });
     });

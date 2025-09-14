@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Offers - Bluefern Spa | Exclusive Deals & Promotions</title>
+    <meta name="description" content="Discover exclusive spa specials and seasonal offers at Bluefern Spa. Limited-time deals on our most popular treatments and packages.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Specials Page Styles */
+        :root {
+            --primary-color: #d5eae5;
+            --secondary-color: #a8c9be;
+            --accent-color: #f2f7f5;
+            --light-sage: #e8f2ee;
+            --dark-sage: #9bb5aa;
+            --darker-sage: #7a9b8c;
+            --dark-color: #2C2C2C;
+            --light-color: #FAFAFA;
+            --text-color: #4A4A4A;
+            --border-color: #E5E5E5;
+            --special-red: #d4af37;
+            --discount-green: #4a9d5c;
+            
+            --font-primary: 'Cormorant Garamond', serif;
+            --font-secondary: 'Montserrat', sans-serif;
+            
+            --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.08);
+            --shadow-md: 0 5px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Hero Banner - Layered Glass Variation */
+        .hero-banner {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            max-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('openart-woman-getting-a-massage-on-a-massage-table-spa-setting-relaxing-warm_eFHksr9-_upscaled.png') center/cover;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 700px;
+            padding: 50px 50px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 30px;
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            /* Start invisible for elegant reveal */
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+        }
+
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent, rgba(255,255,255,0.05));
+            border-radius: 32px;
+            z-index: -1;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #000000;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero-title {
+            font-family: 'Tangerine', cursive;
+            font-size: clamp(4rem, 8vw, 7rem);
+            font-weight: 700;
+            color: #000000;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            transform: translateY(30px);
+            text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-subtitle {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #000000;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-quote {
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            color: #000000;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: var(--light-sage);
+            padding: 20px 0;
+        }
+
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumb-nav {
+            font-family: var(--font-secondary);
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .breadcrumb-nav a {
+            color: var(--darker-sage);
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+
+        .breadcrumb-nav a:hover {
+            color: var(--dark-color);
+        }
+
+        /* Back to Services Button */
+        .back-to-services {
+            text-align: left;
+            padding: 20px 0 20px 20px;
+            background: transparent;
+        }
+
+        .back-to-services-btn {
+            display: inline-block;
+            background: white;
+            color: var(--text-color);
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: var(--font-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        .back-to-services-btn:hover {
+            background: var(--accent-color);
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Special Offers Section */
+        .special-offers {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 50%, #dcdcdc 100%);
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .special-category {
+            display: none;
+        }
+
+        .special-category.active {
+            display: block;
+        }
+
+        .category-title {
+            font-family: 'Tangerine', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .special-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .special-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
+            position: relative;
+            overflow: visible;
+            will-change: opacity, transform;
+            backface-visibility: hidden;
+            /* Start invisible for elegant reveal */
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            filter: none;
+            display: flex;
+            align-items: center;
+            min-height: 180px;
+            border: 2px solid transparent;
+        }
+
+        .special-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            filter: none;
+        }
+
+        .special-item:hover::before {
+            opacity: 1;
+        }
+
+        /* Special offer highlight border */
+        .special-item.featured {
+            border-color: var(--special-red);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
+        }
+
+        .special-item.limited-time {
+            border-color: var(--discount-green);
+            background: linear-gradient(135deg, rgba(74, 157, 92, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
+        }
+
+        /* Enhanced hover effects for special items */
+        .special-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(213, 234, 229, 0.1) 0%, 
+                rgba(168, 201, 190, 0.1) 50%, 
+                rgba(213, 234, 229, 0.1) 100%);
+            opacity: 0;
+            transition: var(--transition-base);
+            border-radius: 15px;
+            z-index: 1;
+        }
+
+        .special-item:hover::before {
+            opacity: 1;
+        }
+
+        /* Ensure content stays above the overlay */
+        .special-item > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .special-item.animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .special-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .special-main-content {
+            flex: 1;
+        }
+
+        .special-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--special-red);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-family: var(--font-secondary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 3;
+        }
+
+        .special-badge.limited {
+            background: var(--discount-green);
+        }
+
+        .special-item h3 {
+            font-family: var(--font-primary);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #000000;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .special-item:hover h3 {
+            color: #20B2AA;
+            transform: translateY(-2px);
+        }
+
+        .special-item p {
+            color: #000000;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+
+        /* Elegant bullet points for special descriptions */
+        .special-item p strong {
+            color: #000000;
+            display: block;
+            margin-bottom: 0.6rem;
+            font-size: 1rem;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Style the bullet lists */
+        .special-item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 1rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.3rem 1rem;
+        }
+
+        .special-item ul li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.3rem;
+            line-height: 1.4;
+            color: #000000;
+            font-size: 0.9rem;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .special-item ul li::before {
+            content: '•';
+            color: #000000;
+            font-weight: bold;
+            font-size: 1rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+            line-height: 1.4;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .special-item:hover p {
+            color: #000000;
+        }
+
+        .special-item p strong {
+            color: #000000;
+        }
+
+        .special-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0 0 0;
+            border-top: 2px solid var(--light-sage);
+            transition: var(--transition-base);
+            position: relative;
+            margin-top: auto;
+        }
+
+        .special-details::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+
+        .duration {
+            font-family: var(--font-secondary);
+            font-size: 0.8rem;
+            color: #000000;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            position: relative;
+        }
+
+        .duration::before {
+            content: '⏱';
+            margin-right: 0.4rem;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .price-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #000000;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .price::before {
+            content: '';
+            position: absolute;
+            top: -0.3rem;
+            right: -0.5rem;
+            width: 0.3rem;
+            height: 0.3rem;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .original-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: #999;
+            text-decoration: line-through;
+            margin-bottom: 0.2rem;
+        }
+
+        .discount {
+            font-family: var(--font-secondary);
+            font-size: 0.9rem;
+            color: var(--discount-green);
+            font-weight: 600;
+            margin-top: 0.2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .special-item {
+                flex-direction: column;
+                align-items: flex-start;
+                min-height: auto;
+                padding: 1.5rem;
+            }
+            
+            .special-item ul {
+                grid-template-columns: 1fr;
+                gap: 0.3rem;
+            }
+            
+            .special-details {
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            
+            .special-badge {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-bottom: 1rem;
+                align-self: flex-start;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes heroFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes heroTextFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+                text-shadow: 0 6px 30px rgba(0, 0, 0, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        /* Hero animation classes */
+        .hero-content.animate-in {
+            animation: heroFadeIn 1s ease-out forwards;
+        }
+
+        .hero-eyebrow.animate-in {
+            animation: heroTextFadeIn 0.8s ease-out forwards;
+        }
+
+        .hero-title.animate-in {
+            animation: heroTextFadeIn 1s ease-out forwards;
+        }
+
+        .hero-subtitle.animate-in {
+            animation: heroTextFadeIn 1.2s ease-out forwards;
+        }
+
+        .hero-quote.animate-in {
+            animation: heroTextFadeIn 1.4s ease-out forwards;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation will be loaded by navigation-loader.js -->
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <div class="hero-eyebrow">Bluefern Spa</div>
+            <h1 class="hero-title">Specials</h1>
+            <p class="hero-subtitle">Exclusive deals and limited-time promotions for our valued guests</p>
+            <div class="hero-quote">Indulge in luxury at exceptional prices</div>
+        </div>
+    </section>
+
+    <!-- Back to Services -->
+    <section class="back-to-services">
+        <a href="index.html#services" class="back-to-services-btn">← Back to Our Services</a>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="special-offers">
+        <div class="container">
+            <!-- Current Specials -->
+            <div class="special-category active" id="current-specials">
+                <div class="special-grid">
+                    
+                    <div class="special-item animate-fade-up">
+                        <div class="special-content">
+                            <div class="special-main-content">
+                                <h3>Mojito Summer Body Bliss</h3>
+                                <p><strong>Perfect For: Dehydrated, dull skin. Energizing for circulation, yet relaxing and soothing at the same time.</strong></p>
+                                <ul>
+                                    <li>Mojito & CBD Sugar Body Scrub</li>
+                                    <li>Ultra Relaxation Massage with Coconut Oil</li>
+                                    <li>Mint-infused Towel Treatment</li>
+                                </ul>
+                            </div>
+                            <div class="special-details">
+                                <span class="duration">Approx. 2 Hrs</span>
+                                <div class="price-container">
+                                    <span class="original-price">$235</span>
+                                    <span class="price">$215</span>
+                                    <span class="discount">Save $20</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="special-item animate-fade-up">
+                        <div class="special-content">
+                            <div class="special-main-content">
+                                <h3>Cooling Sea Escape Package</h3>
+                                <p><strong>Perfect For: Overheated or fatigued bodies. Calms inflammation and energizes circulation.</strong></p>
+                                <ul>
+                                    <li>Cooling Aloe & Marine Algae Body Wrap</li>
+                                    <li>Peppermint Foot Scrub & Massage</li>
+                                    <li>Soothing Cryo-Facial with Cucumber</li>
+                                </ul>
+                            </div>
+                            <div class="special-details">
+                                <span class="duration">Approx. 2.5 Hrs</span>
+                                <div class="price-container">
+                                    <span class="original-price">$295</span>
+                                    <span class="price">$275</span>
+                                    <span class="discount">Save $20</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="special-item animate-fade-up">
+                        <div class="special-content">
+                            <div class="special-main-content">
+                                <h3>Sun Recovery Package</h3>
+                                <p><strong>Perfect For: Post-beach or pool day. Restores and soothes.</strong></p>
+                                <ul>
+                                    <li>Lavender and CBD Oil massage</li>
+                                    <li>Aromatherapy Towel Treatment</li>
+                                    <li>Ultra Hydrating Hyaluronic Facial</li>
+                                </ul>
+                            </div>
+                            <div class="special-details">
+                                <span class="duration">Approx. 2 Hrs</span>
+                                <div class="price-container">
+                                    <span class="original-price">$260</span>
+                                    <span class="price">$240</span>
+                                    <span class="discount">Save $20</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="special-item animate-fade-up">
+                        <div class="special-content">
+                            <div class="special-main-content">
+                                <h3>Vitamin C Glow Facial + Ice Globe Massage</h3>
+                                <p><strong>Perfect For: Dull, sun-weary skin. Revives and tightens the complexion</strong></p>
+                                <ul>
+                                    <li>Deep cleansing with fruit enzymes</li>
+                                    <li>Brightening Vitamin C serum infusion</li>
+                                    <li>Cooling ice globe facial massage</li>
+                                    <li>Luxurious moisturizing mask</li>
+                                    <li>Cryo Collagen eye treatment - Complimentary Add on</li>
+                                </ul>
+                            </div>
+                            <div class="special-details">
+                                <span class="duration">Approx. 1.5 Hrs</span>
+                                <div class="price-container">
+                                    <span class="original-price">$180</span>
+                                    <span class="price">$155</span>
+                                    <span class="discount">Save $25</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="special-item animate-fade-up">
+                        <div class="special-content">
+                            <div class="special-main-content">
+                                <h3>Perfect Pair Package for 2</h3>
+                                <p><strong>Romantic couples experience in our private room</strong></p>
+                                <ul>
+                                    <li>Couples Massage 90 min.</li>
+                                    <li>Includes Aromatherapy Steam Towel</li>
+                                    <li>Herbal Tea & Refreshments</li>
+                                </ul>
+                            </div>
+                            <div class="special-details">
+                                <span class="duration">Approx. 2 Hrs</span>
+                                <div class="price-container">
+                                    <span class="original-price">$380</span>
+                                    <span class="price">$360</span>
+                                    <span class="discount">Save $20</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Specials Page Functionality
+        const initSpecialsPage = () => {
+            // Initialize animations for special items
+            setTimeout(() => {
+                const specialItems = document.querySelectorAll('.special-item');
+                specialItems.forEach((item, index) => {
+                    // Reset initial state
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(30px) scale(0.98)';
+                    
+                    // Trigger staggered animation with consistent timing
+                    setTimeout(() => {
+                        item.style.animation = `fadeInUp 0.8s ease-out forwards`;
+                        item.style.animationDelay = `${index * 0.1}s`;
+                    }, 50);
+                });
+            }, 200);
+        };
+
+        // Initialize hero animations
+        const initHeroAnimations = () => {
+            const heroContent = document.querySelector('.hero-content');
+            const heroEyebrow = document.querySelector('.hero-eyebrow');
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            const heroQuote = document.querySelector('.hero-quote');
+
+            // Trigger hero animations with staggered delays
+            setTimeout(() => {
+                if (heroContent) {
+                    heroContent.style.transition = 'all 1s ease-out';
+                    heroContent.style.opacity = '1';
+                    heroContent.style.transform = 'translateY(0) scale(1)';
+                }
+            }, 300);
+
+            setTimeout(() => {
+                if (heroEyebrow) {
+                    heroEyebrow.style.transition = 'all 0.8s ease-out';
+                    heroEyebrow.style.opacity = '1';
+                    heroEyebrow.style.transform = 'translateY(0)';
+                }
+            }, 600);
+
+            setTimeout(() => {
+                if (heroTitle) {
+                    heroTitle.style.transition = 'all 1s ease-out';
+                    heroTitle.style.opacity = '1';
+                    heroTitle.style.transform = 'translateY(0)';
+                }
+            }, 800);
+
+            setTimeout(() => {
+                if (heroSubtitle) {
+                    heroSubtitle.style.transition = 'all 1.2s ease-out';
+                    heroSubtitle.style.opacity = '1';
+                    heroSubtitle.style.transform = 'translateY(0)';
+                }
+            }, 1000);
+
+            setTimeout(() => {
+                if (heroQuote) {
+                    heroQuote.style.transition = 'all 1.4s ease-out';
+                    heroQuote.style.opacity = '1';
+                    heroQuote.style.transform = 'translateY(0)';
+                }
+            }, 1200);
+        };
+
+        // Initialize when ready
+        document.addEventListener('DOMContentLoaded', () => {
+            initSpecialsPage();
+            // Small delay to ensure page is fully loaded
+            setTimeout(() => {
+                initHeroAnimations();
+            }, 100);
+        });
+    </script>
+    <script src="navigation-loader.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

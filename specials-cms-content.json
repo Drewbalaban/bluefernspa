@@ -1,0 +1,104 @@
+{
+  "featured_specials": [
+    {
+      "id": "new-year-renewal",
+      "title": "New Year Renewal Package",
+      "description": "Start the year with complete wellness and rejuvenation",
+      "services": [
+        "Signature HydroFacial",
+        "Deep Tissue Massage 90 Min.",
+        "Aromatherapy Steam Towel Treatment",
+        "Salt Room Session (30min)",
+        "Organic Green Tea Body Scrub",
+        "Served with Tea & Healthy Snacks"
+      ],
+      "duration": "Approx. 3.5 Hrs",
+      "original_price": 425,
+      "special_price": 350,
+      "savings": 75,
+      "badge": "Featured",
+      "category": "featured"
+    },
+    {
+      "id": "student-wellness",
+      "title": "Student Wellness Package",
+      "description": "Special pricing for students with valid ID",
+      "services": [
+        "Organic Soothing Facial",
+        "Stress Relief Massage 60 Min.",
+        "Aromatherapy Steam Towel Treatment",
+        "Relaxation Tea Service"
+      ],
+      "duration": "Approx. 2 Hrs",
+      "original_price": 185,
+      "special_price": 135,
+      "savings": 50,
+      "badge": "Featured",
+      "category": "featured"
+    },
+    {
+      "id": "first-time-guest",
+      "title": "First-Time Guest Special",
+      "description": "Welcome to Bluefern Spa - Introductory offer",
+      "services": [
+        "Signature HydroFacial",
+        "Swedish Massage 60 Min.",
+        "Aromatherapy Steam Towel Treatment",
+        "Consultation with our Spa Director",
+        "Welcome Gift Bag"
+      ],
+      "duration": "Approx. 2.5 Hrs",
+      "original_price": 220,
+      "special_price": 165,
+      "savings": 55,
+      "badge": "Featured",
+      "category": "featured"
+    }
+  ],
+  "limited_time_specials": [
+    {
+      "id": "valentines-couples",
+      "title": "Couples Valentine's Retreat",
+      "description": "Perfect romantic experience for two in our private couples room",
+      "services": [
+        "Aromatherapy Relaxation Massage 90 min.",
+        "Side-by-side couples treatment",
+        "Champagne & Chocolate Covered Strawberries",
+        "Rose Petal Foot Soak",
+        "Romantic Ambiance with Candles"
+      ],
+      "duration": "Approx. 2 Hrs",
+      "original_price": 450,
+      "special_price": 380,
+      "savings": 70,
+      "badge": "Limited Time",
+      "category": "limited_time"
+    },
+    {
+      "id": "mothers-day-pampering",
+      "title": "Mother's Day Pampering",
+      "description": "Celebrate the special women in your life",
+      "services": [
+        "Radiance Anti-Aging Facial",
+        "Aromatherapy Massage 60 Min.",
+        "Organic Green Tea Body Scrub",
+        "Collagen Hand & Foot Treatment",
+        "Gift Bag with Premium Products",
+        "Complimentary Glass of Wine"
+      ],
+      "duration": "Approx. 3 Hrs",
+      "original_price": 295,
+      "special_price": 245,
+      "savings": 50,
+      "badge": "Limited Time",
+      "category": "limited_time"
+    }
+  ],
+  "metadata": {
+    "last_updated": "2024-01-01",
+    "total_specials": 5,
+    "featured_count": 3,
+    "limited_time_count": 2,
+    "notes": "These special offers were removed from the main specials page but saved for future use with headless CMS integration. They can be dynamically displayed based on season, availability, or promotional campaigns."
+  }
+}
