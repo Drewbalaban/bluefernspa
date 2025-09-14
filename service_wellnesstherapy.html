@@ -47,6 +47,14 @@
             overflow: hidden;
         }
 
+        .hero-banner.saltroom-bg {
+            background: url('Salt-Room-The-Salt-Room-Orlando.jpg') center/cover;
+        }
+
+        .hero-banner.redlight-bg {
+            background: url('R.jpg') center/cover;
+        }
+
         .hero-content {
             position: relative;
             z-index: 2;
@@ -260,9 +268,6 @@
             flex: 0 0 calc(33.333% - 1.33rem);
             min-width: 300px;
             max-width: 350px;
-        }
-
-        .service-item {
             background: white;
             border-radius: 15px;
             padding: 2rem;
@@ -348,16 +353,13 @@
             display: block;
             margin-bottom: 0.8rem;
             font-size: 1.1rem;
+            padding-left: 0;
+            margin-left: 0;
         }
 
         /* Remove the background image approach */
         .service-item p {
             padding-left: 0;
-        }
-
-        .service-item p strong {
-            padding-left: 0;
-            margin-left: 0;
         }
 
         /* Style the bullet lists */
@@ -388,10 +390,6 @@
 
         .service-item:hover p {
             color: var(--dark-color);
-        }
-
-        .service-item p strong {
-            color: var(--darker-sage);
         }
 
         .service-details {
@@ -1671,20 +1669,20 @@
                     }
                 }
 
-                // Animate service items with staggered delays
-                const serviceItems = targetCategoryElement.querySelectorAll('.service-item');
-                serviceItems.forEach((item, index) => {
-                    // Reset animation state
-                    item.style.opacity = '0';
-                    item.style.transform = 'translateY(30px) scale(0.98)';
-                    item.style.animation = 'none';
-                    
-                    // Trigger animation with staggered delay
-                    setTimeout(() => {
-                        item.style.animation = `fadeInUp 0.8s ease-out forwards`;
-                        item.style.animationDelay = `${index * 0.1}s`;
-                    }, 50);
-                });
+            // Animate service items with staggered delays
+            const serviceItems = targetCategoryElement.querySelectorAll('.service-item');
+            serviceItems.forEach((item, index) => {
+                // Reset animation state
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(30px) scale(0.98)';
+                item.style.animation = 'none';
+                
+                // Trigger animation with staggered delay for smooth transitions
+                setTimeout(() => {
+                    item.style.animation = `fadeInUp 0.6s ease-out forwards`;
+                    item.style.animationDelay = `${index * 0.05}s`;
+                }, 30);
+            });
             };
 
             // Event listeners
@@ -1706,13 +1704,13 @@
                     item.style.opacity = '0';
                     item.style.transform = 'translateY(30px) scale(0.98)';
                     
-                    // Trigger staggered animation
+                    // Trigger staggered animation for smooth loading
                     setTimeout(() => {
-                        item.style.animation = `fadeInUp 0.8s ease-out forwards`;
-                        item.style.animationDelay = `${index * 0.1}s`;
-                    }, 100 + (index * 50));
+                        item.style.animation = `fadeInUp 0.6s ease-out forwards`;
+                        item.style.animationDelay = `${index * 0.05}s`;
+                    }, 50 + (index * 25));
                 });
-            }, 200);
+            }, 100);
         };
 
         // Initialize hero animations
@@ -1780,7 +1778,7 @@
                     
                     // Update active states
                     categoryButtons.forEach(btn => btn.classList.remove('active'));
-                    const targetButton = document.querySelector(`[data-category=${targetCategory}]`);
+                    const targetButton = document.querySelector(`[data-category="${targetCategory}"]`);
                     if (targetButton) targetButton.classList.add('active');
 
                     serviceCategories.forEach(category => category.classList.remove('active'));
