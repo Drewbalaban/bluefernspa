@@ -1669,7 +1669,7 @@
                     }
                 }
 
-            // Animate service items with staggered delays
+                // Animate service items with staggered delays
             const serviceItems = targetCategoryElement.querySelectorAll('.service-item');
             const benefitSections = targetCategoryElement.querySelectorAll('.benefit-section');
             const heroImageContainers = targetCategoryElement.querySelectorAll('.hero-image-container');
@@ -1690,6 +1690,7 @@
                     item.style.animationDelay = `${index * 0.05}s`;
                 }, 30);
             });
+            };
 
             // Event listeners
             categoryButtons.forEach(button => {
@@ -1699,6 +1700,10 @@
                     console.log('Button clicked, category:', category); // Debug
                     if (category) {
                         switchCategory(category);
+                        // Update URL hash so the tab is linkable/bookmarkable
+                        if (window.location.hash !== `#${category}`) {
+                            window.location.hash = `#${category}`;
+                        }
                     }
                 });
             });
@@ -1793,6 +1798,36 @@
                     }
                 }
             }
+
+            // Also respond to hash changes after load
+            window.addEventListener('hashchange', () => {
+                const newHash = window.location.hash;
+                const targetCategory = newHash.replace('#', '');
+                const targetCategoryElement = document.getElementById(targetCategory);
+                if (!targetCategoryElement) return;
+
+                // Update active button
+                const categoryButtons = document.querySelectorAll('.category-btn');
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                const targetButton = document.querySelector(`[data-category="${targetCategory}"]`);
+                if (targetButton) targetButton.classList.add('active');
+
+                // Update visible category
+                const serviceCategories = document.querySelectorAll('.service-category');
+                serviceCategories.forEach(cat => cat.classList.remove('active'));
+                targetCategoryElement.classList.add('active');
+
+                // Update hero banner background
+                const heroBanner = document.querySelector('.hero-banner');
+                if (heroBanner) {
+                    heroBanner.classList.remove('saltroom-bg', 'redlight-bg');
+                    if (targetCategory === 'saltroom') {
+                        heroBanner.classList.add('saltroom-bg');
+                    } else if (targetCategory === 'redlight') {
+                        heroBanner.classList.add('redlight-bg');
+                    }
+                }
+            });
         });
 
         // Modal Functions

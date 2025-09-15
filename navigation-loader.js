@@ -126,6 +126,19 @@ function initializeNavigation() {
                 submenuDropdown.style.display = 'none';
             });
         });
+        
+        // Ensure dropdown links always navigate
+        const dropdownLinks = item.querySelectorAll('.dropdown-content a');
+        dropdownLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Do not prevent default navigation; just ensure it propagates
+                e.stopPropagation();
+                const href = link.getAttribute('href');
+                if (href) {
+                    window.location.href = href;
+                }
+            });
+        });
     });
     
     // Set active navigation link based on current page
@@ -205,6 +218,64 @@ function initializePageSpecific() {
         document.dispatchEvent(hashEvent);
         
         console.log('Dispatched navigationLoaded event for body treatments page with hash:', window.location.hash);
+    }
+
+    // Check if we're on service_spapackages.html and initialize its functionality
+    if (window.location.pathname.includes('service_spapackages.html')) {
+        if (typeof initSpaPackagesPage === 'function') {
+            initSpaPackagesPage();
+        }
+        if (typeof initHeroAnimations === 'function') {
+            initHeroAnimations();
+        }
+        // No tabs to switch here, but keep behavior consistent
+        const hashEvent = new CustomEvent('navigationLoaded', {
+            detail: { hash: window.location.hash }
+        });
+        document.dispatchEvent(hashEvent);
+        console.log('Initialized spa packages page after nav injection.');
+    }
+
+    // Check if we're on service_wellnesstherapy.html and initialize its functionality
+    if (window.location.pathname.includes('service_wellnesstherapy.html')) {
+        if (typeof initWellnessTherapyPage === 'function') {
+            initWellnessTherapyPage();
+        }
+        if (typeof initHeroAnimations === 'function') {
+            initHeroAnimations();
+        }
+
+        // Ensure hash (e.g., #redlight) is respected after nav injection
+        const hash = window.location.hash;
+        if (hash) {
+            const targetCategory = hash.substring(1);
+            const targetCategoryElement = document.getElementById(targetCategory);
+            if (targetCategoryElement) {
+                // Update active button
+                const categoryButtons = document.querySelectorAll('.category-btn');
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                const targetButton = document.querySelector(`[data-category="${targetCategory}"]`);
+                if (targetButton) targetButton.classList.add('active');
+
+                // Update visible category
+                const serviceCategories = document.querySelectorAll('.service-category');
+                serviceCategories.forEach(cat => cat.classList.remove('active'));
+                targetCategoryElement.classList.add('active');
+
+                // Update hero banner background
+                const heroBanner = document.querySelector('.hero-banner');
+                if (heroBanner) {
+                    heroBanner.classList.remove('saltroom-bg', 'redlight-bg');
+                    if (targetCategory === 'saltroom') {
+                        heroBanner.classList.add('saltroom-bg');
+                    } else if (targetCategory === 'redlight') {
+                        heroBanner.classList.add('redlight-bg');
+                    }
+                }
+            }
+        }
+
+        console.log('Initialized wellness therapy page after nav injection with hash:', window.location.hash);
     }
 }
 
