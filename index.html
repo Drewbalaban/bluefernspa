@@ -417,6 +417,46 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Location Banner Styles - Based on Massage Service Tiles */
+        .location-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--light-sage) 100%);
+            padding: 1rem 2rem 0.8rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Teal gradient header for special location */
+        .location-header.teal-gradient {
+            background: linear-gradient(135deg, #20B2AA 0%, #48CAE4 100%);
+        }
+
+        .location-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(45deg);
+        }
+
+        .location-header h4 {
+            font-family: var(--font-primary);
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            transition: var(--transition-base);
+            position: relative;
+            z-index: 3;
+        }
+
+        .location-card:hover .location-header h4 {
+            color: var(--dark-color);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -716,8 +756,10 @@
             
             <div class="locations-grid">
                 <div class="location-card animate-fade-right">
-                    <div class="location-content">
+                    <div class="location-header">
                         <h4>Bluefern Spa & Salon</h4>
+                    </div>
+                    <div class="location-content">
                         <div class="location-info">
                             <p><strong>Address:</strong><br>335 Peachtree Industrial<br>Suwanee, GA 30024</p>
                             <p><strong>Phone:</strong> 770-904-0145</p>
@@ -732,8 +774,10 @@
                 </div>
                 
                 <div class="location-card animate-fade-left">
-                    <div class="location-content">
+                    <div class="location-header teal-gradient">
                         <h4>Bluefern Spa Johns Creek</h4>
+                    </div>
+                    <div class="location-content">
                         <div class="location-info">
                             <p><strong>Address:</strong><br>10990 State Bridge Rd<br>Johns Creek, GA 30022</p>
                             <p><strong>Phone:</strong> 770-674-5974</p>
