@@ -816,8 +816,8 @@ a {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem 0.8rem 2rem;
-    background: linear-gradient(135deg, #2d5a5a 0%, #4a8b8b 30%, #6bb6b6 60%, #a8d5d5 100%);
-    color: white;
+    background: linear-gradient(135deg, #7fb3b3 0%, #9cc5c5 30%, #b8d7d7 60%, #d4e9e9 100%);
+    color: #2c2c2c;
     position: relative;
     overflow: hidden;
 }
@@ -840,7 +840,7 @@ a {
     position: relative;
     z-index: 2;
     flex: 1;
-    color: white;
+    color: #2c2c2c;
 }
 
 .special-price {
@@ -849,7 +849,7 @@ a {
     background: rgba(255,255,255,0.95);
     position: relative;
     z-index: 2;
-    color: #2d5a5a;
+    color: #5a8a8a;
     padding: 8px 16px;
     border-radius: 25px;
     border: 2px solid rgba(255,255,255,0.3);
