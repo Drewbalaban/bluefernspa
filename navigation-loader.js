@@ -28,7 +28,7 @@ const navigationHTML = `<!-- Navigation -->
                             <a href="service_beauty.html#skintag">Blemish Removal</a>
                         </div>
                         <div class="dropdown-column">
-                            <a href="service_wellnesstherapy.html#saltroom">Salt Room</a>
+                            <a href="service_wellnesstherapy.html#salt-room">Salt Room</a>
                             <a href="service_wellnesstherapy.html#redlight">Red Light</a>
                         </div>
                     </div>
