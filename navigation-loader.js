@@ -40,6 +40,9 @@ const navigationHTML = `<!-- Navigation -->
             <li class="nav-item">
                 <a href="service_spapackages.html" class="nav-link">Spa Packages</a>
             </li>
+            <li class="nav-item">
+                <a href="service_gentlemen.html" class="nav-link">Gentlemen</a>
+            </li>
             </ul>
         </div>
         
