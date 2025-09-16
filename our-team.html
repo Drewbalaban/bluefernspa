@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Our Team - Bluefern Spa | Professional Spa & Wellness Team</title>
+    <meta name="description" content="Meet our talented spa professionals at Bluefern Spa. Expert massage therapists, estheticians, and wellness specialists ready to help you relax and rejuvenate.">
+    <meta name="keywords" content="spa team, massage therapist, esthetician, wellness specialist, Bluefern Spa, Suwanee, Johns Creek">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Bluefern Spa">
+    <link rel="canonical" href="https://bluefernspa.com/our-team.html">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css?v=3">
+    
+    <style>
+        /* Spa Team Section Styles */
+        .team-section {
+            --primary-color: #d5eae5;
+            --secondary-color: #a8c9be;
+            --accent-color: #f2f7f5;
+            --light-sage: #e8f2ee;
+            --dark-sage: #9bb5aa;
+            --darker-sage: #7a9b8c;
+            --dark-color: #2C2C2C;
+            --light-color: #FAFAFA;
+            --text-color: #4A4A4A;
+            --border-color: #E5E5E5;
+            
+            --font-primary: 'Cormorant Garamond', serif;
+            --font-secondary: 'Montserrat', sans-serif;
+            
+            --transition-base: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.08);
+            --shadow-md: 0 5px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 15px 50px rgba(0,0,0,0.2);
+            
+            padding: 100px 0;
+            background: var(--light-color);
+            position: relative;
+        }
+
+        .team-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, var(--accent-color) 0%, var(--light-color) 50%, var(--accent-color) 100%);
+            opacity: 0.3;
+        }
+
+        .team-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .team-header {
+            text-align: center;
+            margin-bottom: 80px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .team-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 400;
+            color: var(--dark-color);
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+        }
+
+        .team-subtitle {
+            font-family: var(--font-secondary);
+            font-size: 1.1rem;
+            color: var(--text-color);
+            line-height: 1.9;
+            opacity: 0.8;
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        /* Staff Tile */
+        .staff-tile {
+            position: relative;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-slow);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            height: 580px;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #ffffff 0%, #ffffff 220px, #fafafa 100%);
+        }
+
+        .staff-tile:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tile-image-container {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+
+        .tile-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: var(--transition-slow);
+            transform: scale(1);
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .staff-tile:hover .tile-image {
+            transform: scale(1.1);
+        }
+
+        .tile-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%);
+            opacity: 0;
+            transition: var(--transition-base);
+            z-index: 2;
+        }
+
+        .staff-tile:hover .tile-overlay {
+            opacity: 1;
+        }
+
+        .tile-content {
+            padding: 30px 30px 35px 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            transition: var(--transition-base);
+            min-height: 360px;
+        }
+
+        .staff-tile:hover .tile-content {
+            transform: translateY(-5px);
+        }
+
+        .tile-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            font-weight: 500;
+            color: var(--dark-color);
+            margin-bottom: 18px;
+            letter-spacing: -0.5px;
+        }
+
+        .tile-specialty {
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tile-description {
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .tile-services {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            flex-grow: 0;
+        }
+
+        .tile-services li {
+            font-family: var(--font-secondary);
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+            opacity: 0.8;
+        }
+
+        .tile-services li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+        }
+
+        /* Staff Images - Placeholder backgrounds */
+        .staff1-bg { 
+            background-image: url('https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'); 
+            background-size: cover;
+            background-position: center;
+        }
+        .staff2-bg { 
+            background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'); 
+            background-size: cover;
+            background-position: center;
+        }
+        .staff3-bg { 
+            background-image: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'); 
+            background-size: cover;
+            background-position: center;
+        }
+        .staff4-bg { 
+            background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'); 
+            background-size: cover;
+            background-position: center;
+        }
+        .staff5-bg { 
+            background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'); 
+            background-size: cover;
+            background-position: center;
+        }
+        .staff6-bg { 
+            background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'); 
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .staff-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .staff-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .staff-tile {
+                height: 480px;
+            }
+            
+            .tile-image-container {
+                height: 200px;
+            }
+            
+            .tile-content {
+                padding: 25px;
+            }
+            
+            .tile-title {
+                font-size: 1.5rem;
+            }
+            
+            .team-container {
+                padding: 0 20px;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 3% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 95%;
+            max-width: 900px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--light-sage);
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .modal-specialty {
+            font-family: var(--font-secondary);
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .modal-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 30px;
+        }
+
+        .pricing-section {
+            background: var(--light-sage);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .pricing-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .pricing-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pricing-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(168, 201, 190, 0.3);
+        }
+
+        .pricing-item:last-child {
+            border-bottom: none;
+        }
+
+        .service-name {
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .service-price {
+            font-weight: 600;
+            color: var(--darker-sage);
+            font-size: 1.1rem;
+        }
+
+        .book-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition-base);
+            margin-top: 20px;
+        }
+
+        .book-button:hover {
+            background: var(--darker-sage);
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced Modal Layout */
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .modal-text-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-image-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .service-image:hover {
+            transform: scale(1.02);
+        }
+
+        .service-image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .service-image-small {
+            width: 100%;
+            height: 120px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-image-small:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Mobile responsive for enhanced modals */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 98%;
+                max-width: none;
+                margin: 2% auto;
+                padding: 25px;
+            }
+
+            .modal-body {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .service-image {
+                height: 150px;
+            }
+
+            .service-image-small {
+                height: 100px;
+            }
+
+            .service-image-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <!-- Navigation will be loaded by navigation-loader.js -->
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-separator">
+                    <div class="separator-line"></div>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line bluefern-spa">Bluefern Spa</span>
+                </h1>
+                <p class="hero-subtitle">Spa Professionals</p>
+                <p class="hero-description">
+                    Meet our talented team of professional massage therapists, estheticians, and wellness specialists. Each member brings years of experience and passion to help you relax, rejuvenate, and feel your absolute best.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spa Team Section -->
+    <section class="team-section" id="staff">
+        <div class="team-container">
+            <div class="team-header">
+                <h2 class="team-title">Our Spa Team</h2>
+                <p class="team-subtitle">Click on any team member to learn more about their specialties, services, and pricing</p>
+            </div>
+            
+            <div class="staff-grid">
+                <div class="staff-tile" onclick="openModal('sarah')">
+                    <div class="tile-image-container">
+                        <div class="tile-image staff1-bg"></div>
+                        <div class="tile-overlay"></div>
+                    </div>
+                    <div class="tile-content">
+                        <h3 class="tile-title">Sarah Johnson</h3>
+                        <p class="tile-specialty">Master Massage Therapist</p>
+                        <p class="tile-description">Specializing in deep tissue, therapeutic massage, and stress relief with over 8 years of experience.</p>
+                        <ul class="tile-services">
+                            <li>Deep Tissue Massage</li>
+                            <li>Therapeutic Massage</li>
+                            <li>Stress Relief Therapy</li>
+                            <li>Pain Management</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="staff-tile" onclick="openModal('michael')">
+                    <div class="tile-image-container">
+                        <div class="tile-image staff2-bg"></div>
+                        <div class="tile-overlay"></div>
+                    </div>
+                    <div class="tile-content">
+                        <h3 class="tile-title">Michael Chen</h3>
+                        <p class="tile-specialty">Senior Esthetician</p>
+                        <p class="tile-description">Expert in advanced facials, skin treatments, and anti-aging therapies with a focus on personalized care.</p>
+                        <ul class="tile-services">
+                            <li>Advanced Facials</li>
+                            <li>Anti-Aging Treatments</li>
+                            <li>Skin Analysis</li>
+                            <li>Chemical Peels</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="staff-tile" onclick="openModal('emma')">
+                    <div class="tile-image-container">
+                        <div class="tile-image staff3-bg"></div>
+                        <div class="tile-overlay"></div>
+                    </div>
+                    <div class="tile-content">
+                        <h3 class="tile-title">Emma Rodriguez</h3>
+                        <p class="tile-specialty">Wellness Specialist</p>
+                        <p class="tile-description">Specializing in body treatments, aromatherapy, and holistic wellness therapies.</p>
+                        <ul class="tile-services">
+                            <li>Body Wraps</li>
+                            <li>Aromatherapy</li>
+                            <li>Detox Treatments</li>
+                            <li>Holistic Wellness</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="staff-tile" onclick="openModal('david')">
+                    <div class="tile-image-container">
+                        <div class="tile-image staff4-bg"></div>
+                        <div class="tile-overlay"></div>
+                    </div>
+                    <div class="tile-content">
+                        <h3 class="tile-title">David Thompson</h3>
+                        <p class="tile-specialty">Medical Spa Specialist</p>
+                        <p class="tile-description">Expert in advanced medical spa treatments, laser therapy, and skin rejuvenation.</p>
+                        <ul class="tile-services">
+                            <li>Laser Treatments</li>
+                            <li>Skin Rejuvenation</li>
+                            <li>Medical Facials</li>
+                            <li>Anti-Aging Therapy</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="staff-tile" onclick="openModal('lisa')">
+                    <div class="tile-image-container">
+                        <div class="tile-image staff5-bg"></div>
+                        <div class="tile-overlay"></div>
+                    </div>
+                    <div class="tile-content">
+                        <h3 class="tile-title">Lisa Park</h3>
+                        <p class="tile-specialty">Spa Director</p>
+                        <p class="tile-description">Master of spa operations, client care, and wellness programs with a focus on personalized service.</p>
+                        <ul class="tile-services">
+                            <li>Spa Management</li>
+                            <li>Client Care</li>
+                            <li>Wellness Programs</li>
+                            <li>Consultation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="staff-tile" onclick="openModal('james')">
+                    <div class="tile-image-container">
+                        <div class="tile-image staff6-bg"></div>
+                        <div class="tile-overlay"></div>
+                    </div>
+                    <div class="tile-content">
+                        <h3 class="tile-title">James Wilson</h3>
+                        <p class="tile-specialty">Reflexology & Energy Therapist</p>
+                        <p class="tile-description">Traditional healing meets modern wellness with expertise in reflexology and energy balancing.</p>
+                        <ul class="tile-services">
+                            <li>Reflexology</li>
+                            <li>Energy Healing</li>
+                            <li>Foot Therapy</li>
+                            <li>Stress Relief</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Detail Modals -->
+    <div id="sarahModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('sarah')">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title">Sarah Johnson</h2>
+                <p class="modal-specialty">Master Massage Therapist</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-text-content">
+                    <p class="modal-description">
+                        Sarah brings over 8 years of expertise in therapeutic massage and has trained with some of the industry's top massage therapists. 
+                        She specializes in deep tissue massage, therapeutic treatments, and stress relief that help restore your body's natural balance. 
+                        Sarah stays current with the latest massage techniques and wellness practices to provide you with the most effective treatments.
+                    </p>
+                    <div class="pricing-section">
+                        <h3 class="pricing-title">Services & Pricing</h3>
+                        <ul class="pricing-list">
+                            <li class="pricing-item">
+                                <span class="service-name">Deep Tissue Massage</span>
+                                <span class="service-price">$120+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Therapeutic Massage</span>
+                                <span class="service-price">$100+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Stress Relief Therapy</span>
+                                <span class="service-price">$110+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Pain Management</span>
+                                <span class="service-price">$130+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Wellness Consultation</span>
+                                <span class="service-price">$50</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="tel:7709040145" class="book-button">Book with Sarah</a>
+                </div>
+                <div class="modal-image-gallery">
+                    <h3 class="gallery-title">Sarah's Work</h3>
+                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Deep tissue massage" class="service-image">
+                    <div class="service-image-grid">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Therapeutic massage" class="service-image-small">
+                        <img src="https://images.unsplash.com/photo-1596178060810-6e0b5c3b0c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Stress relief therapy" class="service-image-small">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="michaelModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('michael')">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title">Michael Chen</h2>
+                <p class="modal-specialty">Senior Esthetician</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-text-content">
+                    <p class="modal-description">
+                        Michael is a precision skincare specialist with over 10 years of experience. He excels in creating 
+                        personalized treatment plans that complement your skin type and lifestyle. His expertise includes 
+                        advanced facials, anti-aging treatments, and skin analysis, with a particular focus on achieving optimal skin health.
+                    </p>
+                    <div class="pricing-section">
+                        <h3 class="pricing-title">Services & Pricing</h3>
+                        <ul class="pricing-list">
+                            <li class="pricing-item">
+                                <span class="service-name">Advanced Facial</span>
+                                <span class="service-price">$150+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Anti-Aging Treatment</span>
+                                <span class="service-price">$180+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Skin Analysis</span>
+                                <span class="service-price">$75+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Chemical Peel</span>
+                                <span class="service-price">$120+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Skincare Consultation</span>
+                                <span class="service-price">$50</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="tel:7709040145" class="book-button">Book with Michael</a>
+                </div>
+                <div class="modal-image-gallery">
+                    <h3 class="gallery-title">Michael's Work</h3>
+                    <img src="https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Advanced facial treatment" class="service-image">
+                    <div class="service-image-grid">
+                        <img src="https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Anti-aging treatment" class="service-image-small">
+                        <img src="https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Skin analysis" class="service-image-small">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="emmaModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('emma')">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title">Emma Rodriguez</h2>
+                <p class="modal-specialty">Wellness Specialist</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-text-content">
+                    <p class="modal-description">
+                        Emma specializes in body treatments and holistic wellness, bringing creativity and attention to detail 
+                        to every appointment. With certifications in aromatherapy and detox treatments, 
+                        she ensures you feel absolutely rejuvenated and balanced after every session.
+                    </p>
+                    <div class="pricing-section">
+                        <h3 class="pricing-title">Services & Pricing</h3>
+                        <ul class="pricing-list">
+                            <li class="pricing-item">
+                                <span class="service-name">Body Wrap Treatment</span>
+                                <span class="service-price">$180+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Aromatherapy Session</span>
+                                <span class="service-price">$120+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Detox Treatment</span>
+                                <span class="service-price">$160+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Holistic Wellness</span>
+                                <span class="service-price">$140+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Wellness Consultation</span>
+                                <span class="service-price">$60</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="tel:7709040145" class="book-button">Book with Emma</a>
+                </div>
+                <div class="modal-image-gallery">
+                    <h3 class="gallery-title">Emma's Work</h3>
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Bridal styling" class="service-image">
+                    <div class="service-image-grid">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Special event makeup" class="service-image-small">
+                        <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Hair extensions" class="service-image-small">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="davidModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('david')">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title">David Thompson</h2>
+                <p class="modal-specialty">Medical Spa Specialist</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-text-content">
+                    <p class="modal-description">
+                        David is our go-to expert for all medical spa services. He specializes in laser treatments, 
+                        skin rejuvenation, and advanced anti-aging therapies. With extensive training in medical aesthetics and skin health, 
+                        David helps clients achieve their desired results while maintaining the highest safety standards.
+                    </p>
+                    <div class="pricing-section">
+                        <h3 class="pricing-title">Services & Pricing</h3>
+                        <ul class="pricing-list">
+                            <li class="pricing-item">
+                                <span class="service-name">Laser Treatment</span>
+                                <span class="service-price">$300+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Skin Rejuvenation</span>
+                                <span class="service-price">$250+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Medical Facial</span>
+                                <span class="service-price">$200+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Anti-Aging Therapy</span>
+                                <span class="service-price">$350+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Medical Consultation</span>
+                                <span class="service-price">$75</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="tel:7709040145" class="book-button">Book with David</a>
+                </div>
+                <div class="modal-image-gallery">
+                    <h3 class="gallery-title">David's Work</h3>
+                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Curly hair styling" class="service-image">
+                    <div class="service-image-grid">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Keratin treatment" class="service-image-small">
+                        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Hair restoration" class="service-image-small">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lisaModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('lisa')">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title">Lisa Park</h2>
+                <p class="modal-specialty">Spa Director</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-text-content">
+                    <p class="modal-description">
+                        Lisa combines operational excellence with creative vision to deliver spa experiences that enhance 
+                        your overall wellness. She's passionate about client care and education, always taking time to 
+                        create personalized wellness plans. Her leadership approach ensures every 
+                        client receives exceptional service and leaves feeling rejuvenated.
+                    </p>
+                    <div class="pricing-section">
+                        <h3 class="pricing-title">Services & Pricing</h3>
+                        <ul class="pricing-list">
+                            <li class="pricing-item">
+                                <span class="service-name">Spa Management</span>
+                                <span class="service-price">$200+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Client Care Program</span>
+                                <span class="service-price">$150+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Wellness Program</span>
+                                <span class="service-price">$180+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Spa Consultation</span>
+                                <span class="service-price">$75</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">VIP Experience</span>
+                                <span class="service-price">$300+</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="tel:7709040145" class="book-button">Book with Lisa</a>
+                </div>
+                <div class="modal-image-gallery">
+                    <h3 class="gallery-title">Lisa's Work</h3>
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Precision cutting" class="service-image">
+                    <div class="service-image-grid">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Hair health treatment" class="service-image-small">
+                        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Style consultation" class="service-image-small">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="jamesModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('james')">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title">James Wilson</h2>
+                <p class="modal-specialty">Reflexology & Energy Therapist</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-text-content">
+                    <p class="modal-description">
+                        James brings traditional healing techniques into the modern spa environment, offering reflexology, 
+                        energy healing, and holistic wellness treatments. His expertise in foot therapy and stress relief 
+                        makes him a favorite among clients looking for deep relaxation and energy balancing.
+                    </p>
+                    <div class="pricing-section">
+                        <h3 class="pricing-title">Services & Pricing</h3>
+                        <ul class="pricing-list">
+                            <li class="pricing-item">
+                                <span class="service-name">Reflexology Session</span>
+                                <span class="service-price">$90+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Energy Healing</span>
+                                <span class="service-price">$110+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Foot Therapy</span>
+                                <span class="service-price">$80+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Stress Relief Package</span>
+                                <span class="service-price">$150+</span>
+                            </li>
+                            <li class="pricing-item">
+                                <span class="service-name">Energy Consultation</span>
+                                <span class="service-price">$60</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="tel:7709040145" class="book-button">Book with James</a>
+                </div>
+                <div class="modal-image-gallery">
+                    <h3 class="gallery-title">James's Work</h3>
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Classic barbering" class="service-image">
+                    <div class="service-image-grid">
+                        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Beard styling" class="service-image-small">
+                        <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Hot towel shave" class="service-image-small">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4 class="footer-title bluefern-spa">Bluefern Spa</h4>
+                    <p class="footer-description">
+                        Georgia's premier day spa offering luxury treatments and medical spa services in Suwanee and Johns Creek.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="specials.html">Specials</a></li>
+                        <li><a href="salon.html">Salon</a></li>
+                        <li><a href="our-team.html">Our Team</a></li>
+                        <li><a href="index.html#locations">Locations</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html#services">Massage Therapy</a></li>
+                        <li><a href="index.html#services">Facials</a></li>
+                        <li><a href="index.html#services">Body Treatments</a></li>
+                        <li><a href="index.html#services">Medical Spa</a></li>
+                        <li><a href="index.html#services">Beauty Services</a></li>
+                        <li><a href="index.html#services">Wellness</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h5>Contact</h5>
+                    <div class="footer-contact">
+                        <p><strong>Suwanee:</strong><br>770-904-0145</p>
+                        <p><strong>Johns Creek:</strong><br>770-674-5974</p>
+                        <p><strong>Email:</strong><br>info@bluefernspa.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bluefern Spa. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms & Conditions</a>
+                    <a href="#spa-policy">Spa Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="navigation-loader.js"></script>
+    <script src="script.js?v=4"></script>
+    <script>
+        // Modal functionality
+        function openModal(staffMember) {
+            const modal = document.getElementById(staffMember + 'Modal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(staffMember) {
+            const modal = document.getElementById(staffMember + 'Modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    if (modal.style.display === 'block') {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
