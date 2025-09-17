@@ -2427,21 +2427,33 @@
         // Set up listener immediately to catch early events
         document.addEventListener('navigationLoaded', (event) => {
             console.log('Navigation loaded event received for skincare page');
-            // Re-initialize page functionality after navigation is injected
-            setTimeout(() => {
-                initSkinCarePage();
-                initHeroAnimations();
-                
-                // Handle hash if present
-                const hash = event.detail?.hash || window.location.hash;
-                if (hash) {
-                    const targetCategory = hash.substring(1);
-                    const targetButton = document.querySelector(`[data-category="${targetCategory}"]`);
-                    if (targetButton) {
-                        targetButton.click();
+            
+            // Only re-initialize if navigation was actually injected
+            // Check if the navigation comment was replaced (indicating navigation was injected)
+            const navComment = '<!-- Navigation will be loaded by navigation-loader.js -->';
+            const bodyHTML = document.body.innerHTML;
+            
+            if (!bodyHTML.includes(navComment)) {
+                // Navigation was injected, so we need to re-initialize
+                console.log('Navigation injection detected, re-initializing page functionality');
+                setTimeout(() => {
+                    initSkinCarePage();
+                    initHeroAnimations();
+                    
+                    // Handle hash if present
+                    const hash = event.detail?.hash || window.location.hash;
+                    if (hash) {
+                        const targetCategory = hash.substring(1);
+                        const targetButton = document.querySelector(`[data-category="${targetCategory}"]`);
+                        if (targetButton) {
+                            targetButton.click();
+                        }
                     }
-                }
-            }, 100);
+                }, 100);
+            } else {
+                // Navigation wasn't injected (direct access), so initialization already happened on DOMContentLoaded
+                console.log('Direct page access detected, skipping re-initialization');
+            }
         });
 
         // Modal Functions
@@ -2710,4 +2722,4 @@
     <script src="navigation-loader.js"></script>
     <script src="script.js?v=1758072942"></script>
 </body>
-</html> 
+</html>  
