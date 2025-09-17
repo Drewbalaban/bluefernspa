@@ -1183,6 +1183,11 @@
             initHeroAnimations();
             initWaxingSubTabs();
             
+            // Fallback initialization for direct URL access
+            setTimeout(() => {
+                initWaxingSubTabs();
+            }, 500);
+            
         // Function to handle hash navigation
         const handleHashNavigation = (hash) => {
             if (hash) {
@@ -1240,6 +1245,14 @@
             handleHashNavigation(event.detail.hash);
             initWaxingSubTabs(); // Re-initialize waxing sub-tabs after navigation loads
         });
+        });
+
+        // Additional fallback for direct URL access - ensure everything works
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                initWaxingSubTabs();
+                initBeautyServicesPage();
+            }, 1000);
         });
 
         // Waxing Sub-tab Functionality
