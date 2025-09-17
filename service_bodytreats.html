@@ -1368,16 +1368,28 @@
             }, 1200);
         };
 
-        // Initialize when ready
-        document.addEventListener('DOMContentLoaded', () => {
+        // Initialize page functionality
+        const initializePage = () => {
+            console.log('Body treatments page DOM loaded, initializing...');
             initBodyTreatmentsPage();
             initHeroAnimations();
-        });
-        
-        // Listen for navigation loaded event from navigation-loader.js
+        };
+
+        // Wait for navigation to load first, then initialize page
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                // Wait a bit for navigation loader to finish
+                setTimeout(initializePage, 100);
+            });
+        } else {
+            // DOM already loaded, wait for navigation
+            setTimeout(initializePage, 100);
+        }
+
+        // Handle navigation loading event from navigation-loader.js
         document.addEventListener('navigationLoaded', (event) => {
-            console.log('Received navigationLoaded event for body treatments page:', event.detail);
-            // Re-initialize the page functionality after navigation loads
+            console.log('Navigation loaded event received for body treatments page');
+            // Re-initialize page functionality after navigation is injected
             setTimeout(() => {
                 initBodyTreatmentsPage();
                 initHeroAnimations();
@@ -1480,4 +1492,4 @@
     <script src="navigation-loader.js"></script>
     <script src="script.js?v=1758072942"></script>
 </body>
-</html> 
+</html>  
