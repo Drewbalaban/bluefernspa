@@ -1252,8 +1252,14 @@
             setTimeout(() => {
                 initWaxingSubTabs();
                 initBeautyServicesPage();
+                initHeroAnimations(); // Ensure hero animations work
             }, 1000);
         });
+
+        // Extra fallback for hero animations - run multiple times to ensure it works
+        setTimeout(() => {
+            initHeroAnimations();
+        }, 2000);
 
         // Waxing Sub-tab Functionality
         const initWaxingSubTabs = () => {
