@@ -2424,6 +2424,7 @@
         });
 
         // Handle navigation loading event from navigation-loader.js
+        // Set up listener immediately to catch early events
         document.addEventListener('navigationLoaded', (event) => {
             console.log('Navigation loaded event received for skincare page');
             // Re-initialize page functionality after navigation is injected

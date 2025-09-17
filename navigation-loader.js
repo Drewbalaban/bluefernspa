@@ -177,12 +177,15 @@ function initializePageSpecific() {
         }
         
         // Dispatch a custom event to trigger the page's hash handling
-        const hashEvent = new CustomEvent('navigationLoaded', {
-            detail: { hash: window.location.hash }
-        });
-        document.dispatchEvent(hashEvent);
-        
-        console.log('Dispatched navigationLoaded event with hash:', window.location.hash);
+        // Add a small delay to ensure page event listeners are ready
+        setTimeout(() => {
+            const hashEvent = new CustomEvent('navigationLoaded', {
+                detail: { hash: window.location.hash }
+            });
+            document.dispatchEvent(hashEvent);
+            
+            console.log('Dispatched navigationLoaded event for beauty page with hash:', window.location.hash);
+        }, 200);
     }
     
     // Check if we're on service_skincare.html and initialize its functionality
@@ -196,12 +199,15 @@ function initializePageSpecific() {
         }
         
         // Dispatch a custom event to trigger the page's hash handling
-        const hashEvent = new CustomEvent('navigationLoaded', {
-            detail: { hash: window.location.hash }
-        });
-        document.dispatchEvent(hashEvent);
-        
-        console.log('Dispatched navigationLoaded event for skin care page with hash:', window.location.hash);
+        // Add a small delay to ensure page event listeners are ready
+        setTimeout(() => {
+            const hashEvent = new CustomEvent('navigationLoaded', {
+                detail: { hash: window.location.hash }
+            });
+            document.dispatchEvent(hashEvent);
+            
+            console.log('Dispatched navigationLoaded event for skin care page with hash:', window.location.hash);
+        }, 200);
     }
     
     // Check if we're on service_bodytreats.html and initialize its functionality
@@ -215,12 +221,15 @@ function initializePageSpecific() {
         }
         
         // Dispatch a custom event to trigger the page's functionality
-        const hashEvent = new CustomEvent('navigationLoaded', {
-            detail: { hash: window.location.hash }
-        });
-        document.dispatchEvent(hashEvent);
-        
-        console.log('Dispatched navigationLoaded event for body treatments page with hash:', window.location.hash);
+        // Add a small delay to ensure page event listeners are ready
+        setTimeout(() => {
+            const hashEvent = new CustomEvent('navigationLoaded', {
+                detail: { hash: window.location.hash }
+            });
+            document.dispatchEvent(hashEvent);
+            
+            console.log('Dispatched navigationLoaded event for body treatments page with hash:', window.location.hash);
+        }, 200);
     }
 
     // Check if we're on service_spapackages.html and initialize its functionality
@@ -232,10 +241,15 @@ function initializePageSpecific() {
             initHeroAnimations();
         }
         // No tabs to switch here, but keep behavior consistent
-        const hashEvent = new CustomEvent('navigationLoaded', {
-            detail: { hash: window.location.hash }
-        });
-        document.dispatchEvent(hashEvent);
+        // Add a small delay to ensure page event listeners are ready
+        setTimeout(() => {
+            const hashEvent = new CustomEvent('navigationLoaded', {
+                detail: { hash: window.location.hash }
+            });
+            document.dispatchEvent(hashEvent);
+            
+            console.log('Dispatched navigationLoaded event for spa packages page with hash:', window.location.hash);
+        }, 200);
         console.log('Initialized spa packages page after nav injection.');
     }
 
@@ -277,6 +291,17 @@ function initializePageSpecific() {
                 }
             }
         }
+
+        // Dispatch a custom event to trigger the page's functionality
+        // Add a small delay to ensure page event listeners are ready
+        setTimeout(() => {
+            const hashEvent = new CustomEvent('navigationLoaded', {
+                detail: { hash: window.location.hash }
+            });
+            document.dispatchEvent(hashEvent);
+            
+            console.log('Dispatched navigationLoaded event for wellness therapy page with hash:', window.location.hash);
+        }, 200);
 
         console.log('Initialized wellness therapy page after nav injection with hash:', window.location.hash);
     }
