@@ -1762,72 +1762,42 @@
             }, 1200);
         };
 
-        // Initialize when ready
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOM loaded, initializing...'); // Debug
+        // Initialize page functionality
+        const initializePage = () => {
+            console.log('Wellness therapy page DOM loaded, initializing...');
             initWellnessTherapyPage();
             initHeroAnimations();
-            
-            // Handle URL hash to automatically switch to the correct tab
-            const hash = window.location.hash;
-            if (hash) {
-                const targetCategory = hash.substring(1); // Remove the # symbol
-                if (targetCategory && document.getElementById(targetCategory)) {
-                    // Switch to the target category
-                    const categoryButtons = document.querySelectorAll('.category-btn');
-                    const serviceCategories = document.querySelectorAll('.service-category');
-                    
-                    // Update active states
-                    categoryButtons.forEach(btn => btn.classList.remove('active'));
-                    const targetButton = document.querySelector(`[data-category="${targetCategory}"]`);
-                    if (targetButton) targetButton.classList.add('active');
+        };
 
-                    serviceCategories.forEach(category => category.classList.remove('active'));
-                    const targetCategoryElement = document.getElementById(targetCategory);
-                    if (targetCategoryElement) targetCategoryElement.classList.add('active');
-
-                    // Update hero banner background
-                    const heroBanner = document.querySelector('.hero-banner');
-                    if (heroBanner) {
-                        heroBanner.classList.remove('saltroom-bg', 'redlight-bg');
-                        if (targetCategory === 'saltroom') {
-                            heroBanner.classList.add('saltroom-bg');
-                        } else if (targetCategory === 'redlight') {
-                            heroBanner.classList.add('redlight-bg');
-                        }
-                    }
-                }
-            }
-
-            // Also respond to hash changes after load
-            window.addEventListener('hashchange', () => {
-                const newHash = window.location.hash;
-                const targetCategory = newHash.replace('#', '');
-                const targetCategoryElement = document.getElementById(targetCategory);
-                if (!targetCategoryElement) return;
-
-                // Update active button
-                const categoryButtons = document.querySelectorAll('.category-btn');
-                categoryButtons.forEach(btn => btn.classList.remove('active'));
-                const targetButton = document.querySelector(`[data-category="${targetCategory}"]`);
-                if (targetButton) targetButton.classList.add('active');
-
-                // Update visible category
-                const serviceCategories = document.querySelectorAll('.service-category');
-                serviceCategories.forEach(cat => cat.classList.remove('active'));
-                targetCategoryElement.classList.add('active');
-
-                // Update hero banner background
-                const heroBanner = document.querySelector('.hero-banner');
-                if (heroBanner) {
-                    heroBanner.classList.remove('saltroom-bg', 'redlight-bg');
-                    if (targetCategory === 'saltroom') {
-                        heroBanner.classList.add('saltroom-bg');
-                    } else if (targetCategory === 'redlight') {
-                        heroBanner.classList.add('redlight-bg');
-                    }
-                }
+        // Wait for navigation to load first, then initialize page
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                // Wait a bit for navigation loader to finish
+                setTimeout(initializePage, 100);
             });
+        } else {
+            // DOM already loaded, wait for navigation
+            setTimeout(initializePage, 100);
+        }
+
+        // Handle navigation loading event from navigation-loader.js
+        document.addEventListener('navigationLoaded', (event) => {
+            console.log('Navigation loaded event received for wellness therapy page');
+            // Re-initialize page functionality after navigation is injected
+            setTimeout(() => {
+                initWellnessTherapyPage();
+                initHeroAnimations();
+                
+                // Handle hash if present
+                const hash = event.detail?.hash || window.location.hash;
+                if (hash) {
+                    const targetCategory = hash.substring(1);
+                    const targetButton = document.querySelector(`[data-category="${targetCategory}"]`);
+                    if (targetButton) {
+                        targetButton.click();
+                    }
+                }
+            }, 100);
         });
 
         // Modal Functions
@@ -1857,40 +1827,8 @@
                 closeRedLightModal();
             }
         });
-
-        // Handle navigation loading event from navigation-loader.js
-        document.addEventListener('navigationLoaded', (event) => {
-            console.log('Navigation loaded event received for wellness therapy page');
-            
-            // Only re-initialize if navigation was actually injected
-            // Check if the navigation comment was replaced (indicating navigation was injected)
-            const navComment = '<!-- Navigation will be loaded by navigation-loader.js -->';
-            const bodyHTML = document.body.innerHTML;
-            
-            if (!bodyHTML.includes(navComment)) {
-                // Navigation was injected, so we need to re-initialize
-                console.log('Navigation injection detected, re-initializing page functionality');
-                setTimeout(() => {
-                    initWellnessTherapyPage();
-                    initHeroAnimations();
-                    
-                    // Handle hash if present
-                    const hash = event.detail?.hash || window.location.hash;
-                    if (hash) {
-                        const targetCategory = hash.substring(1);
-                        const targetButton = document.querySelector(`[data-category="${targetCategory}"]`);
-                        if (targetButton) {
-                            targetButton.click();
-                        }
-                    }
-                }, 100);
-            } else {
-                // Navigation wasn't injected (direct access), so initialization already happened on DOMContentLoaded
-                console.log('Direct page access detected, skipping re-initialization');
-            }
-        });
     </script>
     <script src="navigation-loader.js"></script>
     <script src="script.js?v=1758072942"></script>
 </body>
-</html>  
+</html>    
