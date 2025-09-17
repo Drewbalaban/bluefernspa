@@ -36,5 +36,4 @@
 /about-us / 301
 /locations /contact/ 301
 
-# Catch-all for any missed pages
-/* / 301
+# Catch-all for any missed pages - REMOVED to prevent interference with service pages

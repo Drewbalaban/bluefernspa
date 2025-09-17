@@ -1,6 +1,6 @@
 [build]
   publish = "."
-  command = "npm run build"
+  command = ""
 
 [build.environment]
   NODE_VERSION = "18"
@@ -21,12 +21,12 @@
 [[headers]]
   for = "/*.css"
   [headers.values]
-    Cache-Control = "public, max-age=3600"
+    Cache-Control = "public, max-age=300"
 
 [[headers]]
   for = "/*.js"
   [headers.values]
-    Cache-Control = "public, max-age=3600"
+    Cache-Control = "public, max-age=300"
 
 [[headers]]
   for = "/*.jpg"
