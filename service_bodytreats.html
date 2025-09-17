@@ -1378,7 +1378,20 @@
         document.addEventListener('navigationLoaded', (event) => {
             console.log('Received navigationLoaded event for body treatments page:', event.detail);
             // Re-initialize the page functionality after navigation loads
-            initBodyTreatmentsPage();
+            setTimeout(() => {
+                initBodyTreatmentsPage();
+                initHeroAnimations();
+                
+                // Handle hash if present
+                const hash = event.detail?.hash || window.location.hash;
+                if (hash) {
+                    const targetCategory = hash.substring(1);
+                    const targetButton = document.querySelector(`[data-category="${targetCategory}"]`);
+                    if (targetButton) {
+                        targetButton.click();
+                    }
+                }
+            }, 100);
         });
 
         // Wrap Expectations Modal Functions

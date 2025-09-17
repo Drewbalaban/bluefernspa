@@ -1262,6 +1262,27 @@
             initHeroAnimations();
         }, 2000);
 
+        // Handle navigation loading event from navigation-loader.js
+        document.addEventListener('navigationLoaded', (event) => {
+            console.log('Navigation loaded event received for beauty page');
+            // Re-initialize page functionality after navigation is injected
+            setTimeout(() => {
+                initBeautyServicesPage();
+                initHeroAnimations();
+                initWaxingSubTabs();
+                
+                // Handle hash if present
+                const hash = event.detail?.hash || window.location.hash;
+                if (hash) {
+                    const targetCategory = hash.substring(1);
+                    const targetButton = document.querySelector(`[data-category="${targetCategory}"]`);
+                    if (targetButton) {
+                        targetButton.click();
+                    }
+                }
+            }, 100);
+        });
+
         // Waxing Sub-tab Functionality
         const initWaxingSubTabs = () => {
             const subtabButtons = document.querySelectorAll('#waxing .subtab-btn');

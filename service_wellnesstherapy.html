@@ -1857,6 +1857,26 @@
                 closeRedLightModal();
             }
         });
+
+        // Handle navigation loading event from navigation-loader.js
+        document.addEventListener('navigationLoaded', (event) => {
+            console.log('Navigation loaded event received for wellness therapy page');
+            // Re-initialize page functionality after navigation is injected
+            setTimeout(() => {
+                initWellnessTherapyPage();
+                initHeroAnimations();
+                
+                // Handle hash if present
+                const hash = event.detail?.hash || window.location.hash;
+                if (hash) {
+                    const targetCategory = hash.substring(1);
+                    const targetButton = document.querySelector(`[data-category="${targetCategory}"]`);
+                    if (targetButton) {
+                        targetButton.click();
+                    }
+                }
+            }, 100);
+        });
     </script>
     <script src="navigation-loader.js"></script>
     <script src="script.js"></script>
